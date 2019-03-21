@@ -10,3 +10,9 @@
     + spring-jdbc. Version: 5.0.6.RELEASE
     + commons-dbcp. Version: 1.4
 <hr><br>
+
+## Test Account Info
+- Oracle : forpet / forpet
+- website : admin / 1234
+- website : user / user
+<hr><br>
