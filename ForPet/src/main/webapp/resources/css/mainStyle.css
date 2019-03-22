@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    color: #351324;
+}
+
+.mainSection {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* headerStyle */
+
+.headerMidBox {
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerBottomBox {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerBottomBox .hBottomMenu {
+    display: flex;
+    margin-right: 30px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.headerBottomBox .logMenuBtn {
+    padding: 5px;
+    margin: 0 10px;
+    background-color: white;
+    border: 1px solid #351324;
+    border-radius: 5px;
+}
+
+.headerBottomBox .logMenuBtn:hover {
+    padding: 5px;
+    margin: 0 10px;
+    color: white;
+    background-color: #351324;
+    border: 1px solid #351324;
+    border-radius: 5px;
+}
+
+.headerBottomBox .hMainMenu {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.headerBottomBox .mainMenuBtn {
+    margin: 0 5px;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.btnLine {
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #351324;
+}
+
+.headerBottomBox .mainMenuBtn:hover {
+    margin: 0 5px;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.headerBottomBox .mainMenuBtn:hover .btnLine {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #351324;
+    transition: 500ms;
+}

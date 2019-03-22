@@ -12,9 +12,29 @@
 <head>
 <meta charset="UTF-8">
 <title>ForPet</title>
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="${path }/resources/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="${path }/resources/css/mainStyle.css" />
 </head>
 <body>
-	mainPage 화면입니다.
+    <header>
+        <div class="headerMidBox">
+            <img src="${path }/resources/images/mainLogo1.jpg" alt="메인로고">
+        </div>
+        <div class="headerBottomBox">
+            <div class="hMainMenu">
+                <div class="mainMenuBtn">병원찾기<div class="btnLine"></div></div>
+                <div class="mainMenuBtn">공지사항 & 이벤트<div class="btnLine"></div></div>
+                <div class="mainMenuBtn">커뮤니티<div class="btnLine"></div></div>
+            </div>
+            <div class="hBottomMenu">
+                <div class="logMenuBtn">로그인</div>
+                <div class="logMenuBtn">회원가입</div>
+            </div>
+        </div>
+    </header>
+    <section class="mainSection">
+            mainPage 화면입니다.
+    </section>
+    <footer></footer>
 </body>
 </html>
