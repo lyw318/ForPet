@@ -13,6 +13,13 @@ html, body {
     overflow-x: hidden;
 }
 
+section {
+    width: 1024px;
+    height: 548px;
+    margin-top: 233px;
+}
+
+
 .mainHeader {
     position: fixed;
     width: 1024px;
@@ -33,9 +40,6 @@ html, body {
 }
 
 .mainSection {
-    width: 1024px;
-    height: 548px;
-    margin-top: 233px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -142,7 +146,7 @@ html, body {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .mainSection .mainImageScreen .mainPageImage {
@@ -151,7 +155,7 @@ html, body {
 
 .mainSection .mainImageScreen .mainPageSearch {
     position: absolute;
-    top: 350px;
+    top: 305px;
     left: 30px;
     padding: 10px;
     display: flex;

@@ -10,5 +10,9 @@ public class MainController {
 	public String mainPage() {
 		return "main";
 	}
-
+	
+	@RequestMapping("/main/defaultSection")
+	public String defaultSection() {
+		return "defaultSection";
+	}
 }
