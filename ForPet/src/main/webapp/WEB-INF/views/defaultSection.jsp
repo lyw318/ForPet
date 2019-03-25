@@ -5,7 +5,7 @@
 
 <section class="">
 	<div style="width: 100%; height: 534px; display: flex; justify-content: center; align-items: center;">
-		section 입력 구간 입니다.
+		section Tag 안에 작업을 시작하시면 됩니다. 화이팅!!
 	</div>
 	
 </section>
