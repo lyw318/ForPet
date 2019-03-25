@@ -5,19 +5,47 @@ html, body {
     margin: 0;
     padding: 0;
     color: #351324;
-}
-
-.mainSection {
-    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.mainHeader {
+    position: fixed;
+    width: 1024px;
+    top:0;
+    background-color: white;
+    z-index:1000;
+}
+
+.mainFooter {
+    width: 1024px;
+    height: 200px;
+    color: white;
+    background-color: #351324;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.mainSection {
+    width: 1024px;
+    height: 548px;
+    margin-top: 233px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 /* headerStyle */
 
 .headerMidBox {
     width: 100%;
+    height: 150px;
     padding: 10px 0;
     margin-bottom: 10px;
     display: flex;
@@ -27,7 +55,8 @@ html, body {
 
 .headerBottomBox {
     width: 100%;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,6 +75,7 @@ html, body {
     background-color: white;
     border: 1px solid #351324;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .headerBottomBox .logMenuBtn:hover {
@@ -71,6 +101,7 @@ html, body {
     text-align: center;
     background-color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .btnLine {
@@ -95,4 +126,46 @@ html, body {
     height: 2px;
     background-color: #351324;
     transition: 500ms;
+}
+
+.mainSection .mainImageScreen {
+    width: 100%;
+    height: 534px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.mainSection .mainImageScreen .mainImageBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainSection .mainImageScreen .mainPageImage {
+    position: absolute;
+}
+
+.mainSection .mainImageScreen .mainPageSearch {
+    position: absolute;
+    top: 350px;
+    left: 30px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: #F9F6F1;
+    border: 1px solid rgba(53, 19, 36, 0.2);
+    border-radius: 10px;
+}
+
+.mainSection .mainImageScreen .mainPageSearchInput {
+    max-width: 200px;
+    outline: none;
+    font-size: 20px;
+    border: none;
 }

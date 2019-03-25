@@ -1,0 +1,112 @@
+
+/* ------------------------------------------------------------- */
+/* 기본 모달창 css 구성 */
+#loginPageModal {
+	position: fixed;
+	z-index: 9200;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+#loginPageModal .defaultViewModalBox {
+	position: relative;
+	width: 500px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+}
+#loginPageModal .defaultViewHeader {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#loginPageModal .defaultViewBody {
+	position: absolute;
+	top:100px;
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#loginPageModal .loginBoxRow {
+	width: 80%;
+	margin: 10px 0;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+#loginPageModal .loginBoxCol {
+	width: 30%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#loginPageModal .loginBoxColInput {
+	width: 70%;
+	margin: 0 10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+
+#loginPageModal .loginInput {
+	width: 80%;
+	outline: none;
+	border: 1px solid white;
+	border-bottom: 1px solid #351324;
+}
+
+#loginPageModal .defaultViewfooter {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#loginPageModal .logPageBtn  {
+    padding: 10px 20px;
+	margin: 0 10px;
+	color: white;
+    background-color: #351324;
+    border: 1px solid #351324;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#loginPageModal .logPageBtn:hover {
+    padding: 10px 20px;
+	margin: 0 10px;
+	color: #351324;
+    background-color: white;
+    border: 1px solid #351324;
+    border-radius: 5px;
+}
+
+/* ------------------------------------------------------------- */
