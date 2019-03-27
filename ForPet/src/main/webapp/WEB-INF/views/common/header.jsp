@@ -33,7 +33,7 @@
                 <div class="mainMenuBtn" onclick="javascript:location.href='#'">
                 	병원찾기<div class="btnLine"></div>
                 </div>
-                <div class="mainMenuBtn">
+                <div class="mainMenuBtn" onclick="javascript:location.href='${path}/noticeAndEvent'">
                 	공지사항 & 이벤트<div class="btnLine"></div>
                 </div>
                 <div class="mainMenuBtn" onclick="javascript:location.href='#'">

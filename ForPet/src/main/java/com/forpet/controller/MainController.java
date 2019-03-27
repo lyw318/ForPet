@@ -15,4 +15,9 @@ public class MainController {
 	public String defaultSection() {
 		return "defaultSection";
 	}
+	
+	@RequestMapping("/noticeAndEvent")
+	public String noticeAndEvent() {
+		return "main";
+	}
 }
