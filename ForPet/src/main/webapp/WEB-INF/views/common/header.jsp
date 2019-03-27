@@ -30,7 +30,7 @@
             	<div class="mainMenuBtn" onclick="javascript:location.href='${path}/main'">
                 	HOME<div class="btnLine"></div>
                 </div>
-                <div class="mainMenuBtn" onclick="javascript:location.href='#'">
+                <div class="mainMenuBtn" onclick="javascript:location.href='${path}/main/search'">
                 	병원찾기<div class="btnLine"></div>
                 </div>
                 <div class="mainMenuBtn">
