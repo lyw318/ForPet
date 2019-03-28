@@ -15,4 +15,9 @@ public class MainController {
 	public String defaultSection() {
 		return "defaultSection";
 	}
+	
+	@RequestMapping("/main/memberEnroll")
+	public String memberEnroll() {
+		return "member/memberEnroll";
+	}
 }

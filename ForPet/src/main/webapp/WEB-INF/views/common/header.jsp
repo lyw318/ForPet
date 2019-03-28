@@ -45,7 +45,7 @@
             </div>
             <div class="hBottomMenu">
                 <div class="logMenuBtn" onclick="fn_defaultViewAjax()">로그인</div>
-                <div class="logMenuBtn">회원가입</div>
+                <div class="logMenuBtn" onclick="javascript:location.href='${path}/main/memberEnroll'">회원가입</div>
             </div>
         </div>
     </header>
