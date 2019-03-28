@@ -26,4 +26,9 @@ public class MainController {
 	{
 		return "/search/search";
 	}
+	
+	@RequestMapping("/main/memberEnroll")
+	public String memberEnroll() {
+		return "member/memberEnroll";
+	}
 }

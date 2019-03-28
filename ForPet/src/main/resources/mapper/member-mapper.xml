@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+ 
+ <select id="selectOne" parameterType="member" resultType="member">
+ SELECT * FROM MEMBER WHERE MEMBEREMAIL=#{memberEmail}
+ </select>
+ 
+ <insert id="insertMember" parameterType="member">
+ INSERT INTO MEMBER VALUES(memberSeq.nextval,#{memberEmail},#{memberPassword},#{memberNickname},#{memberName},#{memberPhone},#{memberAddress},#{memberType},sysdate,null)
+ </insert>
+ 
+</mapper>
