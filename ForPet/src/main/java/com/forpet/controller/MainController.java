@@ -18,7 +18,7 @@ public class MainController {
 	
 	@RequestMapping("/main/noticeAndEvent")
 	public String noticeAndEvent() {
-		return "main";
+		return "notice/noticeAndEvent";
 	}
 	
 	@RequestMapping("/main/search")
