@@ -4,7 +4,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    color: #351324;
+    color: #c69c76;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,9 +15,9 @@ html, body {
 
 section {
     width: 1024px;
-    height: 548px;
-    margin-top: 233px;
+    margin-top: 153px;
 }
+
 
 
 .mainHeader {
@@ -32,7 +32,7 @@ section {
     width: 1024px;
     height: 200px;
     color: white;
-    background-color: #351324;
+    background-color: #c69c76;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -40,17 +40,19 @@ section {
 }
 
 .mainSection {
+    height: 615px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
-/* headerStyle */
 
+
+/* headerStyle */
 .headerMidBox {
     width: 100%;
-    height: 150px;
-    padding: 10px 0;
+    height: 80px;
+    padding-top: 20px;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
@@ -59,8 +61,7 @@ section {
 
 .headerBottomBox {
     width: 100%;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,18 +78,20 @@ section {
     padding: 5px;
     margin: 0 10px;
     background-color: white;
-    border: 1px solid #351324;
+    border: 1px solid #c69c76;
     border-radius: 5px;
     cursor: pointer;
+    transition: 500ms;
 }
 
 .headerBottomBox .logMenuBtn:hover {
     padding: 5px;
     margin: 0 10px;
     color: white;
-    background-color: #351324;
-    border: 1px solid #351324;
+    background-color: #c69c76;
+    border: 1px solid #c69c76;
     border-radius: 5px;
+    transition: 500ms;
 }
 
 .headerBottomBox .hMainMenu {
@@ -100,7 +103,6 @@ section {
 
 .headerBottomBox .mainMenuBtn {
     margin: 0 5px;
-    font-size: 20px;
     position: relative;
     text-align: center;
     background-color: white;
@@ -112,12 +114,11 @@ section {
     position: absolute;
     width: 0%;
     height: 2px;
-    background-color: #351324;
+    background-color: #c69c76;
 }
 
 .headerBottomBox .mainMenuBtn:hover {
     margin: 0 5px;
-    font-size: 20px;
     position: relative;
     text-align: center;
     background-color: white;
@@ -128,10 +129,13 @@ section {
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: #351324;
+    background-color: #c69c76;
     transition: 500ms;
 }
 
+
+
+/* mainSectionStyle */
 .mainSection .mainImageScreen {
     width: 100%;
     height: 534px;

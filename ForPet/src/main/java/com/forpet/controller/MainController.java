@@ -16,8 +16,14 @@ public class MainController {
 		return "defaultSection";
 	}
 	
-	@RequestMapping("/noticeAndEvent")
+	@RequestMapping("/main/noticeAndEvent")
 	public String noticeAndEvent() {
 		return "main";
+	}
+	
+	@RequestMapping("/main/search")
+	public String searchpage()
+	{
+		return "/search/search";
 	}
 }

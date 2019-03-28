@@ -7,6 +7,7 @@
 		<div class="defaultViewModalBox">
 			<div class="defaultViewHeader">
 				<div>
+					<img src="${path }/resources/images/forPetSignH50B.png" alt="로그인메인로고">
 				</div>
 			</div>
 			<div class="defaultViewBody">

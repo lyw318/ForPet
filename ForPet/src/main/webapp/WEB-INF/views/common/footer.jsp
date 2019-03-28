@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <footer class="mainFooter">
-	<img class="mainPageImage" src="${path }/resources/images/footerLogaName.jpg" alt="로고이름명" style="margin-left: 100px;">
+	<img class="mainPageImage" src="${path }/resources/images/forPetSignH50.png" alt="로고이름명" style="margin-left: 100px;">
 	<pre>
 		(주) ForPet  |  사업자등록번호 : 1234 - 00 - 12345  |  프로젝트팀 : ForPet  |  개인정보관리책임자 : ForPet
 		서울특별시 강남구 
