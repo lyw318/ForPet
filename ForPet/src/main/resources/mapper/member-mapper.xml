@@ -7,7 +7,7 @@
  </select>
  
  <insert id="insertMember" parameterType="member">
- INSERT INTO MEMBER VALUES(memberSeq.nextval,#{memberEmail},#{memberPassword},#{memberNickname},#{memberName},#{memberPhone},#{memberAddress},#{memberType},sysdate,null)
+ INSERT INTO MEMBER VALUES(memberSeq.nextval,#{memberEmail},#{memberPassword},#{memberNickname},#{memberName},#{memberPhone},#{memberAddress},null,sysdate,null)
  </insert>
  
 </mapper>

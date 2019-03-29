@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 <meta charset=UTF-8">
 <title>Message page</title>
 <script scr="http://code.jquery.com/jquery-3.3.1.min.js"></script>

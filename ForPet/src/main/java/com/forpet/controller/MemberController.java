@@ -48,7 +48,7 @@ public class MemberController {
 		}
 		model.addAttribute("msg",msg);
 		model.addAttribute("loc",loc);
-		return "common/msg";
+		return "member/memberEnrollEnd";
 	}
 	
 	@RequestMapping("/member/memberLogin.do")

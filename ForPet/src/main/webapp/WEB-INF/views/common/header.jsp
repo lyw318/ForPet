@@ -45,10 +45,38 @@
                 	기본작업 형식<div class="btnLine"></div>
                 </div>
             </div>
+            
+            <c:if test="${loggedMember==null }">
             <div class="hBottomMenu">
-                <div class="logMenuBtn" onclick="fn_defaultViewAjax()">로그인</div>
+                <div class="logMenuBtn" onclick="fn_defaultViewAjax()" >로그인</div>
                 <div class="logMenuBtn" onclick="javascript:location.href='${path}/main/memberEnroll'">회원가입</div>
             </div>
+            </c:if>
+            <c:if test="${loggedMember!=null}"> 
+             <div class="hBottomMenu">
+                <div class="hBottomMenuText">
+                    <div id="userBox">
+                        <div class="petIconBox">
+                            <img src="${path }/resources/images/petIcon.png" style="width: 20px; height: 20px;">
+                        </div>
+                        <div class="userIdBox">
+                            ${loggedMember.memberEmail}
+                        </div>
+                        <div class="btnLineLogin">
+                        <div class="userTable">
+                            <div class="userTableBtn" >마이페이지</div>
+                            <div class="userTableBtn">반려동물</div>
+                            <div class="userTableBtn">쪽지보내기</div>
+                        </div>
+                        </div>
+                    </div>
+                    &nbsp;&nbsp;님, 환영합니다.
+                  <div class="logMenuBtn" onclick="location.href='${path }/member/logOut.do'">로그아웃</div>
+                </div>
+            </div>
+            
+            </c:if>
+            
         </div>
     </header>
     <script>
@@ -68,6 +96,27 @@
                 }, 500)
             }
         });
+        
+
+        // 아이디(userBox) 클릭 : 소메뉴 출력 
+        $("#userBox").click(function() {
+            $(".userTable").css("display","flex");
+        })
+        $(function () {
+            var userTableCloseFlag = true;
+            $("#userBox").click(function () {
+                userTableCloseFlag = false;
+            })
+            $("#userBox").mouseleave(function () {
+                userTableCloseFlag = true;
+            })
+            $("html, body").on("click", function () {
+                if (userTableCloseFlag) {
+                    $(".userTable").css("display","none");
+                }
+            })
+        });
+   
     </script>
 	
 	<!-- loginpage 모달창 추가 -->

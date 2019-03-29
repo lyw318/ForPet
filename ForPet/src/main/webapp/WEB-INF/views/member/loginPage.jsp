@@ -3,7 +3,7 @@
 
 
 <div id="loginPageModal" class="loginPageModal">
-	<form action="" method="post">
+	<form action="${path }/member/memberLogin.do" method="post">
 		<div class="defaultViewModalBox">
 			<div class="defaultViewHeader">
 				<div>
@@ -14,19 +14,19 @@
 				<div class="loginBoxRow">
 					<div class="loginBoxCol">Email</div>
 					<div class="loginBoxColInput">
-						<input type="text" class="loginInput"/>
+						<input type="text" class="loginInput" name="memberEmail"/>
 					</div>
 				</div>
 				<div class="loginBoxRow">
 					<div class="loginBoxCol">Password</div>
 					<div class="loginBoxColInput">
-						<input type="text" class="loginInput"/>
+						<input type="text" class="loginInput" name="memberPassword"/>
 					</div>
 				</div>
 			</div>
 			<div class="defaultViewfooter">
 				<div>
-					<button type="button" class="logPageBtn">Login</button>
+					<button type="button" class="logPageBtn" onclick="submit()">Login</button>
 					<button type="button" class="logPageBtn">Close</button>
 				</div>
 			</div>
