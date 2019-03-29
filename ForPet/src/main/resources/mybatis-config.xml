@@ -3,6 +3,13 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.forpet.model.vo.Member" alias="member" />
+		<typeAlias type="com.forpet.model.vo.Vet" alias="vet"/>
+		<typeAlias type="com.forpet.model.vo.Notice" alias="notice"/>
+		<!-- 추후 추가 
+		<typeAlias type="com.forpet.model.vo.Member" alias="member"/>
+		<typeAlias type="com.forpet.model.vo.Pet" alias="pet"/>
+		<typeAlias type="com.forpet.model.vo.Board" alias="board"/>
+		 -->
 
 	</typeAliases>
 
