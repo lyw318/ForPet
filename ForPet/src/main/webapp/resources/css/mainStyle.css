@@ -6,6 +6,7 @@ html, body {
     padding: 0;
     width: 100%;
     color: #c69c76;
+    font-size: 13px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,10 +77,11 @@ section {
     width: 100%;
     height: 80px;
     padding-top: 20px;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .headerBottomBox {
@@ -90,6 +92,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: 500ms;
 }
 
 .headerBottomBox .hBottomMenu {
@@ -134,8 +137,15 @@ section {
     align-items: center;
 }
 
+.headerBottomBox .hMainMenuBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .headerBottomBox .mainMenuBtn {
-    margin: 0 5px;
+    padding: 5px 10px;
     text-align: center;
     border-radius: 5px;
     transition: 500ms;
@@ -144,6 +154,11 @@ section {
 
 .headerBottomBox .mainMenuBtn_list {
     width:50px;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 5px;
+    transition: 500ms;
+    cursor: pointer;
 }
 
 .headerBottomBox .listIcon {
@@ -210,22 +225,6 @@ section {
     align-items: center;
 }
 
-.headerBottomBox .mainMenuSubMenu1 {
-    left: 146px;
-}
-
-.headerBottomBox .mainMenuSubMenu2 {
-    left: 263px;
-}
-
-.headerBottomBox .mainMenuSubMenu3 {
-    left: 450px;
-}
-
-.headerBottomBox .mainMenuSubMenu4 {
-    left: 566px;
-}
-
 .headerBottomBox .mainMenuSubBtn {
     padding: 0;
     margin-right: 20px;
@@ -239,16 +238,16 @@ section {
 .headerBottomBox .mainMenuSubBtn:hover {
     padding: 0;
     margin-right: 20px;
-    color: black;
+    color: #9a7654;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #9a7654;
     transition: 500ms;
 }
 
 .headerBottomBox .mainMenuBtn:hover {
-    margin: 0 5px;
+    padding: 5px 10px;
     text-align: center;
     font-weight: 500;
     color: #9a7654;
@@ -262,6 +261,59 @@ section {
     background-color: #c69c76;
     transition: 500ms;
 }
+
+.headerBottomBox .mainMenuList {
+    position: absolute;
+    width: 100%;
+    min-height: 250px;
+    top: -500px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: white;
+    transition: 500ms;
+    z-index: -1;
+}
+
+.headerBottomBox .mainMenuList_Box {
+    width: 100%;
+    display: flex;
+
+}
+
+.headerBottomBox .mainMenuList .mainMenuList_left {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.headerBottomBox .mainMenuList .mainMenuList_left .mainMenuListCol {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-right: 1px solid rgb(229, 187, 145);
+}
+
+.headerBottomBox .mainMenuList .mainMenuListSubBtn {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.headerBottomBox .mainMenuList .mainMenuListSubBtn:hover {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+
+
+.headerBottomBox .mainMenuList .mainMenuList_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
 
@@ -285,6 +337,30 @@ section {
 
 .mainSection .mainImageScreen .mainPageImage {
     position: absolute;
+}
+
+.mainSection .mainImageScreen .mainPageText {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.mainSection .mainImageScreen .mainPageText p {
+    margin: 10px;
+}
+
+.mainSection .mainImageScreen .mainPageText1 {
+    color: rgba(154, 118, 84,0.8);
+    opacity: 0;
+    transition: 2000ms;
+}
+
+.mainSection .mainImageScreen .mainPageText2 {
+    color: rgba(154, 100, 84, 0.8);
+    opacity: 0;
+    transition: 2000ms;
 }
 
 .mainSection .mainImageScreen .mainPageSearch {
