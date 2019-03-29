@@ -11,6 +11,24 @@
 		© 2019 ForPet Inc. All Rights Reserved.
 	</pre>
 </footer>
+<div class="TopBtnBox">
+	<div>TOP</div>
+</div>
+<script>
+	$(window).scroll(function () {
+		if ($(window).scrollTop() != 0) {
+			$(".TopBtnBox").css("opacity", "1");
+			$(".TopBtnBox").css("cursor", "pointer");
+
+		} else {
+			$(".TopBtnBox").css("opacity", "0");
+			$(".TopBtnBox").css("cursor", "default");
+		}
+	});
+	$(".TopBtnBox").click(function() {
+		$('html, body').animate({ scrollTop: 0 }, 0);
+	})
+</script>
 </body>
 
 </html>
