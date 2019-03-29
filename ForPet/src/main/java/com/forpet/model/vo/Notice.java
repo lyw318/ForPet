@@ -6,17 +6,20 @@ public class Notice {
 	
 	private int noticeSeq;
 	private int memberSeq;
+	private String memberNickname; //게시글 작성자를 닉네임으로 보여주기
 	private String noticeTitle;
 	private String noticeContent;
 	private int readCount;
 	private Date noticeDate;
 	
 	public Notice() {}
-	
-	public Notice(int noticeSeq, int memberSeq, String noticeTitle, String noticeContent, int readCount,
-			Date noticeDate) {
+
+	public Notice(int noticeSeq, int memberSeq, String memberNickname, String noticeTitle, String noticeContent,
+			int readCount, Date noticeDate) {
+		super();
 		this.noticeSeq = noticeSeq;
 		this.memberSeq = memberSeq;
+		this.memberNickname = memberNickname;
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
 		this.readCount = readCount;
@@ -59,10 +62,19 @@ public class Notice {
 	public void setNoticeDate(Date noticeDate) {
 		this.noticeDate = noticeDate;
 	}
+	public String getMemberNickname() {
+		return memberNickname;
+	}
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
+	}
 
 	@Override
 	public String toString() {
-		return "Notice [noticeSeq=" + noticeSeq + ", memberSeq=" + memberSeq + ", noticeTitle=" + noticeTitle
-				+ ", noticeContent=" + noticeContent + ", readCount=" + readCount + ", noticeDate=" + noticeDate + "]";
+		return "Notice [noticeSeq=" + noticeSeq + ", memberSeq=" + memberSeq + ", memberNickname=" + memberNickname
+				+ ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent + ", readCount=" + readCount
+				+ ", noticeDate=" + noticeDate + "]";
 	}
+
+	
 }
