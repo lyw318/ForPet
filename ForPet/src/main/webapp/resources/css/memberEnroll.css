@@ -2,25 +2,29 @@
 div#enroll-container {
 	width: 400px;
 	margin: 0 auto;
-	text-align: center;
+	/* text-align: center; */
+	
 }
 
 div#enroll-container input, div#enroll-container select {
 	margin-bottom: 10px;
+	
 }
 
 /*중복아이디체크관련*/
+
 div#userid-container {
 	position: relative;
 	padding: 0px;
+	
 }
 
 div#userid-container span.guide {
 	display: none;
 	font-size: 12px;
 	position: absolute;
-	top: 12px;
-	right: 10px;
+ 	top: 12px;
+	right: 10px; 
 }
 
 div#userid-container span.ok {

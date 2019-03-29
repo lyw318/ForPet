@@ -7,13 +7,19 @@
  --%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <link rel="stylesheet" href="${path }/resources/css/memberEnroll.css" />
+<style>
+input[type='password'],[type='text'],[type='tel']{
+	display:block;
+}
+</style>
 <section class="">
 	<div id="enroll-container">
 		<form name="memberEnrollFrm" action="${pageContext.request.contextPath}/member/memberEnrollEnd.do" method="post" onsubmit="return validate();">
+			
 			<div id="userid-container">
 				<input type="text" class="form-control" placeholder="아이디(4글자 이상)" name="memberEmail" id="memberEmail_" required>
 				<span class="guide ok">아이디 사용 가능합니다</span>
-				<span class="guide errer">아이디 사용 불가능합니다</span>
+				<span class="guide error">아이디 사용 불가능합니다</span>
 				<input type="hidden" name="checkEmail" id="checkEmail"/>
 			</div>		
 			<input type="password" class="form-container" placeholder="비밀번호" name="memberPassword" id="memberPassword_" required>
