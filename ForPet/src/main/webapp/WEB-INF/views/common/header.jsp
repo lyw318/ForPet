@@ -124,6 +124,7 @@
             </c:if>
 
             <c:if test="${loggedMember!=null}"> 
+            
 				<div class="hBottomMenu">
 				   <div class="hBottomMenuText">
 				       <div id="userBox">
@@ -145,6 +146,7 @@
 						
 				    </div>
 				</div>
+
             </c:if>
         </div>
     </header>
