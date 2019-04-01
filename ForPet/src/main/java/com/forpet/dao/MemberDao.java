@@ -8,4 +8,8 @@ public interface MemberDao {
 
 	int insertMember(Member m);
 
+	int update(Member m);
+
+	int delete(Member m);
+
 }

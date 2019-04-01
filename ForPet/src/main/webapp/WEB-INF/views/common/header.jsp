@@ -139,12 +139,13 @@
                         </div>
                         <div class="btnLineLogin">
                         <div class="userTable">
-                            <div class="userTableBtn" >마이페이지</div>
-                            <div class="userTableBtn">반려동물</div>
+                            <div class="userTableBtn" onclick="javascript:location.href='${path}/member/memberUpdate.do'">마이페이지</div>
+                            <div class="userTableBtn" onclick="javascript:location.href='${path}/pet/petEnroll'">반려동물</div>
                             <div class="userTableBtn">쪽지보내기</div>
                         </div>
                         </div>
                     </div>
+                    
                     &nbsp;&nbsp;님, 환영합니다.
                   <div class="logMenuBtn" onclick="location.href='${path }/member/logOut.do'">로그아웃</div>
                 </div>

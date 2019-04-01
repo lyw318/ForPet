@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.forpet.model.vo.Member;
 import com.forpet.service.MemberService;
@@ -30,6 +31,45 @@ public class MemberController {
 	@RequestMapping("/member/memberEnroll.do")
 	public String memberEnroll() {
 		return "member/memberEnroll";
+	}
+	
+	@RequestMapping("/member/memberUpdate.do")
+	public ModelAndView memberUpdateEnd(HttpSession session,Model model) {
+		
+		Member re=service.selectOne((Member)session.getAttribute("loggedMember"));
+		
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("member/memberUpdate");
+		mv.addObject("member",re);
+		return mv;
+	}
+	
+	@RequestMapping("/member/memberUpdateEnd.do")
+	public ModelAndView updateEnd(Member m) {
+		String rawPw=m.getMemberPassword();
+		String enPw=bcEcoder.encode(rawPw);
+		m.setMemberPassword(enPw);
+		System.out.println(m);
+		int result=service.update(m);
+		String msg="";
+		String loc="/member/update.do?memberEmail="+m.getMemberEmail();
+		if(result>0) {
+			msg="수정완료";
+		}else {
+			msg="수정실패";
+		}
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("common/msg");
+		mv.addObject("msg",msg);
+		return mv;
+		
+	}
+	
+	@RequestMapping("member/memberDel.do")
+	public String memberDel(Member m) {
+		int result=service.delete(m);
+		
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/member/memberEnrollEnd.do")
@@ -94,6 +134,7 @@ public class MemberController {
 		res.getWriter().println(isOk);
 		
 	}
+	
 	
 	
 	
