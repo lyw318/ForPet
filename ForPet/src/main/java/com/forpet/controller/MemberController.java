@@ -39,7 +39,6 @@ public class MemberController {
 		Member re=service.selectOne((Member)session.getAttribute("loggedMember"));
 		
 		ModelAndView mv=new ModelAndView();
-//		mv.setViewName("member/memberUpdate");
 		mv.setViewName("myPage/member/memberUpdate");
 		mv.addObject("member",re);
 		return mv;

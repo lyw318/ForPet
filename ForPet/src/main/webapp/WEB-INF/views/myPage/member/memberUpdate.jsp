@@ -17,6 +17,12 @@
 	</div>
 </div><br />
 
+<style>
+input[type='password'],[type='text'],[type='tel']{
+	display:block;
+}
+</style>
+
 <div class="myPageMain_right">
 
 	<div id="enroll-container">
