@@ -13,10 +13,12 @@ html, body {
     flex-direction: column;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    text-align: center;
 }
 
 section {
-    width: 1024px;
+    width: 1000px;
+    min-height: 604px;
     margin-top: 163px;
 }
 
@@ -24,17 +26,18 @@ section {
 
 .mainHeader {
     position: fixed;
-    width: 1024px;
+    width: 1000px;
     top:0;
     background-color: white;
     z-index:1000;
 }
 
 .mainFooter {
-    width: 1024px;
+    width: 1000px;
     height: 200px;
     color: white;
-    background-color: #c69c76;
+    background-color: #50351a;
+    ;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -97,21 +100,19 @@ section {
 
 .headerBottomBox .hBottomMenu {
     display: flex;
-    margin-right: 30px;
     justify-content: flex-end;
     align-items: center;
 }
 
 .headerBottomBox .hBottomMenuText {
     display: flex;
-    margin-right: 30px;
     justify-content: flex-end;
     align-items: center;
 }
 
 .headerBottomBox .logMenuBtn {
     padding: 5px;
-    margin: 0 10px;
+    margin: 0 5px;
     color: #9a7654;
     background-color: white;
     border: 1px solid #9a7654;
@@ -122,7 +123,7 @@ section {
 
 .headerBottomBox .logMenuBtn:hover {
     padding: 5px;
-    margin: 0 10px;
+    margin: 0 5px;
     color: white;
     background-color: #9a7654;
     border: 1px solid #9a7654;
@@ -131,7 +132,7 @@ section {
 }
 
 .headerBottomBox .hMainMenu {
-    width: 70%;
+    width: 55%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -209,7 +210,7 @@ section {
 
 .headerBottomBox .mainMenuSubBox {
     position: absolute;
-    width: 1024px;
+    width: 1000px;
     height: 0px;
     top: 38px;
     background-color: rgb(255, 245, 235);
@@ -282,7 +283,7 @@ section {
 }
 
 .headerBottomBox .mainMenuList .mainMenuList_left {
-    width: 70%;
+    width: 60%;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
@@ -337,6 +338,7 @@ section {
 
 .mainSection .mainImageScreen .mainPageImage {
     position: absolute;
+    width: 1000px;
 }
 
 .mainSection .mainImageScreen .mainPageText {
@@ -473,7 +475,7 @@ section {
 
 #userBox .userTable {
     padding: 10px;
-    top: 35px;
+    top: 5px;
     position: absolute;
     display: none;
     justify-content: center;

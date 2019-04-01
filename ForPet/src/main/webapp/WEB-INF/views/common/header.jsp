@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="${path }/resources/css/mainStyle.css" />
     <link rel="stylesheet" href="${path }/resources/css/loginPageStyle.css" />
     <link rel="stylesheet" href="${path }/resources/css/searchMainStyle.css" />
+	<link rel="stylesheet" href="${path }/resources/css/myPage_mainStyle.css" />
+	<link rel="stylesheet" href="${path }/resources/css/admin_mainStyle.css" />
 
 </head>
 
@@ -42,24 +44,22 @@
                 </div>
                 <div class="hMainMenuBox">
                     <div class="mainMenuBtn mainMenuBtn1" onclick="javascript:location.href='${path}/main/search'">
-                        병원찾기
+						병원찾기
                     </div>
                 </div>
                 <div class="hMainMenuBox">
-                    <div class="mainMenuBtn mainMenuBtn2"
-                        onclick="javascript:location.href='${path}/main/noticeAndEvent'">
-                        공지사항
+                    <div class="mainMenuBtn mainMenuBtn2" onclick="javascript:location.href='${path}/main/noticeAndEvent'">
+						 공지사항
                     </div>
                 </div>
                 <div class="hMainMenuBox">
                     <div class="mainMenuBtn mainMenuBtn3" onclick="javascript:location.href='#'">
-                        커뮤니티
+						커뮤니티
                     </div>
                 </div>
                 <div class="hMainMenuBox">
-                    <div class="mainMenuBtn mainMenuBtn4"
-                        onclick="javascript:location.href='${path}/main/defaultSection'">
-                        기본작업 형식
+                    <div class="mainMenuBtn mainMenuBtn4" onclick="javascript:location.href='${path}/main/defaultSection'">
+						기본작업 형식
                     </div>
                 </div>
             </div>
@@ -115,11 +115,7 @@
                     </div>
                 </div>
             </div>
-            <script>
 
-            </script>
-
-            
             <c:if test="${loggedMember==null }">
 	            <div class="hBottomMenu">
 	                <div class="logMenuBtn" onclick="fn_defaultViewAjax()" >로그인</div>
@@ -128,29 +124,28 @@
             </c:if>
 
             <c:if test="${loggedMember!=null}"> 
-             <div class="hBottomMenu">
-                <div class="hBottomMenuText">
-                    <div id="userBox">
-                        <div class="petIconBox">
-                            <img src="${path }/resources/images/petIcon.png" style="width: 20px; height: 20px;">
-                        </div>
-                        <div class="userIdBox">
-                            ${loggedMember.memberEmail}
-                        </div>
-                        <div class="btnLineLogin">
-                        <div class="userTable">
-                            <div class="userTableBtn" >마이페이지</div>
-                            <div class="userTableBtn">반려동물</div>
-                            <div class="userTableBtn">쪽지보내기</div>
-                        </div>
-                        </div>
-                    </div>
-                    &nbsp;&nbsp;님, 환영합니다.
-                  <div class="logMenuBtn" onclick="location.href='${path }/member/logOut.do'">로그아웃</div>
-                </div>
-            </div>
+				<div class="hBottomMenu">
+				   <div class="hBottomMenuText">
+				       <div id="userBox">
+				           <div class="petIconBox">
+				               <img src="${path }/resources/images/petIcon.png" style="width: 20px; height: 20px;">
+							</div>
+							<div class="userIdBox">${loggedMember.memberEmail}</div>
+							<%@ include file="/WEB-INF/views/common/userIdWindow.jsp" %>
+						</div>
+						&nbsp;
+						님, 환영합니다.
+						&nbsp;
+						<div class="logMenuBtn" onclick="location.href='${path }/member/logOut.do'">로그아웃</div>
+						
+						<c:if test="${loggedMember.memberEmail == 'admin'}"> 
+							<div class="logMenuBtn" onclick="location.href='${path }/main/adminPageMain'">관리자 페이지</div>
+						</c:if>
+						
+						
+				    </div>
+				</div>
             </c:if>
-
         </div>
     </header>
     <script>
@@ -262,30 +257,6 @@
 
 
 
-
-
-
-
-
-        // 아이디(userBox) 클릭 : 소메뉴 출력 
-        $("#userBox").click(function () {
-            $(".userTable").css("display", "flex");
-        })
-        $(function () {
-            var userTableCloseFlag = true;
-            $("#userBox").click(function () {
-                userTableCloseFlag = false;
-            })
-            $("#userBox").mouseleave(function () {
-                userTableCloseFlag = true;
-            })
-            $("html, body").on("click", function () {
-                if (userTableCloseFlag) {
-                    $(".userTable").css("display", "none");
-                }
-            })
-        });
-
         // 로딩 게이지
         $(function () {
             $('.lodingLine').css("width", "100%");
@@ -323,26 +294,6 @@
             }
         });
         
-
-        // 아이디(userBox) 클릭 : 소메뉴 출력 
-        $("#userBox").click(function() {
-            $(".userTable").css("display","flex");
-        })
-        $(function () {
-            var userTableCloseFlag = true;
-            $("#userBox").click(function () {
-                userTableCloseFlag = false;
-            })
-            $("#userBox").mouseleave(function () {
-                userTableCloseFlag = true;
-            })
-            $("html, body").on("click", function () {
-                if (userTableCloseFlag) {
-                    $(".userTable").css("display","none");
-                }
-            })
-        });
-   
     </script>
 
     <!-- loginpage 모달창 추가 -->

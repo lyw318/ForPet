@@ -44,7 +44,7 @@ public class MainController {
 	
 		List<Vet> list = service.VetList();
 		model.addAttribute("list",list);
-		//vlist ������
+		//vlist ������
 		System.out.println("mainClist"+list);
 		return "/search/search";
 	}
@@ -52,5 +52,17 @@ public class MainController {
 	@RequestMapping("/main/memberEnroll")
 	public String memberEnroll() {
 		return "member/memberEnroll";
+	}
+	
+	//마이페이지 이동
+	@RequestMapping("/main/myPageMain")
+	public String myPageMain() {
+		return "myPage/myPageMain";
+	}
+	
+	//관리자페이지 이동
+	@RequestMapping("/main/adminPageMain")
+	public String dminPageMain() {
+		return "admin/adminPageMain";
 	}
 }
