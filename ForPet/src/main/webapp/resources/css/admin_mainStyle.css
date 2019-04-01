@@ -12,9 +12,13 @@ section#adminMain .adminMain_left {
     min-height: 542px;
 }
 
-section#adminMain .#adminMain_right {
+section#adminMain .adminMain_right {
     width: 80%;
     min-height: 542px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 section#adminMain .adminMain_left ul {

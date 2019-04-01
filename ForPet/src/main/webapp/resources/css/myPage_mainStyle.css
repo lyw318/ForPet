@@ -16,6 +16,10 @@ section#myPageMain .myPageMain_left {
 section#myPageMain .myPageMain_right {
     width: 80%;
     min-height: 542px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 section#myPageMain .myPageMain_left ul {
