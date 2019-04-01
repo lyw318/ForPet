@@ -48,7 +48,7 @@
         <ul class="sub">
             <li>내 정보보기</li>
                 <ul class="sub">
-                    <li>정보 수정</li>
+                    <li onclick="javascript:location.href='${path }/member/memberUpdate.do'">정보 수정</li>
                     <li>회원 탈퇴</li>
                 </ul>
             <li>내 병원예약</li>

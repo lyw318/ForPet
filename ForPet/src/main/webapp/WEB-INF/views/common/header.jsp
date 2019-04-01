@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="${path }/resources/css/searchMainStyle.css" />
 	<link rel="stylesheet" href="${path }/resources/css/myPage_mainStyle.css" />
 	<link rel="stylesheet" href="${path }/resources/css/admin_mainStyle.css" />
+	<link rel="stylesheet" href="${path }/resources/css/memberEnroll.css" />
+	
 
 </head>
 
