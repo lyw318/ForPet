@@ -4,10 +4,21 @@
 	<select id="vetList" resultType="vet">
 		select * from vet
 	</select>
+	<select id="selectCount" parameterType="map" resultType="_int">
+	select count(*) from vet where vetAddress like '%'||#{search}||'%'
+	<if test="!type.equals('all')">
+	and vetName like '%'||#{type}||'%'
+	</if>
+	</select>
 	
+	<select id="selectList" parameterType="map" resultType="vet">
+	select * from vet where vetAddress like '%'||#{search}||'%'
+	<if test="!type.equals('all')">
+	and vetName like '%'||#{type}||'%'
+	</if>
 	
-	
-	
+	</select>
+		
 	
 	
 </mapper>

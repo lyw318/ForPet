@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.forpet.model.vo.Vet;
 import com.forpet.service.VetService;
 
+import net.sf.json.JSONArray;
+
 
 
 
@@ -21,7 +23,7 @@ public class MainController {
 	private VetService service;
 	
 	List <Vet> vlist = new ArrayList();
-	
+	JSONArray jsonArray = new JSONArray();
 	
 	@RequestMapping("/main")
 	public String mainPage() {
@@ -42,10 +44,13 @@ public class MainController {
 	public String searchpage(Model model)
 	{
 	
+		
 		List<Vet> list = service.VetList();
 		model.addAttribute("list",list);
+		model.addAttribute("jlist",jsonArray.fromObject(list));
 		//vlist º¸³»±â
 		System.out.println("mainClist"+list);
+		System.out.println("mainCJlist"+jsonArray.fromObject(list));
 		return "/search/search";
 	}
 	
