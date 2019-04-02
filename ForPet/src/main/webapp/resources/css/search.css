@@ -31,3 +31,32 @@ display: inline-block;
 vertical-align: top;
 
 }
+
+div .vetListBox{
+    border : 1px solid gray;
+    width: auto;
+    height: 38px;
+    padding: 6px 6px;
+    vertical-align: top;
+}
+
+div .vetListBox:hover{
+    color : rgba(77,80,89);
+    background-color: rgba(240, 240, 240);
+    transition : 500ms;
+    border-top-right-radius : 8px;
+    border-bottom-right-radius : 8px;
+}
+
+div .vetListName{
+	font-size:12px;
+	color : black;
+	margin:2px
+}
+
+div .vetListAddress{
+	font-size:9px;
+	color : gray;
+	margin:2px;
+	
+}

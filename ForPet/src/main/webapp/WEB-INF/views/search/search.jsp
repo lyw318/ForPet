@@ -27,8 +27,22 @@
 		<input type="hidden" id="address11"/>
 		<div id="selectlist"></div>
 		<script>
-		var address="";
+		var address;
+		var vetname;
+		if(address==null&&vetname==null)
+		{
+			address="서울시 강남구 역삼동 역삼로 234";
+			vetname="드림동물병원";
+		}
 		var oldVal;
+		function fn_address(e,n) {
+			
+			console.log("어드레스 입력완료:"+e+"<>"+n);
+			 
+			$("#map").empty();
+			kakaomap(e,n);
+		}	
+		
 		$(function (){
 			$('#keyword').on("keyup", function(){
 			var currentVal = $(this).val();
@@ -47,13 +61,16 @@
 				var html = "";
 				console.log("list?"+data[0]);
 				for(var i = 0; i<data.length;i++){
-				html+='<div onclick="fn_address(\''+data[i].vetAddress+'\')">';
-				html+='<p>'+data[i].vetName+'</p><br/>';
+				html+='<div class="vetListBox" onclick="fn_address(\''+data[i].vetAddress+'\',\''+data[i].vetName+'\')">';
+				html+='<div class="vetListName">'+data[i].vetName+'</div>';
+				html+='<div class="vetListAddress">'+data[i].vetAddress+'</div>';				
 				html+='</div>';
 				}
 				
 				console.log("HTML:"+html);
 				$("#selectlist").append(html);
+		
+			
 			}//success
 							
 			});//ajax
@@ -61,9 +78,7 @@
 			});//function	
 		});//function
 		
-		function fn_address(e) {
-			address=e;
-		}
+				
 		
 		</script>
 		
@@ -73,6 +88,12 @@
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b07dc84ff25c3a3b3cad7f7f4c7e90d9&libraries=services"></script>
 <script>
+//초기 지도 출력
+kakaomap(address,vetname);
+
+//지도 출력구문
+function kakaomap(address,vetname){
+
 var markers = [];
 var lat = 0;
 var lon = 0;
@@ -107,7 +128,7 @@ var map = new daum.maps.Map(mapContainer, mapOption);
 var geocoder = new daum.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울시 강남구 역삼동 역삼로 234', function(result, status) {
+geocoder.addressSearch(address, function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === daum.maps.services.Status.OK) {
@@ -122,7 +143,7 @@ geocoder.addressSearch('서울시 강남구 역삼동 역삼로 234', function(r
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new daum.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">드림동물병원</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+vetname+'</div>'
         });
         infowindow.open(map, marker);
 
@@ -130,6 +151,7 @@ geocoder.addressSearch('서울시 강남구 역삼동 역삼로 234', function(r
         map.setCenter(coords);
     } 
 });    
+}
 </script>
 
 
