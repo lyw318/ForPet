@@ -33,10 +33,6 @@ public class MainController {
 		return "defaultSection";
 	}
 	
-	@RequestMapping("/main/noticeAndEvent")
-	public String noticeAndEvent() {
-		return "notice/noticeAndEvent";
-	}
 	
 	@RequestMapping("/main/search")
 	public String searchpage(Model model)
@@ -44,7 +40,7 @@ public class MainController {
 	
 		List<Vet> list = service.VetList();
 		model.addAttribute("list",list);
-		//vlist º¸³»±â
+		//vlist ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		System.out.println("mainClist"+list);
 		return "/search/search";
 	}

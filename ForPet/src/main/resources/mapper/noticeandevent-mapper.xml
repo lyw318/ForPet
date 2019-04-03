@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="noticeandevent">
+ <select id="noticeCount" parameterType="boardSearch" resultType="_int">
+ 	<choose>
+	 	<when test='keyword!=null and keyword!=""'>
+	 		select count(*) from notice where noticeTitle like '%'||#{keyword}||'%' OR noticeContent like '%'||#{keyword}||'%'
+	 	</when>
+	 	<otherwise>
+	 		select count(*) from notice
+		</otherwise>
+ 	</choose>
+ </select>
+ <select id="noticeList" parameterType="boardSearch" resultType="notice">
+  	<choose>
+	 	<when test='keyword!=null and keyword!=""'>
+	 		select * from notice join Member using(memberSeq) where noticeTitle like '%'||#{keyword}||'%' OR noticeContent like '%'||#{keyword}||'%'
+	 	</when>
+	 	<otherwise>
+	 		select * from notice join Member using(memberSeq)
+		</otherwise>
+ 	</choose>
+ </select>
+</mapper>

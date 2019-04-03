@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <link rel="stylesheet" href="${path }/resources/css/boardStyle.css"/>
 
 <section>
-	<div class="noticeAndEvent-wrapper">
 		<div class="notice-wrapper">
 			<div class="board-title">
 				<p>공지사항</p>
@@ -30,21 +29,7 @@
 				</c:forEach>
 			</div>
 			${npage}
-		</div> 
-		<div class="board-wrapper">
-			<div class="board-title">
-				<p>이벤트</p>
-			</div>
-			<div class="board-preview">
-				<div>이벤트이미지</div>
-				<div>이벤트제목</div>
-				<div>이벤트시작일</div>
-				<div>이벤트종료일</div>
-			</div>
 		</div>
-	</div>
-
 
 </section>
-
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
