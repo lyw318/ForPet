@@ -10,4 +10,12 @@
  INSERT INTO MEMBER VALUES(memberSeq.nextval,#{memberEmail},#{memberPassword},#{memberNickname},#{memberName},#{memberPhone},#{memberAddress},null,sysdate,null)
  </insert>
  
+ <update id="update"  parameterType="member">
+ update member set memberPassword=#{memberPassword},memberNickname=#{memberNickname},memberName=#{memberName},memberPhone=#{memberPhone},memberAddress=#{memberAddress} where memberEmail=#{memberEmail}
+ </update>
+
+<delete id="delete"  parameterType="member">
+delete from member where memberEmail=#{memberEmail}
+</delete>
+
 </mapper>

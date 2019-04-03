@@ -1,0 +1,249 @@
+
+
+section#myPageMain {
+    margin-top: 225px;
+    min-height: 542px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+section#myPageMain .myPageMain_left {
+    width: 20%;
+    min-height: 542px;
+}
+
+section#myPageMain .myPageMain_right {
+    width: 80%;
+    min-height: 542px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+section#myPageMain .myPageMain_left ul {
+    list-style-type: none;
+}
+
+
+
+
+/* memberSimpleProfileBox css */
+section#myPageMain .memberSimpleProfileBox {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+}
+
+section#myPageMain .memberSimpleProfileLine1 {
+    width: 90%;
+    margin: 5px;
+    display: flex;
+}
+
+section#myPageMain .memberSimpleProfileLine2 {
+    width: 90%;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+section#myPageMain .memberSimpleProfileImgBox {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    background-color: rgba(198, 155, 118, 0.5);
+    border-radius: 50px;
+}
+
+section#myPageMain .memberSimpleProfileImgBox>img {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 50px;
+}
+
+section#myPageMain .memberSimpleProfileLine1Text {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+section#myPageMain .memberSimpleProfileLine1Text>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+section#myPageMain .memberSimpleProfileLine1Text>div>div {
+    padding: 0 10px;
+}
+
+section#myPageMain .memberSimpleProfile {
+    font-size: 11px;
+}
+
+section#myPageMain .memberSimpleProfileTal {
+    width: 100%;
+    height: 24px;
+    display: table;
+    font-size: 11px;
+}
+
+section#myPageMain .memberSimpleProfileTalTitle {
+    padding: 0 5px;
+    display: table-cell;
+    text-align: left;
+}
+
+section#myPageMain .memberSimpleProfileTalContent {
+    width: 40%;
+    padding: 0 5px;
+    display: table-cell;
+    text-align: right;
+}
+
+
+/* myPageMain_left css */
+section#myPageMain .myPageMain_left ul {
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+section#myPageMain .myPageMain_left ul li {
+    width: 100%;
+	cursor: pointer;
+    padding-top: 6px;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+    background-color: #50351a;
+    color: #fff;
+    height: 30px;
+    font-size: 13px;
+    margin-bottom: 1px;
+}
+
+section#myPageMain .myPageMain_left ul .sub {
+    display: none;
+}
+
+section#myPageMain .myPageMain_left ul .sub li {
+    background-color: white;
+    color: #c69c76;
+}
+
+section#myPageMain .myPageMain_left ul .sub li a {
+    color: #c69c76;
+    text-decoration: none;
+}
+
+section#myPageMain .myPageMain_left ul .sub li:hover {
+	transition: 500ms;
+    color: white;
+    background-color: rgba(198, 155, 118, 0.5);
+}
+
+section#myPageMain .myPageMain_left ul li:hover {
+    transition: 500ms;
+    color: #fff;
+    background-color: rgba(198, 155, 118, 0.5);
+}
+
+
+/* myPageMain_top css */
+section#myPageMain .myPageMain_top {
+    width: 1024px;
+    height: 60px;
+    position: fixed;
+    display: inline-block;
+    top: 163px;
+    text-align: left;
+    font-size: 14px;
+    transition: 500ms;
+    overflow: hidden;
+}
+
+section#myPageMain .myPageMain_topBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+section#myPageMain .myPageMain_loc {
+    width: 97%;
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+    background-color: #fff;
+}
+
+section#myPageMain .myPageMain_top ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+section#myPageMain .myPageMain_top ul li {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: 2px solid #e1e3e9;
+    background: #fff;
+    height: 100%;
+    cursor: pointer;
+}
+
+section#myPageMain .myPageMain_top ul li:nth-child(1) {
+    border: none;
+} 
+
+section#myPageMain .myPageMain_top ul li:hover {
+    transition: 400ms;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

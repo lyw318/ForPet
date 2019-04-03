@@ -1,0 +1,131 @@
+
+section#adminMain {
+    margin-top: 225px;
+    min-height: 542px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+section#adminMain .adminMain_left {
+    width: 20%;
+    min-height: 542px;
+}
+
+section#adminMain .adminMain_right {
+    width: 80%;
+    min-height: 542px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+section#adminMain .adminMain_left ul {
+    list-style-type: none;
+}
+
+
+
+/* adminMain_left css */
+section#adminMain .adminMain_left ul {
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+section#adminMain .adminMain_left ul li {
+    width: 100%;
+	cursor: pointer;
+    padding-top: 6px;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+    background-color: #50351a;
+    color: #fff;
+    height: 30px;
+    font-size: 13px;
+    margin-bottom: 1px;
+}
+
+section#adminMain .adminMain_left ul .sub {
+    display: none;
+}
+
+section#adminMain .adminMain_left ul .sub li {
+    background-color: white;
+    color: #c69c76;
+}
+
+section#adminMain .adminMain_left ul .sub li a {
+    color: #c69c76;
+    text-decoration: none;
+}
+
+section#adminMain .adminMain_left ul .sub li:hover {
+	transition: 500ms;
+    color: white;
+    background-color: rgba(198, 155, 118, 0.5);
+}
+
+section#adminMain .adminMain_left ul li:hover {
+    transition: 500ms;
+    color: #fff;
+    background-color: rgba(198, 155, 118, 0.5);
+}
+
+
+/* adminMain_top css */
+section#adminMain .adminMain_top {
+    width: 1024px;
+    height: 60px;
+    position: fixed;
+    display: inline-block;
+    top: 163px;
+    text-align: left;
+    font-size: 14px;
+    transition: 500ms;
+    overflow: hidden;
+}
+
+section#adminMain .adminMain_topBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+section#adminMain .adminMain_loc {
+    width: 97%;
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+    background-color: #fff;
+}
+
+section#adminMain .adminMain_top ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+section#adminMain .adminMain_top ul li {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: 2px solid #e1e3e9;
+    background: #fff;
+    height: 100%;
+    cursor: pointer;
+}
+
+section#adminMain .adminMain_top ul li:nth-child(1) {
+    border: none;
+} 
+
+section#adminMain .adminMain_top ul li:hover {
+    transition: 400ms;
+}

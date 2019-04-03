@@ -49,4 +49,16 @@ public class MainController {
 	public String memberEnroll() {
 		return "member/memberEnroll";
 	}
+	
+	//마이페이지 이동
+	@RequestMapping("/main/myPageMain")
+	public String myPageMain() {
+		return "myPage/myPageMain";
+	}
+	
+	//관리자페이지 이동
+	@RequestMapping("/main/adminPageMain")
+	public String dminPageMain() {
+		return "admin/adminPageMain";
+	}
 }
