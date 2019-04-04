@@ -1,6 +1,8 @@
 package com.forpet.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,6 +30,11 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcEcoder;
 	
+	@RequestMapping("/member/memberMyInform.do")
+	public String memberMyInform() {
+		return "member/memberMyInform";
+	}
+	
 	@RequestMapping("/member/memberEnroll.do")
 	public String memberEnroll() {
 		return "member/memberEnroll";
@@ -45,16 +52,18 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/member/memberUpdateEnd.do")
-	public ModelAndView updateEnd(Member m) {
+	public ModelAndView updateEnd(Member m, HttpSession session) {
 		String rawPw=m.getMemberPassword();
 		String enPw=bcEcoder.encode(rawPw);
 		m.setMemberPassword(enPw);
 		System.out.println(m);
 		int result=service.update(m);
+		m = service.selectOne(m);
 		String msg="";
 		String loc="/member/update.do?memberEmail="+m.getMemberEmail();
 		if(result>0) {
 			msg="수정완료";
+			session.setAttribute("loggedMember",m );
 		}else {
 			msg="수정실패";
 		}
@@ -131,10 +140,41 @@ public class MemberController {
 		m.setMemberEmail(memberEmail);
 		Member result=service.selectOne(m);
 		boolean isOk=(result!=null)?false:true;
-		res.getWriter().println(isOk);
-		
+		res.getWriter().println(isOk);	
 	}
 	
+	@RequestMapping("/member/checkNickname.do")
+	public void checkNickname(String memberNickname,HttpServletResponse res)throws IOException {
+		Member m=new Member();
+		m.setMemberNickname(memberNickname);
+		Member result=service.selectByNickname(m);
+		boolean isOk=(result!=null)?false:true;
+		res.getWriter().println(isOk);
+	}
+
+	@RequestMapping("/member/kakaoLogin.do")
+	public ModelAndView kakaoApiLogin(String kakaoId,String kakaoNick,HttpSession session) {
+		ModelAndView mv=new ModelAndView();
+/*		String msg="";
+		String loc="/";*/
+		
+		System.out.println(kakaoId);
+		Member result=service.kakaoSelectOne(kakaoId);
+		System.out.println(result);
+		if(result!=null) {
+			//추가정보 예전에 입력했던 사용자
+			session.setAttribute("loggedMember", result);/*
+			msg="카카오 로그인 성공";
+			loc="/";*/
+			mv.setViewName("/main");
+			
+		}else {
+			//추가정보입력해야되는 사용자
+			mv.addObject("kakaoNick", kakaoNick);
+			mv.setViewName("/member/kakaoEnroll");
+		}
+		return mv;
+	}
 	
 	
 	

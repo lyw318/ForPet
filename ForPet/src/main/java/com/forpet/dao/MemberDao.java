@@ -1,5 +1,7 @@
 package com.forpet.dao;
 
+import java.util.Map;
+
 import com.forpet.model.vo.Member;
 
 public interface MemberDao {
@@ -11,5 +13,9 @@ public interface MemberDao {
 	int update(Member m);
 
 	int delete(Member m);
+
+	Map<String, String> selectKakao(String kakaoId);
+
+	Member selectByNickname(Member m);
 
 }

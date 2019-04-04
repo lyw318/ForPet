@@ -1,5 +1,7 @@
 package com.forpet.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,12 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
+	public Member selectByNickname(Member m) {
+		// TODO Auto-generated method stub
+		return session.selectOne("member.selectByNickname",m);
+	}
+
+	@Override
 	public int insertMember(Member m) {
 		// TODO Auto-generated method stub
 		return session.insert("member.insertMember",m);
@@ -33,6 +41,12 @@ public class MemberDaoImpl implements MemberDao {
 	public int delete(Member m) {
 		// TODO Auto-generated method stub
 		return session.delete("member.delete",m);
+	}
+
+	@Override
+	public Map<String, String> selectKakao(String kakaoId) {
+		// TODO Auto-generated method stub
+		return session.selectOne("member.selectKakao",kakaoId);
 	}
 	
 	

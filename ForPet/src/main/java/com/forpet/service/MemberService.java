@@ -12,4 +12,10 @@ public interface MemberService {
 
 	int delete(Member m);
 
+	Member kakaoSelectOne(String kakaoId);
+
+	Member selectByNickname(Member m);
+
+	
+
 }

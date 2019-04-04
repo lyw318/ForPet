@@ -46,10 +46,17 @@
         </div>
 
         <ul class="sub">
-            <li>내 정보보기</li>
+            <li>내 정보</li>
                 <ul class="sub">
-                    <li onclick="javascript:location.href='${path }/member/memberUpdate.do'">정보 수정</li>
-                    <li>회원 탈퇴</li>
+					<li onclick="javascript:location.href='${path }/member/memberMyInform.do'">내 정보 보기</li>
+                    <li onclick="javascript:location.href='${path }/member/memberUpdate.do'">내 정보 수정</li>
+					<li>회원 탈퇴</li>
+                </ul>
+            <li>내 반려동물</li>
+                 <ul class="sub">
+                    <li onclick="javascript:location.href='${path }/pet/petEnroll.do'">반려동물 등록</li>
+               		<li onclick="javascript:location.href='${path }/pet/petUpdate.do'">반려동물 수정</li>
+               		<li>반려동물 삭제</li>
                 </ul>
             <li>내 병원예약</li>
             <li>내 커뮤니티</li>
