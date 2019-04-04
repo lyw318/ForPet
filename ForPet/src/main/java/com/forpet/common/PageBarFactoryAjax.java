@@ -1,6 +1,6 @@
 package com.forpet.common;
 
-public class PageBarFactory {
+public class PageBarFactoryAjax {
 
 public static String getPageBar(int total, int cPage, int numPerPage, String url)
 {
@@ -58,7 +58,7 @@ public static String getPageBar(int total, int cPage, int numPerPage, String url
  
  pageBar+="<script>";
  pageBar+="function fn_paging(cPage){";
- pageBar+="location.href='"+url+"?cPage='+cPage;";
+ pageBar+="listfunc(cPage);";//ajax»£√‚
  pageBar+="}</script>";
  
  return pageBar;

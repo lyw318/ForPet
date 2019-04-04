@@ -13,4 +13,8 @@ public interface VetDao {
 
 	int selectCount(Map map);
 	List<Vet> selectList(int cPage, int numPerPage, Map map);
+
+	Vet selectVet(int vetSeq);
+	List selectVetCate(int vetSeq);
+	List selectVetServ(int vetSeq);
 }

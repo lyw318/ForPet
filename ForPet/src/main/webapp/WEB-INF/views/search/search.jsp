@@ -5,39 +5,40 @@
 <script type="text/javascript" src="${path }/resources/js/kakao.js"></script>
 <link rel="stylesheet" href="${path }/resources/css/search.css">
 
-
 <section class="searchSection">
 <div id="mapcontainer">
 	<div id="leftsearch" >
 		<div id="selectcontainer">
-	    <form id="leftselect">
-						<input type="text" id="keyword" size="15" placeholder="동이름을 검색하세요" class="areaaddress">
-						<br/> <select id='vettype' class="vettype">
+	    <!-- <form id="leftselect"> -->
+	    <div id="leftselect">
+						<select id='vettype' class="vettype">
 							<option value='all'>진료 과목 : 전체선택</option>
 							<option value='개'>개</option>
 							<option value='고양이'>고양이</option>
-							<option value='햄스터'>햄스터</option>
 							<option value='기니피그'>기니피그</option>
-							<option value='토끼'>토끼</option>
 							<option value='고슴도치'>고슴도치</option>
-							<option value='기타'>기타동물</option>
+							<option value='토끼'>토끼</option>
+							<option value='조류'>조류</option>
+							<option value='파충류'>파충류</option>
+							<option value='기타'>기타 동물</option>
 						</select><br />
-					</form>
+						<input type="text" id="keyword" size="15" placeholder="동이름을 검색하세요" class="areaaddress"><br/> 
+					</div><!-- </form> ajax 에서는 폼으로 묶을 필요는 없다. 엔터누르면 다 초기화됨, -->
 		</div>
 		<input type="hidden" id="address11"/>
 		<div id="selectlist"></div>
 		<script>
-		var address;
-		var vetname;
-		if(address==null&&vetname==null)
+		var address="서울시 강남구 역삼동 역삼로 234";
+		var vetname="드림동물병원";
+		/* if(address==null&&vetname==null)
 		{
 			address="서울시 강남구 역삼동 역삼로 234";
 			vetname="드림동물병원";
-		}
+		} */
 		var oldVal;
 		function fn_address(e,n) {
 			
-			console.log("어드레스 입력완료:"+e+"<>"+n);
+			//console.log("어드레스 입력완료:"+e+"<>"+n);
 			 
 			$("#map").empty();
 			kakaomap(e,n);
@@ -45,39 +46,55 @@
 		
 		$(function (){
 			$('#keyword').on("keyup", function(){
-			var currentVal = $(this).val();
+				listfunc(1);
+			});//function 주소검색변경동작
+			
+			$('#vettype').on("change", function(){
+				listfunc(1);
+			})});//function 동물타입검색 변경동작
+					
+			
+		function listfunc(cPage){
+			if(cPage=="undefined")	
+			{
+				cPage=1;	
+			}
+/* 			var currentVal = $("#keyword").val();
 			if(currentVal == oldVal){
 				return;
 			}
-			oldVal = currentVal;
+			oldVal = currentVal; */
 			$.ajax({
 			url:"${path }/vetSearch.do",
 			/* ${path }= ${pageContext.request.contextPath} 동일 */
 			type : "post",
 			cache : false,
-			data: {search : $("#keyword").val().trim(), type:$("#vettype").val()},
+			dataType:"json",
+			data: {search : $("#keyword").val().trim(), type:$("#vettype").val(),cPage:cPage},
 			success : function(data){
+				//console.log(data.list[0].vetName);
+				//console.log();
 				$("#selectlist").empty();
 				var html = "";
-				console.log("list?"+data[0]);
-				for(var i = 0; i<data.length;i++){
-				html+='<div class="vetListBox" onclick="fn_address(\''+data[i].vetAddress+'\',\''+data[i].vetName+'\')">';
-				html+='<div class="vetListName">'+data[i].vetName+'</div>';
-				html+='<div class="vetListAddress">'+data[i].vetAddress+'</div>';				
+				//console.log("list?"+data.length);
+				for(var i = 0; i<data.list.length;i++){
+				html+='<div class="vetListBox" onclick="fn_address(\''+data.list[i]["vetAddress"]+'\',\''+data.list[i].vetName+'\')">';
+				html+='<div class="vetListName">'+data.list[i]["vetName"]+'</div>';
+				html+='<div class="vetListAddress">'+data.list[i]["vetAddress"]+' '+
+					  '<a href="/vetDetail.do?vetSeq='+data.list[i]["vetSeq"]+'">자세히</a></div>';				
 				html+='</div>';
 				}
 				
-				console.log("HTML:"+html);
+				//console.log("HTML:"+html);
+				
 				$("#selectlist").append(html);
-		
+				$("#selectlist").append(data.pageBar);
 			
 			}//success
 							
 			});//ajax
 						
-			});//function	
-		});//function
-		
+			};	
 				
 		
 		</script>
@@ -143,7 +160,7 @@ geocoder.addressSearch(address, function(result, status) {
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new daum.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+vetname+'</div>'
+            content: '<div style="width:160px;text-align:center;padding:5px 0;">'+vetname+'</div>'
         });
         infowindow.open(map, marker);
 
@@ -153,8 +170,6 @@ geocoder.addressSearch(address, function(result, status) {
 });    
 }
 </script>
-
-
 
 </section>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

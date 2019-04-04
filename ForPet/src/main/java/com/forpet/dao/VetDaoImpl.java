@@ -11,36 +11,46 @@ import org.springframework.stereotype.Repository;
 
 import com.forpet.model.vo.Vet;
 
-
 @Repository
 public class VetDaoImpl implements VetDao {
 
-	
-	
 	@Autowired
 	private SqlSessionTemplate session;
 
 	@Override
 	public List<Vet> VetList() {
-		
+
 		return session.selectList("vet.vetList");
 	}
 
 	@Override
 	public int selectCount(Map map) {
-		
-		
-	
-		return session.selectOne("vet.selectCount",map);
+
+		return session.selectOne("vet.selectCount", map);
 	}
 
 	@Override
 	public List<Vet> selectList(int cPage, int numPerPage, Map map) {
-				
-		return session.selectList("vet.selectList",map, new RowBounds((cPage-1)*numPerPage, numPerPage));
+
+		return session.selectList("vet.selectList", map, new RowBounds((cPage - 1) * numPerPage, numPerPage));
 	}
 
-	
-	
-	
+	@Override
+	public Vet selectVet(int vetSeq) {
+
+		return session.selectOne("vet.selectVet", vetSeq);
+	}
+
+	@Override
+	public List selectVetCate(int vetSeq) {
+
+		return session.selectList("vet.selectVetCate", vetSeq);
+	}
+
+	@Override
+	public List selectVetServ(int vetSeq) {
+
+		return session.selectList("vet.selectVetServ", vetSeq);
+	}
+
 }

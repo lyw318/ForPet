@@ -10,8 +10,10 @@ import com.forpet.model.vo.Vet;
 public interface VetService {
 
 	public List VetList();
-
 	public int selectCount(Map map);
-
 	public List<Vet> selectList(int cPage, int numPerPage, Map map);
+
+	public Vet selectVet(int vetSeq);
+	public List selectVetCate(int vetSeq);
+	public List selectVetServ(int vetSeq);
 }

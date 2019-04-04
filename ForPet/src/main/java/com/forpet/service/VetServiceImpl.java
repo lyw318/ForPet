@@ -17,20 +17,37 @@ public class VetServiceImpl implements VetService {
 	
 	@Override
 	public List VetList() {
-		// TODO Auto-generated method stub
+
 		return dao.VetList();
 	}
 
 	@Override
 	public int selectCount(Map map) {
-		// TODO Auto-generated method stub
 		return dao.selectCount(map);
 	}
 
 	@Override
 	public List<Vet> selectList(int cPage, int numPerPage, Map map) {
-		// TODO Auto-generated method stub
+
 		return dao.selectList(cPage, numPerPage, map);
+	}
+
+	@Override
+	public Vet selectVet(int vetSeq) {
+	
+		return dao.selectVet(vetSeq);
+	}
+
+	@Override
+	public List selectVetCate(int vetSeq) {
+	
+		return dao.selectVetCate(vetSeq);
+	}
+
+	@Override
+	public List selectVetServ(int vetSeq) {
+		
+		return dao.selectVetServ(vetSeq);
 	}
 
 }
