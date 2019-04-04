@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.forpet.model.vo.Member;
+import com.forpet.model.vo.MemberFriend;
 import com.forpet.model.vo.Vet;
+import com.forpet.service.CommunityService;
 import com.forpet.service.VetService;
 
 import net.sf.json.JSONArray;
@@ -25,6 +27,9 @@ public class MainController {
 
 	@Autowired
 	private VetService service;
+	
+	@Autowired
+	private CommunityService coService;
 	
 	List <Vet> vlist = new ArrayList();
 	JSONArray jsonArray = new JSONArray();
@@ -102,9 +107,35 @@ public class MainController {
 	
 
 	@RequestMapping("/main/userIdPopUp.do")
-	private ModelAndView friendListDo(Member m) {
+	private ModelAndView friendListDo(Member m, HttpSession session) {
+		
+
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		
+		MemberFriend mf = new MemberFriend();
+		mf.setMemberSeq(oneself.getMemberSeq());
+		
+		List<MemberFriend> inFriList = coService.inSelectList(mf);
+		String inFriFlag = "";
+		for(int i=0;i<inFriList.size();i++) {
+			if(inFriList.get(i).getmFriendNickname().equals(m.getMemberNickname())) {
+				inFriFlag = m.getMemberNickname();
+			}
+		}
+		
+		
+		List<MemberFriend> blFriList = coService.blSelectList(mf);
+		String blFriFlag = "";
+		for(int i=0;i<blFriList.size();i++) {
+			if(blFriList.get(i).getmFriendNickname().equals(m.getMemberNickname())) {
+				blFriFlag = m.getMemberNickname();
+			}
+		}
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("member", m);
+		mv.addObject("inFriFlag", inFriFlag);
+		mv.addObject("blFriFlag", blFriFlag);
 		mv.setViewName("common/userIdWindow");
 		return mv;
 	}

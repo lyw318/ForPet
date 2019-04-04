@@ -19,11 +19,11 @@
     <link rel="stylesheet" href="${path }/resources/css/mainStyle.css" />
     <link rel="stylesheet" href="${path }/resources/css/loginPageStyle.css" />
     <link rel="stylesheet" href="${path }/resources/css/searchMainStyle.css" />
-	<link rel="stylesheet" href="${path }/resources/css/myPage_mainStyle.css" />
-	<link rel="stylesheet" href="${path }/resources/css/admin_mainStyle.css" />
-	<link rel="stylesheet" href="${path }/resources/css/memberEnroll.css" />
-	<link rel="stylesheet" href="${path }/resources/css/myPage_friendListStyle.css" />
-	
+    <link rel="stylesheet" href="${path }/resources/css/myPage_mainStyle.css" />
+    <link rel="stylesheet" href="${path }/resources/css/admin_mainStyle.css" />
+    <link rel="stylesheet" href="${path }/resources/css/memberEnroll.css" />
+    <link rel="stylesheet" href="${path }/resources/css/myPage_friendListStyle.css" />
+
 
 
 </head>
@@ -48,22 +48,24 @@
                 </div>
                 <div class="hMainMenuBox">
                     <div class="mainMenuBtn mainMenuBtn1" onclick="javascript:location.href='${path}/main/search'">
-						병원찾기
+                        병원찾기
                     </div>
                 </div>
                 <div class="hMainMenuBox">
-                    <div class="mainMenuBtn mainMenuBtn2" onclick="javascript:location.href='${path}/main/noticeAndEvent'">
-						 공지사항
+                    <div class="mainMenuBtn mainMenuBtn2"
+                        onclick="javascript:location.href='${path}/main/noticeAndEvent'">
+                        공지사항
                     </div>
                 </div>
                 <div class="hMainMenuBox">
                     <div class="mainMenuBtn mainMenuBtn3" onclick="javascript:location.href='#'">
-						커뮤니티
+                        커뮤니티
                     </div>
                 </div>
                 <div class="hMainMenuBox">
-                    <div class="mainMenuBtn mainMenuBtn4" onclick="javascript:location.href='${path}/main/defaultSection'">
-						기본작업 형식
+                    <div class="mainMenuBtn mainMenuBtn4"
+                        onclick="javascript:location.href='${path}/main/defaultSection'">
+                        기본작업 형식
                     </div>
                 </div>
             </div>
@@ -121,66 +123,43 @@
             </div>
 
             <c:if test="${loggedMember==null }">
-	            <div class="hBottomMenu">
-	                <div class="logMenuBtn" onclick="fn_defaultViewAjax()" >로그인</div>
-	                <div class="logMenuBtn" onclick="javascript:location.href='${path}/main/memberEnroll'">회원가입</div>
-	            </div>
+                <div class="hBottomMenu">
+                    <div class="logMenuBtn" onclick="fn_defaultViewAjax()">로그인</div>
+                    <div class="logMenuBtn" onclick="javascript:location.href='${path}/main/memberEnroll'">회원가입</div>
+                </div>
             </c:if>
 
-            <c:if test="${loggedMember!=null}"> 
-            
-				<div class="hBottomMenu">
-				   <div class="hBottomMenuText">
-				       <div class="userBox">${loggedMember.memberNickname}
-				       <%-- 
+            <c:if test="${loggedMember!=null}">
+
+                <div class="hBottomMenu">
+                    <div class="hBottomMenuText">
+                        <div class="userBox">${loggedMember.memberNickname}
+                            <%-- 
 				           <div class="petIconBox">
 				               <img src="${path }/resources/images/petIcon.png" style="width: 20px; height: 20px;">
 							</div>
 							<div class="userIdBox">${loggedMember.memberNickname}</div>
 							<%@ include file="/WEB-INF/views/common/userIdWindow.jsp" %>
-							 --%>
-						</div>
-						&nbsp;
-						님, 환영합니다.
-						&nbsp;
-						<div class="logMenuBtn" onclick="location.href='${path }/member/logOut.do'">로그아웃</div>
-						
-						<c:if test="${loggedMember.memberEmail == 'admin'}"> 
-							<div class="logMenuBtn" onclick="location.href='${path }/main/adminPageMain'">관리자 페이지</div>
-						</c:if>
-						
-						
-				    </div>
-				</div>
+                            --%>
+                        </div>
+                        &nbsp;
+                        님, 환영합니다.
+                        &nbsp;
+                        <div class="logMenuBtn" onclick="location.href='${path }/member/logOut.do'">로그아웃</div>
+
+                        <c:if test="${loggedMember.memberEmail == 'admin'}">
+                            <div class="logMenuBtn" onclick="location.href='${path }/main/adminPageMain'">관리자 페이지</div>
+                        </c:if>
+
+
+                    </div>
+                </div>
 
             </c:if>
         </div>
     </header>
     <script>
-	    
-	    // userBox 기능 구현 로직
-	    $(function() {
-	    	userBox();
-		});
-	    
-	    function userBox() {
-	    	var memberNickname = "";
-			for(var i=0;i<$('.userBox').length;i++) {
-				memberNickname = $('.userBox').get(i).innerText;
-				userBoxAjax(memberNickname,i);
-			}
-	    }
-	    function userBoxAjax(memberNickname,i) {
-			$.ajax({
-				url:"${path}/main/userIdPopUp.do",
-				data:{"memberNickname":memberNickname},
-				dataType:"html",
-				success:function(data) {
-					$('.userBox').get(i).innerHTML = data;
-				}
-			})
-	    }
-	    
+
         var listMenuFlag = false;
         //리스트 열기
         $(".listIcon").click(function () {
@@ -324,56 +303,15 @@
                 }, 500)
             }
         });
-        
 
-    	$(function() {
-			$('.friendInList .userBox').load('/WEB-INF/views/common/userIdWindow.jsp');
-    	})
-    	
+        $(function () {
+            $('.friendInList .userBox').load('/WEB-INF/views/common/userIdWindow.jsp');
+        })
+
     </script>
 
-
-<script>
-
-	// 클래스(userBox) 클릭 : 소메뉴 출력 
-    $(function () {
-        var idWindowTarget;
-        $(document).on("click",".userBox" ,function (e) {
-            $(".userBox").children('.userId_oneself').css("display","none");
-            $(".userBox").children('.userId_other').css("display","none");
-            idWindowTarget = $(e.currentTarget);
-            var clickUserId = idWindowTarget.children('.userIdBox').get(0).innerText;
-            if(clickUserId == '${loggedMember.memberNickname }') {
-                idWindowTarget.children('.userId_oneself').css("display","block");
-                idWindowTarget.children('.userId_other').css("display","none");
-
-            }
-            else {
-                idWindowTarget.children('.userId_oneself').css("display","none");
-                idWindowTarget.children('.userId_other').css("display","block");
-                idWindowTarget.children('.userId_other').children('.userTable').children('.userIdWindow_Id').text(clickUserId+" 님 정보보기");
-            }
-        })
-    });
-	
-	$(function () {
-	    var userTableCloseFlag = true;
-	    $(".userBox").click(function () {
-	        userTableCloseFlag = false;
-	    })
-	    $(".userBox").mouseleave(function () {
-	        userTableCloseFlag = true;
-	    })
-	    $("html, body").on("click", function () {
-	        if (userTableCloseFlag) {
-				$(".userBox").children('.userId_oneself').css("display","none");
-				$(".userBox").children('.userId_other').css("display","none");
-	        }
-	    })
-	});
-
-</script>
-
+    <!-- userBox javascript 추가 -->
+    <%@ include file="/WEB-INF/views/common/javascript/userIdWindowJs.jsp" %>
 
     <!-- loginpage 모달창 추가 -->
     <%@ include file="/WEB-INF/views/member/loginPage.jsp" %>

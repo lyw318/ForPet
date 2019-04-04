@@ -31,13 +31,13 @@
 				<div>
 					<!-- 로그인 -->
 					<button type="submit" class="logPageBtn">Login</button>
-					
-					<!-- 카카오 로그인 -->
-						<a id="kakao-login-btn"></a>
-						<a href="http://developers.kakao.com/logout"></a>
-					
 					<!-- 로그인 취소 -->
 					<button type="button" class="logPageBtn" onclick="loginClose()">Close</button>
+				</div>
+				<div>
+					<!-- 카카오 로그인 -->
+					<a id="kakao-login-btn"></a>
+					<a href="http://developers.kakao.com/logout"></a>
 				</div>
 			</div>
 		</div>
