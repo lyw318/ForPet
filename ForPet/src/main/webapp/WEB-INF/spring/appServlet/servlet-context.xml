@@ -46,6 +46,8 @@
 		<interceptors>
 		<interceptor>
 			<mapping path="/member/logOut.do" />
+			<mapping path="/board/boardFormEnd.do" />
+			<mapping path="/board/boardForm" />
 			<beans:bean id="loggerInterceptor" class="com.forpet.common.LoginCheckInterceptor" />
 		</interceptor>
 	</interceptors>

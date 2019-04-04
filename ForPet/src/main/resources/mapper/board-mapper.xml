@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="board">
+
+	<select id="selectCount" resultType="_int">
+		select count(*) from board
+	</select>
+
+	<select id="selectList" resultType="board">
+		select B.*, A.*,(select count(*) from attachment where B.boardseq=boardno) filecount from board B join member A on(A.memberseq=B.memberseq) order by boarddate desc
+	</select>
+	
+	<insert id="insertBoard" parameterType="board">
+		insert into board values(boardseq.nextval,#{memberSeq},#{boardTitle},#{boardContent},default,default)
+		<selectKey keyProperty="boardSeq" resultType="_int" order="AFTER">select boardseq.currval from dual</selectKey>
+	</insert>
+	
+	<insert id="insertAttachment" parameterType="attachment">
+		insert into attachment(attachmentno, boardno, originalfilename, renamedfilename) values(seq_attachmentno.nextval,#{boardNo},#{originalFileName},#{renamedFileName})
+	</insert>
+	
+	<select id="selectBoard" parameterType="_int" resultType="board">
+		select * from board where boardseq=#{boardSeq}
+	</select>
+	
+	<select id="selectAttachment" parameterType="_int" resultType="attachment">
+		select * from attachment where boardno=#{boardNo}
+	</select>
+  
+  
+</mapper>
