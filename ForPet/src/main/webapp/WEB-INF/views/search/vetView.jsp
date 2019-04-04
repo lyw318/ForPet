@@ -72,6 +72,13 @@
 			
 			<div id="appendix">부가정보</div>
 			<div id="appendixInfo">24시간 운영</div>
+			
+			부가서비스<br/>
+			<img src="${path }/resources/images/vet/24hour.png" width="55" height="55">
+			<img src="${path }/resources/images/vet/beauty.png" width="55" height="55">
+			<img src="${path }/resources/images/vet/hotel.png" width="55" height="55">
+			<img src="${path }/resources/images/vet/goods.png" width="55" height="55">
+			
 		</div>
 	</div>
 
