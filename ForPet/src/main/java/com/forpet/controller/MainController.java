@@ -15,6 +15,8 @@ import com.forpet.model.vo.Member;
 import com.forpet.model.vo.Vet;
 import com.forpet.service.VetService;
 
+import net.sf.json.JSONArray;
+
 
 
 
@@ -25,7 +27,7 @@ public class MainController {
 	private VetService service;
 	
 	List <Vet> vlist = new ArrayList();
-	
+	JSONArray jsonArray = new JSONArray();
 	
 	@RequestMapping("/main")
 	public String mainPage() {
@@ -37,15 +39,22 @@ public class MainController {
 		return "defaultSection";
 	}
 	
+	@RequestMapping("/main/noticeAndEvent")
+	public String noticeAndEvent() {
+		return "notice/noticeAndEvent";
+	}
 	
 	@RequestMapping("/main/search")
 	public String searchpage(Model model)
 	{
 	
+		
 		List<Vet> list = service.VetList();
 		model.addAttribute("list",list);
-		//vlist ������
+		model.addAttribute("jlist",jsonArray.fromObject(list));
+		//vlist 보내기
 		System.out.println("mainClist"+list);
+		System.out.println("mainCJlist"+jsonArray.fromObject(list));
 		return "/search/search";
 	}
 	
@@ -53,7 +62,6 @@ public class MainController {
 	public String memberEnroll() {
 		return "member/memberEnroll";
 	}
-	
 	//마이페이지 이동
 	@RequestMapping("/main/myPageMain")
 	public ModelAndView myPageMain(HttpSession session) {

@@ -4,17 +4,17 @@ import java.util.List;
 
 public class Vet {
 
-	private int vetSeq;  //º´¿øÁ¤º¸ ÀÏ·Ã¹øÈ£
-	private String vetName; //º´¿ø ÀÌ¸§
-	private String vetAddress; //º´¿øÁÖ¼Ò
-	private String vetPhone; //º´¿ø ÀüÈ­¹øÈ£
-	private int vetDaySTime; //º´¿øÆòÀÏ½ÃÀÛ½Ã°£ (24H)
-	private int vetDayETime; //º´¿øÆòÀÏÁ¾·á½Ã°£ (24H)
-	private int vetSatSTime;//º´¿øÅä¿ä½ÃÀÛ½Ã°£ (24H)
-	private int vetSatETime;//º´¿øÅä¿äÁ¾·á½Ã°£ (24H)
-	private int vetSunSTime;//º´¿øÀÏ¿äÀÏ°øÈŞÀÏ½ÃÀÛ½Ã°£ (24H)
-	private int vetSunETime;//º´¿øÀÏ¿äÀÏ°øÈŞÀÏÁ¾·á½Ã°£ (24H)
-	private String vetComment; //ºÎ°¡Á¤º¸
+	private int vetSeq;  //ë³‘ì›ì •ë³´ ì¼ë ¨ë²ˆí˜¸
+	private String vetName; //ë³‘ì› ì´ë¦„
+	private String vetAddress; //ë³‘ì›ì£¼ì†Œ
+	private String vetPhone; //ë³‘ì› ì „í™”ë²ˆí˜¸
+	private int vetDaySTime; //ë³‘ì›í‰ì¼ì‹œì‘ì‹œê°„ (24H)
+	private int vetDayETime; //ë³‘ì›í‰ì¼ì¢…ë£Œì‹œê°„ (24H)
+	private int vetSatSTime;//ë³‘ì›í† ìš”ì‹œì‘ì‹œê°„ (24H)
+	private int vetSatETime;//ë³‘ì›í† ìš”ì¢…ë£Œì‹œê°„ (24H)
+	private int vetSunSTime;//ë³‘ì›ì¼ìš”ì¼ê³µíœ´ì¼ì‹œì‘ì‹œê°„ (24H)
+	private int vetSunETime;//ë³‘ì›ì¼ìš”ì¼ê³µíœ´ì¼ì¢…ë£Œì‹œê°„ (24H)
+	private String vetComment; //ë¶€ê°€ì •ë³´
 	
 	public Vet() {
 		// TODO Auto-generated constructor stub
