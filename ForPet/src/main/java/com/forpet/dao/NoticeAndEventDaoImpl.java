@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.forpet.model.vo.BoardSearch;
+import com.forpet.model.vo.Image;
 import com.forpet.model.vo.Notice;
 
 @Repository
@@ -28,5 +29,16 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 		return session.selectList("noticeandevent.noticeList",bs,row);
 	}
 
+	@Override
+	public int insertNotice(Notice notice) {
+		return session.insert("noticeandevent.insertNotice",notice);
+	}
+	
+	@Override
+	public int insertImage(Image image) {
+		return session.insert("noticeandevent.insertImage",image);
+	}
+
+	
 	
 }

@@ -9,7 +9,7 @@
         <div class="board-form-header">
             	공지사항 작성
         </div>
-	    <form action="<%=request.getContextPath() %>/notice/noticeFormEnd.do" method="post" class="board-form" name="boardFrm" enctype="multipart/form-data">
+	    <form action="<%=request.getContextPath() %>/notice/noticeFormEnd.do" method="post" class="board-form" name="boardFrm" onsubmit="return disableRemove();" enctype="multipart/form-data">
 	        <div class="board-form-title">
                 <div>제목</div>
                 <div><input type="text" name="noticeTitle" required></div>
@@ -70,11 +70,19 @@
 		    		  data += '<span>+</span><input type="file" name="upFile" id="upFile'+ (indexNum+1)+'">';
 		    		  data += '</div>';
 					$(".added-image-container").append(data);
-					$(event.target).parent().on("click",function () {this.remove();});
+					$(event.target).css("width","0px").css("height","0px");
+					event.target.disabled = true;
+					$(event.target).parent().on("click",function(){this.remove();});
 					addEvent(indexNum+1);
 	       	});
     	}
     	
     	$(addEvent(1));
+    	
+    	
+    	function disableRemove() {
+    		$("[name=upFile]").removeAttr("disabled");
+    		return true;
+    	}
     </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

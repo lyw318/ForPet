@@ -1,16 +1,24 @@
 package com.forpet.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.forpet.common.PageBarFactory;
 import com.forpet.model.vo.BoardSearch;
+import com.forpet.model.vo.Image;
 import com.forpet.model.vo.Notice;
 import com.forpet.service.NoticeAndEventService;
 
@@ -19,7 +27,7 @@ public class NoticeAndEventController {
 
 	@Autowired
 	private NoticeAndEventService service;
-	
+	private Logger logger=LoggerFactory.getLogger(NoticeAndEventController.class);
 	
 	@RequestMapping("/main/noticeAndEvent")
 	public String noticeAndEvent(HttpServletRequest request)
@@ -63,5 +71,69 @@ public class NoticeAndEventController {
 	public String noticeForm()
 	{
 		return "notice/noticeForm";
+	}
+	
+	@RequestMapping("/notice/noticeFormEnd.do")
+	public String noticeFormEnd(Notice n, MultipartFile[] upFile, HttpServletRequest request)
+	{
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/noticeImage/");
+		File dir = new File(saveDir);
+		if(!dir.exists())
+		{
+			dir.mkdirs();
+		}
+		
+		
+		List<Image> list = new ArrayList<Image>();
+		int count=0;
+		String timeStr = new SimpleDateFormat("yyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
+		
+		for(MultipartFile f : upFile)
+		{
+			if(!f.isEmpty())
+			{
+				String oriFileName = f.getOriginalFilename();
+				String ext=oriFileName.substring(oriFileName.lastIndexOf("."));
+		
+				int uniqueNum = n.getMemberSeq();
+				String reNamedFile= timeStr+"_"+uniqueNum+"_"+count+ext;
+				count++;
+				
+				try {
+					f.transferTo(new File(saveDir+reNamedFile));
+					} catch(IOException e)
+					{
+						e.printStackTrace();
+						continue;
+					}
+				
+				Image i = new Image();
+				i.setFilename(reNamedFile);
+				i.setPriority(count);
+				list.add(i);
+			}
+			
+		}
+		int result=service.insertNotice(n, list);
+		
+
+		if(result>0)
+		{
+			request.setAttribute("msg","공지사항 등록 성공");
+			request.setAttribute("loc", "/");
+		} else
+		{
+			request.setAttribute("msg","공지사항 등록 실패");
+			request.setAttribute("loc", "/");
+			// list 파일 삭제 로직
+			for(int i=0; i<list.size();i++)
+			{
+				if(new File(saveDir+list.get(i).getFilename()).delete()==false)
+				{
+					logger.error(saveDir+list.get(i).getFilename()+"파일 삭제 실패");
+				}
+			}
+		}
+		return "common/msg";
 	}
 }
