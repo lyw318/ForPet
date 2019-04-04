@@ -57,6 +57,7 @@
 		<!-- 관리자가 아니면 권한 없음 처리 -->
 		<interceptor>
 			<mapping path="/notice/noticeForm" />
+			<mapping path="/notice/noticeFormEnd.do" />
 			<beans:bean id="adminInterceptor" class="com.forpet.common.AdminCheckInterceptor" />
 		</interceptor>
 	</interceptors>
