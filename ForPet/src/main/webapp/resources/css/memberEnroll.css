@@ -27,6 +27,14 @@ div#userid-container span.guide {
 	right: 10px; 
 }
 
+div#userid-container span.guide2 {
+	display: none;
+	font-size: 12px;
+	position: absolute;
+ 	top: 12px;
+	right: 10px; 
+}
+
 div#userid-container span.ok {
 	color: green;
 }

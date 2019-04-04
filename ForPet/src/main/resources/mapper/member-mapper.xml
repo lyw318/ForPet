@@ -6,8 +6,15 @@
  SELECT * FROM MEMBER WHERE MEMBEREMAIL=#{memberEmail}
  </select>
  
+ <select id="selectByNickname" parameterType="member" resultType="member">
+ select * from member where memberNickname=#{memberNickname}
+ </select>
+ 
  <insert id="insertMember" parameterType="member">
  INSERT INTO MEMBER VALUES(memberSeq.nextval,#{memberEmail},#{memberPassword},#{memberNickname},#{memberName},#{memberPhone},#{memberAddress},null,sysdate,null)
+ <selectKey keyProperty="memberSeq" resultType="_int" order="AFTER">
+ select memberSeq.currval from dual
+ </selectKey>
  </insert>
  
  <update id="update"  parameterType="member">
@@ -17,5 +24,9 @@
 <delete id="delete"  parameterType="member">
 delete from member where memberEmail=#{memberEmail}
 </delete>
+
+<select id="selectKakao" parameterType="String" resultType="map">
+select * from kakaoMember join member using (memberSeq) where kakaoId=#{value}
+</select>
 
 </mapper>

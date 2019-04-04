@@ -4,9 +4,10 @@
 	<typeAliases>
 		<typeAlias type="com.forpet.model.vo.Member" alias="member" />
 		<typeAlias type="com.forpet.model.vo.Vet" alias="vet"/>
-		<typeAlias type="com.forpet.model.vo.Notice" alias="notice"/>
 		<typeAlias type="com.forpet.model.vo.BoardSearch" alias="boardSearch"/>
 		<typeAlias type="com.forpet.model.vo.MemberFriend" alias="memberFriend"/>
+		<typeAlias type="com.forpet.model.vo.Notice" alias="notice"/>
+		<typeAlias type="com.forpet.model.vo.Pet" alias="pet"/>
 		<!-- 추후 추가 
 		<typeAlias type="com.forpet.model.vo.Member" alias="member"/>
 		<typeAlias type="com.forpet.model.vo.Pet" alias="pet"/>
