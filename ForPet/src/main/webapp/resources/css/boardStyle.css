@@ -131,3 +131,145 @@
 
         .board-write:hover{opacity: 0.8;}
         .board-write:focus{outline: none;}
+        
+        
+/*  공지사항 작성 관련 css */
+        .board-form-wrapper
+        {
+            font-size: 14px;
+        }
+        .board-form input
+        {
+            padding: 5px;
+            height: 30px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+        .board-form input:focus
+        {
+            outline: none;
+        }
+        .board-form-header
+        {
+            font-size: 21px;
+            margin: 25px 0;
+        }
+        .board-form
+        {
+            display: flex;
+            flex-flow: column nowrap;
+            border-top: 2px solid rgb(114, 71, 42);
+        }
+        .board-form > div
+        {
+            display: flex;
+        }
+        .board-form > div > div:first-of-type
+        {
+            background-color: rgb(245, 245, 245);
+        }
+        .board-form > div > div:first-of-type{flex: 1 1 0; justify-content: center;}
+        .board-form > div > div:nth-of-type(2){flex: 7 1 0; display: flex;}
+        .board-form > div > div 
+        {
+            display: flex;
+            padding: 15px 0 15px 10px;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .board-form-title input{width: 100%;}
+        
+        .board-form-writer input{background-color: #eee;}
+        .board-form-writer label{margin: 0 10px;}
+        .board-form-content textarea
+        {
+            height: 300px;
+            width: 100%;
+            resize: none;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        .board-form-content textarea:focus
+        {
+            outline: none;
+        }
+        
+         .added-image-box
+        {
+            width: 82px;
+            height: 82px;
+            margin-right: 10px;
+        }
+        .added-image-box > img
+        {
+            width: 100%;
+            height: 100%;
+        }
+        .image-upload-container
+        {
+            width: 80px;
+            height: 80px;
+            border: 1px dotted gray;
+            position: relative;
+        }
+        .image-upload-container:hover
+        {
+            background-color: #eee;
+        }
+        .image-upload-container > input
+        {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .image-upload-container > span
+        {
+            font-size: 20px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+         .board-button-set
+        {
+            align-self: flex-end;
+        }
+        .board-button-set input[type="submit"]
+        {
+            color: white;
+            background-color: rgb(114, 71, 42);
+            width: 150px;
+            height: 45px;
+            align-self: flex-end;
+            margin: 20px 0;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .board-button-set input[type="button"]
+        {
+            color: white;
+            background-color: rgb(114, 71, 42);
+            width: 150px;
+            height: 45px;
+            align-self: flex-end;
+            margin: 20px 0;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .board-button-set input[type="submit"]:hover
+        {
+            background-color: rgb(134, 91, 62);
+        }
+        .board-button-set input[type="button"]:hover
+        {
+            background-color: rgb(134, 91, 62);
+        }
+        
+        
+        
