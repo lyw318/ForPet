@@ -207,6 +207,9 @@ section#myPageMain .myPageMain_top ul li {
     border-left: 2px solid #e1e3e9;
     background: #fff;
     height: 100%;
+}
+
+section#myPageMain .myPageMain_top ul li img {
     cursor: pointer;
 }
 

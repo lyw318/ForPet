@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="community">
+
+	<select id="selectList" resultType="memberFriend">
+		SELECT * FROM MEMBERFRIEND
+	</select>
+
+	<select id="inSelectList" parameterType="memberFriend" resultType="memberFriend">
+		SELECT * FROM MEMBERFRIEND WHERE MEMBERSEQ = #{memberSeq} AND MFRIENDTYPE = '일반'
+	</select>
+
+	<select id="blSelectList" parameterType="memberFriend" resultType="memberFriend">
+		SELECT * FROM MEMBERFRIEND WHERE MEMBERSEQ = #{memberSeq} AND MFRIENDTYPE = '차단'
+	</select>
+
+	<select id="selectOne" resultType="memberFriend">
+		SELECT * FROM MEMBERFRIEND WHERE MEMBERSEQ = #{memberSeq} AND MFRIENDNICKNAME = #{mFriendNickname}
+	</select>
+
+	<select id="mSelectOne" parameterType="member" resultType="member">
+		SELECT * FROM MEMBER WHERE MEMBERNICKNAME = #{memberNickname}
+	</select>
+
+	<insert id="insertFriend" parameterType="memberFriend">
+		INSERT INTO MEMBERFRIEND VALUES(mFriendSeq.nextval,#{memberSeq},#{mFriendMateNo},#{mFriendNickname},default,#{mFriendType})
+	</insert>
+	
+	<delete id="delFriend" parameterType="memberFriend">
+		DELETE FROM MEMBERFRIEND WHERE MFRIENDSEQ = #{mFriendSeq}
+	</delete>
+	
+	<update id="updateTypeFriend" parameterType="memberFriend">
+		UPDATE MEMBERFRIEND SET MFRIENDTYPE = #{mFriendType} WHERE MFRIENDNICKNAME = #{mFriendNickname}
+	</update>
+</mapper>

@@ -53,10 +53,9 @@
                 </ul>
             <li>내 병원예약</li>
             <li>내 커뮤니티</li>
-            <li>내 쪽지함</li>
-                <ul class="sub">
+				<ul class="sub">
+					<li onclick="javascript:location.href='${path }/community/friendList'">친구 관리</li>
                     <li onclick="javascript:location.href='${path }'">쪽지 관리</li>
-                    <li>친구 관리</li>
                 </ul>
             <li>고객센터</li>
         </ul>

@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="${path }/resources/css/myPage_mainStyle.css" />
 	<link rel="stylesheet" href="${path }/resources/css/admin_mainStyle.css" />
 	<link rel="stylesheet" href="${path }/resources/css/memberEnroll.css" />
+	<link rel="stylesheet" href="${path }/resources/css/myPage_friendListStyle.css" />
 	
 
 </head>
@@ -129,12 +130,14 @@
             
 				<div class="hBottomMenu">
 				   <div class="hBottomMenuText">
-				       <div id="userBox">
+				       <div class="userBox">${loggedMember.memberNickname}
+				       <%-- 
 				           <div class="petIconBox">
 				               <img src="${path }/resources/images/petIcon.png" style="width: 20px; height: 20px;">
 							</div>
-							<div class="userIdBox">${loggedMember.memberEmail}</div>
+							<div class="userIdBox">${loggedMember.memberNickname}</div>
 							<%@ include file="/WEB-INF/views/common/userIdWindow.jsp" %>
+							 --%>
 						</div>
 						&nbsp;
 						님, 환영합니다.
@@ -153,7 +156,30 @@
         </div>
     </header>
     <script>
-
+	    
+	    // userBox 기능 구현 로직
+	    $(function() {
+	    	userBox();
+		});
+	    
+	    function userBox() {
+	    	var memberNickname = "";
+			for(var i=0;i<$('.userBox').length;i++) {
+				memberNickname = $('.userBox').get(i).innerText;
+				userBoxAjax(memberNickname,i);
+			}
+	    }
+	    function userBoxAjax(memberNickname,i) {
+			$.ajax({
+				url:"${path}/main/userIdPopUp.do",
+				data:{"memberNickname":memberNickname},
+				dataType:"html",
+				success:function(data) {
+					$('.userBox').get(i).innerHTML = data;
+				}
+			})
+	    }
+	    
         var listMenuFlag = false;
         //리스트 열기
         $(".listIcon").click(function () {
@@ -298,7 +324,55 @@
             }
         });
         
+
+    	$(function() {
+			$('.friendInList .userBox').load('/WEB-INF/views/common/userIdWindow.jsp');
+    	})
+    	
     </script>
+
+
+<script>
+
+	// 클래스(userBox) 클릭 : 소메뉴 출력 
+    $(function () {
+        var idWindowTarget;
+        $(document).on("click",".userBox" ,function (e) {
+            $(".userBox").children('.userId_oneself').css("display","none");
+            $(".userBox").children('.userId_other').css("display","none");
+            idWindowTarget = $(e.currentTarget);
+            var clickUserId = idWindowTarget.children('.userIdBox').get(0).innerText;
+            if(clickUserId == '${loggedMember.memberNickname }') {
+                idWindowTarget.children('.userId_oneself').css("display","block");
+                idWindowTarget.children('.userId_other').css("display","none");
+
+            }
+            else {
+                idWindowTarget.children('.userId_oneself').css("display","none");
+                idWindowTarget.children('.userId_other').css("display","block");
+                idWindowTarget.children('.userId_other').children('.userTable').children('.userIdWindow_Id').text(clickUserId+" 님 정보보기");
+            }
+        })
+    });
+	
+	$(function () {
+	    var userTableCloseFlag = true;
+	    $(".userBox").click(function () {
+	        userTableCloseFlag = false;
+	    })
+	    $(".userBox").mouseleave(function () {
+	        userTableCloseFlag = true;
+	    })
+	    $("html, body").on("click", function () {
+	        if (userTableCloseFlag) {
+				$(".userBox").children('.userId_oneself').css("display","none");
+				$(".userBox").children('.userId_other').css("display","none");
+	        }
+	    })
+	});
+
+</script>
+
 
     <!-- loginpage 모달창 추가 -->
     <%@ include file="/WEB-INF/views/member/loginPage.jsp" %>

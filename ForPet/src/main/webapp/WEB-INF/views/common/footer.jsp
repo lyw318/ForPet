@@ -15,6 +15,8 @@
 	<div>TOP</div>
 </div>
 <script>
+
+	//top 버튼 액션 구현
 	$(window).scroll(function () {
 		if ($(window).scrollTop() != 0) {
 			$(".TopBtnBox").css("opacity", "1");
