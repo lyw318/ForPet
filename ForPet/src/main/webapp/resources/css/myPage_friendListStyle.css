@@ -1,0 +1,120 @@
+
+
+#friendList {
+    width: 100%;
+    height: 542px;
+    margin: 10px 20px;
+
+}
+
+#friendList #friendListFrmIn,
+#friendList #friendListFrmBl
+{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#friendList .friendList_top {
+    width: 100%;
+}
+
+#friendList .friendList_mid {
+    width: 100%;
+}
+
+#friendList .friendBox {
+    width: 100%;
+}
+
+#friendList .friendBox_top {
+    width: 706px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#friendList .friendSearch {
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#friendList .friendSearchText {
+    min-height: 22px;
+    outline: none;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+}
+
+#friendList .friendBox_mid {
+    width: 688px;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+    border-radius: 10px;
+}
+
+#friendList .friendName {
+    width: 150px;
+    height: 35px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+    border-radius: 5px;
+}
+
+#friendList .friendName>div {
+
+    margin: 0 5px;
+
+}
+
+.closeBox {
+    margin : 0 5px;
+    outline: none;
+    color: white;
+    background-color: #50351a;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+    border-radius: 5px;
+    transition: 500ms;
+}
+
+.closeBox:hover {
+    margin : 0 5px;
+    outline: none;
+    color: #50351a;
+    background-color: white;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+    border-radius: 5px;
+    transition: 500ms;
+}
+
+.defaultBtn {
+    padding: 5px;
+    margin: 0 5px;
+    color: #9a7654;
+    background-color: white;
+    border: 1px solid #9a7654;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.defaultBtn:hover {
+    padding: 5px;
+    margin: 0 5px;
+    color: white;
+    background-color: #50351a;
+    border: 1px solid #50351a;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 500ms;
+}

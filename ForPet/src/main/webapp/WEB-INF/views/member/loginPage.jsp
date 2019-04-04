@@ -26,8 +26,8 @@
 			</div>
 			<div class="defaultViewfooter">
 				<div>
-					<button type="button" class="logPageBtn" onclick="submit()">Login</button>
-					<button type="button" class="logPageBtn">Close</button>
+					<button type="submit" class="logPageBtn" onclick="submit()">Login</button>
+					<button type="button" class="logPageBtn" onclick="loginClose()">Close</button>
 				</div>
 			</div>
 		</div>
@@ -55,5 +55,8 @@
 			}
 		})
 	});
+	function loginClose() {
+		$("#loginPageModal").css("display", "none");
+	}
 	
 </script>
