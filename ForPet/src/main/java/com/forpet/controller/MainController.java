@@ -39,11 +39,6 @@ public class MainController {
 		return "defaultSection";
 	}
 	
-	@RequestMapping("/main/noticeAndEvent")
-	public String noticeAndEvent() {
-		return "notice/noticeAndEvent";
-	}
-	
 	@RequestMapping("/main/search")
 	public String searchpage(Model model)
 	{
