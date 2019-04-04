@@ -42,19 +42,21 @@
 		</beans:property>
 	</beans:bean>
 	
-	<!-- 로그인 인터셉터 등록 필요 -->
 	<interceptors>
+		<!-- 세션이없으면 로그인하세요 처리 -->
 		<interceptor>
 			<mapping path="/member/logOut.do" />
 			<mapping path="/member/memberUpdate.do" />
 			<mapping path="/member/memberUpdateEnd.do" />
 			<mapping path="/member/memberDel.do" />
-			
+			<mapping path="/board/boardFormEnd.do" />
+			<mapping path="/board/boardForm" />
 			<beans:bean id="loggerInterceptor" class="com.forpet.common.LoginCheckInterceptor" />
 		</interceptor>
+		
+		<!-- 관리자가 아니면 권한 없음 처리 -->
 		<interceptor>
 			<mapping path="/notice/noticeForm" />
-			
 			<beans:bean id="adminInterceptor" class="com.forpet.common.AdminCheckInterceptor" />
 		</interceptor>
 	</interceptors>

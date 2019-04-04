@@ -84,7 +84,7 @@
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴2-2</div>
                 </div>
                 <div class="mainMenuSubMenu mainMenuSubMenu3">
-                    <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">자유게시판</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/board/boardList'">자유게시판</div>
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">소모임게시판</div>
                 </div>
                 <div class="mainMenuSubMenu mainMenuSubMenu4">
