@@ -8,7 +8,7 @@
 		서울특별시 강남구 
 		Tel : 000.0000.0000  월-금 (10:00 - 19:00 ) Email : ForPet@ForPet.co.kr
 		
-		© 2019 ForPet Inc. All Rights Reserved.
+		ⓒ 2019 ForPet Inc. All Rights Reserved.
 	</pre>
 </footer>
 <div class="TopBtnBox">

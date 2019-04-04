@@ -24,23 +24,23 @@ public class SearchController {
 	private VetService service;
 
 	@RequestMapping("/vetSearch.do")
-	/*@ResponseBody  //ajax ²À ºÙ¿©ÁÖ±â!!
+	/*@ResponseBody  //ajax ê¼­ ë¶™ì—¬ì£¼ê¸°!!
 */	public ModelAndView VetsearchAjax(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage, String search, String type,HttpServletResponse res ) {
 	
 		int numPerPage=7;
 		ModelAndView mv= new ModelAndView();
 		Map<String, String> map = new HashMap();
-		System.out.println("controller ¿¡ °ªµé¾î¿Í?"+search+type);
+		System.out.println("controller ì— ê°’ë“¤ì–´ì™€?"+search+type);
 		map.put("search",  search);
 		map.put("type", type);
 		
 		List<Vet> list = service.selectList(cPage, numPerPage, map);
 		int totalList = service.selectCount(map);
-		res.setContentType("application/json;charset=UTF-8");//Json ÇÑ±Û±úÁü ÇØ°á »ó´Ü¿¡ HttpServletResponse Ãß°¡ÇØÁà¾ßÇÔ
+		res.setContentType("application/json;charset=UTF-8");//Json í•œê¸€ê¹¨ì§ í•´ê²° ìƒë‹¨ì— HttpServletResponse ì¶”ê°€í•´ì¤˜ì•¼í•¨
 		mv.addObject("list", list);
 		mv.addObject("totalList", totalList);
 		mv.addObject("pageBar", PageBarFactoryAjax.getPageBar(totalList, cPage, numPerPage, "/forpet/search/search"));
-		mv.setViewName("jsonView"); //response body ¹æ½Ä¿¡¼­ jsonView ¹æ½ÄÀ¸·Î ÀüÈ¯
+		mv.setViewName("jsonView"); //response body ë°©ì‹ì—ì„œ jsonView ë°©ì‹ìœ¼ë¡œ ì „í™˜
 		return mv;
 		
 	}
@@ -52,6 +52,8 @@ public class SearchController {
 		List vcate=service.selectVetCate(vetSeq);
 		List vserv=service.selectVetServ(vetSeq);
 		ModelAndView mv=new ModelAndView();
+		
+		//System.out.println("vetDetail ë‚˜ì™”ì–´ìš”");
 		
 		mv.addObject("vet",vet);
 		mv.addObject("vcate",vcate);

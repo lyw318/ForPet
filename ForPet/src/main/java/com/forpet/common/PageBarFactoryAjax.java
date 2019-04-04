@@ -14,13 +14,13 @@ public static String getPageBar(int total, int cPage, int numPerPage, String url
  if(pageNo==1)
  {
   pageBar+="<li class='page-item disabled'>";
-  pageBar+="<a class='page-link' href='#' tabindex='-1'>ÀÌÀü</a>";
+  pageBar+="<a class='page-link' href='#' tabindex='-1'>ì´ì „</a>";
   pageBar+="</li>";
  }
  else {
   pageBar+="<li class='page-item'>";
   pageBar+="<a class='page-link' "
-    + "href='javascript:fn_paging("+(pageNo-1)+")'>ÀÌÀü</a>";
+    + "href='javascript:fn_paging("+(pageNo-1)+")'>ì´ì „</a>";
   pageBar+="</li>";
  }
   
@@ -45,20 +45,20 @@ public static String getPageBar(int total, int cPage, int numPerPage, String url
  if(pageNo>totalPage)
  {
   pageBar+="<li class='page-item disabled'>";
-  pageBar+="<a class='page-link'>´ÙÀ½</a>";
+  pageBar+="<a class='page-link'>ë‹¤ìŒ</a>";
   pageBar+="</li>";
  }
  else {
   pageBar+="<li class='page-item'>";
   pageBar+="<a class='page-link' "
-    + "href='javascript:fn_paging("+pageNo+")'>´ÙÀ½</a>";
+    + "href='javascript:fn_paging("+pageNo+")'>ë‹¤ìŒ</a>";
   pageBar+="</li>";
  }
  pageBar+="</ul>";
  
  pageBar+="<script>";
  pageBar+="function fn_paging(cPage){";
- pageBar+="listfunc(cPage);";//ajaxÈ£Ãâ
+ pageBar+="listfunc(cPage);";//ajaxí˜¸ì¶œ
  pageBar+="}</script>";
  
  return pageBar;

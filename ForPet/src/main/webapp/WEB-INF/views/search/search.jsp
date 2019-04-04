@@ -81,7 +81,7 @@
 				html+='<div class="vetListBox" onclick="fn_address(\''+data.list[i]["vetAddress"]+'\',\''+data.list[i].vetName+'\')">';
 				html+='<div class="vetListName">'+data.list[i]["vetName"]+'</div>';
 				html+='<div class="vetListAddress">'+data.list[i]["vetAddress"]+' '+
-					  '<a href="/vetDetail.do?vetSeq='+data.list[i]["vetSeq"]+'">자세히</a></div>';				
+					  '<a href="${path }/vetDetail.do?vetSeq='+data.list[i]["vetSeq"]+'">자세히</a></div>';				
 				html+='</div>';
 				}
 				

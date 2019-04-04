@@ -3,7 +3,7 @@
  *
  * Copyright 2017 Kakao Corp.
  *
- *  
+ * 혻
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
  *
  * OSS Notice | KakaoSDK-Javascript
  *
- * This application is Copyright © Kakao Corp. All rights reserved.
+ * This application is Copyright 짤 Kakao Corp. All rights reserved.
  * The following sets forth attribution notices for third party software that may be contained in this application.
  * If you have any questions or concerns, please contact us at opensource@kakaocorp.com
  *
@@ -40,7 +40,7 @@
  *
  * https://github.com/oyvindkinsey/easyXDM/
  *
- * Copyright 2009-2011 Øyvind Sean Kinsey, oyvind@kinsey.no
+ * Copyright 2009-2011 횠yvind Sean Kinsey, oyvind@kinsey.no
  *
  * MIT License
  *
@@ -978,7 +978,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var POPUP_FEATURES = 'width=380, height=520, scrollbars=yes, resizable=1';
 
         /**
-         * 카카오 로그인 버튼을 생성.
+         * 移댁뭅??濡쒓렇??踰꾪듉???앹꽦.
          * @param {CreateLoginButtonSettings} settings
          */
         Auth.createLoginButton = function (settings) {
@@ -1069,7 +1069,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
 
         /**
-         * Talk App을 통해 로그인 하기
+         * Talk App???듯빐 濡쒓렇???섍린
          * @private
          */
         var _loginProxyWithTalk;
@@ -1156,7 +1156,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
 
         /**
-         * web 팝업창을 통해 로그인하기
+         * web ?앹뾽李쎌쓣 ?듯빐 濡쒓렇?명븯湲?
          * @private
          */
         var _loginProxy;
@@ -1888,10 +1888,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         _k.popupWindows = {};
         /**
-         * 기존에 열려있는 팝업창이 있으면 닫고 새창을 연다. 없으면 바로 새창을 연다.
-         * @param {string} url 팝업창 url
-         * @param {string} name 팝업창 이름
-         * @param {object} feature 팝업창 feature
+         * 湲곗〈???대젮?덈뒗 ?앹뾽李쎌씠 ?덉쑝硫??リ퀬 ?덉갹???곕떎. ?놁쑝硫?諛붾줈 ?덉갹???곕떎.
+         * @param {string} url ?앹뾽李?url
+         * @param {string} name ?앹뾽李??대쫫
+         * @param {object} feature ?앹뾽李?feature
          *
          * @return {String} popup window ID
          */
@@ -3260,8 +3260,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         Kakao.Story = require('./story.js');
 
         /**
-         * Kakao JavaScript SDK를 초기화합니다. SDK를 사용하기 전에 호출해 주어야 합니다.
-         * @param {string} appKey JavaScript 앱키
+         * Kakao JavaScript SDK瑜?珥덇린?뷀빀?덈떎. SDK瑜??ъ슜?섍린 ?꾩뿉 ?몄텧??二쇱뼱???⑸땲??
+         * @param {string} appKey JavaScript ?깊궎
          */
         Kakao.init = function (appKey) {
           if (_k.RUNTIME.appKey) {
@@ -3288,7 +3288,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         };
 
         /**
-         * Kakao JavaScript SDK에서 사용한 리소스를 해제합니다.
+         * Kakao JavaScript SDK?먯꽌 ?ъ슜??由ъ냼?ㅻ? ?댁젣?⑸땲??
          */
         Kakao.cleanup = function () {
           Kakao.Auth && Kakao.Auth.cleanup();
@@ -3499,7 +3499,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
           var openUrl = getAddFriendUrl(settings);
           var addFriendIconUrl = getAddFriendIconUrl(settings);
-          var anchor = createImageAnchor(openUrl, addFriendIconUrl, '플러스친구 친구 추가 버튼', settings);
+          var anchor = createImageAnchor(openUrl, addFriendIconUrl, '?뚮윭?ㅼ튇援?移쒓뎄 異붽? 踰꾪듉', settings);
 
           container.appendChild(anchor);
 
@@ -3536,7 +3536,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
           var openUrl = getChatUrl(settings);
           var chatIconUrl = getChatIconUrl(settings);
-          var anchor = createImageAnchor(openUrl, chatIconUrl, '플러스친구 1:1 채팅 버튼', settings);
+          var anchor = createImageAnchor(openUrl, chatIconUrl, '?뚮윭?ㅼ튇援?1:1 梨꾪똿 踰꾪듉', settings);
 
           container.appendChild(anchor);
 
@@ -3761,7 +3761,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         };
 
         /**
-         * 웹으로 스토리 공유하기
+         * ?뱀쑝濡??ㅽ넗由?怨듭쑀?섍린
          * @param {StoryShareSettings} settings
          */
         Story.share = function (settings) {
@@ -3772,7 +3772,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         };
 
         /**
-         * 앱으로 스토리 공유하기
+         * ?깆쑝濡??ㅽ넗由?怨듭쑀?섍린
          * @param {StoryOpenSettings} settings
          */
         Story.open = function (settings) {
@@ -6104,10 +6104,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
 
         /**
-         * app.을 실행하거나 / store 페이지에 연결하여 준다.
+         * app.???ㅽ뻾?섍굅??/ store ?섏씠吏???곌껐?섏뿬 以??
          * @function
          * @param context {object} urlScheme, intentURI, storeURL, appName, onAppMissing, onUnsupportedEnvironment, willInvokeApp
-         * @example daumtools.web2app({ urlScheme : 'daumapps://open', intentURI : '', storeURL: 'itms-app://...', appName: '다음앱' });
+         * @example daumtools.web2app({ urlScheme : 'daumapps://open', intentURI : '', storeURL: 'itms-app://...', appName: '?ㅼ쓬?? });
          */
         return web2app;
       }();

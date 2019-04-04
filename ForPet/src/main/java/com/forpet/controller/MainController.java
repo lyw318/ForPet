@@ -48,7 +48,7 @@ public class MainController {
 		List<Vet> list = service.VetList();
 		model.addAttribute("list",list);
 		model.addAttribute("jlist",jsonArray.fromObject(list));
-		//vlist º¸³»±â
+		//vlist ë³´ë‚´ê¸°
 		System.out.println("mainClist"+list);
 		System.out.println("mainCJlist"+jsonArray.fromObject(list));
 		return "/search/search";
