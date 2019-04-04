@@ -58,4 +58,10 @@ public class NoticeAndEventController {
 		request.setAttribute("nlist", nlist);
 		return "notice/noticeList";
 	}
+	
+	@RequestMapping("/notice/noticeForm")
+	public String noticeForm()
+	{
+		return "notice/noticeForm";
+	}
 }

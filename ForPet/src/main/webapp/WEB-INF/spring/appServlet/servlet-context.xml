@@ -43,7 +43,7 @@
 	</beans:bean>
 	
 	<!-- 로그인 인터셉터 등록 필요 -->
-		<interceptors>
+	<interceptors>
 		<interceptor>
 			<mapping path="/member/logOut.do" />
 			<mapping path="/member/memberUpdate.do" />
@@ -51,6 +51,11 @@
 			<mapping path="/member/memberDel.do" />
 			
 			<beans:bean id="loggerInterceptor" class="com.forpet.common.LoginCheckInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/notice/noticeForm" />
+			
+			<beans:bean id="adminInterceptor" class="com.forpet.common.AdminCheckInterceptor" />
 		</interceptor>
 	</interceptors>
 	

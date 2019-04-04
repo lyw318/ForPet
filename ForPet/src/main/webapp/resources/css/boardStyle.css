@@ -2,6 +2,15 @@
 /* 게시판 CSS */
 
 
+        .board-wrapper
+        {
+         /*    font-family: 'Noto Sans KR'; */
+            display: flex;
+            flex-flow: column nowrap;
+            width: 100%;
+            font-size: 14px;
+        }
+        
 		.board-title
 	     {
 	        font-size: 25px;
@@ -103,3 +112,22 @@
         	text-decoration: none;
         	color: black;
         }
+        
+   		.board-write
+        {
+        	margin-top: 10px;
+            height: 35px;
+            width: 100px;
+            align-self: flex-end;   
+            
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+            background-color: transparent;
+            border: none;
+            font-weight: bolder;
+            opacity: 0.5;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .board-write:hover{opacity: 0.8;}
+        .board-write:focus{outline: none;}
