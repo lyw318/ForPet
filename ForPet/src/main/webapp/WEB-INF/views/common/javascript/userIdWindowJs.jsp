@@ -14,16 +14,27 @@
 	        userBoxAjax(memberNickname, i);
 	    }
 	}
+	
+	function userBox1() {
+	    var memberNickname = "";
+	    for (var i = 0; i < $('.userBox').length; i++) {
+	        memberNickname = $('.userBox').children('.userIdBox').get(i).innerText;
+	        userBoxAjax(memberNickname, i);
+	    }
+	}
+	
 	function userBoxAjax(memberNickname, i) {
 	    $.ajax({
 	        url: "${path}/main/userIdPopUp.do",
 	        data: { "memberNickname": memberNickname },
 	        dataType: "html",
 	        success: function (data) {
+	        	console.log(data);
 	            $('.userBox').get(i).innerHTML = data;
 	        }
 	    })
 	}
+	
 	
 	// 클래스(userBox) 클릭 : 소메뉴 출력 
 	var idWindowTarget;
@@ -68,12 +79,14 @@
 	        data: { "memberNickname": memberNickname },
 	        dataType: "html",
 	        success: function (data) {
+	        	userBox1();
 	        }
 	    })
 	    if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
 	    	location.href="${path}/community/friendList";
 	    }
-
+		else {
+		}
 	}
 	
 	function fnA_friendBlock(memberNickname) {
@@ -82,11 +95,14 @@
 	        data: { "memberNickname": memberNickname },
 	        dataType: "html",
 	        success: function (data) {
+	        	userBox1();
 	        }
 	    })
 		if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
 	    	location.href="${path}/community/friendList";
 	    }
+		else {
+		}
 	}
 	
 </script>

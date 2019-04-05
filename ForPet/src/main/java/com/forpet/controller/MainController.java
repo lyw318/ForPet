@@ -108,28 +108,33 @@ public class MainController {
 
 	@RequestMapping("/main/userIdPopUp.do")
 	private ModelAndView friendListDo(Member m, HttpSession session) {
-		
 
+		
 		Member oneself = (Member) session.getAttribute("loggedMember");
+		String inFriFlag = m.getMemberNickname();
+		String blFriFlag = m.getMemberNickname();
 		
-		MemberFriend mf = new MemberFriend();
-		mf.setMemberSeq(oneself.getMemberSeq());
-		
-		List<MemberFriend> inFriList = coService.inSelectList(mf);
-		String inFriFlag = "";
-		for(int i=0;i<inFriList.size();i++) {
-			if(inFriList.get(i).getmFriendNickname().equals(m.getMemberNickname())) {
-				inFriFlag = m.getMemberNickname();
+		if(oneself != null) {
+			//로그인 대상자 확인후 그거에 맞춰 메뉴 구성 로직
+			MemberFriend mf = new MemberFriend();
+			mf.setMemberSeq(oneself.getMemberSeq());
+			List<MemberFriend> inFriList = coService.inSelectList(mf);
+			List<MemberFriend> blFriList = coService.blSelectList(mf);
+			for(int i=0;i<inFriList.size();i++) {
+				if(inFriList.get(i).getmFriendNickname().equals(m.getMemberNickname())) {
+					inFriFlag = m.getMemberNickname();
+					blFriFlag = "";
+				}
+			}		
+			for(int i=0;i<blFriList.size();i++) {
+				if(blFriList.get(i).getmFriendNickname().equals(m.getMemberNickname())) {
+					inFriFlag = "";
+					blFriFlag = m.getMemberNickname();
+				}
 			}
 		}
-		
-		
-		List<MemberFriend> blFriList = coService.blSelectList(mf);
-		String blFriFlag = "";
-		for(int i=0;i<blFriList.size();i++) {
-			if(blFriList.get(i).getmFriendNickname().equals(m.getMemberNickname())) {
-				blFriFlag = m.getMemberNickname();
-			}
+		else {
+			
 		}
 		
 		ModelAndView mv = new ModelAndView();
