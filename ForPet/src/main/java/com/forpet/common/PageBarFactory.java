@@ -50,8 +50,6 @@ public class PageBarFactory {
 		int pageEnd = Math.min(totalPage,pageStart+pageBarSize-1);
 		pageStart = Math.max(1, pageEnd-pageBarSize+1);
 		
-		System.out.println("토탈"+total);
-		System.out.println("페이지"+totalPage);
 		pageBar = "<div class='pagebar'>";
 		
 		if(pageStart==1)

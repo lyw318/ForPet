@@ -132,6 +132,10 @@
         .board-write:hover{opacity: 0.8;}
         .board-write:focus{outline: none;}
         
+        .board-data-title{
+        	cursor: pointer;
+        }
+        .board-data-title:hover{opacity: 0.6;}
         
 /*  공지사항 작성 관련 css */
         .board-form-wrapper
@@ -199,7 +203,6 @@
         {
             width: 82px;
             height: 82px;
-            margin-right: 10px;
         }
         .added-image-box > img
         {
@@ -212,10 +215,12 @@
             height: 80px;
             border: 1px dotted gray;
             position: relative;
+            margin-right: 10px;
         }
         .image-upload-container:hover
         {
             background-color: #eee;
+            border: 1px solid rgb(114, 71, 42);
         }
         .image-upload-container > input
         {
@@ -228,9 +233,12 @@
         {
             font-size: 20px;
             position: absolute;
+            width: 100%;
+            height: 100%;
             left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            top: 0%;
+            transform: translate(-50%, 0%);  
+            cursor: pointer;
         }
         
          .board-button-set
@@ -272,4 +280,95 @@
         }
         
         
+ /*  공지사항 상세보기 관련 css */
+ 
+ 		.board-view-wrapper
+        {
+            font-size: 14px;
+        }
+
+        .board-view-wrapper input
+        {
+            font-size: 12px;
+            width: 120px;
+            height: 40px;
+            margin: 0;
+            border: none;
+            background-color: rgb(114, 71, 42);
+            color: white;
+            margin-left: 10px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .board-view-wrapper input:focus
+        {
+            outline: none;
+        }
         
+       	.board-view-wrapper input:hover
+        {
+        	background-color: rgb(134, 91, 62);
+        }
+        
+         .board-view
+        {
+            display: flex;
+            flex-flow: column nowrap;
+            border-top: 2px solid rgb(114, 71, 42);
+            border-bottom: 1px solid rgb(114, 71, 42);
+        }
+
+        .board-view > div
+        {
+            display: flex;  
+            border-bottom: 1px solid #eee;
+        }
+
+        .board-view > div > div
+        {
+            display: flex;
+            justify-items: flex-start;
+            padding: 15px;
+        }
+        
+        
+        .board-view > div > div:nth-of-type(1){flex: 1 1 0;  background-color: rgb(245, 245, 245);}
+        .board-view > div > div:nth-of-type(2){flex: 9 1 0;}
+
+        .board-view-date-hit > div:nth-of-type(1){flex: 1 1 0 !important;padding-right: 21px !important;}
+        .board-view-date-hit > div:nth-of-type(2){flex: 4 1 0 !important;}        
+        .board-view-date-hit > div:nth-of-type(3){flex: 1 1 0; background-color: rgb(245, 245, 245) !important;}
+        .board-view-date-hit > div:nth-of-type(4){flex: 4 1 0;}
+        
+        .board-view-content
+        {
+            display: flex;
+			flex-flow: column nowrap;
+        }
+        
+        .board-view-content > div
+        {
+            background-color: white !important;
+            min-height: 200px;
+            
+        }
+        
+        .board-images
+        {
+        	margin-bottom: 100px;
+        } 
+        
+        .board-images > img
+        {
+        	max-width: 100%;
+        } 
+        
+        
+        .board-view-btns
+        {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 0;
+            padding-bottom: 200px;
+        }

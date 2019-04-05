@@ -39,6 +39,11 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 		return session.insert("noticeandevent.insertImage",image);
 	}
 
+	@Override
+	public List<String> noticeImageList(int viewNo) {
+		return session.selectList("noticeandevent.noticeImageList",viewNo);
+	}
+
 	
 	
 }

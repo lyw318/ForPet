@@ -12,4 +12,5 @@ public interface NoticeAndEventDao {
 	List<Notice> noticeList(BoardSearch bs);
 	int insertNotice(Notice notice);
 	int insertImage(Image image);
+	List<String> noticeImageList(int viewNo);
 }

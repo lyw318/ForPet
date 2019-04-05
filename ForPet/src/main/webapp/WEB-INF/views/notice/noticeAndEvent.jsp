@@ -23,7 +23,7 @@ align-items: flex-start; 등등 활용 가능-->
 				<c:forEach items="${nlist}" var="n">
 				<div class="table-row">
 					<div>${n.noticeSeq}</div>
-					<div>${n.noticeTitle}</div>
+					<div class="board-data-title" onclick="noticeView(${n.noticeSeq})">${n.noticeTitle}</div>
 					<div class="userBox">${n.memberNickname}</div>
 					<div>${n.readCount}</div>
 					<div>${n.noticeDate}</div>
@@ -47,8 +47,17 @@ align-items: flex-start; 등등 활용 가능-->
 			</div>
 		</div>
 	</div>
-
-
+	<form action="${path}/notice/noticeList" method="post" id="noticeView">
+		<input type="hidden" name="viewNo" id="noticeViewNo"/>
+	</form>
 </section>
+
+<script>
+function noticeView(viewNo)
+{
+	$("#noticeViewNo").val(viewNo);
+	$("#noticeView").submit();
+}
+</script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
