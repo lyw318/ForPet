@@ -26,11 +26,11 @@
 	select * from vet where vetSeq=#{vetSeq}
 	</select>
 	
-	<select id="selectVetCate" parameterType="_int" resultType="vet">
+	<select id="selectVetCate" parameterType="_int" resultType="com.forpet.model.vo.VetCate">
 	select * from vetCategory where vetSeq=#{vetSeq}
 	</select>
 	
-	<select id="selectVetServ" parameterType="_int" resultType="vet">
+	<select id="selectVetServ" parameterType="_int" resultType="com.forpet.model.vo.VetServ">
 	select * from vetService where vetSeq=#{vetSeq}
 	</select>
 		
