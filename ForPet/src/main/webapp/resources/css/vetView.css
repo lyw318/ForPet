@@ -1,0 +1,95 @@
+div#maintitle {
+ background: #f0f0f0;
+ margin : 0 auto;
+ width : 623px;
+ padding : 80px;
+text-align : center;
+border-radius: 5px;
+box-shadow:rgba(0,0,0,0.2) 0px 1px 3px;    
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column; 
+
+}
+
+div#maintitle .vetNameBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width : 350px;
+}
+
+
+div .vetName{
+    border:0px solid gold; float:left;
+    width : auto;
+    text-align : center;
+    color : black;
+    font-size : 30px;
+    font-weight: bold;
+    
+}
+div .scrap{
+    border:0px solid gold;
+    float:left;
+    width : 17%;
+
+}
+
+
+div#maintitle.vetAddress{
+    border: 1px solid gold;
+    float: left;
+    width : 100%;
+    font-size:15px;
+    margin-top: 15px;
+}
+div .vetNameBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width : 350px;
+}
+div.operTimebox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
+div.operTime{
+    font-size:20px;
+}
+
+div.operdiv{
+margin : 5px 5px 5px 0px;
+display: flex;
+justify-content: center;
+align-items: center;
+align-content: center;
+width : 45%;
+}
+
+
+div.settime{
+    border-left : 2px solid #308deb;
+    font-size : 17px;
+    width : 50%;
+    justify-content: center;
+    padding-left : 10px;
+}
+
+div.settime div{
+    text-align : left;
+}
+
+div .infoTitle {
+    font-size:25px;
+    margin : 10px;
+}
+
+div#setttimmeNotice, div#appendixInfo, div#phonenumber{
+    width: 460px;
+    font-size:17px;
+    text-align : left;
+}

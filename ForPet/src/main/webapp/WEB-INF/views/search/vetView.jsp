@@ -4,90 +4,121 @@
 <link rel="stylesheet" href="${path }/resources/css/vetView.css">
 <section class="VetViewSection">
 
-	<div id="vetConatiner">
+	<div id="vetContainer">
 		<div id="maintitle">
-			<div class="#">
-				<h3>
-					큐라인여성의원
-				</h3>
-				<div class="vetAddress">서울특별시 서초구 서초동 1317-20 아라타워 12층</div>
-				<div class="scape">
-					<a href=""><span><imag src="/resources/images/vet/scapeIcon.png"></span>즐겨찾기</a>
+			<div class="vetNameBox">
+				<div class="vetName">
+					${vet.vetName }
+				</div>
+				<div class="scrap">
+					<a href=""><img src="${path }/resources/images/vet/scrapIcon.png" width="35" height="35"
+							title="스크랩하기"></a>
 				</div>
 			</div>
+			<div class="vetAddress">${vet.vetAddress }</div>
 		</div>
-	
-		<div id="upperVet">
-			<div id="upperMagin">지도그림
-			<img src="${path }/resources/images/mainLogaHeaderH80.png">
-			</div>
-			<div id="vetTitle">상단 아래 여백</div>
-		</div>
-		<div id="bottomVet">
-			<div id="operTime">진료과목</div>
-			<img src="${path }/resources/images/vet/dog.png">개
-			<img src="${path }/resources/images/vet/cat.png">고양이
-			<img src="${path }/resources/images/vet/guineapig.png">기니피그
-			<img src="${path }/resources/images/vet/rabbit.png">토끼
-			<img src="${path }/resources/images/vet/hedgehog.png">고슴도치
-			<img src="${path }/resources/images/vet/bird.png">조류
-			<img src="${path }/resources/images/vet/turtle.png">파충류
-			<img src="${path }/resources/images/vet/horse.png">기타동물
-			<div id="operTime">진료시간등등</div>
-			<div class="settime" >
-			<div>월요일</div>
-			<div>10:00 ~ 18:00</div>
-			</div>
-			<div class="settime" >
-			<div>화요일</div>
-			<div>10:00 ~ 18:00</div>
-			</div>
-			<div class="settime" >
-			<div>수요일</div>
-			<div>10:00 ~ 18:00</div>
-			</div>
-			<div class="settime" >
-			<div>목요일</div>
-			<div>10:00 ~ 18:00</div>
-			</div>
-			<div class="settime" >
-			<div>금요일</div>
-			<div>10:00 ~ 18:00</div>
-			</div>
-			<div class="settime" >
-			<div>토요일</div>
-			<div>10:00 ~ 18:00</div>
-			</div>
-			<div class="settime" >
-			<div>공휴일</div>
-			<div>10:00 ~ 18:00</div>
-			</div>
-			<div id="setttimmeNotice">
-			병원의 사정에 의해서 시간은 변경될수 있습니다<br>
-			방문전에 사전 연락 부탁드립니다.
-			</div>
-						
-			<div id="phone">전화번호</div>
-			<div id="phonenumber">02-1544-2323</div>
-			
-			<div id="appendix">부가정보</div>
-			<div id="appendixInfo">24시간 운영</div>
-			
-			부가서비스<br/>
-			<img src="${path }/resources/images/vet/24hour.png" width="55" height="55">
-			<img src="${path }/resources/images/vet/beauty.png" width="55" height="55">
-			<img src="${path }/resources/images/vet/hotel.png" width="55" height="55">
-			<img src="${path }/resources/images/vet/goods.png" width="55" height="55">
-			
-		</div>
+
 	</div>
 
+	<div id="upperVet">
+		<div id="upperMagin">
+			<br />
+			
+		</div>
+		<div id="vetTitle" class="infoTitle" >| 병 원 정 보 |</div>
+	</div>
+	<hr>
+	<div id="bottomVet">
+		<div id="vettype" class="infoTitle">- 진 료 과 목 -</div>
+		
+		<c:forEach items="${vcate }" var="v" varStatus="status">
+			<c:if test='${v.animalType eq "개"}'><img src="${path }/resources/images/vet/dog.png" title="개"></c:if>
+			<c:if test='${v.animalType eq "고양이"}'><img src="${path }/resources/images/vet/cat.png" title="고양이"></c:if>
+			<c:if test='${v.animalType eq "기니피그"}'><img src="${path }/resources/images/vet/guineapig.png" title="기니피그">
+			</c:if>
+			<c:if test='${v.animalType eq "토끼"}'><img src="${path }/resources/images/vet/rabbit.png" title="토끼"></c:if>
+			<c:if test='${v.animalType eq "고슴도치"}'><img src="${path }/resources/images/vet/hedgehog.png" title="고슴도치">
+			</c:if>
+			<c:if test='${v.animalType eq "조류"}'><img src="${path }/resources/images/vet/bird.png" title="조류"></c:if>
+			<c:if test='${v.animalType eq "파충류"}'><img src="${path }/resources/images/vet/turtle.png" title="파충류">
+			</c:if>
+			<c:if test='${v.animalType eq "기타"}'><img src="${path }/resources/images/vet/horse.png" title="기타동물들">
+			</c:if>
+		</c:forEach>
+		
+			<br/>
+		<div class="operTimebox">
+			<div id="operTime" class="infoTitle">진료시간</div>
+			<div class="operdiv">
+				<div class="settime">
+					<div>월요일</div>
+					<div>${vet.vetDaySTime }:00 ~ ${vet.vetDayETime }:00</div>
+				</div>
+				<div class="settime">
+					<div>화요일</div>
+					<div>${vet.vetDaySTime }:00 ~ ${vet.vetDayETime }:00</div>
+				</div>
+			</div>
+			<div class="operdiv">
+				<div class="settime">
+					<div>수요일</div>
+					<div>${vet.vetDaySTime }:00 ~ ${vet.vetDayETime }:00</div>
+				</div>
+				<div class="settime">
+					<div>목요일</div>
+					<div>${vet.vetDaySTime }:00 ~ ${vet.vetDayETime }:00</div>
+				</div>
+			</div>
+			<div class="operdiv">
+				<div class="settime">
+					<div>금요일</div>
+					<div>${vet.vetDaySTime }:00 ~ ${vet.vetDayETime }:00</div>
+				</div>
+				<div class="settime">
+					<div>토요일</div>
+					<div>${vet.vetSatSTime }:00 ~ ${vet.vetSatETime }:00</div>
+				</div>
+			</div>
+			<div class="operdiv">
+				<div class="settime">
+					<div>공휴일</div>
+					<div>${vet.vetSunSTime }:00 ~ ${vet.vetSunETime }:00</div>
+				</div>
+				<div class="settime">
+						<div></div>
+						<div></div>
+					</div>
+				
+			</div>
 
+			<div id="setttimmeNotice">
+				병원의 사정에 의해서 운영 시간은 변경될수 있습니다<br>
+				병원 방문 전에 꼭 전화로 확인해주세요.
+			</div>
 
+			<div id="phone" class="infoTitle">전화번호</div>
+			<div id="phonenumber">${vet.vetPhone }</div>
 
+			<div id="appendix" class="infoTitle">부가정보</div>
+			<div id="appendixInfo">${vet.vetComment }</div>
 
-
-
+			<div id="vetService" class="infoTitle">부가서비스</div>
+			<div>
+			<c:forEach items="${vserv }" var="v" varStatus="status">
+				<c:if test='${v.vetItem eq "야간"}'><img src="${path }/resources/images/vet/24hour.png" width="55"
+						height="55" title="야간진료가능"></c:if>
+				<c:if test='${v.vetItem eq "미용"}'><img src="${path }/resources/images/vet/beauty.png" width="55"
+						height="55" title="반려동물미용"></c:if>
+				<c:if test='${v.vetItem eq "호텔"}'><img src="${path }/resources/images/vet/hotel.png" width="55"
+						height="55" title="반려동물호텔"></c:if>
+				<c:if test='${v.vetItem eq "용품"}'><img src="${path }/resources/images/vet/goods.png" width="55"
+						height="55" title="반려동물용품"></c:if>
+			</c:forEach>
+			<hr/>
+			<br/>
+		</div>
+		</div>
+	</div>
 
 
 </section>
