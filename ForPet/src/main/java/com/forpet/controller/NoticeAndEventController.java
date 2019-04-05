@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.forpet.common.PageBarFactory;
@@ -33,8 +34,6 @@ public class NoticeAndEventController {
 	public String noticeAndEvent(HttpServletRequest request)
 	{
 		BoardSearch bs = new BoardSearch();
-/*		bs.setNumPerPage("10");
-		bs.setcPage("1");*/
 		bs.parsing();
 		
 		int ncount = service.noticeCount(bs);
@@ -51,7 +50,7 @@ public class NoticeAndEventController {
 	}
 	
 	@RequestMapping("/notice/noticeList")
-	public String noticeList(BoardSearch bs, HttpServletRequest request)
+	public String noticeList(BoardSearch bs, String viewNo, HttpServletRequest request)
 	{
 		bs.parsing();
 		
@@ -65,6 +64,24 @@ public class NoticeAndEventController {
 		request.setAttribute("ncount",ncount);
 		request.setAttribute("nlist", nlist);
 		return "notice/noticeList";
+	}
+	
+	@RequestMapping("/notice/noticeView")
+	@ResponseBody
+	public List noticeView(String viewNo)
+	{
+		int no=0;
+		try {
+			no = Integer.parseInt(viewNo);
+		} catch(NumberFormatException e)
+		{
+			
+		}
+		//조회수 증가 로직 필요
+		
+		List<String> ilist = service.noticeImageList(no);
+		System.out.println(ilist);
+		return ilist;
 	}
 	
 	@RequestMapping("/notice/noticeForm")
@@ -120,11 +137,11 @@ public class NoticeAndEventController {
 		if(result>0)
 		{
 			request.setAttribute("msg","공지사항 등록 성공");
-			request.setAttribute("loc", "/");
+			request.setAttribute("loc", "/notice/noticeList");
 		} else
 		{
 			request.setAttribute("msg","공지사항 등록 실패");
-			request.setAttribute("loc", "/");
+			request.setAttribute("loc", "/notice/noticeForm");
 			// list 파일 삭제 로직
 			for(int i=0; i<list.size();i++)
 			{

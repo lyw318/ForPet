@@ -20,6 +20,11 @@
 	 		select * from notice join Member using(memberSeq)
 		</otherwise>
  	</choose>
+ 	<choose>
+ 		<otherwise>
+ 			order by noticeSeq desc
+ 		</otherwise>
+ 	</choose>
  </select>
  <insert id="insertNotice" parameterType="notice">
  	insert into notice values(noticeSeq.nextval, #{memberSeq}, #{noticeTitle}, #{noticeContent}, 0, sysdate)
@@ -30,4 +35,7 @@
  <insert id="insertImage" parameterType="image">
     insert into NoticeImage values(#{filename}, #{refseq}, #{priority})
  </insert>
+ <select id="noticeImageList" parameterType="_int" resultType="string">
+ 	select filename from NoticeImage where noticeseq = #{viewNo} order by priority asc
+ </select>
 </mapper>

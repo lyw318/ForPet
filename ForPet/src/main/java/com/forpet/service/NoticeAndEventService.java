@@ -11,5 +11,6 @@ public interface NoticeAndEventService {
 	int noticeCount(BoardSearch bs);
 	List<Notice> noticeList(BoardSearch bs);
 	int insertNotice(Notice notice, List<Image> list) throws RuntimeException;	
+	List<String> noticeImageList(int viewNo);
 	
 }

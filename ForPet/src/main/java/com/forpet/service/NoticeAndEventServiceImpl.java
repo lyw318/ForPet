@@ -51,6 +51,11 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 		
 		return result;
 	}
-	
 
+	@Override
+	public List<String> noticeImageList(int viewNo) {
+		return dao.noticeImageList(viewNo);
+	}
+	
+	
 }
