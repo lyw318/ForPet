@@ -30,9 +30,16 @@
 				</div>
 				</c:forEach>
 			</div>
-			<c:if test='${loggedMember!=null&&"admin" eq loggedMember.memberEmail}'>
-			<button class="board-write" onclick="location.href='${path}/notice/noticeForm';">글쓰기</button>
-            </c:if>
+			<div class="board-search-menu">
+		    	<div><input type="text" id="board-search-text" value="${param.keyword}" onkeydown="fn_search_write()" ><input type="button" value="검색" onclick="fn_board_search()"></div>
+		    	<div></div>
+		    	<div></div>
+		    	<div>
+		    		<c:if test='${loggedMember!=null&&"admin" eq loggedMember.memberEmail}'>
+					<button class="board-write" onclick="location.href='${path}/notice/noticeForm';">글쓰기</button>
+		            </c:if>
+		    	</div>
+		    </div>
 			${npage}
 		</div>
 
@@ -116,6 +123,16 @@
 	 
 	 function fn_updateNotice(viewNo) {
 		 location.href='${path}/notice/noticeUpdate?viewNo='+viewNo;
+	 }
+	 
+	 function fn_board_search(){
+		 location.href='${path}/notice/noticeList?keyword='+$("#board-search-text").val();
+	 }
+	 function fn_search_write(){
+		if(window.event.keyCode == 13)
+		{
+			fn_board_search();
+		}
 	 }
 	 
 </script>
