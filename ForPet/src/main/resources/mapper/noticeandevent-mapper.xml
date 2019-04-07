@@ -38,4 +38,22 @@
  <select id="noticeImageList" parameterType="_int" resultType="string">
  	select filename from NoticeImage where noticeseq = #{viewNo} order by priority asc
  </select>
+ <delete id="deleteImageAll" parameterType="_int">
+ 	delete from NoticeImage where noticeSeq = #{noticeSeq}
+ </delete>
+ <delete id="deleteNotice" parameterType="_int">
+    delete from Notice where noticeSeq = #{noticeSeq}
+ </delete>
+ <update id="addReadcount" parameterType="_int">
+ 	update notice set readcount = readcount+1 where noticeSeq = #{noticeSeq}
+ </update>
+ <select id="selectOne" parameterType="_int" resultType="notice">
+ 	select * from notice join Member using(memberSeq) where noticeSeq = #{noticeSeq}
+ </select>
+ <update id="updateNotice" parameterType="notice">
+ 	update notice set noticeTitle = #{noticeTitle}, noticeContent = #{noticeContent} where noticeSeq = #{noticeSeq}
+ </update>
+ <delete id="deleteImage" parameterType="string">
+ 	delete from NoticeImage where filename = #{filename}
+ </delete>
 </mapper>

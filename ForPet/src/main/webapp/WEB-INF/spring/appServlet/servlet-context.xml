@@ -58,6 +58,8 @@
 		<interceptor>
 			<mapping path="/notice/noticeForm" />
 			<mapping path="/notice/noticeFormEnd.do" />
+			<mapping path="/notice/noticeDelete.do" />
+			<mapping path="/notice/noticeUpdate" />
 			<beans:bean id="adminInterceptor" class="com.forpet.common.AdminCheckInterceptor" />
 		</interceptor>
 	</interceptors>

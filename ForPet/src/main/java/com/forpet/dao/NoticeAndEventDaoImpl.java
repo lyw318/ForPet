@@ -44,6 +44,37 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 		return session.selectList("noticeandevent.noticeImageList",viewNo);
 	}
 
+	@Override
+	public int deleteImageAll(int noticeSeq) {
+		return session.delete("noticeandevent.deleteImageAll",noticeSeq);
+	}
+
+	@Override
+	public int deleteNotice(int noticeSeq) {
+		return session.delete("noticeandevent.deleteNotice",noticeSeq);
+	}
+
+	@Override
+	public int addReadcount(int viewNo) {
+		return session.update("noticeandevent.addReadcount", viewNo);
+	}
+
+	@Override
+	public Notice selectOne(int noticeSeq) {
+		return session.selectOne("noticeandevent.selectOne", noticeSeq);
+	}
+
+	@Override
+	public int updateNotice(Notice n) {
+		return session.update("noticeandevent.updateNotice", n);
+	}
+
+	@Override
+	public int deleteImage(String filename) {
+		return session.delete("noticeandevent.deleteImage", filename);
+	}
+	
+	
 	
 	
 }

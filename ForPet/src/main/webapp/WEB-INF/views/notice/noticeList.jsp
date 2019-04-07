@@ -23,10 +23,10 @@
 				<c:forEach items="${nlist}" var="n">
 				<div class="table-row">
 					<div>${n.noticeSeq}</div>
-					<div id="noticeTitle${n.noticeSeq}" class="board-data-title" onclick="noticeView(${n.noticeSeq})" data-notice-content="${n.noticeContent}" data-member-nickname="${n.memberNickname}">${n.noticeTitle}</div>
+					<div class="board-data-title" onclick="noticeView(${n.noticeSeq})">${n.noticeTitle}</div>
 					<div class="userBox">${n.memberNickname}</div>
-					<div id="readCount${n.noticeSeq}">${n.readCount}</div>
-					<div id="noticeDate${n.noticeSeq}">${n.noticeDate}</div>
+					<div>${n.readCount}</div>
+					<div>${n.noticeDate}</div>
 				</div>
 				</c:forEach>
 			</div>
@@ -45,61 +45,78 @@
 	 }
 	 function noticeView(viewNo)
 	 {
-		 var content =
-			 '<div class="board-view">' +
-	         '<div class="board-view-title">' +
-	             '<div>제목</div>' +
-	             '<div>'+$("#noticeTitle"+viewNo).html()+'</div>' +
-	         '</div>' +
-	         '<div class="board-view-wrtier">' +
-	             '<div>작성자</div>' +
-	             '<div>'+ $("#noticeTitle"+viewNo).data("memberNickname") +'</div>'+
-	         '</div>' +
-	         '<div class="board-view-date-hit">' +
-	             '<div>작성일</div>' +
-	             '<div>'+$("#noticeDate"+viewNo).html()+ '</div>'+
-	             '<div>조회수</div>' +
-	             '<div>'+$("#readCount"+viewNo).html()+'</div>' +
-	        '</div>' +
-	         '<div class="board-view-content">' +
-	             '<div>' +
-	             $("#noticeTitle"+viewNo).data('noticeContent') + 
-	             '</div>' +
-	         '</div>' +
-	      '</div>'+
-	      '<div class="board-view-btns">';
-	      if('${loggedMember.memberNickname}' == 'admin' || '${loggedMember.memberNickname}' == $("#noticeTitle"+viewNo).data("memberNickname"))
-	      {
-	    	  content +=
-	            	'<input type="button" value="수정" onclick=fn_updateNotice('+viewNo+')>'+
-	            	'<input type="button" value="삭제" onclick=fn_deleteNotice('+viewNo+')>'
-	      }
-	      content +='</div>';
+		 $(".board-view-wrapper").html("");
+		 window.scrollTo(0,0);
 
-	      var wrapper = $(".board-view-wrapper");
-		  $(wrapper).html(content);
-		  window.scrollTo(0,0);
-		  
 		 $.ajax({
 			url:"${path}/notice/noticeView",
 			dataType:"json",
 			data:{"viewNo":viewNo},
 			success:function(data)
 			{
-				$(".board-images").remove();
-				if(data.length>0)
-				{
-					var content= '<span class="board-images">';
-					for(var i=0; i<data.length;i++)
-					{
-						content += '<img src="${path}/resources/upload/noticeImage/'+data[i]+'"/>'
-					}
-	                content += '</span>'
-	                $(".board-view-content").prepend(content);
-				}
+				var ilist= data['ilist'];
+				var n = data['n'];
+				var d = new Date(n['noticeDate']);
+				var time = d.getFullYear()+'년 '+d.getMonth()+'월 '+d.getDate()+"일";
+				
+				 var content =
+					 '<div class="board-view">' +
+			         '<div class="board-view-title">' +
+			             '<div>제목</div>' +
+			             '<div>'+n['noticeTitle']+'</div>' +
+			         '</div>' +
+			         '<div class="board-view-wrtier">' +
+			             '<div>작성자</div>' +
+			             '<div>'+ n['memberNickname'] +'</div>'+
+			         '</div>' +
+			         '<div class="board-view-date-hit">' +
+			             '<div>작성일</div>' +
+			             '<div>'+time+ '</div>'+
+			             '<div>조회수</div>' +
+			             '<div>'+n['readCount']+'</div>' +
+			        '</div>' +
+			         '<div class="board-view-content">';
+						if(ilist.length>0)
+						{
+							content += '<span class="board-images">';
+							for(var i=0; i<ilist.length;i++)
+							{
+								content += '<img src="${path}/resources/upload/noticeImage/'+ilist[i]+'"/>'
+							}
+			                content += '</span>'
+						}
+			          content += 
+			        	  '<div>' +
+			             	n['noticeContent'] + 
+			             '</div>' +
+			         '</div>' +
+			      '</div>'+
+			      '<div class="board-view-btns">';
+			      if('${loggedMember.memberNickname}' == 'admin' || '${loggedMember.memberNickname}' == n['memberNickname'])
+			      {
+			    	  content +=
+			            	'<input type="button" value="수정" onclick=fn_updateNotice('+viewNo+')>'+
+			            	'<input type="button" value="삭제" onclick=fn_deleteNotice('+viewNo+')>'
+			      }
+			      content +='</div>';
+				
+				$(".board-view-wrapper").html(content);
 			}
 		 });
 		  
 	 }
+	 
+	 
+	 function fn_deleteNotice(viewNo) {
+		 if(confirm("정말 게시글을 삭제하시겠습니까?"))
+		 {
+			 location.href='${path}/notice/noticeDelete.do?viewNo='+viewNo;
+		 }
+	 }
+	 
+	 function fn_updateNotice(viewNo) {
+		 location.href='${path}/notice/noticeUpdate?viewNo='+viewNo;
+	 }
+	 
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

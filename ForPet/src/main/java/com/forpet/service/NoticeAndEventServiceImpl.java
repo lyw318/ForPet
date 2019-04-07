@@ -28,7 +28,7 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional(rollbackFor = RuntimeException.class)
 	public int insertNotice(Notice notice, List<Image> list) throws RuntimeException {
 		int result = 0;
 		result=dao.insertNotice(notice);
@@ -56,6 +56,69 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 	public List<String> noticeImageList(int viewNo) {
 		return dao.noticeImageList(viewNo);
 	}
-	
+
+	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
+	public int deleteNotice(int noticeSeq, int imageCount) throws RuntimeException {
+		
+		int result = dao.deleteImageAll(noticeSeq);
+		if(result<imageCount)
+		{
+			throw new RuntimeException();
+		}
+		int result2 = dao.deleteNotice(noticeSeq);
+		if(result<1)
+		{
+			throw new RuntimeException();
+		}
+		return result2;
+	}
+
+	@Override
+	public int addReadcount(int viewNo) {
+		return dao.addReadcount(viewNo);
+	}
+
+	@Override
+	public Notice selectOne(int noticeSeq) {
+		return dao.selectOne(noticeSeq);
+	}
+
+	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
+	public int updateNotice(Notice n, List<Image> list, String[] exFile) {
+		int result = 0;
+		result=dao.updateNotice(n);
+		if(result<=0)
+		{
+			throw new RuntimeException();
+		}
+		if(list != null && list.size()>0)
+		{
+			for(Image i : list)
+			{
+				result = dao.insertImage(i);
+				if(result==0)
+				{
+					throw new RuntimeException();
+				}
+			}
+		}
+		if(exFile != null)
+		{
+			for(int i=0; i<exFile.length; i++)
+			{
+				if(exFile[i].trim().length()>0)
+				{
+					result = dao.deleteImage(exFile[i]);
+					if(result==0)
+					{
+						throw new RuntimeException();
+					}
+				}
+			}
+		}
+		return result;
+	}
 	
 }

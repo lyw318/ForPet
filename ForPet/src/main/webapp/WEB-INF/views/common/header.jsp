@@ -82,8 +82,8 @@
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴1-2</div>
                 </div>
                 <div class="mainMenuSubMenu mainMenuSubMenu2">
-                    <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴2-1</div>
-                    <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴2-2</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/notice/noticeList'">공지사항</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">이벤트</div>
                 </div>
                 <div class="mainMenuSubMenu mainMenuSubMenu3">
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/board/boardList'">자유게시판</div>

@@ -12,5 +12,9 @@ public interface NoticeAndEventService {
 	List<Notice> noticeList(BoardSearch bs);
 	int insertNotice(Notice notice, List<Image> list) throws RuntimeException;	
 	List<String> noticeImageList(int viewNo);
+	int deleteNotice(int noticeSeq, int imageCount) throws RuntimeException;
+	int addReadcount(int viewNo);
+	Notice selectOne(int noticeSeq);
+	int updateNotice(Notice n, List<Image> list, String[] exFile);
 	
 }
