@@ -17,7 +17,7 @@
 	<div class="userTable">
 		<div class="userTableBtn" onclick="javascript:location.href='${path }/main/myPageMain'">마이페이지</div>
 		<div class="userTableBtn">반려동물</div>
-		<div class="userTableBtn">쪽지보내기</div>
+		<div class="userTableBtn" onclick="fn_msgSendWindow()">쪽지보내기</div>
 		<div class="userTableBtn">고객센터</div>
 	</div>
 </div>
@@ -26,7 +26,7 @@
 	<div class="userTable">
 		<div class="userTableBtn userIdWindow_Id" onclick="javascript:location.href='${path }'"></div>
 		<div class="userTableBtn">반려동물</div>
-		<div class="userTableBtn">쪽지보내기</div>
+		<div class="userTableBtn" onclick="">쪽지보내기</div>
 			<c:if test="${inFriFlag !=  member.memberNickname}">
 				<div class="userTableBtn" onclick="fnA_friendInsert('${member.memberNickname}')">친구추가</div>
 			</c:if>

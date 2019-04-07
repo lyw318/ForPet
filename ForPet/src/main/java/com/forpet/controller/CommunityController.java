@@ -195,4 +195,11 @@ public class CommunityController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/community/msgSendWindow")
+	private ModelAndView msgSendWindow() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("community/msgSendWindow");
+		return mv;
+	}
 }

@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script>    
+<script>
+	
+	function fn_msgSendWindow() {
+		window.open("${path}/community/msgSendWindow","messageSend","width=500, height=400, top=100");
+		
+	}
+
 	// userBox 기능 구현 로직
 	$(function () {
 	    userBox();
@@ -85,8 +91,6 @@
 	    if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
 	    	location.href="${path}/community/friendList";
 	    }
-		else {
-		}
 	}
 	
 	function fnA_friendBlock(memberNickname) {
@@ -101,8 +105,6 @@
 		if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
 	    	location.href="${path}/community/friendList";
 	    }
-		else {
-		}
 	}
 	
 </script>
