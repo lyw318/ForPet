@@ -2,30 +2,51 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="board">
 
-	<select id="selectCount" resultType="_int">
-		select count(*) from board
+	<select id="selectCount" parameterType="boardSearch" resultType="_int">
+		<choose>
+			<when test='keyword!=null and keyword!=""'>
+				select count(*) from board where boardTitle like '%'||#{keyword}||'%' OR noticeContent like '%'||#{keyword}||'%'
+			</when>
+			<otherwise>
+				select count(*) from board
+			</otherwise>
+		</choose>
 	</select>
 
-	<select id="selectList" resultType="board">
-		select B.*, A.*,(select count(*) from attachment where B.boardseq=boardno) filecount from board B join member A on(A.memberseq=B.memberseq) order by boarddate desc
+	<select id="selectList" parameterType="boardSearch" resultType="board">
+		<choose>
+			<when test='keyword!=null and keyword!=""'>
+				select * from board join Member using(memberSeq) where boardTitle like '%'||#{keyword}||'%' OR boardContent like '%'||#{keyword}||'%'
+			</when>
+			<otherwise>
+				select B.*, A.*,(select count(*) from attachment where B.boardseq=boardno) filecount from board B join member A on(A.memberseq=B.memberseq) order by boarddate desc
+			</otherwise>
+		</choose>
 	</select>
-	
+
+<!-- 	<select id="board" parameterType="_int" resultType="board">
+			select b.*, m.memberSeq from board b join member m on(b.memberSeq=m.memberSeq) where boardSeq=#{boardSeq}
+	</select> -->
+
 	<insert id="insertBoard" parameterType="board">
 		insert into board values(boardseq.nextval,#{memberSeq},#{boardTitle},#{boardContent},default,default)
 		<selectKey keyProperty="boardSeq" resultType="_int" order="AFTER">select boardseq.currval from dual</selectKey>
 	</insert>
-	
+
 	<insert id="insertAttachment" parameterType="attachment">
 		insert into attachment(attachmentno, boardno, originalfilename, renamedfilename) values(seq_attachmentno.nextval,#{boardNo},#{originalFileName},#{renamedFileName})
 	</insert>
-	
+
 	<select id="selectBoard" parameterType="_int" resultType="board">
 		select * from board where boardseq=#{boardSeq}
 	</select>
-	
+
 	<select id="selectAttachment" parameterType="_int" resultType="attachment">
 		select * from attachment where boardno=#{boardNo}
 	</select>
-  
-  
+
+  	<delete id="deleteBoard" parameterType="_int">
+  		delete from board where boardSeq=#{boardSeq}
+  	</delete>
+
 </mapper>
