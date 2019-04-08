@@ -24,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.forpet.common.PageBarFactory;
 import com.forpet.model.vo.Attachment;
 import com.forpet.model.vo.Board;
+import com.forpet.model.vo.BoardComment;
+import com.forpet.model.vo.BoardSearch;
 import com.forpet.service.BoardService;
 
 
@@ -80,7 +82,7 @@ public class BoardController {
 		}
 	}
 	
-	@RequestMapping("/board/boardList")
+/*	@RequestMapping("/board/boardList")
 	public ModelAndView boardList(@RequestParam(value="cPage",required=false, defaultValue="1") int cPage)
 	{
 		int numPerPage=10;
@@ -94,6 +96,21 @@ public class BoardController {
 		mv.addObject("pageBar",PageBarFactory.getPageBar(totalList,cPage,numPerPage,"/forpet/board/boardList"));
 		mv.setViewName("board/boardList");
 		return mv;
+	}*/
+	@RequestMapping("/board/boardList")
+	public String boardList(BoardSearch bs,HttpServletRequest request)
+	{
+		bs.parsing();
+		
+		List<Board> list=service.selectList(bs);
+		int ncount=service.selectCount(bs);
+		
+		String npage= PageBarFactory.getPageBar(ncount, bs, request.getContextPath()+"/board/boardList");
+		
+		request.setAttribute("npage", npage);
+		request.setAttribute("ncount", ncount);
+		request.setAttribute("list", list);
+		return "board/boardList";
 	}
 
 	
@@ -144,17 +161,32 @@ public class BoardController {
 	{
 		return "board/boardForm";
 	}
-	
-	
+
+
 	@RequestMapping("/board/boardView.do")
 	public ModelAndView selectOne(@RequestParam(value="boardSeq",defaultValue="1")int boardSeq)
 	{
 		System.out.println(boardSeq);
 		ModelAndView mv=new ModelAndView();
+		
+		/*mv.addObject("b",service.board(boardSeq));*/
 		mv.addObject("board",service.selectBoard(boardSeq));
 		mv.addObject("attachmentList",service.selectAttachment(boardSeq));
 		mv.setViewName("board/boardView");
 		return mv;
 	}
-
+	
+	@RequestMapping("/board/deleteboard.do")
+	public ModelAndView deleteBoard(int boardSeq) {
+		ModelAndView mv=new ModelAndView();
+		
+		/*int result=service.deleteBoard(boardSeq);*/
+		System.out.println("boardSeq : "+boardSeq);
+		mv.addObject("result",service.deleteBoard(boardSeq));
+		mv.setViewName("board/boardView");
+		
+		return mv;
+	}
+	
+	
 }

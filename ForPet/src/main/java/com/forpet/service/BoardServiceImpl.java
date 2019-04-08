@@ -9,23 +9,36 @@ import com.forpet.common.exception.BoardException;
 import com.forpet.dao.BoardDao;
 import com.forpet.model.vo.Attachment;
 import com.forpet.model.vo.Board;
+import com.forpet.model.vo.BoardSearch;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardDao dao;
+	
+	
 
 	@Override
-	public int selectCount() {
-		// TODO Auto-generated method stub
-		return dao.selectCount();
+	public int board(int boardSeq) {
+		return dao.board(boardSeq);
 	}
 
 	@Override
-	public List<Board> selectList(int cPage, int numPerPage) {
+	public int deleteBoard(int boardSeq) {
+		return dao.deleteBoard(boardSeq);
+	}
+
+	@Override
+	public int selectCount(BoardSearch bs) {
 		// TODO Auto-generated method stub
-		return dao.selectList(cPage, numPerPage);
+		return dao.selectCount(bs);
+	}
+
+	@Override
+	public List<Board> selectList(BoardSearch bs) {
+		// TODO Auto-generated method stub
+		return dao.selectList(bs);
 	}
 
 	@Override
@@ -47,13 +60,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Board selectBoard(int boardNo) {
-		return dao.selectBoard(boardNo);
+	public Board selectBoard(int boardSeq) {
+		return dao.selectBoard(boardSeq);
 	}
 
 	@Override
-	public List<Attachment> selectAttachment(int boardNo) {
-		return dao.selectAttachment(boardNo);
+	public List<Attachment> selectAttachment(int boardSeq) {
+		return dao.selectAttachment(boardSeq);
 	}
 	
 	
