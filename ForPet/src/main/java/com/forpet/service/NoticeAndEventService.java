@@ -16,5 +16,6 @@ public interface NoticeAndEventService {
 	int addReadcount(int viewNo);
 	Notice selectOne(int noticeSeq);
 	int updateNotice(Notice n, List<Image> list, String[] exFile);
+	int eventCount(BoardSearch bs);
 	
 }

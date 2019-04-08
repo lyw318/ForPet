@@ -120,5 +120,12 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 		}
 		return result;
 	}
+
+	@Override
+	public int eventCount(BoardSearch bs) {
+		return dao.eventCount(bs);
+	}
+	
+	
 	
 }

@@ -19,4 +19,6 @@ public interface NoticeAndEventDao {
 	Notice selectOne(int noticeSeq);
 	int updateNotice(Notice n);
 	int deleteImage(String filename);
+	
+	int eventCount(BoardSearch bs);
 }

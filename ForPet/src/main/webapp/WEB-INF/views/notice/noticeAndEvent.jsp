@@ -31,7 +31,7 @@ align-items: flex-start; 등등 활용 가능-->
 				</c:forEach>
 			</div>
 			<div class="board-search-menu">
-		    	<div><input type="text" id="board-search-text" value="${param.keyword}" onkeydown="fn_search_write()" ><input type="button" value="검색" onclick="fn_board_search()"></div>
+		    	<div><input type="text" id="board-search-text" value="" onkeydown="fn_search_write()" ><input type="button" value="검색" onclick="fn_board_search()"></div>
 		    	<div></div>
 		    	<div></div>
 		    	<div>
@@ -47,11 +47,53 @@ align-items: flex-start; 등등 활용 가능-->
 				<p>이벤트</p>
 			</div>
 			<div class="board-preview">
-				<div>이벤트이미지</div>
-				<div>이벤트제목</div>
-				<div>이벤트시작일</div>
-				<div>이벤트종료일</div>
+				<div class="board-preview-element">
+					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
+					<div class="board-preview-title">이벤트제목</div>
+					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
+				</div>
+				<div class="board-preview-element">
+					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
+					<div class="board-preview-title">이벤트제목</div>
+					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
+				</div>
+				<div class="board-preview-element">
+					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
+					<div class="board-preview-title">이벤트제목</div>
+					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
+				</div>
+				<div class="board-preview-element">
+					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
+					<div class="board-preview-title">이벤트제목</div>
+					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
+				</div>
+				<div class="board-preview-element">
+					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
+					<div class="board-preview-title">이벤트제목</div>
+					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
+				</div>
+				<div class="board-preview-element">
+					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
+					<div class="board-preview-title">이벤트제목</div>
+					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
+				</div>
+				<div class="board-preview-element">
+					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
+					<div class="board-preview-title">이벤트제목</div>
+					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
+				</div>
+
 			</div>
+		</div>
+		<div class="board-search-menu">
+		    	<div><input type="text" id="board-search-text" value="" onkeydown="fn_search_write()" ><input type="button" value="검색" onclick="fn_board_search()"></div>
+		    	<div></div>
+		    	<div></div>
+		    	<div>
+		    		<c:if test='${loggedMember!=null&&"admin" eq loggedMember.memberEmail}'>
+					<button class="board-write" onclick="location.href='${path}/notice/noticeForm';">글쓰기</button>
+		            </c:if>
+		    	</div>
 		</div>
 	</div>
 	<form action="${path}/notice/noticeList" method="post" id="noticeView">

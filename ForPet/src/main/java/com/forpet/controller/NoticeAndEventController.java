@@ -48,6 +48,10 @@ public class NoticeAndEventController {
 		String npage = PageBarFactory.getPageBar(ncount, bs,  request.getContextPath()+"/notice/noticeList");
 		
 		//이벤트 가져오는 로직 - 나중에 추가!
+		int ecount = service.eventCount(bs);
+		
+		
+		
 		request.setAttribute("npage", npage);
 		request.setAttribute("ncount",ncount);
 		request.setAttribute("nlist", nlist);
@@ -94,10 +98,10 @@ public class NoticeAndEventController {
 			{
 				if(noticeCookie != null)
 				{
-					String[] cdata = noticeCookie.getValue().split("|");
+					String[] cdata = noticeCookie.getValue().split("\\|");
 					for(int i=0; i<cdata.length; i++)
 					{
-						if(cdata[i].equals(String.valueOf(no)))
+						if(cdata[i].equals(viewNo))
 						{
 							break cookieLogic;
 						}

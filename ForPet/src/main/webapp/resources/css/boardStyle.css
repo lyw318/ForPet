@@ -25,6 +25,41 @@
             flex-flow: column nowrap;
             font-size: 14px;
         }
+        
+        .board-preview
+        {
+            border-top: 2px solid rgb(139, 85, 38);
+            border-bottom: 1px solid #ccc;
+        	display: flex;
+            flex-flow: row wrap;
+            font-size: 14px;
+        }
+        .board-preview-element
+        {
+        	display: flex;
+            flex-flow: column nowrap;
+            margin: 16px;
+            width: 300px;
+            height: 380px;
+            cursor: pointer;
+        }
+        .board-preview-element:hover
+        {
+        	background-color: rgb(255,250,245);
+        
+        }
+        .board-preview-image
+        {
+        	width: 300px;
+        	height: 300px;
+        }
+        
+        .board-preview-title
+        {
+        	font-size:19px;
+        }
+        
+        
 
         .table-header
         {
@@ -174,6 +209,8 @@
         .board-search-menu > div:nth-of-type(3){flex: 4 1 0;}
         .board-search-menu > div:nth-of-type(4){flex: 1 1 0;}
         
+   
+        
         
 /*  공지사항 작성 관련 css */
         .board-form-wrapper
@@ -236,7 +273,11 @@
         {
             outline: none;
         }
-        
+        .added-image-container
+        {
+         	flex-wrap: wrap;
+         	display: flex;
+        }
          .added-image-box
         {
             width: 82px;
@@ -253,7 +294,7 @@
             height: 80px;
             border: 1px dotted gray;
             position: relative;
-            margin-right: 10px;
+            margin : 5px;
         }
         .image-upload-container:hover
         {

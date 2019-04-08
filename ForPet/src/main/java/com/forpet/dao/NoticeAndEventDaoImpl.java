@@ -73,6 +73,11 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 	public int deleteImage(String filename) {
 		return session.delete("noticeandevent.deleteImage", filename);
 	}
+
+	@Override
+	public int eventCount(BoardSearch bs) {
+		return session.selectOne("noticeandevent.eventCount",bs);
+	}
 	
 	
 	
