@@ -1,8 +1,8 @@
 
 
 section#myPageMain {
-    margin-top: 225px;
-    min-height: 542px;
+    margin-top: 195px;
+    min-height: 430px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -10,12 +10,12 @@ section#myPageMain {
 
 section#myPageMain .myPageMain_left {
     width: 20%;
-    min-height: 542px;
+    min-height: 430px;
 }
 
 section#myPageMain .myPageMain_right {
     width: 80%;
-    min-height: 542px;
+    min-height: 430px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,11 +169,12 @@ section#myPageMain .myPageMain_top {
     height: 60px;
     position: fixed;
     display: inline-block;
-    top: 163px;
+    top: 133px;
     text-align: left;
     font-size: 14px;
     transition: 500ms;
     overflow: hidden;
+    z-index: 1;
 }
 
 section#myPageMain .myPageMain_topBox {

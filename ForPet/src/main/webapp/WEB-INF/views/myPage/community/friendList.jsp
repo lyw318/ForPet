@@ -19,32 +19,32 @@
 
 	<div class="myPageMain_right">
         <div id="friendList">
-            <form action="${path}/community/friendInsert" method="post" id="friendListFrmIn">
                 <div class="friendBox">
+				<form action="${path}/community/friendInsert" method="post" id="friendListFrmIn">
                     <div class="friendBox_top">
                         <div class="friendSearch">
-                            친구추가
+ 							친구추가
                             &nbsp;&nbsp;
                             <input class="friendSearchText" type="text" name="memberNickname"/>
                             <button class="defaultBtn" type="button" onclick="fn_friendInsert()">추가</button>
                         </div>
                     </div>
-                    <div class="friendBox_mid friendInList"></div>
+				</form>
+				<div class="friendBox_mid friendInList"></div>
                 </div>
-            </form>
-            <form action="${path}/community/friendBlock" method="post" id="friendListFrmBl">
                 <div class="friendBox">
-                    <div class="friendBox_top">
-                        <div class="friendSearch">
-                            친구차단
-                            &nbsp;&nbsp;
-                            <input class="friendSearchText"  type="text" name="memberNickname"/>
-                            <button class="defaultBtn" type="button" onclick="fn_friendBlock()">차단</button>
-                        </div>
-                    </div>
-                    <div class="friendBox_mid friendBlList"></div>
+	                <form action="${path}/community/friendBlock" method="post" id="friendListFrmBl">
+	                    <div class="friendBox_top">
+	                        <div class="friendSearch">
+								친구차단
+	                            &nbsp;&nbsp;
+	                            <input class="friendSearchText"  type="text" name="memberNickname"/>
+	                            <button class="defaultBtn" type="button" onclick="fn_friendBlock()">차단</button>
+	                        </div>
+	                    </div>
+					</form>
+					<div class="friendBox_mid friendBlList"></div>
                 </div>
-            </form>
         </div>
 	</div>
 </section>

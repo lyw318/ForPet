@@ -62,7 +62,7 @@
             <li>내 커뮤니티</li>
 				<ul class="sub">
 					<li onclick="javascript:location.href='${path }/community/friendList'">친구 관리</li>
-                    <li onclick="javascript:location.href='${path }'">쪽지 관리</li>
+                    <li onclick="javascript:location.href='${path }/community/msgList'">쪽지 관리</li>
                 </ul>
             <li>고객센터</li>
         </ul>
@@ -89,7 +89,7 @@
             if ($(window).scrollTop() != 0) {
                 $(".myPageMain_top").css("top", "46px");
             } else {
-                $(".myPageMain_top").css("top", "163px");
+                $(".myPageMain_top").css("top", "133px");
             }
         });
     </script>

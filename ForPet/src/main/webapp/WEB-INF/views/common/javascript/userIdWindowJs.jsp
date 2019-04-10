@@ -4,8 +4,11 @@
 <script>
 	
 	function fn_msgSendWindow() {
-		window.open("${path}/community/msgSendWindow","messageSend","width=500, height=400, top=100");
-		
+		var url="${path}/community/msgSendWindow";
+		window.open("","messageSend","width=510, height=410, top=100");
+		$(".sendBoxFrm").attr("action",url);
+		$(".sendBoxFrm").attr("target","messageSend");
+		$(".sendBoxFrm").submit();
 	}
 
 	// userBox 기능 구현 로직
@@ -35,7 +38,6 @@
 	        data: { "memberNickname": memberNickname },
 	        dataType: "html",
 	        success: function (data) {
-	        	console.log(data);
 	            $('.userBox').get(i).innerHTML = data;
 	        }
 	    })

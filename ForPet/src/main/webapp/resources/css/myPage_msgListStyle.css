@@ -1,0 +1,126 @@
+
+
+#myPage_msgList {
+    width: 100%;
+    min-height: 430px;
+}
+
+#myPage_msgList .msgListTop {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#myPage_msgList .msgListSearch {
+    margin-right: 10px;
+    display: flex;
+}
+
+#myPage_msgList .msgListSearch {
+    margin-right: 10px;
+    display: flex;
+}
+
+#myPage_msgList .mlSearchText {
+    outline: none;
+    color: #c69c76;
+    border: 1px solid #c69c76;
+    transition: 500ms;
+}
+
+#myPage_msgList .mlSearchBtn {
+    outline: none;
+    padding: 5px;
+    color: #fff;
+    background-color: #50351a;
+    border: 1px solid #50351a;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+#myPage_msgList .mlSearchBtn:hover {
+    outline: none;
+    padding: 5px;
+    color: #9a7654;
+    background-color: #fff;
+    border: 1px solid #9a7654;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+#myPage_msgList .msgListBtn {
+    outline: none;
+    padding: 5px;
+    color: #9a7654;
+    background-color: #fff;
+    border: 1px solid #9a7654;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+#myPage_msgList .msgListBtn:hover {
+    outline: none;
+    padding: 5px;
+    color: #fff;
+    background-color: #50351a;
+    border: 1px solid #50351a;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+#myPage_msgList .msgListTable {
+    border-top: 2px solid rgb(139, 85, 38);
+    border-bottom: 1px solid black;
+    margin: 10px;
+}
+
+#myPage_msgList .msgListTitle {
+    width: 100%;
+    padding: 15px 0;
+    display: table;
+    border-bottom: 1px solid #ccc;
+}
+
+#myPage_msgList .msgListContent {
+    width: 100%;
+    padding: 10px 0;
+    display: table;
+    border-bottom: 1px solid #ccc;
+}
+
+#myPage_msgList .msgListColcc {
+    width: 50px;
+    display: table-cell;
+
+}
+
+#myPage_msgList .msgListColRecUser {
+    width: 100px;
+    display: table-cell;
+
+}
+
+#myPage_msgList .msgListTitle .msgListColCont {
+    display: table-cell;
+
+}
+
+#myPage_msgList .msgListContent .msgListColCont {
+    display: table-cell;
+    text-align: left;
+    text-indent: 15px;
+
+}
+
+#myPage_msgList .msgListColDate {
+    width: 100px;
+    display: table-cell;
+
+}
+
+#myPage_msgList .msgListColBlock {
+    width: 110px;
+    display: table-cell;
+
+}

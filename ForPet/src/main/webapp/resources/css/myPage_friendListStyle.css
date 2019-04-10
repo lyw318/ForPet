@@ -7,17 +7,6 @@
 
 }
 
-#friendList #friendListFrmIn,
-#friendList #friendListFrmBl
-{
-    width: 100%;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 #friendList .friendList_top {
     width: 100%;
 }
@@ -28,10 +17,21 @@
 
 #friendList .friendBox {
     width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#friendList #friendListFrmIn,
+#friendList #friendListFrmBl
+{
+    width: 100%;
 }
 
 #friendList .friendBox_top {
-    width: 706px;
+    width: 731px;
     margin-bottom: 10px;
     display: flex;
     justify-content: flex-end;

@@ -18,23 +18,50 @@
 <body id="msgSendWindow">
 	<header></header>
 	<section>
-		<form action="" method="post">
+		<c:if test="${msg == null }">
+			<form action="${path}/community/insertMsg" method="post">
+				<div class="msgSendBox">
+					<div class="SendUserBox">
+						보내는 사람 :&nbsp;&nbsp;
+						${loggedMember.memberNickname}
+						<input type="hidden" name=memberNickname value="${loggedMember.memberNickname}"/>
+					</div>
+					<div class="recUserBox">
+						받는 사람 :&nbsp;&nbsp;
+						${sendUserInfo.memberNickname}
+						<input type="hidden" name="mMsgRcvNickname" value="${sendUserInfo.memberNickname}"/>
+					</div>
+					<div class="msContent">
+						<textarea name="mMsgContent" id="mMsgContent"></textarea>
+					</div>
+					<div class="sendSaveBox">
+						보낸쪽지함에 저장
+						<input type="checkbox" name=""/>
+					</div>
+					<div class="msBtnBox">
+						<input type="submit" value="보내기" class="defaultBtn"/>
+						<input type="button" value="취소" class="defaultBtn" onclick="sendPopupClose()"/>
+					</div>
+				</div>
+			</form>
+		</c:if>
+		<c:if test="${msg != null }">
 			<div class="msgSendBox">
-				<div>보내는 사람</div>
-				<div>받는 사람</div>
-				<div>
-					<textarea name="" id="" cols="30" rows="10"></textarea>
+				<div class="msMsg">
+					${msg }
 				</div>
-				<div>
-					보낸쪽지함에 저장
-				</div>
-				<div>
-					<input type="submit" value="보내기"/>
-					<input type="button" value="취소"/>
+				<div class="msBtnBox">
+					<input type="button" value="닫기" class="defaultBtn" onclick="sendPopupClose()"/>
 				</div>
 			</div>
-		</form>
+		</c:if>
 	</section>
 	<footer></footer>
+
+	<script>
+		function sendPopupClose() {
+			window.close();
+		}
+	</script>
 </body>
 </html>

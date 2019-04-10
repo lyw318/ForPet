@@ -51,6 +51,7 @@
 			<mapping path="/member/memberDel.do" />
 			<mapping path="/board/boardFormEnd.do" />
 			<mapping path="/board/boardForm" />
+			<mapping path="/community/msgList" />
 			<beans:bean id="loggerInterceptor" class="com.forpet.common.LoginCheckInterceptor" />
 		</interceptor>
 		
