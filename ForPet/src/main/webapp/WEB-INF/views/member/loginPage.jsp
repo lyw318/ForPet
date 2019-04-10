@@ -23,7 +23,7 @@
 				<div class="loginBoxRow">
 					<div class="loginBoxCol">Password</div>
 					<div class="loginBoxColInput">
-						<input type="text" class="loginInput" name="memberPassword" required/>
+						<input type="password" class="loginInput" name="memberPassword" required/>
 					</div>
 				</div>
 			</div>

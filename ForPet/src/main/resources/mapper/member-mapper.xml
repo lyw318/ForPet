@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
  
+
+
+<!-- <update id="userAuth">
+	<![CDATA[update user set userCertification = 1 where (select count(*) from userAuth where memberEmail = #{memberEmail}) > 0]]>
+</update> -->
+ 
  <select id="selectOne" parameterType="member" resultType="member">
  SELECT * FROM MEMBER WHERE MEMBEREMAIL=#{memberEmail}
  </select>
@@ -16,6 +22,19 @@
  select memberSeq.currval from dual
  </selectKey>
  </insert>
+ 
+ <!-- 메일인증 -->
+ <insert id="insertUserAuth" parameterType="map">
+ insert into userAuth values(#{memberEmail}, #{authKey})
+ </insert>
+ 
+ <update id="updateUserAuth">
+ update userAuth set authKey=#{authKey} where memberEmail=#{memberEmail}
+ </update>
+ 
+ <select id="selectCountUserAuth" parameterType="string" resultType="string">
+ select authKey from userAuth where memberEmail=#{memberEmail}
+ </select>
  
  <update id="update"  parameterType="member">
  update member set memberPassword=#{memberPassword},memberNickname=#{memberNickname},memberName=#{memberName},memberPhone=#{memberPhone},memberAddress=#{memberAddress} where memberEmail=#{memberEmail}

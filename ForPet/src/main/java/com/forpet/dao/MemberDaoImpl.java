@@ -1,5 +1,6 @@
 package com.forpet.dao;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -13,6 +14,35 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Autowired
 	private SqlSessionTemplate session;
+
+	
+	
+	
+	@Override
+	public int insertUserAuth(String memberEmail, String key) {
+		// TODO Auto-generated method stub
+		Map m=new HashMap();
+		m.put("memberEmail", memberEmail);
+		m.put("authKey", key);
+		return session.insert("member.insertUserAuth",m);
+	}
+
+	@Override
+	public int updateUserAuth(String memberEmail, String key) {
+		// TODO Auto-generated method stub
+		Map m=new HashMap();
+		m.put("memberEmail", memberEmail);
+		m.put("authKey", key);
+		return session.update("member.updateUserAuth",m);
+	}
+
+	
+
+	@Override
+	public String selectCountUserAuth(String memberEmail) {
+		// TODO Auto-generated method stub
+		return session.selectOne("member.selectCountUserAuth",memberEmail);
+	}
 
 	@Override
 	public Member selectOne(Member m) {

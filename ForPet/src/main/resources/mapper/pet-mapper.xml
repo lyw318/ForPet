@@ -2,6 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="pet">
   <insert id="insertPet" parameterType="pet">
-  insert into pet values(petSeq.nextval,#{petName},#{petBirth},#{petType},#{petType2},#{petRenamedImage})
+  insert into pet values(petSeq.nextval,#{memberSeq},#{petName},#{petBirth},#{petType},#{petType2},#{petRenamedImage})
   </insert>
+  
+  <select id="selectList" parameterType="member" resultType="pet">
+  select * from pet where memberSeq=#{memberSeq}
+  </select>
+  <select id="selectOne" parameterType="int" resultType="pet">
+  	select * from pet where petSeq=#{id}
+  </select>
+  
+  <update id="update" parameterType="pet">
+  update pet set petName=#{petName},petBirth=#{petBirth},petType=#{petType},petType2=#{petType2},petRenamedImage=#{petRenamedImage} where petSeq=#{petSeq}
+  </update>
+  
+  <delete id="delete" parameterType="pet">
+  delete from pet where petSeq=#{petSeq}
+  </delete>
+  
 </mapper>

@@ -27,10 +27,9 @@ div#userid-container span.guide {
 	right: 10px; 
 }
 
-div#userid-container span.guide2 {
+div#userid-container2 span.guide2 {
 	display: none;
 	font-size: 12px;
-	position: absolute;
  	top: 12px;
 	right: 10px; 
 }
@@ -42,7 +41,13 @@ div#userid-container span.ok {
 div#userid-container span.error {
 	color: red;
 }
+div#userid-container2 span.ok {
+	color: green;
+}
 
+div#userid-container2 span.error {
+	color: red;
+}
 /* 회원가입_end */
  table#tbl-dev{
       margin:0 auto;
