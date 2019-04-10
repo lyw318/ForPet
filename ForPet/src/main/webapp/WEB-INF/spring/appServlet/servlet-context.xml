@@ -60,6 +60,7 @@
 			<mapping path="/notice/noticeFormEnd.do" />
 			<mapping path="/notice/noticeDelete.do" />
 			<mapping path="/notice/noticeUpdate" />
+			<mapping path="/event/eventForm" />
 			<beans:bean id="adminInterceptor" class="com.forpet.common.AdminCheckInterceptor" />
 		</interceptor>
 	</interceptors>

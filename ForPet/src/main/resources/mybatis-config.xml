@@ -7,6 +7,7 @@
 		<typeAlias type="com.forpet.model.vo.BoardSearch" alias="boardSearch"/>
 		<typeAlias type="com.forpet.model.vo.MemberFriend" alias="memberFriend"/>
 		<typeAlias type="com.forpet.model.vo.Notice" alias="notice"/>
+		<typeAlias type="com.forpet.model.vo.Event" alias="event"/>
 		<typeAlias type="com.forpet.model.vo.Pet" alias="pet"/>
 		<typeAlias type="com.forpet.model.vo.Board" alias="board"/>
 		<typeAlias type="com.forpet.model.vo.Attachment" alias="attachment"/>

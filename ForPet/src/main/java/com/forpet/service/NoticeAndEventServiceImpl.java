@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.forpet.dao.NoticeAndEventDao;
 import com.forpet.model.vo.BoardSearch;
+import com.forpet.model.vo.Event;
 import com.forpet.model.vo.Image;
 import com.forpet.model.vo.Notice;
 
@@ -124,6 +125,11 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 	@Override
 	public int eventCount(BoardSearch bs) {
 		return dao.eventCount(bs);
+	}
+
+	@Override
+	public List<Event> eventList(BoardSearch bs) {
+		return dao.eventList(bs);
 	}
 	
 	

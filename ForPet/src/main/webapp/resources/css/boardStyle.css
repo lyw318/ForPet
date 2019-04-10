@@ -278,6 +278,11 @@
          	flex-wrap: wrap;
          	display: flex;
         }
+        .added-main-image-container
+        {
+         	flex-wrap: wrap;
+         	display: flex;
+        }
          .added-image-box
         {
             width: 82px;
