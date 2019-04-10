@@ -3,6 +3,7 @@ package com.forpet.dao;
 import java.util.List;
 
 import com.forpet.model.vo.BoardSearch;
+import com.forpet.model.vo.Event;
 import com.forpet.model.vo.Image;
 import com.forpet.model.vo.Notice;
 
@@ -19,4 +20,7 @@ public interface NoticeAndEventDao {
 	Notice selectOne(int noticeSeq);
 	int updateNotice(Notice n);
 	int deleteImage(String filename);
+	
+	int eventCount(BoardSearch bs);
+	List<Event> eventList(BoardSearch bs);
 }

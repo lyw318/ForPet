@@ -3,6 +3,7 @@ package com.forpet.service;
 import java.util.List;
 
 import com.forpet.model.vo.BoardSearch;
+import com.forpet.model.vo.Event;
 import com.forpet.model.vo.Image;
 import com.forpet.model.vo.Notice;
 
@@ -16,5 +17,7 @@ public interface NoticeAndEventService {
 	int addReadcount(int viewNo);
 	Notice selectOne(int noticeSeq);
 	int updateNotice(Notice n, List<Image> list, String[] exFile);
+	int eventCount(BoardSearch bs);
+	List<Event> eventList(BoardSearch bs);
 	
 }

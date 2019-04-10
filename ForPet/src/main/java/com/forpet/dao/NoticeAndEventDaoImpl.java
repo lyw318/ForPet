@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.forpet.model.vo.BoardSearch;
+import com.forpet.model.vo.Event;
 import com.forpet.model.vo.Image;
 import com.forpet.model.vo.Notice;
 
@@ -73,8 +74,20 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 	public int deleteImage(String filename) {
 		return session.delete("noticeandevent.deleteImage", filename);
 	}
+
+	@Override
+	public int eventCount(BoardSearch bs) {
+		return session.selectOne("noticeandevent.eventCount",bs);
+	}
+
+	@Override
+	public List<Event> eventList(BoardSearch bs) {
+		bs.parsing();
+		RowBounds row=new RowBounds((bs.getcPageNo()-1)*bs.getNumPerPageNo(), bs.getNumPerPageNo());
+		return session.selectList("noticeandevent.eventList",bs,row);
+	}
 	
-	
+		
 	
 	
 }

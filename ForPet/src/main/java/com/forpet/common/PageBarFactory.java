@@ -10,7 +10,7 @@ public class PageBarFactory {
 	public static String getPageBar(int total, BoardSearch bs, String url) // url은 루트 경로 포함
 	{
 
-		
+		String functionName = "fn_paging_"+url.substring(url.lastIndexOf("/")+1);
 		String pageBar;		
 		String querryStr ="";
 		int cPage = bs.getcPageNo();
@@ -62,14 +62,14 @@ public class PageBarFactory {
 			}
 			else
 			{
-				pageBar+="<div><a href='javascript:fn_paging("+1+")'><img src='/forpet/resources/images/board-double-arrow-left.png'></a></div>";
-				pageBar+="<div><a href='javascript:fn_paging("+1+")'><img src='/forpet/resources/images/board-arrow-left.png'></a></div>";
+				pageBar+="<div><a href='javascript:"+functionName+"("+1+")'><img src='/forpet/resources/images/board-double-arrow-left.png'></a></div>";
+				pageBar+="<div><a href='javascript:"+functionName+"("+1+")'><img src='/forpet/resources/images/board-arrow-left.png'></a></div>";
 			}
 		}
 		else
 		{
-			pageBar+="<div><a href='javascript:fn_paging("+1+")'><img src='/forpet/resources/images/board-double-arrow-left.png'></a></div>";
-			pageBar+="<div><a href='javascript:fn_paging("+(pageStart-1)+")'><img src='/forpet/resources/images/board-arrow-left.png'></a></div>";
+			pageBar+="<div><a href='javascript:"+functionName+"("+1+")'><img src='/forpet/resources/images/board-double-arrow-left.png'></a></div>";
+			pageBar+="<div><a href='javascript:"+functionName+"("+(pageStart-1)+")'><img src='/forpet/resources/images/board-arrow-left.png'></a></div>";
 		}
 		
 		for(int i=pageStart; i<=pageEnd;i++)
@@ -80,7 +80,7 @@ public class PageBarFactory {
 			}
 			else
 			{
-				pageBar+="<div><a href='javascript:fn_paging("+i+")'>"+i+"</a></div>";
+				pageBar+="<div><a href='javascript:"+functionName+"("+i+")'>"+i+"</a></div>";
 			}
 		}
 		
@@ -94,19 +94,19 @@ public class PageBarFactory {
 			}
 			else
 			{
-				pageBar+="<div><a href='javascript:fn_paging("+totalPage+")'><img src='/forpet/resources/images/board-arrow-right.png'></a></div>";
-				pageBar+="<div><a href='javascript:fn_paging("+totalPage+")'><img src='/forpet/resources/images/board-double-arrow-right.png'></a></div>";
+				pageBar+="<div><a href='javascript:"+functionName+"("+totalPage+")'><img src='/forpet/resources/images/board-arrow-right.png'></a></div>";
+				pageBar+="<div><a href='javascript:"+functionName+"("+totalPage+")'><img src='/forpet/resources/images/board-double-arrow-right.png'></a></div>";
 			}
 		}
 		else
 		{
-			pageBar+="<div><a href='javascript:fn_paging("+(pageEnd+1)+")'><img src='/forpet/resources/images/board-arrow-right.png'></a></div>";
-			pageBar+="<div><a href='javascript:fn_paging("+totalPage+")'><img src='/forpet/resources/images/board-double-arrow-right.png'></a></div>";
+			pageBar+="<div><a href='javascript:"+functionName+"("+(pageEnd+1)+")'><img src='/forpet/resources/images/board-arrow-right.png'></a></div>";
+			pageBar+="<div><a href='javascript:"+functionName+"("+totalPage+")'><img src='/forpet/resources/images/board-double-arrow-right.png'></a></div>";
 		}
 		
 		pageBar += "</div>";
 		pageBar += "<script>";
-		pageBar += "function fn_paging(cPage){";
+		pageBar += "function "+functionName+"(cPage){";
 		pageBar += "location.href='"+url+"?cPage='+cPage+'"+querryStr+"'";
 		pageBar += "}</script>";
 		return pageBar;

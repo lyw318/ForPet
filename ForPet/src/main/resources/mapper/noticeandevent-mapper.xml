@@ -56,4 +56,29 @@
  <delete id="deleteImage" parameterType="string">
  	delete from NoticeImage where filename = #{filename}
  </delete>
+  <select id="eventCount" parameterType="boardSearch" resultType="_int">
+ 	<choose>
+	 	<when test='keyword!=null and keyword!=""'>
+	 		select count(*) from event where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish 
+	 	</when>
+	 	<otherwise>
+	 		select count(*) from event where sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish
+		</otherwise>
+ 	</choose>
+ </select>
+ <select id="eventList" parameterType="boardSearch" resultType="event">
+   	<choose>
+	 	<when test='keyword!=null and keyword!=""'>
+	 		select * from event join Member using(memberSeq) where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish 
+	 	</when>
+	 	<otherwise>
+	 		select * from event join Member using(memberSeq) where sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish
+		</otherwise>
+ 	</choose>
+ 	<choose>
+ 		<otherwise>
+ 			order by eventSeq desc
+ 		</otherwise>
+ 	</choose>
+ </select>
 </mapper>

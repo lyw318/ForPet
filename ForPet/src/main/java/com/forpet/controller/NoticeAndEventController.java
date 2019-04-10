@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.forpet.common.PageBarFactory;
 import com.forpet.model.vo.BoardSearch;
+import com.forpet.model.vo.Event;
 import com.forpet.model.vo.Image;
 import com.forpet.model.vo.Notice;
 import com.forpet.service.NoticeAndEventService;
@@ -45,12 +46,25 @@ public class NoticeAndEventController {
 		List<Notice> nlist = service.noticeList(bs);
 		
 		//페이징 처리
-		String npage = PageBarFactory.getPageBar(ncount, bs,  request.getContextPath()+"/notice/noticeList");
+		String npage = PageBarFactory.getPageBar(ncount, bs, request.getContextPath()+"/notice/noticeList");
 		
 		//이벤트 가져오는 로직 - 나중에 추가!
+		bs.setNumPerPage("9");
+		int ecount = service.eventCount(bs);
+		List<Event> elist = service.eventList(bs);
+		
+		//페이징 처리
+		String epage = PageBarFactory.getPageBar(ecount, bs, request.getContextPath()+"/event/eventList");
+		
+		
 		request.setAttribute("npage", npage);
 		request.setAttribute("ncount",ncount);
 		request.setAttribute("nlist", nlist);
+		
+		request.setAttribute("epage", epage);
+		request.setAttribute("ecount",ecount);
+		request.setAttribute("elist", elist);
+		
 		return "notice/noticeAndEvent";
 	}
 	
@@ -69,6 +83,25 @@ public class NoticeAndEventController {
 		request.setAttribute("ncount",ncount);
 		request.setAttribute("nlist", nlist);
 		return "notice/noticeList";
+	}
+	
+	@RequestMapping("/event/eventList")
+	public String eventList(BoardSearch bs, HttpServletRequest request)
+	{
+		bs.setNumPerPage("9");
+		bs.parsing();
+		
+		int ecount = service.eventCount(bs);
+		List<Event> elist = service.eventList(bs);
+		
+		//페이징 처리
+		String epage = PageBarFactory.getPageBar(ecount, bs, request.getContextPath()+"/event/eventList");
+		
+		request.setAttribute("epage", epage);
+		request.setAttribute("ecount",ecount);
+		request.setAttribute("elist", elist);
+		
+		return "notice/eventList";
 	}
 	
 	@RequestMapping("/notice/noticeView")
@@ -94,10 +127,10 @@ public class NoticeAndEventController {
 			{
 				if(noticeCookie != null)
 				{
-					String[] cdata = noticeCookie.getValue().split("|");
+					String[] cdata = noticeCookie.getValue().split("\\|");
 					for(int i=0; i<cdata.length; i++)
 					{
-						if(cdata[i].equals(String.valueOf(no)))
+						if(cdata[i].equals(viewNo))
 						{
 							break cookieLogic;
 						}
@@ -130,6 +163,12 @@ public class NoticeAndEventController {
 	public String noticeForm()
 	{
 		return "notice/noticeForm";
+	}
+	
+	@RequestMapping("/event/eventForm")
+	public String eventForm()
+	{
+		return "notice/eventForm";
 	}
 	
 	@RequestMapping("/notice/noticeFormEnd.do")
