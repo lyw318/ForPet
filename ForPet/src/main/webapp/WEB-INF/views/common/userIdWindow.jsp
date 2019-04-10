@@ -26,7 +26,7 @@
 		<div class="userTableBtn userIdWindow_Id" onclick="javascript:location.href='${path }'"></div>
 		<div class="userTableBtn">반려동물</div>
 		<c:if test="${loggedMember != null }">
-			<div class="userTableBtn" onclick="fn_msgSendWindow()">쪽지보내기</div>
+			<div class="userTableBtn" onclick="fn_msgSendWindow('${member.memberNickname}')">쪽지보내기</div>
 			<c:if test="${inFriFlag !=  member.memberNickname}">
 				<div class="userTableBtn" onclick="fnA_friendInsert('${member.memberNickname}')">친구추가</div>
 			</c:if>
@@ -38,5 +38,5 @@
 </div>
 
 <form class="sendBoxFrm" method="post">
-	<input type="hidden" name="memberNickname" value="${member.memberNickname}"/>
+	<input type="hidden" name="memberNickname" value=""/>
 </form>
