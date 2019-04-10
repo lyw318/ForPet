@@ -1,21 +1,25 @@
 package com.forpet.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
 
+import javax.inject.Inject;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.forpet.common.MailHandler;
+import com.forpet.common.TempKey;
 import com.forpet.model.vo.Member;
 import com.forpet.service.MemberService;
 
@@ -30,6 +34,9 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcEcoder;
 	
+	@Autowired
+    private JavaMailSender mailSender;
+    
 	@RequestMapping("/member/memberMyInform.do")
 	public String memberMyInform() {
 		return "member/memberMyInform";
@@ -82,7 +89,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/member/memberEnrollEnd.do")
-	public String memberEnrollEnd(Member m,Model model) {
+	public String memberEnrollEnd(Member m,String authKey,Model model) {
+		if(authKey==null||!authKey.equals(service.selectCountUserAuth(m.getMemberEmail())))
+		{
+			model.addAttribute("msg","이메일 인증번호가 일치하지 않습니다");
+			model.addAttribute("loc","/member/memberEnroll.do");
+			return "common/msg";
+		}
+		
+		
 		String rawPw=m.getMemberPassword();
 		String enPw=bcEcoder.encode(rawPw);
 		m.setMemberPassword(enPw);
@@ -142,6 +157,35 @@ public class MemberController {
 		boolean isOk=(result!=null)?false:true;
 		res.getWriter().println(isOk);	
 	}
+	
+	//메일 인증
+	@RequestMapping("/member/emailAuth.do")
+	public void emailAuth(String memberEmail) {
+		String key = new TempKey().getKey(20,false);
+
+		//메일 전송
+        try {
+        MailHandler sendMail = new MailHandler(mailSender);
+        sendMail.setSubject("FAINT  서비스 이메일 인증]");
+        sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>"+key).append("<a href='http://localhost:9090/forpet/member/memberEnroll").append("' target='_blank'>인증한 번호로 가입하기</a>").toString());
+        sendMail.setFrom("forpetAdmin@gmail.com", "포펫서비스센터 ");       
+        	sendMail.setTo(memberEmail);
+        	 sendMail.send();
+	String result=service.selectCountUserAuth(memberEmail);
+     	     	
+             if(result==null/*&&result.length()>0*/) {
+             	service.insertUserAuth(memberEmail,key); //인증키 db 저장
+             }
+             else {
+             	service.updateUserAuth(memberEmail,key);
+             }
+        }catch(MessagingException | UnsupportedEncodingException e) {
+        	e.printStackTrace();
+        }
+        
+       
+    }
+	
 	
 	@RequestMapping("/member/checkNickname.do")
 	public void checkNickname(String memberNickname,HttpServletResponse res)throws IOException {

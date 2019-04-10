@@ -1,19 +1,24 @@
 package com.forpet.model.vo;
 
+import java.util.Date;
+
 public class Pet {
 
 	private int petSeq;
+	private int memberSeq;
 	private String petName;
-	private int petBirth;
+	private Date petBirth;
 	private String petType;
 	private String petType2;
 	private String petRenamedImage;
 	
 	public Pet() {}
 
-	public Pet(int petSeq, String petName, int petBirth, String petType, String petType2, String petRenamedImage) {
+	public Pet(int petSeq, int memberSeq, String petName, Date petBirth, String petType, String petType2,
+			String petRenamedImage) {
 		super();
 		this.petSeq = petSeq;
+		this.memberSeq = memberSeq;
 		this.petName = petName;
 		this.petBirth = petBirth;
 		this.petType = petType;
@@ -29,6 +34,14 @@ public class Pet {
 		this.petSeq = petSeq;
 	}
 
+	public int getMemberSeq() {
+		return memberSeq;
+	}
+
+	public void setMemberSeq(int memberSeq) {
+		this.memberSeq = memberSeq;
+	}
+
 	public String getPetName() {
 		return petName;
 	}
@@ -37,11 +50,11 @@ public class Pet {
 		this.petName = petName;
 	}
 
-	public int getPetBirth() {
+	public Date getPetBirth() {
 		return petBirth;
 	}
 
-	public void setPetBirth(int petBirth) {
+	public void setPetBirth(Date petBirth) {
 		this.petBirth = petBirth;
 	}
 
@@ -71,9 +84,10 @@ public class Pet {
 
 	@Override
 	public String toString() {
-		return "Pet [petSeq=" + petSeq + ", petName=" + petName + ", petBirth=" + petBirth + ", petType=" + petType
-				+ ", petType2=" + petType2 + ", petRenamedImage=" + petRenamedImage + "]";
+		return "Pet [petSeq=" + petSeq + ", memberSeq=" + memberSeq + ", petName=" + petName + ", petBirth=" + petBirth
+				+ ", petType=" + petType + ", petType2=" + petType2 + ", petRenamedImage=" + petRenamedImage + "]";
 	}
+
 	
 	
 	

@@ -18,4 +18,11 @@ public interface MemberDao {
 
 	Member selectByNickname(Member m);
 
+	int insertUserAuth(String memberEmail, String key);
+
+	int updateUserAuth(String memberEmail, String key);
+
+	String selectCountUserAuth(String memberEmail);
+
+
 }

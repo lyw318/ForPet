@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/views/myPage/myPageCommon.jsp" %>
-
+	
     <div class="myPageMain_top">
         <div class="myPageMain_topBox">
             <div class="myPageMain_loc">
@@ -19,39 +19,45 @@
 
 	<div class="myPageMain_right">
 		<div id="enroll-container">
-		<form name="memberEnrollFrm" action="${pageContext.request.contextPath}/pet/petEnrollEnd.do" method="post" onsubmit="return validate();">
+		<form name="memberEnrollFrm" action="${pageContext.request.contextPath}/pet/petEnrollEnd.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
 					
 			<div class="memberImageBox">
 					<div class="memberImage">
 						<div class="inputBackground" id="image_section">
 							<div>
-								<img class="fileUploadIcon" width="100px" height="100px"/>
+								<img class="fileUploadIcon" width="100px" height="100px"/><br/>
 								<input type="file" class="profileImgBox" name="petRenamedImage" id="petRenamedImage"/>
 							</div>
 						</div>
-						<img alt="camaraIcon" class="image_section" src="<%= request.getContextPath() %>/images/petIcon.png" onclick="up_file()"/>
+						<%-- <img alt="camaraIcon" class="image_section" src="<%= request.getContextPath() %>/images/petIcon.png" onclick="up_file()"/> --%>
 					</div>
 				</div>
-			<input type="text" class="form-control" placeholder="반려동물 이름" name="petName" id="petName" required>
-			<input type="date" class="form-container" placeholder="반려동물 생일" name="petBirth" id="petBirth" required>
-						
-			<select placeholder="반려동물 종류" name="petType" id="petType" onchange="petTypeChange()" required>
-					<option value="">선택해주세요.</option>
-					<option value="dog">강아지</option>
-					<option value="cat">고양이</option>
-					<option value="hamster">햄스터</option>
-					<option value="guineaPig">기니피그</option>
-					<option value="rabbit">토끼</option>
-					<option value="hedgehog">고슴도치</option>
-					<option value="turtle">거북이</option>
-					<option value="bird">조류</option>
-				</select>
-			<input type="text" class="form-control" placeholder="상세품종을 적어주세요" name="petType2" id="petType2" required>
-			
-			
-			
+			<div class="petForm">	
+				<label>반려동물명<input type="text" class="form-control" placeholder="반려동물 이름" name="petName" id="petName" required></label><br/>
+				<!-- <input type="date" class="form-container" placeholder="반려동물 생일" name="petBirth" id="petBirth" required> -->
+				<label>품종
+				<label>	종류
+				<select name="petType" id="petType" onchange="petTypeChange()" required>
+						<option value="">선택해주세요.</option>
+						<option value="Dog">강아지</option>
+						<option value="Cat">고양이</option>
+						<option value="Hamster">햄스터</option>
+						<option value="GuineaPig">기니피그</option>
+						<option value="Rabbit">토끼</option>
+						<option value="Hedgehog">고슴도치</option>
+						<option value="Turtle">거북이</option>
+						<option value="Bird">조류</option>
+					</select>
+				</label><br/>
+				<input type="text" class="form-control" placeholder="상세품종을 적어주세요" name="petType2" id="petType2" required><br/>
+				</label>
+				<label>탄생일
+				<input type="date" class="form-control" name="petBirth" /><br/>
+				</label>
+			</div>
+			<input type="hidden" name="memberSeq" value="${loggedMember.getMemberSeq() }"/>
 			<input type="submit" class="btn btn-outline-success" value="등록">&nbsp;
-			<input type="submit" class="btn btn-outline-success" value="취소">
+			<input type="button" class="btn btn-outline-success" value="취소">
 			
 			
 		</form>
@@ -92,6 +98,9 @@
  
    function validate(){
 	   var petName=$("#petName").val().trim();
+/* 	   console.log(petName);
+	   console.log($("#petType").val());
+	   return false; */
    }
 </script>
 

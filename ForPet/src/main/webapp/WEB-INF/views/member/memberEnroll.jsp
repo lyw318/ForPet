@@ -14,17 +14,19 @@ input[type='password'],[type='text'],[type='tel']{
 </style>
 <section class="">
 	<div id="enroll-container">
-		<form name="memberEnrollFrm" action="${pageContext.request.contextPath}/member/memberEnrollEnd.do" method="post" onsubmit="return validate();">
+		<form name="memberEnrollFrm" action="${pageContext.request.contextPath}/member/memberEnrollEnd.do" method="post" onsubmit="return checkMemberEnroll(this);">
 			
 			<div id="userid-container">
-				<input type="text" class="form-control" placeholder="아이디(4글자 이상)" name="memberEmail" id="memberEmail_" required>
+				<input type="text" class="form-control" placeholder="이메일(ID)을 적어주세요" name="memberEmail" id="memberEmail_" required>
+				<input type="button" onclick="mailChk()" value="메일인증">
 				<span class="guide ok">아이디 사용 가능합니다</span>
 				<span class="guide error">아이디 사용 불가능합니다</span>
 				<input type="hidden" name="checkEmail" id="checkEmail"/>
+				<input type="text" class="form-control" name="authKey" placeholder="메일 인증번호 입력하세요" required>
 			</div>		
 			<input type="password" class="form-container" placeholder="비밀번호" name="memberPassword" id="memberPassword_" required>
 			<input type="password" class="form-container" placeholder="비밀번호 확인" id="memberPassword2" required>					
-			<div id="userid-container">
+			<div id="userid-container2">
 				<input type="text" class="form-container" placeholder="닉네임" name="memberNickname" id="memberNickname" required>
 				<span class="guide2 ok">닉네임 사용 가능합니다</span>
 				<span class="guide2 error">닉네임 사용 불가능합니다</span>
@@ -41,13 +43,45 @@ input[type='password'],[type='text'],[type='tel']{
 			
 			
 			<input type="submit" class="btn btn-outline-success" value="가입">&nbsp;
-			<input type="submit" class="btn btn-outline-success" value="취소">
+			<input type="reset" class="btn btn-outline-success" value="취소">
 			
 		</form>
 	</div>
+	<input type="hidden" id="emailChk" value="0"/>
+	<input type="hidden" id="nickChk" value="0"/>
 </section>
 
 <script>
+function checkMemberEnroll() {
+
+	var memberEmail = $("#memberEmail_").val().trim();
+		if (memberEmail.length < 4) {
+			alert("아이디를 4글자 이상 작성하세요.");
+			return false;
+		}
+		if($("#nickChk").val()=="0"){
+			alert("닉네임이 존재합니다");
+			return false;
+		}
+		if($("#emailChk").val()=="0"){
+			alert("이메일이 존재합니다");
+			return false;
+		}  
+	}
+/* 메일인증 */
+function mailChk(){
+	var email= $('#memberEmail_').val().trim();
+	$.ajax({
+		url:"${path}/member/emailAuth.do",
+		dataType:"json",
+		data:{"memberEmail":email},
+		success:function(data){
+			alert("이메일이 발송되었습니다. 인증번호를 적어주세요");
+		}
+	});
+}
+
+var emailCheck=0;
 /* 아이디 중복체크 */
 $(function() {
 	$('#memberEmail_').keyup(function() {
@@ -61,22 +95,24 @@ $(function() {
 			url:"${path}/member/checkEmail.do",
 			data:{"memberEmail":$("#memberEmail_").val()},
 			success:function(data) {
-				console.log(data);
-				console.log(typeof data);
 				
 				if(data.trim() == 'true') {
 					$(".guide.ok").show();
 					$(".guide.error").hide();
+					$("#emailChk").val("1");
 				}
 				else {
 					$(".guide.ok").hide();
 					$(".guide.error").show();
+					$("#emailChk").val("0");
 				}
 			}
 		})
 	
 	})
 })
+
+var nickNameCheck=0;
 /* 닉네임 중복체크 */
 $(function() {
 	$('#memberNickname').keyup(function() {
@@ -84,16 +120,17 @@ $(function() {
 			url:"${path}/member/checkNickname.do",
 			data:{"memberNickname":$("#memberNickname").val()},
 			success:function(data){
-				console.log(data);
-				console.log(typeof data);
+		
 				
 				if(data.trim() == 'true') {
 					$(".guide2.ok").show();
 					$(".guide2.error").hide();
+					$("#nickChk").val("1");
 				}
 				else {
 					$(".guide2.ok").hide();
 					$(".guide2.error").show();
+					$("#nickChk").val("0");
 				}
 			}
 		})
@@ -115,13 +152,7 @@ $(function () {
 		})
 	})
 
-	function validate() {
-		var memberEmail = $("#memberEmail").val().trim();
-		if (memberEmail.length < 4) {
-			alert("아이디를 4글자 이상 작성하세요.");
-			return false;
-		}
-	}
+
 	
 </script>
 

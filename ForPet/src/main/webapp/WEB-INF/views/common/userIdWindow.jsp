@@ -16,7 +16,7 @@
 <div class="userId_oneself">
 	<div class="userTable">
 		<div class="userTableBtn" onclick="javascript:location.href='${path }/main/myPageMain'">마이페이지</div>
-		<div class="userTableBtn">반려동물</div>
+		<div class="userTableBtn" onclick="javascript:location.href='${path }/pet/petList.do'">반려동물</div>
 		<div class="userTableBtn">쪽지보내기</div>
 		<div class="userTableBtn">고객센터</div>
 	</div>
