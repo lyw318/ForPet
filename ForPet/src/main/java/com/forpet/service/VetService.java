@@ -16,4 +16,6 @@ public interface VetService {
 	public Vet selectVet(int vetSeq);
 	public List selectVetCate(int vetSeq);
 	public List selectVetServ(int vetSeq);
+	public int addScrap(Map scrap);
+	public int selectScrap(Map<String, Integer> checkScrape);
 }

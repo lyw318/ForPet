@@ -1,7 +1,37 @@
+<%@page import="com.forpet.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <link rel="stylesheet" href="${path }/resources/css/vetView.css">
+<script>
+function scrapAjax(){
+	$.ajax({
+		url:"${pageContext.request.contextPath}/vetView/scrap.do",
+		dataType : "json",
+		data:{"memberSeq":"${loggedMember.memberSeq}","vetSeq":"${vet.vetSeq}"},
+		success:function(data)
+		{
+			console.log(data);
+			if (data=1)
+				{
+				alert("스크랩되었습니다");
+				$(".scrap").append("<img src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩완료'>");
+				}
+			if (data==0)
+				{
+				alert("이미 스크랩되어 있습니다");
+				$(".scrap").append("<img src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩완료'>");
+				}
+			
+		},
+		error : function(request, status, error){
+			
+		}
+	});
+}
+
+</script>
+
 <section class="VetViewSection">
 
 	<div id="vetContainer">
@@ -11,14 +41,30 @@
 					${vet.vetName }
 				</div>
 				<div class="scrap">
-					<a href=""><img src="${path }/resources/images/vet/scrapIcon.png" width="35" height="35"
-							title="스크랩하기"></a>
+
+               <c:if test="${loggedMember.memberEmail != null}">
+					<c:if test="${isScraped == 1}"> 
+					<img onclick="scrapAjax('${vet.vetSeq }')" src="${path }/resources/images/vet/scrapIcon.png" width="35" height="35" title="스크랩하기">
+					</c:if>
+					<%-- <div>${isScraped }</div> --%>
+					<c:if test="${isScraped == 2}">
+					<img onclick="unscrapAjax('${vet.vetSeq }')" src="${path }/resources/images/vet/scrapIcon_done.png" width="35" height="35" title="스크랩취소">
+					</c:if>
+				</c:if>
+				<c:if test="${loggedMember.memberEmail == null}">
+				<img onclick="scrap()" src="${path }/resources/images/vet/scrapIcon.png" width="35" height="35" title="로그인하세요"></a>
+				</c:if>
 				</div>
 			</div>
 			<div class="vetAddress">${vet.vetAddress }</div>
 		</div>
-
 	</div>
+<script>
+function scrap(){
+	alert("로그인후 스크랩기능을 사용해주세요");
+}
+
+</script>
 
 	<div id="upperVet">
 		<div id="upperMagin">
@@ -48,7 +94,7 @@
 		
 			<br/>
 		<div class="operTimebox">
-			<div id="operTime" class="infoTitle">진료시간</div>
+			<div id="operTime" class="infoTitle">- 진 료 시 간 -</div>
 			<div class="operdiv">
 				<div class="settime">
 					<div>월요일</div>
@@ -96,13 +142,13 @@
 				병원 방문 전에 꼭 전화로 확인해주세요.
 			</div>
 
-			<div id="phone" class="infoTitle">전화번호</div>
+			<div id="phone" class="infoTitle">- 전 화 번 호 -</div>
 			<div id="phonenumber">${vet.vetPhone }</div>
 
-			<div id="appendix" class="infoTitle">부가정보</div>
+			<div id="appendix" class="infoTitle">- 부 가 정 보 -</div>
 			<div id="appendixInfo">${vet.vetComment }</div>
 
-			<div id="vetService" class="infoTitle">부가서비스</div>
+			<div id="vetService" class="infoTitle">- 부가서비스 -</div>
 			<div>
 			<c:forEach items="${vserv }" var="v" varStatus="status">
 				<c:if test='${v.vetItem eq "야간"}'><img src="${path }/resources/images/vet/24hour.png" width="55"

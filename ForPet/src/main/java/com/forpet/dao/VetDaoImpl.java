@@ -53,4 +53,18 @@ public class VetDaoImpl implements VetDao {
 		return session.selectList("vet.selectVetServ", vetSeq);
 	}
 
-}
+	@Override
+	public int addScrap(Map scrap) {
+
+		return session.insert("vet.addScrap", scrap);
+	}
+
+	@Override
+	public int selectScrap(Map checkScrap) {
+	
+		return session.selectOne("vet.checkScrap", checkScrap);
+	}
+
+
+	}
+
