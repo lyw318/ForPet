@@ -17,4 +17,9 @@ public interface VetDao {
 	Vet selectVet(int vetSeq);
 	List selectVetCate(int vetSeq);
 	List selectVetServ(int vetSeq);
+
+	int addScrap(Map scrap);
+
+	int selectScrap(Map checkScrap);
+
 }

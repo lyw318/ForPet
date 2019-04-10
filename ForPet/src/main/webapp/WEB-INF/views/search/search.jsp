@@ -85,9 +85,14 @@
 				for(var i = 0; i<data.list.length;i++){
 				html+='<div class="vetListBox" onclick="fn_address(\''+data.list[i]["vetAddress"]+'\',\''+data.list[i].vetName+'\')">';
 				html+='<div class="vetListName">'+data.list[i]["vetName"]+'</div>';
-				html+='<div class="vetListAddress">'+data.list[i]["vetAddress"]+' '+
-					  '<a href="${path }/vetDetail.do?vetSeq='+data.list[i]["vetSeq"]+'">자세히</a></div>';				
-				html+='</div>';
+				html+='<div class="vetListAddress">'+data.list[i]["vetAddress"]+' '+'<a href="${path }/vetDetail.do?vetSeq='+data.list[i]["vetSeq"];
+					
+			/* 	if(${loggedMember !=null?"true":"false"})
+					{
+				html+='&memberSeq='+'${loggedMember.memberSeq}';
+					} */
+										
+				html+='">자세히</a></div>'+'</div>';
 				}
 				
 				//console.log("HTML:"+html);

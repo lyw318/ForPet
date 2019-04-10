@@ -50,4 +50,16 @@ public class VetServiceImpl implements VetService {
 		return dao.selectVetServ(vetSeq);
 	}
 
+	@Override
+	public int addScrap(Map scrap) {
+
+		return dao.addScrap(scrap);
+	}
+
+	@Override
+	public int selectScrap(Map checkScrap) {
+		
+		return dao.selectScrap(checkScrap);
+	}
+
 }

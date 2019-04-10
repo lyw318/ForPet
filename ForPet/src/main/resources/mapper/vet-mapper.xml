@@ -34,6 +34,13 @@
 	select * from vetService where vetSeq=#{vetSeq}
 	</select>
 		
+	<insert id="addScrap" parameterType="map" >
+	insert into vetScrap (memberseq, vetseq) values(#{memberSeq},#{vetSeq})
+	</insert> 
+	
+	<select id="checkScrap" parameterType="map" resultType="_int">
+	select count(*) from vetScrap where memberseq=#{memberSeq} and vetSeq=#{vetSeq}
+	</select>
 	
 	
 </mapper>
