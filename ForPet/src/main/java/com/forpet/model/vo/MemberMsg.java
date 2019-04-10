@@ -5,12 +5,11 @@ import java.sql.Date;
 public class MemberMsg {
 
 	private int mMsgSeq;
-	private int memberSeq;
+	private String memberNickname;
 	private String mMsgCate;
-	private int mMsgRcvNo;
-	private Date mMsgDate;
-	private String mMsgTitle;
+	private String mMsgRcvNickname;
 	private String mMsgContent;
+	private Date mMsgDate;
 	private String mMsgRead;
 	private String mMsgType;
 	
@@ -18,16 +17,15 @@ public class MemberMsg {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberMsg(int mMsgSeq, int memberSeq, String mMsgCate, int mMsgRcvNo, Date mMsgDate, String mMsgTitle,
-			String mMsgContent, String mMsgRead, String mMsgType) {
+	public MemberMsg(int mMsgSeq, String memberNickname, String mMsgCate, String mMsgRcvNickname, String mMsgContent,
+			Date mMsgDate, String mMsgRead, String mMsgType) {
 		super();
 		this.mMsgSeq = mMsgSeq;
-		this.memberSeq = memberSeq;
+		this.memberNickname = memberNickname;
 		this.mMsgCate = mMsgCate;
-		this.mMsgRcvNo = mMsgRcvNo;
-		this.mMsgDate = mMsgDate;
-		this.mMsgTitle = mMsgTitle;
+		this.mMsgRcvNickname = mMsgRcvNickname;
 		this.mMsgContent = mMsgContent;
+		this.mMsgDate = mMsgDate;
 		this.mMsgRead = mMsgRead;
 		this.mMsgType = mMsgType;
 	}
@@ -40,12 +38,12 @@ public class MemberMsg {
 		this.mMsgSeq = mMsgSeq;
 	}
 
-	public int getMemberSeq() {
-		return memberSeq;
+	public String getMemberNickname() {
+		return memberNickname;
 	}
 
-	public void setMemberSeq(int memberSeq) {
-		this.memberSeq = memberSeq;
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
 	}
 
 	public String getmMsgCate() {
@@ -56,28 +54,12 @@ public class MemberMsg {
 		this.mMsgCate = mMsgCate;
 	}
 
-	public int getmMsgRcvNo() {
-		return mMsgRcvNo;
+	public String getmMsgRcvNickname() {
+		return mMsgRcvNickname;
 	}
 
-	public void setmMsgRcvNo(int mMsgRcvNo) {
-		this.mMsgRcvNo = mMsgRcvNo;
-	}
-
-	public Date getmMsgDate() {
-		return mMsgDate;
-	}
-
-	public void setmMsgDate(Date mMsgDate) {
-		this.mMsgDate = mMsgDate;
-	}
-
-	public String getmMsgTitle() {
-		return mMsgTitle;
-	}
-
-	public void setmMsgTitle(String mMsgTitle) {
-		this.mMsgTitle = mMsgTitle;
+	public void setmMsgRcvNickname(String mMsgRcvNickname) {
+		this.mMsgRcvNickname = mMsgRcvNickname;
 	}
 
 	public String getmMsgContent() {
@@ -86,6 +68,14 @@ public class MemberMsg {
 
 	public void setmMsgContent(String mMsgContent) {
 		this.mMsgContent = mMsgContent;
+	}
+
+	public Date getmMsgDate() {
+		return mMsgDate;
+	}
+
+	public void setmMsgDate(Date mMsgDate) {
+		this.mMsgDate = mMsgDate;
 	}
 
 	public String getmMsgRead() {
@@ -106,8 +96,8 @@ public class MemberMsg {
 
 	@Override
 	public String toString() {
-		return "MemberMsg [mMsgSeq=" + mMsgSeq + ", memberSeq=" + memberSeq + ", mMsgCate=" + mMsgCate + ", mMsgRcvNo="
-				+ mMsgRcvNo + ", mMsgDate=" + mMsgDate + ", mMsgTitle=" + mMsgTitle + ", mMsgContent=" + mMsgContent
+		return "MemberMsg [mMsgSeq=" + mMsgSeq + ", memberNickname=" + memberNickname + ", mMsgCate=" + mMsgCate
+				+ ", mMsgRcvNickname=" + mMsgRcvNickname + ", mMsgContent=" + mMsgContent + ", mMsgDate=" + mMsgDate
 				+ ", mMsgRead=" + mMsgRead + ", mMsgType=" + mMsgType + "]";
 	}
 	

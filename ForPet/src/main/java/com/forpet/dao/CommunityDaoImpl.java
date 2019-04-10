@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.forpet.model.vo.Member;
 import com.forpet.model.vo.MemberFriend;
+import com.forpet.model.vo.MemberMsg;
 
 @Repository
 public class CommunityDaoImpl implements CommunityDao {
@@ -53,6 +54,21 @@ public class CommunityDaoImpl implements CommunityDao {
 	@Override
 	public int updateTypeFriend(MemberFriend mf) {
 		return session.update("community.updateTypeFriend", mf);
+	}
+
+	@Override
+	public List<MemberMsg> mmSelectList(MemberMsg mm) {
+		return session.selectList("community.mmSelectList", mm);
+	}
+
+	@Override
+	public int insertMsg(MemberMsg mm) {
+		return session.insert("community.insertMsg", mm);
+	}
+
+	@Override
+	public int delMsg(MemberMsg mm) {
+		return session.delete("community.delMsg", mm);
 	}
 	
 }

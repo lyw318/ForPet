@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.forpet.dao.CommunityDao;
 import com.forpet.model.vo.Member;
 import com.forpet.model.vo.MemberFriend;
+import com.forpet.model.vo.MemberMsg;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
@@ -53,6 +54,21 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public int updateTypeFriend(MemberFriend mf) {
 		return dao.updateTypeFriend(mf);
+	}
+
+	@Override
+	public List<MemberMsg> mmSelectList(MemberMsg mm) {
+		return dao.mmSelectList(mm);
+	}
+
+	@Override
+	public int insertMsg(MemberMsg mm) {
+		return dao.insertMsg(mm);
+	}
+
+	@Override
+	public int delMsg(MemberMsg mm) {
+		return dao.delMsg(mm);
 	}
 	
 }

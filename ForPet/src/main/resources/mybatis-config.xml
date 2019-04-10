@@ -6,11 +6,13 @@
 		<typeAlias type="com.forpet.model.vo.Vet" alias="vet"/>
 		<typeAlias type="com.forpet.model.vo.BoardSearch" alias="boardSearch"/>
 		<typeAlias type="com.forpet.model.vo.MemberFriend" alias="memberFriend"/>
+		<typeAlias type="com.forpet.model.vo.MemberMsg" alias="memberMsg"/>
 		<typeAlias type="com.forpet.model.vo.Notice" alias="notice"/>
 		<typeAlias type="com.forpet.model.vo.Pet" alias="pet"/>
 		<typeAlias type="com.forpet.model.vo.Board" alias="board"/>
 		<typeAlias type="com.forpet.model.vo.Attachment" alias="attachment"/>
 		<typeAlias type="com.forpet.model.vo.Image" alias="image"/>
+		
 		<!-- 추후 추가 
 		<typeAlias type="com.forpet.model.vo.Member" alias="member"/>
 		<typeAlias type="com.forpet.model.vo.Pet" alias="pet"/>

@@ -1,17 +1,20 @@
 package com.forpet.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.forpet.model.vo.Member;
 import com.forpet.model.vo.MemberFriend;
+import com.forpet.model.vo.MemberMsg;
 import com.forpet.service.CommunityService;
 
 @Controller
@@ -78,6 +81,7 @@ public class CommunityController {
 	@RequestMapping("/community/friendInsert")
 	private ModelAndView friendInsert(Member m, HttpSession session) {
 		
+		System.out.println(m.getMemberNickname());
 		Member oneself = (Member) session.getAttribute("loggedMember");
 		Member friendInfo = service.mSelectOne(m);
 		
@@ -195,4 +199,85 @@ public class CommunityController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/community/msgSendWindow")
+	private ModelAndView msgSendWindow(Member m, HttpSession session) {
+
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		Member sendUserInfo = service.mSelectOne(m);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("sendUserInfo", sendUserInfo);
+		mv.setViewName("community/msgSendWindow");
+		return mv;
+	}
+
+	@RequestMapping("/community/msgList")
+	private ModelAndView msgList(HttpSession session) {
+
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		
+		MemberMsg mm = new MemberMsg();
+		mm.setMemberNickname(oneself.getMemberNickname());
+		List<MemberMsg> mmResult = service.mmSelectList(mm);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("mmList",mmResult);
+		mv.setViewName("myPage/community/msgList");
+		return mv;
+	}
+
+	@RequestMapping("/community/msgList.do")
+	private ModelAndView msgListAjax(HttpSession session) {
+
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		
+		MemberMsg mm = new MemberMsg();
+		mm.setMemberNickname(oneself.getMemberNickname());
+		List<MemberMsg> mmResult = service.mmSelectList(mm);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("mmList",mmResult);
+		mv.setViewName("myPage/community/msgListAjax/msgListAjax");
+		return mv;
+	}
+	
+	@RequestMapping("/community/insertMsg")
+	private ModelAndView insertMsg(MemberMsg mm) {
+
+		int result = service.insertMsg(mm);
+		
+		String msg="";
+		String loc="/community/msgList";
+		if(result>0) {
+			msg="메세지 보내기 성공";
+			
+		}
+		else {
+			msg="메세지 보내기 실패";
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg",msg);
+		mv.addObject("loc",loc);
+		mv.setViewName("community/msgSendWindow");
+		return mv;
+	}
+	
+	@RequestMapping("/community/delMsg.do")
+	@ResponseBody
+	private String delMsg(int[] msgDelListNo) {
+		if(msgDelListNo != null) {
+			MemberMsg mm = new MemberMsg();
+			int result = msgDelListNo.length;
+			int resultCo = 0;
+			for(int i=0;i<msgDelListNo.length;i++) {
+				mm.setmMsgSeq(msgDelListNo[i]);
+				service.delMsg(mm);
+				resultCo++;
+			}
+		}
+		return "";
+	}
+	
 }

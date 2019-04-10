@@ -1,0 +1,95 @@
+
+#msgSendWindow {
+    margin: 0;
+    padding: 0;
+    color: #c69c76;
+    font-size: 14px;
+    letter-spacing: -0.4px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+::selection {
+    background-color: #c69c76;
+    color: #fff;
+}
+
+#msgSendWindow .msgSendBox {
+    width: 500px;
+    height: 400px;
+    padding: 5px;
+}
+
+#msgSendWindow .SendUserBox {
+    margin: 10px 0;
+    padding: 5px;
+    border-bottom: 1px solid #c69c76;
+}
+
+#msgSendWindow .recUserBox {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #c69c76;
+}
+
+#msgSendWindow .msContent {
+    margin-bottom: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#msgSendWindow .msContent textarea {
+    width: 480px;
+    height: 200px;
+    outline: none;
+    resize: none;
+    color: #c69c76;
+    border: 1px solid #c69c76;
+    border-radius: 5px;
+}
+
+#msgSendWindow .sendSaveBox {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #c69c76;
+}
+
+#msgSendWindow .msBtnBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#msgSendWindow .defaultBtn  {
+    padding: 10px 20px;
+	margin: 0 10px;
+	color: white;
+    background-color: #50351a;
+    border: 1px solid #50351a;
+    border-radius: 5px;
+	cursor: pointer;
+	transition: 500ms;
+}
+
+#msgSendWindow .defaultBtn:hover {
+    padding: 10px 20px;
+	margin: 0 10px;
+	color: #c69c76;
+    background-color: white;
+    border: 1px solid #c69c76;
+	border-radius: 5px;
+	transition: 500ms;
+}
+
+#msgSendWindow .msMsg {
+    width: 100%;
+    height: 88%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

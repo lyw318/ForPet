@@ -33,4 +33,16 @@
 	<update id="updateTypeFriend" parameterType="memberFriend">
 		UPDATE MEMBERFRIEND SET MFRIENDTYPE = #{mFriendType} WHERE MFRIENDNICKNAME = #{mFriendNickname}
 	</update>
+	
+	<select id="mmSelectList" parameterType="memberMsg" resultType="memberMsg">
+		SELECT * FROM MEMBERMSG WHERE MMSGRCVNICKNAME = #{memberNickname }
+	</select>
+	
+	<insert id="insertMsg" parameterType="memberMsg">
+		INSERT INTO MEMBERMSG VALUES(mMsgSeq.nextval,#{memberNickname},default,#{mMsgRcvNickname},#{mMsgContent},default,default,default)
+	</insert>
+	
+	<delete id="delMsg" parameterType="memberMsg">
+		DELETE FROM MEMBERMSG WHERE MMSGSEQ = #{mMsgSeq}
+	</delete>
 </mapper>

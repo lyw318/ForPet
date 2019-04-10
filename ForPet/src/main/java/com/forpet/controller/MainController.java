@@ -111,9 +111,8 @@ public class MainController {
 
 		
 		Member oneself = (Member) session.getAttribute("loggedMember");
-		String inFriFlag = m.getMemberNickname();
-		String blFriFlag = m.getMemberNickname();
-		
+		String inFriFlag = "";
+		String blFriFlag = "";
 		if(oneself != null) {
 			//로그인 대상자 확인후 그거에 맞춰 메뉴 구성 로직
 			MemberFriend mf = new MemberFriend();

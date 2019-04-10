@@ -14,6 +14,8 @@
     <meta charset="UTF-8">
     <title>ForPet</title>
     <script src="${path }/resources/js/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link rel="shortcut icon" href="">
     <!-- css link 모음 -->
     <link rel="stylesheet" href="${path }/resources/css/mainStyle.css" />
@@ -34,7 +36,7 @@
         <div class="HeightLine"></div>
         <div class="headerMidBox">
             <a href="${path}/main">
-                <img src="${path }/resources/images/mainLogaHeaderH80.png" alt="메인로고">
+                <img src="${path }/resources/images/mainLogaHeaderH60.png" alt="메인로고">
             </a>
         </div>
         <div class="headerBottomBox">
@@ -295,7 +297,7 @@
                 $(".headerMidBox img").css("transition", "500ms");
                 $(".headerMidBox img").css("opacity", "0");
             } else {
-                $(".headerMidBox").css("height", "80px");
+                $(".headerMidBox").css("height", "60px");
                 $(".headerMidBox").css("padding-top", "20px");
                 $(".headerMidBox").css("padding-boottom", "10px");
                 setTimeout(function () {
