@@ -44,7 +44,7 @@
             if ($(window).scrollTop() != 0) {
                 $(".adminMain_top").css("top", "46px");
             } else {
-                $(".adminMain_top").css("top", "163px");
+                $(".adminMain_top").css("top", "133px");
             }
         });
     </script>

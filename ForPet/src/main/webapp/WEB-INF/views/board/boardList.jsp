@@ -30,7 +30,7 @@
        				<div class="table-row">
        					<div>${b.boardSeq}</div>
        					<div><a href="${path}/board/boardView.do?boardSeq=${b.boardSeq}">${b.boardTitle }</a></div>
-       					<div>${b.memberNickname }</div>
+       					<div class="userBox">${b.memberNickname }</div>
        					<div>${b.boardDate }</div>
        					<div align="center">
                      		<c:if test="${b.fileCount>0}">

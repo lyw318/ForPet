@@ -1,7 +1,7 @@
 
 section#adminMain {
-    margin-top: 225px;
-    min-height: 542px;
+    margin-top: 195px;
+    min-height: 430px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -9,12 +9,12 @@ section#adminMain {
 
 section#adminMain .adminMain_left {
     width: 20%;
-    min-height: 542px;
+    min-height: 430px;
 }
 
 section#adminMain .adminMain_right {
     width: 80%;
-    min-height: 542px;
+    min-height: 430px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +81,7 @@ section#adminMain .adminMain_top {
     height: 60px;
     position: fixed;
     display: inline-block;
-    top: 163px;
+    top: 133px;
     text-align: left;
     font-size: 14px;
     transition: 500ms;
