@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.forpet.dao.VetDao;
+import com.forpet.model.vo.Member;
 import com.forpet.model.vo.Vet;
 
 @Service
@@ -60,6 +61,12 @@ public class VetServiceImpl implements VetService {
 	public int selectScrap(Map checkScrap) {
 		
 		return dao.selectScrap(checkScrap);
+	}
+
+	@Override
+	public List selectVetList(Member m) {
+		
+		return dao.selectVetList(m);
 	}
 
 }
