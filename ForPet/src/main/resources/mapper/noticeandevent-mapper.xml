@@ -32,8 +32,17 @@
  		select noticeSeq.currval from dual
  		</selectKey>
  </insert>
+ <insert id="insertEvent" parameterType="event">
+ 	insert into event values(eventSeq.nextval, #{memberSeq}, #{eventTitle}, #{eventContent}, 0, #{eventStart}, #{eventFinish})
+ 		<selectKey keyProperty="eventSeq" resultType="_int" order="AFTER">
+ 		select eventSeq.currval from dual
+ 		</selectKey>
+ </insert>
  <insert id="insertImage" parameterType="image">
     insert into NoticeImage values(#{filename}, #{refseq}, #{priority})
+ </insert>
+ <insert id="insertEventImage" parameterType="image">
+    insert into EventImage values(#{filename}, #{refseq}, #{priority})
  </insert>
  <select id="noticeImageList" parameterType="_int" resultType="string">
  	select filename from NoticeImage where noticeseq = #{viewNo} order by priority asc
@@ -67,12 +76,13 @@
  	</choose>
  </select>
  <select id="eventList" parameterType="boardSearch" resultType="event">
+ 	select A.*,B.*, (select filename from eventImage where priority = 1 and A.eventSeq = eventSeq) as "filename" from event A join Member B on(A.memberSeq = B.memberSeq)
    	<choose>
 	 	<when test='keyword!=null and keyword!=""'>
-	 		select * from event join Member using(memberSeq) where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish 
+	 		where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish 
 	 	</when>
 	 	<otherwise>
-	 		select * from event join Member using(memberSeq) where sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish
+	 		where sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish
 		</otherwise>
  	</choose>
  	<choose>

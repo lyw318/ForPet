@@ -3,6 +3,7 @@ package com.forpet.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -232,6 +233,106 @@ public class NoticeAndEventController {
 				}
 			}
 		}
+		return "common/msg";
+	}
+	
+	@RequestMapping("/event/eventFormEnd.do")
+	public String eventFormEnd(Event e, MultipartFile[] upFile, MultipartFile upFileM, HttpServletRequest request)
+	{
+		try {
+		e.parseStringToDate();
+		} catch(ParseException er)
+		{
+			request.setAttribute("msg","이벤트 기간 설정 에러");
+			request.setAttribute("loc", "/event/eventForm");
+			return "common/msg";
+		}
+		
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/eventImage/");
+		File dir = new File(saveDir);
+		if(!dir.exists())
+		{
+			dir.mkdirs();
+		}
+		
+		List<Image> list = new ArrayList<Image>();
+		int count=0;
+		String timeStr = new SimpleDateFormat("yyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
+		
+		if(!upFileM.isEmpty())
+		{
+			String oriFileName = upFileM.getOriginalFilename();
+			String ext=oriFileName.substring(oriFileName.lastIndexOf("."));
+	
+			int uniqueNum = e.getMemberSeq();
+			String reNamedFile= timeStr+"_"+uniqueNum+"_"+count+ext;
+			count++;
+			
+			try {
+				upFileM.transferTo(new File(saveDir+reNamedFile));
+				Image i = new Image();
+				i.setFilename(reNamedFile);
+				i.setPriority(count);
+				list.add(i);
+				
+				} catch(IOException er)
+				{
+					er.printStackTrace();
+				}
+		}
+		
+		for(MultipartFile f : upFile)
+		{
+			if(!f.isEmpty())
+			{
+				String oriFileName = f.getOriginalFilename();
+				String ext=oriFileName.substring(oriFileName.lastIndexOf("."));
+		
+				int uniqueNum = e.getMemberSeq();
+				String reNamedFile= timeStr+"_"+uniqueNum+"_"+count+ext;
+				count++;
+				
+				try {
+					f.transferTo(new File(saveDir+reNamedFile));
+					} catch(IOException er)
+					{
+						er.printStackTrace();
+						continue;
+					}
+				
+				Image i = new Image();
+				i.setFilename(reNamedFile);
+				i.setPriority(count);
+				list.add(i);
+			}
+		}
+		
+		int result=0;
+		try {
+		result= service.insertEvent(e, list);
+		} catch(RuntimeException er)
+		{
+			er.printStackTrace();
+		}
+		
+		if(result>0)
+		{
+			request.setAttribute("msg","이벤트 등록 성공");
+			request.setAttribute("loc", "/event/eventList" /*"/event/eventView?viewNo="+e.getEventSeq()*/);
+		} else
+		{
+			request.setAttribute("msg","이벤트 등록 실패");
+			request.setAttribute("loc", "/event/eventForm");
+			// list 파일 삭제 로직
+			for(int i=0; i<list.size();i++)
+			{
+				if(new File(saveDir+list.get(i).getFilename()).delete()==false)
+				{
+					logger.error(saveDir+list.get(i).getFilename()+"파일 삭제 실패");
+				}
+			}
+		}
+		
 		return "common/msg";
 	}
 	
