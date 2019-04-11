@@ -24,7 +24,6 @@
        					<div>작성자</div>
        					<div>작성일</div>
        					<div>첨부파일</div>
-       					<div>조회수</div>
        				</div>
        				<c:forEach items="${list }" var="b">
        				<div class="table-row">
@@ -37,7 +36,6 @@
                         		<img alt=" " src="*데이터 file.png*" width=16px>
                     		</c:if>
                 		</div>
-       					<div>${b.boardreadCount}</div>
        				</div>
        				</c:forEach>
        			</div>

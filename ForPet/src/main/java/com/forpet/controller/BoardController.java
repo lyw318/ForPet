@@ -152,6 +152,9 @@ public class BoardController {
 		int result=service.insertBoard(board,list);
 		
 		mv.setViewName("common/msg");
+		mv.addObject("msg","등록완료");
+		mv.addObject("loc","/board/boardList");
+		
 		return mv;
 	}
 	
@@ -169,7 +172,9 @@ public class BoardController {
 		System.out.println(boardSeq);
 		ModelAndView mv=new ModelAndView();
 		
-		/*mv.addObject("b",service.board(boardSeq));*/
+		service.addreadcount(boardSeq);
+		mv.addObject("comments",service.selectCommentList(boardSeq));
+		System.out.println(service.selectCommentList(boardSeq));
 		mv.addObject("board",service.selectBoard(boardSeq));
 		mv.addObject("attachmentList",service.selectAttachment(boardSeq));
 		mv.setViewName("board/boardView");
@@ -183,8 +188,107 @@ public class BoardController {
 		/*int result=service.deleteBoard(boardSeq);*/
 		System.out.println("boardSeq : "+boardSeq);
 		mv.addObject("result",service.deleteBoard(boardSeq));
-		mv.setViewName("board/boardView");
+		mv.setViewName("common/msg");
+		mv.addObject("msg","삭세성공");
+		mv.addObject("loc","/board/boardList");
+
+
+		return mv;
+	}
+	@RequestMapping("/board/updateboard.do")
+	public String boardUpdate(int boardSeq, HttpServletRequest request)
+	{
+		int no=0;
+		try {
+			no=boardSeq;
+		}catch(NumberFormatException e)
+		{
+			
+		}
+		Board b=service.selectBoard(no);
+		if(b!=null)
+		{
+			List<Attachment> list=service.selectAttachment(no);
+			request.setAttribute("b", b);
+			request.setAttribute("list", list);
+			return "board/boardUpdate";
+		}
+		else {
+			request.setAttribute("msg","게시글이 존재하지 않습니다.");
+			request.setAttribute("loc", "/board/boardList");
+			return "common/msg";
+		}
+	}
+	@RequestMapping("/board/boardUpdateEnd.do")
+	public String boardUpdateEnd(Board b,MultipartFile[] upFile, HttpServletRequest request)
+	{
+		String saveDir=request.getSession().getServletContext().getRealPath("resources/uplode");
+		File dir=new File(saveDir);
+		if(!dir.exists()) {
+			dir.mkdirs();
+		}
 		
+		List<Attachment> list=new ArrayList();
+		for(MultipartFile f : upFile)
+		{
+			if(!f.isEmpty())
+			{
+				String OriFileName=f.getOriginalFilename();
+				String ext=OriFileName.substring(OriFileName.indexOf("."));
+				SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmssSSS");
+				int rndNum=(int)(Math.random()*1000);
+				String reNamedFile=sdf.format(new Date(System.currentTimeMillis()))+"_"+rndNum+ext;
+				try {
+					f.transferTo(new File(saveDir+"/"+reNamedFile));
+				}
+				catch(IOException e)
+				{
+					e.printStackTrace();
+				}
+				Attachment a=new Attachment();
+				a.setOriginalFileName(OriFileName);
+				a.setRenamedFileName(reNamedFile);
+				a.setBoardNo(b.getBoardSeq());
+				list.add(a);
+			}
+		}
+		int result=service.updateBoard(b,list);
+		if(result>0)
+		{
+			request.setAttribute("msg", "게시판 수정 성공");
+			request.setAttribute("loc", "/board/boardView.do?boardSeq="+b.getBoardSeq());
+		}
+		else {
+			request.setAttribute("msg", "게시판 수정 실패");
+			request.setAttribute("loc", "/board/boardView.do?boardSeq="+b.getBoardSeq());
+			
+		}
+		return "common/msg";
+
+	}
+	
+	@RequestMapping("/board/boardCommentInsert")
+	public ModelAndView commentInsert(BoardComment comments)
+	{
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("result",service.commentInsert(comments));
+		mv.setViewName("common/msg");
+		mv.addObject("msg","댓글작성완료");
+		mv.addObject("loc","/board/boardView.do?boardSeq="+comments.getBoardSeq());
+		
+		return mv;
+	}
+	@RequestMapping("/board/boardCommentDelete")
+	public ModelAndView commentDelete(int commentSeq,int boardSeq)
+	{
+		ModelAndView mv=new ModelAndView();
+		
+		mv.addObject("result",service.commentDelete(commentSeq));
+		mv.setViewName("common/msg");
+		mv.addObject("msg","삭세성공");
+		mv.addObject("loc","/board/boardView.do?boardSeq="+boardSeq);
+		
+
 		return mv;
 	}
 	
