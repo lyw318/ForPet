@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.forpet.model.vo.Attachment;
 import com.forpet.model.vo.Board;
+import com.forpet.model.vo.BoardComment;
 import com.forpet.model.vo.BoardSearch;
 
 @Repository
@@ -16,6 +17,36 @@ public class BoardDaoImpl implements BoardDao {
 	
 	@Autowired
 	private SqlSessionTemplate session;
+
+	
+	
+	
+
+	@Override
+	public int commentDelete(int commentSeq) {
+		return session.delete("board.commentDelete",commentSeq);
+	}
+
+	@Override
+	public List<BoardComment> selectCommentList(int boardSeq) {
+		return session.selectList("board.selectCommentList",boardSeq);
+	}
+
+	@Override
+	public int commentInsert(BoardComment comments) {
+		// TODO Auto-generated method stub
+		return session.insert("board.commentInsert",comments);
+	}
+
+	@Override
+	public int addreadcount(int boardSeq) {
+		return session.update("board.addreadcount",boardSeq);
+	}
+
+	@Override
+	public int updateBoard(Board b) {
+		return session.update("board.updateBoard",b);
+	}
 
 	@Override
 	public int selectCount(BoardSearch bs) {

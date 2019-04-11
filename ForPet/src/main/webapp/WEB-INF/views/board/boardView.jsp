@@ -17,11 +17,11 @@
               <div class="board-view">
                   <div class="board-view-title">
                       <div>제목</div>
-                      <div>123123</div>
+                      <div>${board.boardTitle }</div>
                   </div>
                   <div class="board-view-title">
                       <div>작성일</div>
-                      <div>123123</div>
+                      <div>${board.boardDate }</div>
                   </div>
                   <div class="board-view-content">
                       <div>
@@ -35,13 +35,64 @@
                	 			첨부파일${vs.count} - ${a.originalFileName }
             				</button>
        		   </c:forEach>
-       		   <%-- <c:if test="${loggedMember.memberNickname=='admin'||loggedMember.memberNickname!=board.memberNickname}"> --%>
-                <div class="board-view-btns">
+       		   <c:if test="${loggedMember.memberNickname=='admin'||loggedMember.memberNickname!=board.memberNickname}">
+                <div class="board-view-btns" style="padding-bottom:10px">
                      <input type="button" value="수정" onclick=fn_updateBoard()>
                      <input type="button" value="삭제" onclick=fn_deleteBoard()>
                 </div>
-                <%-- </c:if> --%>
-          </div>
+                </c:if>
+                <c:if test="${loggedMember.memberNickname!=null}">
+	         <div id="comment-container" style="text-align: center;">
+	         	<div class="comment-editor">
+	            	<form name="commentFrm" action="${path}/board/boardCommentInsert" method="post">
+		               <input type="hidden" name="memberSeq" value="${loggedMember!=null?loggedMember.memberSeq:''}"/>
+		               <input type="hidden" name="boardSeq" value="${board.boardSeq}"/>
+		               <input type="hidden" name="commentLevel" value="1"/>
+		               <textarea name="commentText" cols="60" rows="3"></textarea>
+		               <button type="submit" id="btn-insert">등록</button>
+	            	</form>
+	            </div>
+	         </div> 
+	         </c:if>
+         
+    		<table id="tbl-comment">
+    		<c:if test="${comments!=null}">
+    			<c:forEach items="${comments}" var="c">
+    				<c:choose >
+    				<c:when test="${c.commentLevel==1 }">
+    				<tr class="level1" data-comment-seq="${c.commentSeq }">
+    					<td>
+    						<sub class="comment=writer">${c.memberNickname }</sub>
+    						<sub class="comment-date">${c.commentDate }</sub>
+    						<br/>
+    						${c.commentText }
+    					</td>
+    					<td>
+    						<%-- <button class="btn-reply" value="${c.commentSeq }">답글</button> --%>
+    						<c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberNickname)}'>
+    						<button class="btn-delete" value="${c.commentSeq }">삭제</button>
+    						</c:if>
+    					</td>
+    				</tr>
+    				</c:when>
+    				<c:otherwise>
+    					<tr class='level2'>
+							<td>
+								<sub>${c.memberNickname }</sub>
+								<sub>${c.commentDate }</sub>
+								<br/>
+								${c.commentText }
+							</td>
+							<td>
+							</td>
+						</tr>
+    				</c:otherwise>
+    				</c:choose>
+    			</c:forEach>
+    		</c:if>
+		</table>
+   </div>
+
 
    	</section>
         <script>
@@ -56,8 +107,41 @@
         	}
 
         	function fn_updateBoard(){
-        		location.href="${path}/board/updateboard.do";
+        		location.href="${path}/board/updateboard.do?boardSeq=${board.boardSeq}";
         	}
-
+        	
+        	  $(function(){
+        		$(".btn-delete").on('click',function(){
+        			if(!confirm("정말로 삭제하시겠습니까?")) return;
+        			var commentseq=$(event.target).parent().parent().data('commentSeq');
+        			location.href="${path}/board/boardCommentDelete?commentSeq="+commentseq+"&boardSeq="+${board.boardSeq};
+        		});
+        		});
+        	  
         </script>
+        
+            <style>
+			    section#board-container{width:600px; margin:0 auto; text-align:center;}
+			    section#board-container h2{margin:10px 0;}
+			    table#tbl-board{width:500px; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
+			    table#tbl-board th {width: 125px; border:1px solid; padding: 5px 0; text-align:center;} 
+			    table#tbl-board td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
+			    table#tbl-comment{width:580px; margin:0 auto; border-collapse:collapse; clear:both; } 
+			    table#tbl-comment tr td{border-bottom:1px solid; border-top:1px solid; padding:5px; text-align:left; line-height:120%;}
+			    table#tbl-comment tr td:first-of-type{padding: 5px 5px 5px 50px;}
+			    table#tbl-comment tr td:last-of-type {text-align:right; width: 100px;}
+			    table#tbl-comment button.btn-reply{display:none;}
+			    table#tbl-comment button.btn-delete{display:none;}
+			    table#tbl-comment tr:hover {background:lightgray;}
+			    table#tbl-comment tr:hover button.btn-reply{display:inline;}
+			    table#tbl-comment tr:hover button.btn-delete{display:inline;}
+			    table#tbl-comment tr.level2 {color:gray; font-size: 14px;}
+			    table#tbl-comment sub.comment-writer {color:navy; font-size:14px}
+			    table#tbl-comment sub.comment-date {color:tomato; font-size:10px}
+			    table#tbl-comment tr.level2 td:first-of-type{padding-left:100px;}
+			    table#tbl-comment tr.level2 sub.comment-writer {color:#8e8eff; font-size:14px}
+			    table#tbl-comment tr.level2 sub.comment-date {color:#ff9c8a; font-size:10px}
+			    table#tbl-comment textarea{margin: 4px 0 0 0;}
+			    table#tbl-comment button.btn-insert2{width:60px; height:23px; color:white; background:#3300ff; position:relative; top:-5px; left:10px;}
+    		</style>
    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

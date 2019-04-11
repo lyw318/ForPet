@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="board">
 
+	<select id="selectCommentList" parameterType="_int" resultType="boardComment">
+	SELECT A.*,B.* FROM boardReply A join member B on(A.memberSeq=B.memberSeq) WHERE boardSeq=#{boardSeq} start with commentLevel=1 connect by prior commentSeq=commentRef order siblings by commentDate desc
+	</select>
+
 	<select id="selectCount" parameterType="boardSearch" resultType="_int">
 		<choose>
 			<when test='keyword!=null and keyword!=""'>
@@ -24,13 +28,20 @@
 		</choose>
 	</select>
 
-<!-- 	<select id="board" parameterType="_int" resultType="board">
-			select b.*, m.memberSeq from board b join member m on(b.memberSeq=m.memberSeq) where boardSeq=#{boardSeq}
-	</select> -->
-
 	<insert id="insertBoard" parameterType="board">
 		insert into board values(boardseq.nextval,#{memberSeq},#{boardTitle},#{boardContent},default,default)
 		<selectKey keyProperty="boardSeq" resultType="_int" order="AFTER">select boardseq.currval from dual</selectKey>
+	</insert>
+
+	<insert id="commentInsert" parameterType="boardComment">
+		<choose>
+		<when test='commentRef!=null and commentRef=""'>
+			insert into boardReply values(commentSeq.nextval,#{memberSeq},#{boardSeq},#{commentRef},sysdate,#{commentText},#{commentLevel})
+		</when>
+		<otherwise>
+			insert into boardReply values(commentSeq.nextval,#{memberSeq},#{boardSeq},null,sysdate,#{commentText},#{commentLevel})
+		</otherwise>
+		</choose>
 	</insert>
 
 	<insert id="insertAttachment" parameterType="attachment">
@@ -48,5 +59,17 @@
   	<delete id="deleteBoard" parameterType="_int">
   		delete from board where boardSeq=#{boardSeq}
   	</delete>
+
+	<update id="updateBoard" parameterType="board">
+		update board set boardTitle=#{boardTitle}, boardContent=#{boardContent} where boardSeq=#{boardSeq}
+	</update>
+
+	<update id="addreadcount" parameterType="_int">
+ 	update board set boardreadCount = boardreadCount+1 where boardSeq = #{boardSeq}
+ 	</update>
+
+ 	<delete id="commentDelete" parameterType="_int">
+ 		delete from boardReply where commentSeq=#{commentSeq}
+ 	</delete>
 
 </mapper>

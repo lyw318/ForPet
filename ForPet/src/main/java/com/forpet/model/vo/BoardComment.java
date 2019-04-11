@@ -1,16 +1,17 @@
 package com.forpet.model.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class BoardComment {
 	
-	private int boardCommentNo;
-	private int boardCommentLevel;
-	private String boardCommentWriter;
-	private String boardCommentContent;
-	private int boardRef;
-	private int boardCommentRef;
-	private Date boardCommentDate;
+	private int commentSeq;
+	private int memberSeq;
+	private int boardSeq;
+	private int commentRef;
+	private Date commentDate;
+	private String commentText;
+	private int commentLevel;
+	private String memberNickname;
 	
 	
 	public BoardComment() {
@@ -18,96 +19,116 @@ public class BoardComment {
 	}
 
 
-	public BoardComment(int boardCommentNo, int boardCommentLevel, String boardCommentWriter,
-			String boardCommentContent, int boardRef, int boardCommentRef, Date boardCommentDate) {
+	public BoardComment(int commentSeq, int memberSeq, int boardSeq, int commentRef, Date commentDate,
+			String commentText, int commentLevel, String memberNickname) {
 		super();
-		this.boardCommentNo = boardCommentNo;
-		this.boardCommentLevel = boardCommentLevel;
-		this.boardCommentWriter = boardCommentWriter;
-		this.boardCommentContent = boardCommentContent;
-		this.boardRef = boardRef;
-		this.boardCommentRef = boardCommentRef;
-		this.boardCommentDate = boardCommentDate;
+		this.commentSeq = commentSeq;
+		this.memberSeq = memberSeq;
+		this.boardSeq = boardSeq;
+		this.commentRef = commentRef;
+		this.commentDate = commentDate;
+		this.commentText = commentText;
+		this.commentLevel = commentLevel;
+		this.memberNickname = memberNickname;
 	}
 
 
-	public int getBoardCommentNo() {
-		return boardCommentNo;
+	public int getCommentSeq() {
+		return commentSeq;
 	}
 
 
-	public void setBoardCommentNo(int boardCommentNo) {
-		this.boardCommentNo = boardCommentNo;
+	public void setCommentSeq(int commentSeq) {
+		this.commentSeq = commentSeq;
 	}
 
 
-	public int getBoardCommentLevel() {
-		return boardCommentLevel;
+	public int getMemberSeq() {
+		return memberSeq;
 	}
 
 
-	public void setBoardCommentLevel(int boardCommentLevel) {
-		this.boardCommentLevel = boardCommentLevel;
+	public void setMemberSeq(int memberSeq) {
+		this.memberSeq = memberSeq;
 	}
 
 
-	public String getBoardCommentWriter() {
-		return boardCommentWriter;
+	public int getBoardSeq() {
+		return boardSeq;
 	}
 
 
-	public void setBoardCommentWriter(String boardCommentWriter) {
-		this.boardCommentWriter = boardCommentWriter;
+	public void setBoardSeq(int boardSeq) {
+		this.boardSeq = boardSeq;
 	}
 
 
-	public String getBoardCommentContent() {
-		return boardCommentContent;
+	public int getCommentRef() {
+		return commentRef;
 	}
 
 
-	public void setBoardCommentContent(String boardCommentContent) {
-		this.boardCommentContent = boardCommentContent;
+	public void setCommentRef(int commentRef) {
+		this.commentRef = commentRef;
 	}
 
 
-	public int getBoardRef() {
-		return boardRef;
+	public Date getCommentDate() {
+		return commentDate;
 	}
 
 
-	public void setBoardRef(int boardRef) {
-		this.boardRef = boardRef;
+	public void setCommentDate(Date commentDate) {
+		this.commentDate = commentDate;
 	}
 
 
-	public int getBoardCommentRef() {
-		return boardCommentRef;
+	public String getCommentText() {
+		return commentText;
 	}
 
 
-	public void setBoardCommentRef(int boardCommentRef) {
-		this.boardCommentRef = boardCommentRef;
+	public void setCommentText(String commentText) {
+		this.commentText = commentText;
 	}
 
 
-	public Date getBoardCommentDate() {
-		return boardCommentDate;
+	public int getCommentLevel() {
+		return commentLevel;
 	}
 
 
-	public void setBoardCommentDate(Date boardCommentDate) {
-		this.boardCommentDate = boardCommentDate;
+	public void setCommentLevel(int commentLevel) {
+		this.commentLevel = commentLevel;
+	}
+
+
+	public String getMemberNickname() {
+		return memberNickname;
+	}
+
+
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
 	}
 
 
 	@Override
 	public String toString() {
-		return "BoardComment [boardCommentNo=" + boardCommentNo + ", boardCommentLevel=" + boardCommentLevel
-				+ ", boardCommentWriter=" + boardCommentWriter + ", boardCommentContent=" + boardCommentContent
-				+ ", boardRef=" + boardRef + ", boardCommentRef=" + boardCommentRef + ", boardCommentDate="
-				+ boardCommentDate + "]";
+		return "BoardComment [commentSeq=" + commentSeq + ", memberSeq=" + memberSeq + ", boardSeq=" + boardSeq
+				+ ", commentRef=" + commentRef + ", commentDate=" + commentDate + ", commentText=" + commentText
+				+ ", commentLevel=" + commentLevel + ", memberNickname=" + memberNickname + "]";
 	}
+	
+	
+
+
+	
+	
+	
+
+
+	
 	
 	
 
