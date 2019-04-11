@@ -50,7 +50,7 @@ public class NoticeAndEventController {
 		String npage = PageBarFactory.getPageBar(ncount, bs, request.getContextPath()+"/notice/noticeList");
 		
 		//이벤트 가져오는 로직 - 나중에 추가!
-		bs.setNumPerPage("9");
+		bs.parsing(9);
 		int ecount = service.eventCount(bs);
 		List<Event> elist = service.eventList(bs);
 		
@@ -87,10 +87,58 @@ public class NoticeAndEventController {
 	}
 	
 	@RequestMapping("/event/eventList")
-	public String eventList(BoardSearch bs, HttpServletRequest request)
+	public String eventList(BoardSearch bs, HttpServletRequest request, String viewNo, @CookieValue(value="eventCookie", required = false) Cookie eventCookie, HttpServletResponse response)
 	{
-		bs.setNumPerPage("9");
-		bs.parsing();
+		int no=0;
+		try {
+			no = Integer.parseInt(viewNo);
+		} catch(NumberFormatException e)
+		{
+			
+		}
+		Event e = service.selectEvent(no);
+		
+		if(e != null)
+		{
+			List<String> ilist = service.eventImageList(no);
+			e.parseDateToString();
+			System.out.println(e);
+			request.setAttribute("ilist", ilist);
+			request.setAttribute("e", e);
+			
+			cookieLogic:
+			{
+				if(eventCookie != null)
+				{
+					String[] cdata = eventCookie.getValue().split("\\|");
+					for(int i=0; i<cdata.length; i++)
+					{
+						if(cdata[i].equals(viewNo))
+						{
+							break cookieLogic;
+						}
+					}
+					
+					eventCookie.setValue(eventCookie.getValue() + no + "|");
+					eventCookie.setMaxAge(7*24*60*60);
+					response.addCookie(eventCookie);
+					
+					service.addEventReadcount(no);
+				}
+				else
+				{
+					eventCookie = new Cookie("eventCookie", no+"|");
+					eventCookie.setMaxAge(7*24*60*60);
+					response.addCookie(eventCookie);
+					service.addEventReadcount(no);
+				}
+			}
+			
+		}
+		
+		
+		
+		bs.parsing(9);
 		
 		int ecount = service.eventCount(bs);
 		List<Event> elist = service.eventList(bs);
@@ -104,6 +152,7 @@ public class NoticeAndEventController {
 		
 		return "notice/eventList";
 	}
+	
 	
 	@RequestMapping("/notice/noticeView")
 	@ResponseBody
@@ -318,7 +367,7 @@ public class NoticeAndEventController {
 		if(result>0)
 		{
 			request.setAttribute("msg","이벤트 등록 성공");
-			request.setAttribute("loc", "/event/eventList" /*"/event/eventView?viewNo="+e.getEventSeq()*/);
+			request.setAttribute("loc", "/event/eventList?viewNo="+e.getEventSeq());
 		} else
 		{
 			request.setAttribute("msg","이벤트 등록 실패");
@@ -347,7 +396,14 @@ public class NoticeAndEventController {
 			
 		}
 		List<String> list = service.noticeImageList(noticeSeq);
-		int result = service.deleteNotice(noticeSeq, list.size());
+		int result;
+		try {
+			result = service.deleteNotice(noticeSeq, list.size());
+		} catch(RuntimeException e)
+		{
+			result=0;
+		}
+		
 		if(result>0)
 		{
 			request.setAttribute("msg","공지사항 삭제 성공");
@@ -447,7 +503,14 @@ public class NoticeAndEventController {
 			}
 			
 		}
-		int result=service.updateNotice(n, list, exFile);
+		int result;
+		try {
+			result=service.updateNotice(n, list, exFile);
+		}catch(RuntimeException e)
+		{
+			result=0;
+		}
+		
 		if(result>0)
 		{
 			request.setAttribute("msg","공지사항 수정 성공");

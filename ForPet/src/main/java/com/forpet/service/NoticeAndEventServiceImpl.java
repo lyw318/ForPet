@@ -160,6 +160,21 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 		
 		return result;
 	}
+
+	@Override
+	public Event selectEvent(int no) {
+		return dao.selectEvent(no);
+	}
+
+	@Override
+	public List<String> eventImageList(int no) {
+		return dao.eventImageList(no);
+	}
+
+	@Override
+	public int addEventReadcount(int no) {
+		return dao.addEventReadCount(no);
+	}
 	
 	
 	

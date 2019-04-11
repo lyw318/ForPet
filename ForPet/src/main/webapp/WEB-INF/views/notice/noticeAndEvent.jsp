@@ -48,9 +48,14 @@
 			<div class="board-title">
 				<p>이벤트</p>
 			</div>
+					<select name="category" id="category" style="margin:10px;height:30px;width:200px">
+							<option value="">진행중인 이벤트</option>
+							<option value="">종료된 이벤트</option>
+							<option value="">모든 이벤트</option>
+					</select>
 			<div class="board-preview">
 				<c:forEach items="${elist}" var="e">
-				<div class="board-preview-element">
+				<div class="board-preview-element" onclick="location.href='${path}/event/eventList?viewNo=${e.eventSeq}'">
 					<img class="board-preview-image" src="${path}/resources/upload/eventImage/${e.filename}"/>
 					<div class="board-preview-title">${e.eventTitle}</div>
 					<div class="board-preview-date">${e.eventStart}부터 ${e.eventFinish}까지</div>

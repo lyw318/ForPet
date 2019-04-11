@@ -25,4 +25,7 @@ public interface NoticeAndEventDao {
 	List<Event> eventList(BoardSearch bs);
 	int insertEvent(Event e);
 	int insertEventImage(Image i);
+	Event selectEvent(int no);
+	List<String> eventImageList(int no);
+	int addEventReadCount(int no);
 }

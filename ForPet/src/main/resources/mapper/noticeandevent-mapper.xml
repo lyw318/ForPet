@@ -47,6 +47,9 @@
  <select id="noticeImageList" parameterType="_int" resultType="string">
  	select filename from NoticeImage where noticeseq = #{viewNo} order by priority asc
  </select>
+  <select id="eventImageList" parameterType="_int" resultType="string">
+  	select filename from EventImage where eventseq = #{no} order by priority asc
+  </select>
  <delete id="deleteImageAll" parameterType="_int">
  	delete from NoticeImage where noticeSeq = #{noticeSeq}
  </delete>
@@ -56,8 +59,14 @@
  <update id="addReadcount" parameterType="_int">
  	update notice set readcount = readcount+1 where noticeSeq = #{noticeSeq}
  </update>
+ <update id="addEventReadCount" parameterType="_int">
+   update event set readcount = readcount+1 where eventSeq = #{no}
+ </update>
  <select id="selectOne" parameterType="_int" resultType="notice">
  	select * from notice join Member using(memberSeq) where noticeSeq = #{noticeSeq}
+ </select>
+ <select id="selectEvent" parameterType="_int" resultType="event">
+ 	select * from event join Member using(memberSeq) where eventSeq = #{no}
  </select>
  <update id="updateNotice" parameterType="notice">
  	update notice set noticeTitle = #{noticeTitle}, noticeContent = #{noticeContent} where noticeSeq = #{noticeSeq}
@@ -68,10 +77,10 @@
   <select id="eventCount" parameterType="boardSearch" resultType="_int">
  	<choose>
 	 	<when test='keyword!=null and keyword!=""'>
-	 		select count(*) from event where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish 
+	 		select count(*) from event where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish 
 	 	</when>
 	 	<otherwise>
-	 		select count(*) from event where sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish
+	 		select count(*) from event where sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish
 		</otherwise>
  	</choose>
  </select>
@@ -79,10 +88,10 @@
  	select A.*,B.*, (select filename from eventImage where priority = 1 and A.eventSeq = eventSeq) as "filename" from event A join Member B on(A.memberSeq = B.memberSeq)
    	<choose>
 	 	<when test='keyword!=null and keyword!=""'>
-	 		where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish 
+	 		where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish 
 	 	</when>
 	 	<otherwise>
-	 		where sysdate <![CDATA[>]]> eventstart and sysdate <![CDATA[<]]> eventfinish
+	 		where sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish
 		</otherwise>
  	</choose>
  	<choose>

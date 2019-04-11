@@ -25,7 +25,6 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 
 	@Override
 	public List<Notice> noticeList(BoardSearch bs) {
-		bs.parsing();
 		RowBounds row=new RowBounds((bs.getcPageNo()-1)*bs.getNumPerPageNo(), bs.getNumPerPageNo());
 		return session.selectList("noticeandevent.noticeList",bs,row);
 	}
@@ -82,7 +81,6 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 
 	@Override
 	public List<Event> eventList(BoardSearch bs) {
-		bs.parsing();
 		RowBounds row=new RowBounds((bs.getcPageNo()-1)*bs.getNumPerPageNo(), bs.getNumPerPageNo());
 		return session.selectList("noticeandevent.eventList",bs,row);
 	}
@@ -95,6 +93,21 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 	@Override
 	public int insertEventImage(Image i) {
 		return session.insert("noticeandevent.insertEventImage",i);
+	}
+
+	@Override
+	public Event selectEvent(int no) {
+		return session.selectOne("noticeandevent.selectEvent",no);
+	}
+
+	@Override
+	public List<String> eventImageList(int no) {
+		return session.selectList("noticeandevent.eventImageList",no);
+	}
+
+	@Override
+	public int addEventReadCount(int no) {
+		return session.update("noticeandevent.addEventReadCount",no);
 	}
 	
 	

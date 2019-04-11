@@ -22,15 +22,10 @@ public class PageBarFactory {
 		}
 		
 		//cPage를 제외한 쿼리스트링 생성 로직
-		if(numPerPage>0 && numPerPage!=10)
+		if(numPerPage>0)
 		{
 			querryStr += "&numPerPage="+numPerPage;
 		}
-		else
-		{
-			numPerPage = 10;
-		}
-		
 		if(bs.getKeyword() != null && bs.getKeyword().length()>0)
 		{
 			querryStr += "&keyword="+bs.getKeyword(); // 검색어 쿼리스트링

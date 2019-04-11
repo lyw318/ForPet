@@ -20,5 +20,8 @@ public interface NoticeAndEventService {
 	int eventCount(BoardSearch bs);
 	List<Event> eventList(BoardSearch bs);
 	int insertEvent(Event e, List<Image> list) throws RuntimeException;
+	Event selectEvent(int no);
+	List<String> eventImageList(int no);
+	int addEventReadcount(int no);
 	
 }
