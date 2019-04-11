@@ -39,7 +39,11 @@
 	</select>
 	
 	<select id="mmSelectList" parameterType="memberMsg" resultType="memberMsg">
-		SELECT * FROM MEMBERMSG WHERE MMSGRCVNICKNAME = #{memberNickname }
+		SELECT * FROM MEMBERMSG WHERE MMSGRCVNICKNAME = #{memberNickname } ORDER BY MMSGDATE DESC
+	</select>
+	
+	<select id="mmSelectOne" parameterType="memberMsg" resultType="memberMsg">
+		SELECT * FROM MEMBERMSG WHERE MMSGSEQ = #{mMsgSeq}
 	</select>
 	
 	<insert id="insertMsg" parameterType="memberMsg">

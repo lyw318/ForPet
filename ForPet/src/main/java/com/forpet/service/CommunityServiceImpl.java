@@ -69,6 +69,11 @@ public class CommunityServiceImpl implements CommunityService {
 	}
 
 	@Override
+	public MemberMsg mmSelectOne(MemberMsg mm) {
+		return dao.mmSelectOne(mm);
+	}
+
+	@Override
 	public int insertMsg(MemberMsg mm) {
 		return dao.insertMsg(mm);
 	}

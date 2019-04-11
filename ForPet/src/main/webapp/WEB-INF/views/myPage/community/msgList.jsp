@@ -29,7 +29,6 @@
                     </button>
                     <button type="button" class="msgListBtn">보관</button>
                     <button type="button" class="msgListBtn">스팸신고</button>
-                    <button type="button" class="msgListBtn">답장</button>
                 </div>
                 <div class="msgListSearch">
                     <input type="text" class="mlSearchText">
@@ -50,6 +49,9 @@
             </div>
         </div>
 	</div>
+	<form id="msgListViewFrm" action="${path}/community/msgListView" method="post">
+		<input type="hidden" name="mMsgSeq" value=""/>
+	</form>
 </section>
 <script>
     $(function() {
@@ -78,8 +80,17 @@
                 }
             }
         })
-        $('.mlCheckBoxOne').on("change", function() {
-            $('.mlCheckBoxAll').get(i).checked = false;
+        $(document).on("change",".mlCheckBoxOne", function() {
+            $('.mlCheckBoxAll').get(0).checked = false;
+            var checkBoxOneFlag = true;
+            for(var i=0;i<$('.mlCheckBoxOne').length;i++) {
+            	if(!$('.mlCheckBoxOne').get(i).checked) {
+            		checkBoxOneFlag = false;
+            	}
+            }
+            if(checkBoxOneFlag) {
+                $('.mlCheckBoxAll').get(0).checked = true;
+            }
         })
     })
 
@@ -102,15 +113,9 @@
 	        data: { "msgDelListNo": msgDelListNo },
 	        dataType: "html",
 	        success: function (data) {
-	        }
-	    })
-        $.ajax({
-	        url: "${path}/community/msgList.do",
-	        dataType: "html",
-	        success: function (data) {
 	        	$(".msgListContentBox").empty();
-	        	$(".msgListContentBox").html(data);
-	        	userBox();
+                $('.mlCheckBoxAll').get(0).checked = false;
+                location.href="${path }/community/msgList";
 	        }
 	    })
     }
@@ -128,6 +133,11 @@
 	        	userBox();
 	        }
 	    })
+    }
+    
+    function fn_msgListOne(mMsgSeq) {
+    	$("#msgListViewFrm>input[name='mMsgSeq']").val(mMsgSeq);
+    	$("#msgListViewFrm").submit();
     }
     
 </script>

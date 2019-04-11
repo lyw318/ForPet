@@ -253,6 +253,17 @@ public class CommunityController {
 		return mv;
 	}
 	
+	@RequestMapping("/community/msgListView")
+	private ModelAndView msgListView(MemberMsg mm) {
+		
+		MemberMsg mmOne = service.mmSelectOne(mm);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("mmOne", mmOne);
+		mv.setViewName("myPage/community/msgListView");
+		return mv;
+	}
+	
 	@RequestMapping("/community/insertMsg")
 	private ModelAndView insertMsg(MemberMsg mm) {
 

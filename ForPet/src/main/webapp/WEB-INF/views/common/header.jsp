@@ -64,12 +64,14 @@
                         커뮤니티
                     </div>
                 </div>
+                <%-- 
                 <div class="hMainMenuBox">
                     <div class="mainMenuBtn mainMenuBtn4"
                         onclick="javascript:location.href='${path}/main/defaultSection'">
                         기본작업 형식
                     </div>
                 </div>
+                 --%>
             </div>
 
             <div class="mainMenuLine">
@@ -79,22 +81,26 @@
                 </div>
             </div>
             <div class="mainMenuSubBox">
+            	<!-- 
                 <div class="mainMenuSubMenu mainMenuSubMenu1">
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴1-1</div>
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴1-2</div>
                 </div>
-                <div class="mainMenuSubMenu mainMenuSubMenu2">
+                 -->
+                <div class="mainMenuSubMenu mainMenuSubMenu2" onclick="javascript:location.href='${path}/notice/noticeList'">
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/notice/noticeList'">공지사항</div>
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/event/eventList'">이벤트</div>
                 </div>
-                <div class="mainMenuSubMenu mainMenuSubMenu3">
+                <div class="mainMenuSubMenu mainMenuSubMenu3" onclick="javascript:location.href='${path}/board/boardList'">
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/board/boardList'">자유게시판</div>
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">소모임게시판</div>
                 </div>
+                <!-- 
                 <div class="mainMenuSubMenu mainMenuSubMenu4">
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴4-1</div>
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴4-2</div>
                 </div>
+                 -->
             </div>
             <div class="mainMenuList">
                 <div class="mainMenuList_Box">
@@ -102,21 +108,25 @@
                         <div class="mainMenuListCol">
                         </div>
                         <div class="mainMenuListCol mainMenuListCol1">
+                        	<!-- 
                             <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">서브메뉴1-1</div>
                             <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">서브메뉴1-2</div>
+                             -->
                         </div>
                         <div class="mainMenuListCol mainMenuListCol2">
-                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">서브메뉴2-1</div>
-                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">서브메뉴2-2</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/notice/noticeList'">공지사항</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/event/eventList'">이벤트</div>
                         </div>
                         <div class="mainMenuListCol mainMenuListCol3">
-                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">자유게시판</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/board/boardList'">자유게시판</div>
                             <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">소모임게시판</div>
                         </div>
+                        <!-- 
                         <div class="mainMenuListCol mainMenuListCol4">
                             <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">서브메뉴4-1</div>
                             <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">서브메뉴4-2</div>
                         </div>
+                         -->
                     </div>
                     <div class="mainMenuList_right">
                         <img src="${path }/resources/images/listImage.jpg" alt="listImage">

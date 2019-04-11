@@ -31,16 +31,16 @@
             </div>
             <div class="memberSimpleProfileLine2">
                 <div class="memberSimpleProfileTal">
-                    <div class="memberSimpleProfileTalTitle">내 포인트</div>
-                    <div class="memberSimpleProfileTalContent">100p</div>
+                    <div class="memberSimpleProfileTalTitle">안 읽은 쪽지</div>
+                    <div class="memberSimpleProfileTalContent">10</div>
                 </div>
                 <div class="memberSimpleProfileTal">
                     <div class="memberSimpleProfileTalTitle">내가 쓴 글 보기</div>
-                    <div class="memberSimpleProfileTalContent" id="bCount"></div>
+                    <div class="memberSimpleProfileTalContent" id="bCount">10</div>
                 </div>
                 <div class="memberSimpleProfileTal">
                     <div class="memberSimpleProfileTalTitle">내가 쓴 댓글 보기</div>
-                    <div class="memberSimpleProfileTalContent" id="bcCount"></div>
+                    <div class="memberSimpleProfileTalContent" id="bcCount">100</div>
                 </div>
             </div>
         </div>
@@ -56,7 +56,6 @@
                  <ul class="sub">
                  	<li onclick="javascript:location.href='${path}/pet/petList.do'">반려동물 목록</li>
                     <li onclick="javascript:location.href='${path }/pet/petEnroll.do'">반려동물 등록</li>
-               		
                 </ul>
             <li>내 병원예약</li>
             <li>내 커뮤니티</li>

@@ -3,8 +3,7 @@
 
 <script>
 	
-	function fn_msgSendWindow(memberNickname) {
-
+	function fn_msgSendWindow(memberNickname,loc) {
 		var url="${path}/community/msgSendWindow";
 		window.open("","messageSend","width=510, height=410, top=100");
 		$(".sendBoxFrm>input[name='memberNickname']").val(memberNickname);

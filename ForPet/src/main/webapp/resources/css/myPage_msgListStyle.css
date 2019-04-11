@@ -91,6 +91,7 @@
     padding: 10px 0;
     display: table;
     border-bottom: 1px solid #ccc;
+    cursor: pointer;
 }
 
 #myPage_msgList .msgListColcc {
@@ -175,3 +176,88 @@
    text-decoration: none;
    color: black;
 }
+
+
+/* msgListView css */
+#msgListView .msgSendBox {
+    width: 500px;
+    height: 400px;
+    padding: 5px;
+    text-align: left;
+}
+
+#msgListView .SendUserBox {
+    margin: 10px 0;
+    padding: 5px;
+    border-bottom: 1px solid #c69c76;
+}
+
+#msgListView .recUserBox {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #c69c76;
+}
+
+#msgListView .msContent {
+    margin-bottom: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-break: break-all;
+}
+
+#msgListView .msContent textarea {
+    width: 480px;
+    height: 200px;
+    outline: none;
+    resize: none;
+    color: #c69c76;
+    border: 1px solid #c69c76;
+    border-radius: 5px;
+}
+
+#msgListView .sendSaveBox {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #c69c76;
+}
+
+#msgListView .msBtnBox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+#msgListView .defaultBtn  {
+    padding: 10px 20px;
+	margin: 0 10px;
+	color: white;
+    background-color: #50351a;
+    border: 1px solid #50351a;
+    border-radius: 5px;
+	cursor: pointer;
+	transition: 500ms;
+}
+
+#msgListView .defaultBtn:hover {
+    padding: 10px 20px;
+	margin: 0 10px;
+	color: #c69c76;
+    background-color: white;
+    border: 1px solid #c69c76;
+	border-radius: 5px;
+	transition: 500ms;
+}
+
+#msgListView .msMsg {
+    width: 100%;
+    height: 88%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+

@@ -70,6 +70,11 @@ public class CommunityDaoImpl implements CommunityDao {
 	}
 
 	@Override
+	public MemberMsg mmSelectOne(MemberMsg mm) {
+		return session.selectOne("community.mmSelectOne",mm);
+	}
+
+	@Override
 	public int insertMsg(MemberMsg mm) {
 		return session.insert("community.insertMsg", mm);
 	}

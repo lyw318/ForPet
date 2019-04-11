@@ -19,6 +19,7 @@ public interface CommunityService {
 	int updateTypeFriend(MemberFriend mf);
 	int mmCount(MemberMsg mm);
 	List<MemberMsg> mmSelectList(MemberMsg mm, BoardSearch bs);
+	MemberMsg mmSelectOne(MemberMsg mm);
 	int insertMsg(MemberMsg mm);
 	int delMsg(MemberMsg mm);
 }
