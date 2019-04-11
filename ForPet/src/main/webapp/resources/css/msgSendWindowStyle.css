@@ -14,6 +14,12 @@
     color: #fff;
 }
 
+#msgSendWindow form {
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
 #msgSendWindow .msgSendBox {
     width: 500px;
     height: 400px;
