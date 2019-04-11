@@ -34,6 +34,10 @@
 		UPDATE MEMBERFRIEND SET MFRIENDTYPE = #{mFriendType} WHERE MFRIENDNICKNAME = #{mFriendNickname}
 	</update>
 	
+	<select id="mmCount" parameterType="memberMsg" resultType="_int">
+		SELECT COUNT(*) FROM MEMBERMSG WHERE MMSGRCVNICKNAME = #{memberNickname }
+	</select>
+	
 	<select id="mmSelectList" parameterType="memberMsg" resultType="memberMsg">
 		SELECT * FROM MEMBERMSG WHERE MMSGRCVNICKNAME = #{memberNickname }
 	</select>

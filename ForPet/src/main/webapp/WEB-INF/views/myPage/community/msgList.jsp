@@ -114,6 +114,22 @@
 	        }
 	    })
     }
+    
+    //pageBar ajax 처리
+    function fn_paging(cPage) {
+        $.ajax({
+	        url: "${path}/community/msgList.do",
+	        type: "POST",
+	        data: {"cPage":cPage},
+	        dataType: "html",
+	        success: function (data) {
+                $(".msgListContentBox").empty();
+	        	$(".msgListContentBox").html(data);
+	        	userBox();
+	        }
+	    })
+    }
+    
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

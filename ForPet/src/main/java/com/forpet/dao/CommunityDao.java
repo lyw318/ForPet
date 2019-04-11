@@ -2,6 +2,7 @@ package com.forpet.dao;
 
 import java.util.List;
 
+import com.forpet.model.vo.BoardSearch;
 import com.forpet.model.vo.Member;
 import com.forpet.model.vo.MemberFriend;
 import com.forpet.model.vo.MemberMsg;
@@ -16,7 +17,8 @@ public interface CommunityDao {
 	int insertFriend(MemberFriend m);
 	int delFriend(MemberFriend mf);
 	int updateTypeFriend(MemberFriend mf);
-	List<MemberMsg> mmSelectList(MemberMsg mm);
+	int mmCount(MemberMsg mm);
+	List<MemberMsg> mmSelectList(MemberMsg mm, BoardSearch bs);
 	int insertMsg(MemberMsg mm);
 	int delMsg(MemberMsg mm);
 }
