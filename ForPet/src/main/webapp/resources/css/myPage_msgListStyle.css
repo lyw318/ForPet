@@ -71,7 +71,6 @@
 
 #myPage_msgList .msgListTable {
     border-top: 2px solid rgb(139, 85, 38);
-    border-bottom: 1px solid black;
     margin: 10px;
 }
 
@@ -80,6 +79,11 @@
     padding: 15px 0;
     display: table;
     border-bottom: 1px solid #ccc;
+}
+
+#myPage_msgList .msgListContentAjax {
+    min-height: 256px;
+    border-bottom: 1px solid black;
 }
 
 #myPage_msgList .msgListContent {
@@ -123,4 +127,51 @@
     width: 110px;
     display: table-cell;
 
+}
+
+
+/* 영우 pagebar css */
+#myPage_msgList .pagebar img
+{
+    width: 50%;
+    height: 50%;
+}
+
+#myPage_msgList .pagebar
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    font-size: 14px;
+    color: black;
+}
+
+
+#myPage_msgList .pagebar div
+{
+    width: 33px;
+    height: 33px;
+    border: 1px solid rgb(220, 220, 220);
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#myPage_msgList .pagebar div:first-of-type
+{
+    border-left: 1px solid rgb(220, 220, 220);
+}
+
+#myPage_msgList .pagebar a
+{
+   display: flex;
+   width: 100%;
+   height: 100%;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   color: black;
 }

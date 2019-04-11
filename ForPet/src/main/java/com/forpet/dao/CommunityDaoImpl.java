@@ -2,10 +2,12 @@ package com.forpet.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.forpet.model.vo.BoardSearch;
 import com.forpet.model.vo.Member;
 import com.forpet.model.vo.MemberFriend;
 import com.forpet.model.vo.MemberMsg;
@@ -57,8 +59,14 @@ public class CommunityDaoImpl implements CommunityDao {
 	}
 
 	@Override
-	public List<MemberMsg> mmSelectList(MemberMsg mm) {
-		return session.selectList("community.mmSelectList", mm);
+	public int mmCount(MemberMsg mm) {
+		return session.selectOne("community.mmCount", mm);
+	}
+
+	@Override
+	public List<MemberMsg> mmSelectList(MemberMsg mm, BoardSearch bs) {
+		RowBounds row = new RowBounds((bs.getcPageNo()-1)*bs.getNumPerPageNo(), bs.getNumPerPageNo());
+		return session.selectList("community.mmSelectList", mm, row);
 	}
 
 	@Override

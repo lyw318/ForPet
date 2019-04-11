@@ -1,9 +1,8 @@
 package com.forpet.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.forpet.common.PageBarFactoryHYS;
+import com.forpet.model.vo.BoardSearch;
 import com.forpet.model.vo.Member;
 import com.forpet.model.vo.MemberFriend;
 import com.forpet.model.vo.MemberMsg;
@@ -219,24 +220,34 @@ public class CommunityController {
 		
 		MemberMsg mm = new MemberMsg();
 		mm.setMemberNickname(oneself.getMemberNickname());
-		List<MemberMsg> mmResult = service.mmSelectList(mm);
+		//List<MemberMsg> mmResult = service.mmSelectList(mm);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("mmList",mmResult);
+		//mv.addObject("mmList",mmResult);
 		mv.setViewName("myPage/community/msgList");
 		return mv;
 	}
 
 	@RequestMapping("/community/msgList.do")
-	private ModelAndView msgListAjax(HttpSession session) {
-
-		Member oneself = (Member) session.getAttribute("loggedMember");
+	private ModelAndView msgListAjax(HttpSession session, BoardSearch bs, String viewNo, HttpServletRequest request) {
 		
+		bs.parsing(5);
+		
+		
+		//본인한테 온 메세지 출력을 위한 로직
+		Member oneself = (Member) session.getAttribute("loggedMember");
 		MemberMsg mm = new MemberMsg();
 		mm.setMemberNickname(oneself.getMemberNickname());
-		List<MemberMsg> mmResult = service.mmSelectList(mm);
+		
+		int mmCount = service.mmCount(mm);//총 메세지 갯수
+		List<MemberMsg> mmResult = service.mmSelectList(mm,bs);//메세지 데이터
+		
+		//페이징 처리
+		String mmPage = PageBarFactoryHYS.getPageBarAjax(mmCount, bs, request.getContextPath()+"/community/msgList.do");
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("mmPage",mmPage);
+		mv.addObject("mmCount",mmCount);
 		mv.addObject("mmList",mmResult);
 		mv.setViewName("myPage/community/msgListAjax/msgListAjax");
 		return mv;

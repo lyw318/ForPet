@@ -2,10 +2,12 @@ package com.forpet.service;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.forpet.dao.CommunityDao;
+import com.forpet.model.vo.BoardSearch;
 import com.forpet.model.vo.Member;
 import com.forpet.model.vo.MemberFriend;
 import com.forpet.model.vo.MemberMsg;
@@ -57,8 +59,13 @@ public class CommunityServiceImpl implements CommunityService {
 	}
 
 	@Override
-	public List<MemberMsg> mmSelectList(MemberMsg mm) {
-		return dao.mmSelectList(mm);
+	public int mmCount(MemberMsg mm) {
+		return dao.mmCount(mm);
+	}
+
+	@Override
+	public List<MemberMsg> mmSelectList(MemberMsg mm, BoardSearch bs) {
+		return dao.mmSelectList(mm, bs);
 	}
 
 	@Override

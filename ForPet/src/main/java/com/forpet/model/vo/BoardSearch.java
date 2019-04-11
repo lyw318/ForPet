@@ -34,7 +34,31 @@ public class BoardSearch {
 			numPerPageNo =10;
 		}
 	}
-
+	
+	//한페이지 출력 횟수 사용자 설정
+	public void parsing(int numPerPageNo) {
+		try {
+			cPageNo = Integer.parseInt(cPage);
+			if(cPageNo<1)
+			{
+				cPageNo=1;
+			}
+		} catch(NumberFormatException e)
+		{
+			cPageNo=1;
+		}
+		try {
+			this.numPerPageNo = Integer.parseInt(numPerPage);
+			if(this.numPerPageNo<1)
+			{
+				this.numPerPageNo=numPerPageNo;
+			}
+		} catch(NumberFormatException e)
+		{
+			this.numPerPageNo =numPerPageNo;
+		}
+	}
+	
 	public String getcPage() {
 		return cPage;
 	}
