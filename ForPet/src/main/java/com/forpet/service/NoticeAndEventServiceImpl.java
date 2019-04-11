@@ -1,11 +1,15 @@
 package com.forpet.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.forpet.common.exception.BoardException;
 import com.forpet.dao.NoticeAndEventDao;
 import com.forpet.model.vo.BoardSearch;
 import com.forpet.model.vo.Event;
@@ -130,6 +134,31 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 	@Override
 	public List<Event> eventList(BoardSearch bs) {
 		return dao.eventList(bs);
+	}
+
+	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
+	public int insertEvent(Event e, List<Image> list) throws RuntimeException {
+		int result = 0;
+			result=dao.insertEvent(e);
+		if(result<=0)
+		{
+			throw new RuntimeException();
+		}
+		if(list != null && list.size()>0)
+		{
+			for(Image i : list)
+			{
+				i.setRefseq(e.getEventSeq());
+				result = dao.insertEventImage(i);
+				if(result==0)
+				{
+					throw new RuntimeException();
+				}		
+			}
+		}
+		
+		return result;
 	}
 	
 	

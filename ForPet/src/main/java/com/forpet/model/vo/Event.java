@@ -1,6 +1,9 @@
 package com.forpet.model.vo;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 
 public class Event {
 	private int eventSeq;
@@ -10,22 +13,27 @@ public class Event {
 	private String eventContent;
 	private int readCount;
 	private Date eventStart;
+	private String eventStartString;
 	private Date eventFinish;
+	private String eventFinishString;
+	private String filename; //메인이미지(priority가 가장 낮은 파일) 파일명
 	
 	public Event () {}
 	
-	public Event(int eventSeq, int memberSeq, String memberNickname, String eventTitle, String eventContent,
-			int readCount, Date eventStart, Date eventFinish) {
-		this.eventSeq = eventSeq;
-		this.memberSeq = memberSeq;
-		this.memberNickname = memberNickname;
-		this.eventTitle = eventTitle;
-		this.eventContent = eventContent;
-		this.readCount = readCount;
-		this.eventStart = eventStart;
-		this.eventFinish = eventFinish;
+	public void parseStringToDate() throws ParseException
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		eventStart = new Date(sdf.parse(eventStartString).getTime());
+		eventFinish = new Date(sdf.parse(eventFinishString).getTime());
 	}
-
+	
+	public void parseDateToString()
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		eventStartString = sdf.format(eventStart);
+		eventFinishString = sdf.format(eventFinish);
+	}
+	
 	public int getEventSeq() {
 		return eventSeq;
 	}
@@ -90,11 +98,39 @@ public class Event {
 		this.memberNickname = memberNickname;
 	}
 
+	public String getEventStartString() {
+		return eventStartString;
+	}
+
+	public void setEventStartString(String eventStartString) {
+		this.eventStartString = eventStartString;
+	}
+
+	public String getEventFinishString() {
+		return eventFinishString;
+	}
+
+	public void setEventFinishString(String eventFinishString) {
+		this.eventFinishString = eventFinishString;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
 	@Override
 	public String toString() {
 		return "Event [eventSeq=" + eventSeq + ", memberSeq=" + memberSeq + ", memberNickname=" + memberNickname
 				+ ", eventTitle=" + eventTitle + ", eventContent=" + eventContent + ", readCount=" + readCount
-				+ ", eventStart=" + eventStart + ", eventFinish=" + eventFinish + "]";
+				+ ", eventStart=" + eventStart + ", eventStartString=" + eventStartString + ", eventFinish="
+				+ eventFinish + ", eventFinishString=" + eventFinishString + ", filename=" + filename + "]";
 	}
+
+	
+	
 	
 }

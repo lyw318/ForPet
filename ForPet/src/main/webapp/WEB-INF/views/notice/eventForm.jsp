@@ -22,7 +22,7 @@
             </div>
             <div>
             	<div>이벤트 기간</div>
-            	<div><input type="date" name="eventStartString"> 부터<span style="width:50px;"></span><input type="date" name="eventFinishString"> 까지</div>
+            	<div><input type="date" id="eventStartString" name="eventStartString" onchange="fn_e_start()"> 부터<span style="width:50px;"></span><input type="date" id="eventFinishString" name="eventFinishString" onchange="fn_e_finish()"> 까지</div>
             </div>
             <div class="board-form-content">
                 <div>내용</div>
@@ -110,6 +110,16 @@
     	}
     	
     	$(addEvent(1));
+    	
+    	function fn_e_start() {
+    		$("#eventFinishString").attr("min", event.target.value);
+    		
+    	}
+    	
+    	function fn_e_finish() {
+    		$("#eventStartString").attr("max", event.target.value);
+    	}
+    	
     	
     	
     </script>

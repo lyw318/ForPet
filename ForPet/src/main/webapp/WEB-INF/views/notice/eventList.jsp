@@ -11,41 +11,13 @@
 				<p>이벤트</p>
 			</div>
 			<div class="board-preview">
+				<c:forEach items="${elist}" var="e">
 				<div class="board-preview-element">
-					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-					<div class="board-preview-title">이벤트제목</div>
-					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
+					<img class="board-preview-image" src="${path}/resources/upload/eventImage/${e.filename}"/>
+					<div class="board-preview-title">${e.eventTitle}</div>
+					<div class="board-preview-date">${e.eventStart}부터 ${e.eventFinish}까지</div>
 				</div>
-				<div class="board-preview-element">
-					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-					<div class="board-preview-title">이벤트제목</div>
-					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
-				</div>
-				<div class="board-preview-element">
-					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-					<div class="board-preview-title">이벤트제목</div>
-					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
-				</div>
-				<div class="board-preview-element">
-					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-					<div class="board-preview-title">이벤트제목</div>
-					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
-				</div>
-				<div class="board-preview-element">
-					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-					<div class="board-preview-title">이벤트제목</div>
-					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
-				</div>
-				<div class="board-preview-element">
-					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-					<div class="board-preview-title">이벤트제목</div>
-					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
-				</div>
-				<div class="board-preview-element">
-					<img class="board-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-					<div class="board-preview-title">이벤트제목</div>
-					<div class="board-preview-date">이벤트시작일-이벤트종료일</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div class="board-search-menu">
 				<div>

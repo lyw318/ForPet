@@ -86,8 +86,18 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 		RowBounds row=new RowBounds((bs.getcPageNo()-1)*bs.getNumPerPageNo(), bs.getNumPerPageNo());
 		return session.selectList("noticeandevent.eventList",bs,row);
 	}
+
+	@Override
+	public int insertEvent(Event e) {
+		return session.insert("noticeandevent.insertEvent", e);
+	}
+
+	@Override
+	public int insertEventImage(Image i) {
+		return session.insert("noticeandevent.insertEventImage",i);
+	}
 	
-		
+	
 	
 	
 }
