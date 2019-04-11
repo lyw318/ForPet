@@ -57,7 +57,7 @@
                  	<li onclick="javascript:location.href='${path}/pet/petList.do'">반려동물 목록</li>
                     <li onclick="javascript:location.href='${path }/pet/petEnroll.do'">반려동물 등록</li>
                 </ul>
-            <li onclick="javascript:location.href='${path}/pet/petList.do'">동물병원</li>
+            <li onclick="javascript:location.href='${path}/myvet/vetScrapList.do'">내가 찜한 병원</li>
             <li>내 커뮤니티</li>
 				<ul class="sub">
 					<li onclick="javascript:location.href='${path }/community/friendList'">친구 관리</li>

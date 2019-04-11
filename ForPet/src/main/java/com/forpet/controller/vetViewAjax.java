@@ -39,4 +39,24 @@ public class vetViewAjax {
 	}
 	
 	
+	@RequestMapping("/vetView/unscrap.do")
+	@ResponseBody
+	public int unscrapAjax(int vetSeq, HttpServletRequest re)
+	{
+		Map<String, Integer> scrap = new HashMap(); //map int 가 아닌 Integer 를 쓴다
+		scrap.put("vetSeq", vetSeq);
+		Member m = (Member)re.getSession().getAttribute("loggedMember");
+		int memberSeq=0;
+		if(m !=null)
+		{
+			memberSeq = m.getMemberSeq();
+		}
+		scrap.put("memberSeq", memberSeq);
+		int result = vservice.deleteScrap(scrap);
+				
+		return result;
+				
+	}
+	
+	
 }

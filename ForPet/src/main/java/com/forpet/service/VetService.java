@@ -20,4 +20,5 @@ public interface VetService {
 	public int addScrap(Map scrap);
 	public int selectScrap(Map<String, Integer> checkScrape);
 	public List selectVetList(Member m);
+	public int deleteScrap(Map<String, Integer> scrap);
 }

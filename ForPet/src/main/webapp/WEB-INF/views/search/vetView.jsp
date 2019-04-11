@@ -4,6 +4,32 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <link rel="stylesheet" href="${path }/resources/css/vetView.css">
 <script>
+
+function unscrapAjax(){
+	$.ajax({
+		url:"${pageContext.request.contextPath}/vetView/unscrap.do",
+		dataType : "json",
+		data:{"memberSeq":"${loggedMember.memberSeq}","vetSeq":"${vet.vetSeq}"},
+		success:function(data)
+		{
+			console.log(data);
+			var vets="${vet.vetSeq}";
+			if (data=1)
+				{
+				alert("스크랩 취소가 완료되었습니다.");
+				$(".scrap").html("<img onclick='scrapAjax("+vets+")' src='${path }/resources/images/vet/scrapIcon.png' width='35' height='35' title='스크랩하기'>");
+				}
+			if (data==0)
+				{
+				alert("취소가 실패하였습니다.");
+				$(".scrap").html("<img onclick='unscrapAjax("+vets+")' src='${path }/resources/images/vet/scrapIcon.png' width='35' height='35' title='스크랩취소'>");}
+			
+		},
+		error : function(request, status, error){
+			
+		}
+	});
+}
 function scrapAjax(){
 	$.ajax({
 		url:"${pageContext.request.contextPath}/vetView/scrap.do",
@@ -12,15 +38,16 @@ function scrapAjax(){
 		success:function(data)
 		{
 			console.log(data);
+				var vets="${vet.vetSeq}";
 			if (data=1)
 				{
 				alert("스크랩되었습니다");
-				$(".scrap").html("<img src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩완료'>");
+					$(".scrap").html("<img onclick='unscrapAjax("+vets+")' src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩취소'>");
 				}
 			if (data==0)
 				{
 				alert("이미 스크랩되어 있습니다");
-				$(".scrap").html("<img src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩완료'>");
+					$(".scrap").html("<img onclick='unscrapAjax("+vets+")' src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩취소'>");
 				}
 			
 		},

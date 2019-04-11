@@ -11,14 +11,14 @@
                         <img src="${path}/resources/images/back.png" width="18px">
                     </li>
                     <li>Member</li>
-                    <li>마이 페이지에 오신 걸 환영합니다.</li>
+                    <li><span onclick="location.href='${path}/main/myPageMain'">마이페이지</span> &nbsp; > &nbsp; <span onclick="javascript:location.href='${path}/myvet/vetScrapList.do'">내가 찜한 병원</span></li>
                 </ul>
             </div>
         </div>
     </div><br/>
 
 	<div class="myPageMain_right">
-		myPage 메인입니다.
+		내가찜한 병원 리스트에 오신것을 환영합니다.
 	</div>
 </section>
 
