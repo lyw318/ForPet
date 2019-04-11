@@ -114,8 +114,8 @@ public class PetController {
 	}
 	
 	@RequestMapping("/pet/petList.do")
-	public ModelAndView petList(HttpSession session) {
-		Member m=(Member)session.getAttribute("loggedMember");
+	public ModelAndView petList(HttpServletRequest re) {
+		Member m=(Member)re.getAttribute("loggedMember");
 		ModelAndView mv=new ModelAndView();
 		List<Pet> list=service.selectList(m);
 		mv.addObject("list",list);

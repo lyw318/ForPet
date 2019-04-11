@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.forpet.model.vo.Member;
 import com.forpet.model.vo.Vet;
 
 @Repository
@@ -63,6 +64,12 @@ public class VetDaoImpl implements VetDao {
 	public int selectScrap(Map checkScrap) {
 	
 		return session.selectOne("vet.checkScrap", checkScrap);
+	}
+
+	@Override
+	public List selectVetList(Member m) {
+
+		return session.selectList("vet.selectVetList", m);
 	}
 
 

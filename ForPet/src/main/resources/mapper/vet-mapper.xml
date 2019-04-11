@@ -42,5 +42,9 @@
 	select count(*) from vetScrap where memberseq=#{memberSeq} and vetSeq=#{vetSeq}
 	</select>
 	
+	<select id="selectVetList" parameterType="member" resultType="vet">
+	select * from vet join vetscrap using(vetSeq) where memberseq=#{memberSeq}
+	</select>
+	
 	
 </mapper>

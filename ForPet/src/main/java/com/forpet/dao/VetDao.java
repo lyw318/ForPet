@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.forpet.model.vo.Member;
 import com.forpet.model.vo.Vet;
 
 public interface VetDao {
@@ -21,5 +22,7 @@ public interface VetDao {
 	int addScrap(Map scrap);
 
 	int selectScrap(Map checkScrap);
+
+	List selectVetList(Member m);
 
 }
