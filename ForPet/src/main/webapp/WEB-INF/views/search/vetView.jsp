@@ -15,12 +15,12 @@ function scrapAjax(){
 			if (data=1)
 				{
 				alert("스크랩되었습니다");
-				$(".scrap").append("<img src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩완료'>");
+				$(".scrap").html("<img src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩완료'>");
 				}
 			if (data==0)
 				{
 				alert("이미 스크랩되어 있습니다");
-				$(".scrap").append("<img src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩완료'>");
+				$(".scrap").html("<img src='${path }/resources/images/vet/scrapIcon_done.png' width='35' height='35' title='스크랩완료'>");
 				}
 			
 		},

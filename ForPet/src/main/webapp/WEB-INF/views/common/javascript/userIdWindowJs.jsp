@@ -94,6 +94,9 @@
 	    if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
 	    	location.href="${path}/community/friendList";
 	    }
+	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/friendList') {
+	    	location.href="${path}/community/friendList";
+	    }
 	}
 	
 	function fnA_friendBlock(memberNickname) {
@@ -106,6 +109,9 @@
 	        }
 	    })
 		if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
+	    	location.href="${path}/community/friendList";
+	    }
+	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/friendList') {
 	    	location.href="${path}/community/friendList";
 	    }
 	}
