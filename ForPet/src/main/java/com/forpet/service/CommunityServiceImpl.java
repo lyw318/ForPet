@@ -82,5 +82,10 @@ public class CommunityServiceImpl implements CommunityService {
 	public int delMsg(MemberMsg mm) {
 		return dao.delMsg(mm);
 	}
+
+	@Override
+	public int mmUpdateRead(MemberMsg mm) {
+		return dao.mmUpdateRead(mm);
+	}
 	
 }

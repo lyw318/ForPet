@@ -83,5 +83,10 @@ public class CommunityDaoImpl implements CommunityDao {
 	public int delMsg(MemberMsg mm) {
 		return session.delete("community.delMsg", mm);
 	}
+
+	@Override
+	public int mmUpdateRead(MemberMsg mm) {
+		return session.update("community.mmUpdateRead", mm);
+	}
 	
 }

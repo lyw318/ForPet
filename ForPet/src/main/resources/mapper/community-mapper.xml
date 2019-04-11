@@ -53,4 +53,8 @@
 	<delete id="delMsg" parameterType="memberMsg">
 		DELETE FROM MEMBERMSG WHERE MMSGSEQ = #{mMsgSeq}
 	</delete>
+	
+	<update id="mmUpdateRead" parameterType="memberMsg">
+		UPDATE MEMBERMSG SET MMSGREAD = 'Y' WHERE MMSGSEQ = #{mMsgSeq}
+	</update>
 </mapper>

@@ -22,4 +22,5 @@ public interface CommunityService {
 	MemberMsg mmSelectOne(MemberMsg mm);
 	int insertMsg(MemberMsg mm);
 	int delMsg(MemberMsg mm);
+	int mmUpdateRead(MemberMsg mm);
 }

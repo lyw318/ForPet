@@ -258,6 +258,9 @@ public class CommunityController {
 		
 		MemberMsg mmOne = service.mmSelectOne(mm);
 		
+		//'읽음'상태로 업데이트 로직
+		int upResult = service.mmUpdateRead(mm);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("mmOne", mmOne);
 		mv.setViewName("myPage/community/msgListView");

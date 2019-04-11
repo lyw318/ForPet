@@ -18,8 +18,8 @@
 				</div>
 			</div>
 			<div class="msgListColCont" onclick="fn_msgListOne('${mm.mMsgSeq}')">
-				${fn:substring(mm.mMsgContent,0,50) }
-				<c:if test="${fn:length(mm.mMsgContent) > 50 }">
+				${fn:substring(mm.mMsgContent,0,30) }
+				<c:if test="${fn:length(mm.mMsgContent) > 30 }">
 					...
 				</c:if>
 			</div>
@@ -28,6 +28,7 @@
 			</div>
 			<div class="msgListColBlock">${mm.mMsgType }</div>
 		</div>
+		<input type="hidden" name="mMsgRead" value="${mm.mMsgRead }">
 	</c:forEach>
 </div>
 ${mmPage}

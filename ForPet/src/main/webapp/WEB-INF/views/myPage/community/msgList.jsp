@@ -61,9 +61,17 @@
 	        success: function (data) {
                 $(".msgListContentBox").empty();
 	        	$(".msgListContentBox").html(data);
+	        	var readLoc = $("input[name='mMsgRead'");
+	        	for(var i=0;i<readLoc.length;i++) {
+	        		console.log(readLoc.get(i).value);
+	        		if(readLoc.get(i).value == 'Y') {
+	        			$(".msgListContent").get(i).style.color = "#c69c7680";
+	        		}
+	        	}
 	        	userBox();
 	        }
 	    })
+	    
     })
 
     // 리스트 전체체크 로직
@@ -130,6 +138,13 @@
 	        success: function (data) {
                 $(".msgListContentBox").empty();
 	        	$(".msgListContentBox").html(data);
+                var readLoc = $("input[name='mMsgRead'");
+                for(var i=0;i<readLoc.length;i++) {
+                    console.log(readLoc.get(i).value);
+                    if(readLoc.get(i).value == 'Y') {
+                        $(".msgListContent").get(i).style.color = "#c69c7680";
+                    }
+                }
 	        	userBox();
 	        }
 	    })
