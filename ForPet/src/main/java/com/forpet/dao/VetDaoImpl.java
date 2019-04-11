@@ -61,6 +61,12 @@ public class VetDaoImpl implements VetDao {
 	}
 
 	@Override
+	public int deleteScrap(Map<String, Integer> scrap) {
+		
+		return session.insert("vet.deleteScrap", scrap);
+	}
+
+	@Override
 	public int selectScrap(Map checkScrap) {
 	
 		return session.selectOne("vet.checkScrap", checkScrap);
@@ -71,6 +77,7 @@ public class VetDaoImpl implements VetDao {
 
 		return session.selectList("vet.selectVetList", m);
 	}
+
 
 
 	}

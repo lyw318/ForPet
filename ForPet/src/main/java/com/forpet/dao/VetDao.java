@@ -25,4 +25,6 @@ public interface VetDao {
 
 	List selectVetList(Member m);
 
+	int deleteScrap(Map<String, Integer> scrap);
+
 }

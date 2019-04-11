@@ -58,6 +58,12 @@ public class VetServiceImpl implements VetService {
 	}
 
 	@Override
+	public int deleteScrap(Map<String, Integer> scrap) {
+	
+		return dao.deleteScrap(scrap);
+	}
+	
+	@Override
 	public int selectScrap(Map checkScrap) {
 		
 		return dao.selectScrap(checkScrap);
@@ -68,5 +74,6 @@ public class VetServiceImpl implements VetService {
 		
 		return dao.selectVetList(m);
 	}
+
 
 }

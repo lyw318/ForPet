@@ -38,6 +38,10 @@
 	insert into vetScrap (memberseq, vetseq) values(#{memberSeq},#{vetSeq})
 	</insert> 
 	
+	<delete id="deleteScrap" parameterType="map">
+	delete from vetScrap where memberSeq=#{memberSeq}	
+	</delete>
+		
 	<select id="checkScrap" parameterType="map" resultType="_int">
 	select count(*) from vetScrap where memberseq=#{memberSeq} and vetSeq=#{vetSeq}
 	</select>
