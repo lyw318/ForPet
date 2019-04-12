@@ -19,7 +19,7 @@ console.log(vetSeq);
 			
 			if (data=1)
 				{
-				alert("스크랩 취소가 완료되었습니다.");
+				alert("스크랩 취소가 완료되었습니다.");		
 				location.reload();
 				}
 			if (data==0)
@@ -34,8 +34,7 @@ console.log(vetSeq);
 }
 //주소를 좌표로 가져오기
 
-function searchAddress(address, prefix,seq){
-	
+function searchAddress(address, prefix,seq){ 
 	//console.log("주소입력"+address);
 	$.ajax({
 		method:"GET",
@@ -43,12 +42,13 @@ function searchAddress(address, prefix,seq){
 		async:false,
 		data:{
 			"coordType" : "WGS84GEO",
+			"fullAddr" : address,
 			"page" : "1",
 			"count" : "20",
-			"appKey" : "fdda0257-5e92-40aa-8341-f0a18a517f5c",
-		}, success:function(response){
+			"appKey" : "8ea84df6-f96e-4f9a-9429-44cee22ab70f",
 			//fdda0257-5e92-40aa-8341-f0a18a517f5c 내꺼
 			//8ea84df6-f96e-4f9a-9429-44cee22ab70f 
+		}, success:function(response){
 			var xmlData = $.parseXML(new XMLSerializer().serializeToString(response));
 			var $coordinate = $(xmlData).find("coordinate");
 			
@@ -75,49 +75,7 @@ function searchAddress(address, prefix,seq){
 			alert("검색이 실패했습니다.");
 		}
 	});
-}
-
-/* function apiRequest(){
-	var prtcl;
-	var headers = {};
-	headers["appKey"] = "fdda0257-5e92-40aa-8341-f0a18a517f5c";
-		
-	$.ajax({
-		method: "POST",
-		headers : headers,
-		url : "https://api2.sktelecom.com/tmap/routes?version=1&format=xml",
-		async: false,
-		data:{
-			startX: $("#vlon").val(),
-			startY: $("#vlat").val(),
-			endX: points[1].lon,
-			endY: points[1].lat,
-			reqCoordType : "WGS84GEO",
-			resCoordType : "EPSG3857",
-			angle: "172",
-			searchOption: "0",
-			trafficInfo : "N"
-		}, success:function(response){
-			prtcl = response;
-			
-			var xmlDoc = $.parseXML(new XMLSerializer().serializeToString(prtcl));
-			$xml = $(xmlDoc);
-			$xmlData = $xml.find("Document");
-						
-			var tDistance = "총 거리 : " + ($xmlData[0].getElementsByTagName("tmap:totalDistance")[0].childNodes[0].nodeValue/1000).toFixed(1)+"km";
-			var tTime = " 총 시간 : "+($xmlData[0].getElementsByTagName("tmap:totalTime")[0].childNodes[0].nodeValue/60).toFixed(0)+"분";	
-			var tFare = " 총 요금 : "+$xmlData[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue+"원";	
-			var taxiFare = " 예상 택시 요금 : "+$xmlData[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue+"원";	
-			
-			$("#distance").text(tDistance);
-			$("#time").text(tTime);
-			$("#fare").text(tFare);
-			$("#taxi").text(taxiFare);
-		}
-	});	
-}
- */
-
+};
 
 </script>
 
@@ -141,27 +99,26 @@ function searchAddress(address, prefix,seq){
 			<input type="hidden" id="mlon" />
 			<input type="hidden" id="mlat" />
 			<script>
-				searchAddress('${loggedMember.memberAddress}',"m","");
+					searchAddress('${loggedMember.memberAddress}',"m","");
 			</script>
 
 		<div class="vet-itembox">	
 		
 			<c:forEach var="l" items="${list }" varStatus="status">
-				<input type="hidden" id="vlon${l.vetSeq}"/>
-				<input type="hidden" id="vlat${l.vetSeq}"/>
-				
-				<script>
-					searchAddress('${l.vetAddress}',"v",'${l.vetSeq }');
-				</script>
-				
 			<div class="vet-item">
-				<div class="vet-title"><span onclick="location.href='${path }/vetDetail.do?vetSeq='+'${l.vetSeq }'">${l.vetName }</span></div>
+				<div class="vet-title">${l.vetName }</div>
 				<div class="vet-sub-title">${l.vetAddress}</div>
-				<div class="vet-time" id="vet-time${l.vetSeq}">가는거리</div>
+				<div class="vet-time">가는거리</div>
 				<div class="vet-btn">
 					<button onclick="unscrapAjax('${l.vetSeq }')">스크랩취소</button>
 				</div>
 			</div>
+			<input type="hidden" id="vlon${l.vetSeq}"/>
+			<input type="hidden" id="vlat${l.vetSeq}"/>
+			<script>
+				searchAddress('${l.vetAddress}',"v",'${l.vetSeq }');
+			</script>
+			
 			</c:forEach>
 			
 		</div>
