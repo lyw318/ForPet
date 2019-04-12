@@ -29,8 +29,6 @@ public class MyVetController {
 	mv.addObject("list",list);
 	mv.setViewName("myvet/myVetList");
 	return mv;
-		
-		
-		
+			
 	}
 }

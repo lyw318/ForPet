@@ -39,7 +39,7 @@
 	</insert> 
 	
 	<delete id="deleteScrap" parameterType="map">
-	delete from vetScrap where memberSeq=#{memberSeq}	
+	delete from vetScrap where memberSeq=#{memberSeq} and vetSeq=#{vetSeq}	
 	</delete>
 		
 	<select id="checkScrap" parameterType="map" resultType="_int">
