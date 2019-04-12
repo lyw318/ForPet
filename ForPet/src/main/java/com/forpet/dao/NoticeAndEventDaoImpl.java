@@ -119,8 +119,10 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 	public int deleteEventImage(String filename) {
 		return session.delete("noticeandevent.deleteEventImage", filename);
 	}
-	
-	
-	
+
+	@Override
+	public int deleteEvent(int eventSeq) {
+		return session.delete("noticeandevent.deleteEvent", eventSeq);
+	}
 	
 }

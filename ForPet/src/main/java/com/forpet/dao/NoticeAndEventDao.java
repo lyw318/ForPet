@@ -30,4 +30,5 @@ public interface NoticeAndEventDao {
 	int addEventReadCount(int no);
 	int updateEvent(Event e);
 	int deleteEventImage(String filename);
+	int deleteEvent(int eventSeq);
 }
