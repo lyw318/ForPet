@@ -384,6 +384,47 @@ public class NoticeAndEventController {
 		return "common/msg";
 	}
 	
+	@RequestMapping("/event/eventDelete.do")
+	public String eventDelete(String viewNo, HttpServletRequest request)
+	{
+		int eventSeq=0;
+		try {
+			eventSeq = Integer.parseInt(viewNo);
+		} catch(NumberFormatException e)
+		{
+			
+		}
+		List<String> list = service.eventImageList(eventSeq);
+		int result;
+		try {
+			result = service.deleteEvent(eventSeq, list);
+		} catch(RuntimeException e)
+		{
+			result=0;
+		}
+		
+		if(result>0)
+		{
+			request.setAttribute("msg","이벤트 삭제 성공");
+			request.setAttribute("loc","/event/eventList");
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/eventImage/");
+			// list 파일 삭제 로직
+			for(int i=0; i<list.size();i++)
+			{
+				if(new File(saveDir+list.get(i)).delete()==false)
+				{
+					logger.error(saveDir+list.get(i)+"파일 삭제 실패");
+				}
+			}
+		}
+		else
+		{
+			request.setAttribute("msg","이벤트 삭제 실패");
+			request.setAttribute("loc","/event/eventList");
+		}
+		return "common/msg";
+	}
+	
 	@RequestMapping("/notice/noticeDelete.do")
 	public String noticeDelete(String viewNo, HttpServletRequest request)
 	{

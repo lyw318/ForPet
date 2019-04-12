@@ -74,7 +74,30 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 		}
 		return result2;
 	}
-
+	
+	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
+	public int deleteEvent(int eventSeq, List<String> list) throws RuntimeException {
+		int result;
+		if(list != null && list.size()>0)
+		{
+			for(int i=0; i<list.size(); i++)
+			{
+				result = dao.deleteEventImage(list.get(i));
+				if(result<1)
+				{
+					throw new RuntimeException();
+				}
+			}
+		}
+		result = dao.deleteEvent(eventSeq);
+		if(result<1)
+		{
+			throw new RuntimeException();
+		}
+		return result;
+	}
+	
 	@Override
 	public int addReadcount(int viewNo) {
 		return dao.addReadcount(viewNo);

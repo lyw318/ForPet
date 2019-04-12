@@ -56,6 +56,9 @@
  <delete id="deleteNotice" parameterType="_int">
     delete from Notice where noticeSeq = #{noticeSeq}
  </delete>
+ <delete id="deleteEvent" parameterType="_int">
+    delete from Event where eventSeq = #{eventSeq}
+ </delete>
  <update id="addReadcount" parameterType="_int">
  	update notice set readcount = readcount+1 where noticeSeq = #{noticeSeq}
  </update>

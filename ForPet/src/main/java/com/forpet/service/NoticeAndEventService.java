@@ -24,5 +24,6 @@ public interface NoticeAndEventService {
 	List<String> eventImageList(int no);
 	int addEventReadcount(int no);
 	int updateEvent(Event e, List<Image> list, String exFileM, String[] exFile) throws RuntimeException;
+	int deleteEvent(int eventSeq, List<String> list) throws RuntimeException;
 	
 }
