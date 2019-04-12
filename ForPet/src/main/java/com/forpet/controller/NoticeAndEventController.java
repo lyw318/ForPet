@@ -102,7 +102,6 @@ public class NoticeAndEventController {
 		{
 			List<String> ilist = service.eventImageList(no);
 			e.parseDateToString();
-			System.out.println(e);
 			request.setAttribute("ilist", ilist);
 			request.setAttribute("e", e);
 			

@@ -77,27 +77,48 @@
   <select id="eventCount" parameterType="boardSearch" resultType="_int">
  	<choose>
 	 	<when test='keyword!=null and keyword!=""'>
-	 		select count(*) from event where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish 
+	 		select count(*) from event where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%')
 	 	</when>
 	 	<otherwise>
-	 		select count(*) from event where sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish
+	 		select count(*) from event where 1=1
 		</otherwise>
+ 	</choose>
+ 	<choose>
+ 		<when test='type eq "all"'>
+ 		</when>
+ 		<when test='type eq "finish"'>
+ 			AND (sysdate <![CDATA[<]]> eventstart or sysdate-1 <![CDATA[>]]> eventfinish)
+ 		</when>
+ 		<otherwise>
+ 			AND (sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish)
+ 		</otherwise>
  	</choose>
  </select>
  <select id="eventList" parameterType="boardSearch" resultType="event">
  	select A.*,B.*, (select filename from eventImage where priority = 1 and A.eventSeq = eventSeq) as "filename" from event A join Member B on(A.memberSeq = B.memberSeq)
    	<choose>
 	 	<when test='keyword!=null and keyword!=""'>
-	 		where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%') AND sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish 
+	 		where (eventTitle like '%'||#{keyword}||'%' OR eventContent like '%'||#{keyword}||'%')
 	 	</when>
 	 	<otherwise>
-	 		where sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish
+	 		where 1=1
 		</otherwise>
+ 	</choose>
+ 	 <choose>
+ 		<when test='type eq "all"'>
+ 		</when>
+ 		<when test='type eq "finish"'>
+ 			AND (sysdate <![CDATA[<]]> eventstart or sysdate-1 <![CDATA[>]]> eventfinish)
+ 		</when>
+ 		<otherwise>
+ 			AND (sysdate <![CDATA[>]]> eventstart and sysdate-1 <![CDATA[<]]> eventfinish)
+ 		</otherwise>
  	</choose>
  	<choose>
  		<otherwise>
  			order by eventSeq desc
  		</otherwise>
  	</choose>
+ 	
  </select>
 </mapper>

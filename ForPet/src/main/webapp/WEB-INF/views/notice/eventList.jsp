@@ -46,14 +46,14 @@
                 </div>
                 </c:if>
 			</div>
-					<select name="category" id="category" style="margin:10px;height:30px;width:200px">
+					<select name="type" id="event-type" style="margin:10px;height:30px;width:200px"; onchange="fn_event_type()">
 							<option value="">진행중인 이벤트</option>
-							<option value="">종료된 이벤트</option>
-							<option value="">모든 이벤트</option>
+							<option value="finish" ${param.type eq "finish" ? "selected":""}>종료된 이벤트</option>
+							<option value="all" ${param.type eq "all" ? "selected":""}>모든 이벤트</option>
 					</select>
 			<div class="board-preview">
 				<c:forEach items="${elist}" var="e">
-				<div class="board-preview-element" onclick="location.href='${path}/event/eventList?viewNo=${e.eventSeq}'">
+				<div class="board-preview-element" onclick="fn_event_view(${e.eventSeq})">
 					<img class="board-preview-image" src="${path}/resources/upload/eventImage/${e.filename}"/>
 					<div class="board-preview-title">${e.eventTitle}</div>
 					<div class="board-preview-date">${e.eventStart}부터 ${e.eventFinish}까지</div>
@@ -78,8 +78,13 @@
 </section>
 
 <script>
+function fn_event_view(viewNo)
+{
+	location.href='${path}/event/eventList?viewNo='+viewNo+'&'+fn_type_str()+fn_keyword_str()+fn_cpage_str();
+}
+
 function fn_e_board_search(){
-	 location.href='${path}/event/eventList?keyword='+$("#board-e-search-text").val();
+	 location.href='${path}/event/eventList?keyword='+$("#board-e-search-text").val()+'&'+fn_type_str();
 }
 
 function fn_e_search_write(){
@@ -88,6 +93,44 @@ function fn_e_search_write(){
 		fn_e_board_search();
 	}
 }
+
+function fn_event_type(){
+	location.href='${path}/event/eventList?type='+$("#event-type").val()+'&'+fn_keyword_str();
+}
+
+function fn_type_str(){
+	if(${param.type eq null?"false":"true"})
+	{
+		return "type=${param.type}&"; 
+	}
+	else
+	{
+		return "";
+	}
+}
+
+function fn_keyword_str(){
+	if(${param.keyword eq null?"false":"true"})
+	{
+		return "keyword=${param.keyword}&"; 
+	}
+	else
+	{
+		return "";
+	}
+}
+
+function fn_cpage_str(){
+	if(${param.cPage eq null?"false":"true"})
+	{
+		return "cPage=${param.cPage}&"; 
+	}
+	else
+	{
+		return "";
+	}
+}
+
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -48,10 +48,10 @@
 			<div class="board-title">
 				<p>이벤트</p>
 			</div>
-					<select name="category" id="category" style="margin:10px;height:30px;width:200px">
+					<select name="type" id="event-type" style="margin:10px;height:30px;width:200px"; onchange="fn_event_type()">
 							<option value="">진행중인 이벤트</option>
-							<option value="">종료된 이벤트</option>
-							<option value="">모든 이벤트</option>
+							<option value="finish" ${param.type eq "finish" ? "selected":""}>종료된 이벤트</option>
+							<option value="all" ${param.type eq "all" ? "selected":""}>모든 이벤트</option>
 					</select>
 			<div class="board-preview">
 				<c:forEach items="${elist}" var="e">
@@ -110,6 +110,11 @@ function fn_e_search_write(){
 		fn_e_board_search();
 	}
 }
+
+function fn_event_type(){
+	location.href='${path}/event/eventList?type='+$("#event-type").val();
+}
+
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
