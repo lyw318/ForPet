@@ -28,4 +28,6 @@ public interface NoticeAndEventDao {
 	Event selectEvent(int no);
 	List<String> eventImageList(int no);
 	int addEventReadCount(int no);
+	int updateEvent(Event e);
+	int deleteEventImage(String filename);
 }

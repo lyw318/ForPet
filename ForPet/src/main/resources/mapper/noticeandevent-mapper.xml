@@ -71,8 +71,14 @@
  <update id="updateNotice" parameterType="notice">
  	update notice set noticeTitle = #{noticeTitle}, noticeContent = #{noticeContent} where noticeSeq = #{noticeSeq}
  </update>
+ <update id="updateEvent" parameterType="event">
+ 	update event set eventTitle = #{eventTitle}, eventContent = #{eventContent}, eventStart = #{eventStart}, eventFinish = #{eventFinish} where eventSeq = #{eventSeq}
+ </update>
  <delete id="deleteImage" parameterType="string">
  	delete from NoticeImage where filename = #{filename}
+ </delete>
+  <delete id="deleteEventImage" parameterType="string">
+ 	delete from EventImage where filename = #{filename}
  </delete>
   <select id="eventCount" parameterType="boardSearch" resultType="_int">
  	<choose>

@@ -109,6 +109,16 @@ public class NoticeAndEventDaoImpl implements NoticeAndEventDao {
 	public int addEventReadCount(int no) {
 		return session.update("noticeandevent.addEventReadCount",no);
 	}
+
+	@Override
+	public int updateEvent(Event e) {
+		return session.update("noticeandevent.updateEvent", e);
+	}
+
+	@Override
+	public int deleteEventImage(String filename) {
+		return session.delete("noticeandevent.deleteEventImage", filename);
+	}
 	
 	
 	

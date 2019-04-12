@@ -307,7 +307,7 @@ public class NoticeAndEventController {
 		int count=0;
 		String timeStr = new SimpleDateFormat("yyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
 		
-		if(!upFileM.isEmpty())
+		if(upFileM != null && !upFileM.isEmpty())
 		{
 			String oriFileName = upFileM.getOriginalFilename();
 			String ext=oriFileName.substring(oriFileName.lastIndexOf("."));
@@ -452,6 +452,171 @@ public class NoticeAndEventController {
 		}
 	}
 	
+	@RequestMapping("/event/eventUpdate")
+	public String eventUpdate(String viewNo, HttpServletRequest request)
+	{
+		int no=0;
+		try {
+			no = Integer.parseInt(viewNo);
+		} catch(NumberFormatException e)
+		{
+			
+		}
+		Event e = service.selectEvent(no);
+		
+		if(e != null)
+		{
+			e.parseDateToString();
+			List<String> ilist = service.eventImageList(no);
+			request.setAttribute("e", e);
+			request.setAttribute("ilist",ilist);
+			return "notice/eventUpdate";
+		}
+		else
+		{
+			request.setAttribute("msg","이벤트가 존재하지 않습니다.");
+			request.setAttribute("loc", "/event/eventList?viewNo="+viewNo);
+			return "common/msg";
+		}
+	}
+	
+	@RequestMapping("/event/eventUpdateEnd.do")
+	public String eventUpdateEnd(Event e, MultipartFile[] upFile, MultipartFile upFileM, String[] exFile, String exFileM, HttpServletRequest request)
+	{
+		try {
+			e.parseStringToDate();
+		} catch(ParseException er)
+		{
+				request.setAttribute("msg","이벤트 기간 설정 에러");
+				request.setAttribute("loc","/event/eventList?viewNo="+e.getEventSeq());
+				return "common/msg";
+		}
+			
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/eventImage/");
+		File dir = new File(saveDir);
+		if(!dir.exists())
+		{
+			dir.mkdirs();
+		}
+		
+		List<Image> list = new ArrayList<Image>();
+		int count=0;
+		String timeStr = new SimpleDateFormat("yyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
+		
+		if(upFileM != null && !upFileM.isEmpty())
+		{
+			String oriFileName = upFileM.getOriginalFilename();
+			String ext=oriFileName.substring(oriFileName.lastIndexOf("."));
+	
+			int uniqueNum = e.getMemberSeq();
+			String reNamedFile= timeStr+"_"+uniqueNum+"_"+count+ext;
+			count++;
+			
+			try {
+				upFileM.transferTo(new File(saveDir+reNamedFile));
+				Image i = new Image();
+				i.setFilename(reNamedFile);
+				i.setPriority(count);
+				i.setRefseq(e.getEventSeq());
+				list.add(i);
+				
+				} catch(IOException er)
+				{
+					er.printStackTrace();
+				}
+		}
+		else
+		{
+			//올라온 메인파일이 없으므로 기존 메인파일을 삭제하지 않고 유지한다! 빈칸일 경우 메인파일 유지
+			exFileM="";
+		}
+		
+		if(exFile!=null)
+		{
+			count = exFile.length+1;
+		}
+		else
+		{
+			exFile = new String[0];
+			count =1;
+		}
+		
+		for(MultipartFile f : upFile)
+		{
+			if(!f.isEmpty())
+			{
+				String oriFileName = f.getOriginalFilename();
+				String ext=oriFileName.substring(oriFileName.lastIndexOf("."));
+		
+				int uniqueNum = e.getMemberSeq();
+				String reNamedFile= timeStr+"_"+uniqueNum+"_"+count+ext;
+				count++;
+				
+				try {
+					f.transferTo(new File(saveDir+reNamedFile));
+					} catch(IOException er)
+					{
+						er.printStackTrace();
+						continue;
+					}
+				
+				Image i = new Image();
+				i.setFilename(reNamedFile);
+				i.setPriority(count);
+				i.setRefseq(e.getEventSeq());
+				list.add(i);
+			}
+		}
+		
+		int result;
+		try {
+			result=service.updateEvent(e, list, exFileM, exFile);
+		}catch(RuntimeException er)
+		{
+			result=0;
+		}
+		
+		if(result>0)
+		{
+			request.setAttribute("msg","이벤트 수정 성공");
+			request.setAttribute("loc", "/event/eventList?viewNo="+e.getEventSeq());
+			// exFileM 파일 삭제 로직
+			if(exFileM!=null && exFileM.trim().length()>0)
+			{
+				if(new File(saveDir+exFileM.trim()).delete()==false)
+				{
+					logger.error(saveDir+exFileM.trim()+"파일 삭제 실패");
+				}
+			}
+			// exFile 파일 삭제 로직
+			for(int i=0; i<exFile.length;i++)
+			{
+				if(exFile[i].trim().length()>0)
+				{
+					if(new File(saveDir+exFile[i].trim()).delete()==false)
+					{
+						logger.error(saveDir+exFile[i].trim()+"파일 삭제 실패");
+					}
+				}
+			}
+			
+		
+		} else
+		{
+			request.setAttribute("msg","이벤트 수정 실패");
+			request.setAttribute("loc", "/event/eventList?viewNo="+e.getEventSeq());
+			// list 파일 삭제 로직
+			for(int i=0; i<list.size();i++)
+			{
+				if(new File(saveDir+list.get(i).getFilename()).delete()==false)
+				{
+					logger.error(saveDir+list.get(i).getFilename()+"파일 삭제 실패");
+				}
+			}
+		}
+		
+		return "common/msg";
+	}
 	@RequestMapping("/notice/noticeUpdateEnd.do")
 	public String noticeUpdateEnd(Notice n, MultipartFile[] upFile, String[] exFile, HttpServletRequest request)
 	{
