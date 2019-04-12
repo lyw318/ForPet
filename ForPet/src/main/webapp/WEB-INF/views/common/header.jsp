@@ -54,13 +54,12 @@
                     </div>
                 </div>
                 <div class="hMainMenuBox">
-                    <div class="mainMenuBtn mainMenuBtn2"
-                        onclick="javascript:location.href='${path}/main/noticeAndEvent'">
+                    <div class="mainMenuBtn mainMenuBtn2" onclick="javascript:location.href='${path}/main/noticeAndEvent'">
                         공지사항
                     </div>
                 </div>
                 <div class="hMainMenuBox">
-                    <div class="mainMenuBtn mainMenuBtn3" onclick="javascript:location.href='#'">
+                    <div class="mainMenuBtn mainMenuBtn3" onclick="javascript:location.href='${path}/board/boardList'">
                         커뮤니티
                     </div>
                 </div>
@@ -87,11 +86,11 @@
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴1-2</div>
                 </div>
                  -->
-                <div class="mainMenuSubMenu mainMenuSubMenu2" onclick="javascript:location.href='${path}/notice/noticeList'">
+                <div class="mainMenuSubMenu mainMenuSubMenu2">
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/notice/noticeList'">공지사항</div>
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/event/eventList'">이벤트</div>
                 </div>
-                <div class="mainMenuSubMenu mainMenuSubMenu3" onclick="javascript:location.href='${path}/board/boardList'">
+                <div class="mainMenuSubMenu mainMenuSubMenu3">
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/board/boardList'">자유게시판</div>
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">소모임게시판</div>
                 </div>
@@ -140,20 +139,10 @@
                     <div class="logMenuBtn" onclick="javascript:location.href='${path}/main/memberEnroll'">회원가입</div>
                 </div>
             </c:if>
-
             <c:if test="${loggedMember!=null}">
-
                 <div class="hBottomMenu">
                     <div class="hBottomMenuText">
-                        <div class="userBox">${loggedMember.memberNickname}
-                            <%-- 
-				           <div class="petIconBox">
-				               <img src="${path }/resources/images/petIcon.png" style="width: 20px; height: 20px;">
-							</div>
-							<div class="userIdBox">${loggedMember.memberNickname}</div>
-							<%@ include file="/WEB-INF/views/common/userIdWindow.jsp" %>
-                            --%>
-                        </div>
+                        <div class="userBox">${loggedMember.memberNickname}</div>
                         &nbsp;
                         님, 환영합니다.
                         &nbsp;
@@ -162,12 +151,12 @@
                         <c:if test="${loggedMember.memberEmail == 'admin'}">
                             <div class="logMenuBtn" onclick="location.href='${path }/main/adminPageMain'">관리자 페이지</div>
                         </c:if>
-
-
                     </div>
                 </div>
-
             </c:if>
+            <div class="msgAlertBox">
+                <div class="msgAlert"></div>
+            </div>
         </div>
     </header>
     <script>
@@ -321,6 +310,9 @@
         })
 
     </script>
+
+    <!-- userBox javascript 추가 -->
+    <%@ include file="/WEB-INF/views/common/javascript/webSocketJs.jsp" %>
 
     <!-- userBox javascript 추가 -->
     <%@ include file="/WEB-INF/views/common/javascript/userIdWindowJs.jsp" %>

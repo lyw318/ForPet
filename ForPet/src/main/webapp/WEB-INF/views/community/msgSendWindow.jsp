@@ -19,7 +19,7 @@
 	<header></header>
 	<section>
 		<c:if test="${msg == null }">
-			<form action="${path}/community/insertMsg" method="post">
+			<form action="${path}/community/insertMsg" method="post" onSubmit="return sendPopupSubmit()">
 				<div class="msgSendBox">
 					<div class="SendUserBox">
 						보내는 사람 :&nbsp;&nbsp;
@@ -59,6 +59,15 @@
 	<footer></footer>
 
 	<script>
+		function sendPopupSubmit() {
+			var memberNickname = "${loggedMember.memberNickname}";
+			var mMsgRcvNickname = "${sendUserInfo.memberNickname}";
+			var locFlag = "msgSend";
+			var msg = {"memberNickname":memberNickname, "mMsgRcvNickname":mMsgRcvNickname, "locFlag":locFlag};
+			opener.parent.sendPopupMsg(msg);
+			return true;
+		}
+		
 		function sendPopupClose() {
 			window.close();
 		}

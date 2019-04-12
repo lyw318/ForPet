@@ -2,7 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
@@ -56,6 +58,17 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
- 	<tx:annotation-driven transaction-manager="transactionManager"/> 
+ 	<tx:annotation-driven transaction-manager="transactionManager"/>
+ 	
+ 	
+	<bean id="msgAlert" class="com.forpet.common.socket.msgAlertSocketHandler"></bean>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="msgAlert" path="/msgAlert"/>
+		<websocket:handshake-interceptors>
+			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
+	 
 
 </beans>
