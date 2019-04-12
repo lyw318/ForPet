@@ -1,5 +1,7 @@
 package com.forpet.service;
 
+import java.util.List;
+
 import com.forpet.model.vo.Member;
 
 public interface MemberService {
@@ -21,6 +23,10 @@ public interface MemberService {
 	int updateUserAuth(String memberEmail, String key);
 
 	String selectCountUserAuth(String memberEmail);
+
+	int insertAddInfo(Member m,String kakaoId) throws RuntimeException;
+
+	
 
 	
 

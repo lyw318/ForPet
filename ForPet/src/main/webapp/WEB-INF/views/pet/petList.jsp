@@ -23,7 +23,7 @@
 		<div class="petListBox">
 			<%for(Pet p:list) {%>
 				<div class="petListOne">
-					<div><img src="${path }/resources/upload/petProfile/<%=p.getPetRenamedImage() %>"s></div>
+					<div><img src="${path }/resources/upload/petProfile/<%=p.getPetRenamedImage() %>"></div>
 					<div><label>이름 :  <%=p.getPetName() %></label></div>
 					<div><label>종류 :  <%=p.getPetType()%></label></div>
 					<div><label>품종 : <%=p.getPetType2() %></label></div>

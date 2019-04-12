@@ -1,6 +1,7 @@
 package com.forpet.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,6 +19,22 @@ public class MemberDaoImpl implements MemberDao {
 	
 	
 	
+	
+
+	@Override
+	public int insertKakaoMember(int memberSeq, String kakaoId) {
+		Map m=new HashMap();
+		m.put("kakaoId", kakaoId);
+		m.put("memberSeq", memberSeq);
+		return session.insert("member.insertKakaoMember",m);
+	}
+
+	@Override
+	public int insertAddInfo(Member m) {
+		// TODO Auto-generated method stub
+		return session.insert("member.insertAddInfo",m);
+	}
+
 	@Override
 	public int insertUserAuth(String memberEmail, String key) {
 		// TODO Auto-generated method stub
@@ -67,10 +84,11 @@ public class MemberDaoImpl implements MemberDao {
 		return session.update("member.update",m);
 	}
 
+	//회원탈퇴
 	@Override
 	public int delete(Member m) {
 		// TODO Auto-generated method stub
-		return session.delete("member.delete",m);
+		return session.update("member.delete",m);
 	}
 
 	@Override

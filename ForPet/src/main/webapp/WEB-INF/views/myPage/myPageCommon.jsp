@@ -50,7 +50,7 @@
                 <ul class="sub">
 					<li onclick="javascript:location.href='${path }/member/memberMyInform.do'">내 정보 보기</li>
                     <li onclick="javascript:location.href='${path }/member/memberUpdate.do'">내 정보 수정</li>
-					<li>회원 탈퇴</li>
+					<li onclick="javascript:location.href='${path }/member/memberDel.do'">회원 탈퇴</li>
                 </ul>
             <li>내 반려동물</li>
                  <ul class="sub">

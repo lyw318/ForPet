@@ -2,6 +2,7 @@ package com.forpet.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.mail.MessagingException;
@@ -36,58 +37,17 @@ public class MemberController {
 	
 	@Autowired
     private JavaMailSender mailSender;
-    
+    //회원가입 후 내 정보
 	@RequestMapping("/member/memberMyInform.do")
 	public String memberMyInform() {
 		return "member/memberMyInform";
 	}
-	
+	//회원가입1
 	@RequestMapping("/member/memberEnroll.do")
 	public String memberEnroll() {
 		return "member/memberEnroll";
 	}
-	
-	@RequestMapping("/member/memberUpdate.do")
-	public ModelAndView memberUpdateEnd(HttpSession session,Model model) {
-		
-		Member re=service.selectOne((Member)session.getAttribute("loggedMember"));
-		
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("myPage/member/memberUpdate");
-		mv.addObject("member",re);
-		return mv;
-	}
-	
-	@RequestMapping("/member/memberUpdateEnd.do")
-	public ModelAndView updateEnd(Member m, HttpSession session) {
-		String rawPw=m.getMemberPassword();
-		String enPw=bcEcoder.encode(rawPw);
-		m.setMemberPassword(enPw);
-		System.out.println(m);
-		int result=service.update(m);
-		m = service.selectOne(m);
-		String msg="";
-		String loc="/member/update.do?memberEmail="+m.getMemberEmail();
-		if(result>0) {
-			msg="수정완료";
-			session.setAttribute("loggedMember",m );
-		}else {
-			msg="수정실패";
-		}
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("common/msg");
-		mv.addObject("msg",msg);
-		return mv;
-		
-	}
-	
-	@RequestMapping("member/memberDel.do")
-	public String memberDel(Member m) {
-		int result=service.delete(m);
-		
-		return "redirect:/";
-	}
-	
+	//회원가입2
 	@RequestMapping("/member/memberEnrollEnd.do")
 	public String memberEnrollEnd(Member m,String authKey,Model model) {
 		if(authKey==null||!authKey.equals(service.selectCountUserAuth(m.getMemberEmail())))
@@ -114,7 +74,104 @@ public class MemberController {
 		model.addAttribute("loc",loc);
 		return "member/memberEnrollEnd";
 	}
+	//카카오 로그인 후 추가정보 입력후 가입
+	@RequestMapping("/member/kakaoEnrollEnd.do")
+	public ModelAndView kakaoEnrollEnd(Member m,String kakaoId,ModelAndView model) {
+		int result= service.insertAddInfo(m,kakaoId);
+		String msg="";
+		String loc="/";
+		if(result>0) {
+			msg="회원가입 완료";
+		}else {
+			msg="회원가입 실패";
+		}
+		model.addObject("msg",msg);
+		model.addObject("loc",loc);
+		model.setViewName("common/msg");
+		return model;
+	}
 	
+	
+	//카카오로그인
+	@RequestMapping("/member/kakaoLogin.do")
+	public ModelAndView kakaoApiLogin(String kakaoId,String kakaoNick,HttpSession session) {
+		ModelAndView mv=new ModelAndView();
+
+		System.out.println(kakaoId);
+		Member result=service.kakaoSelectOne(kakaoId);
+		System.out.println(result);
+		if(result!=null) {
+			//추가정보 예전에 입력했던 사용자
+			session.setAttribute("loggedMember", result);
+			mv.setViewName("/main");
+			
+		}else {
+			//추가정보입력해야되는 사용자
+			mv.addObject("kakaoId",kakaoId);
+			mv.addObject("kakaoNick", kakaoNick);
+			mv.setViewName("/member/kakaoEnroll");
+		}
+		return mv;
+	}
+	//회원정보 수정1
+	@RequestMapping("/member/memberUpdate.do")
+	public ModelAndView memberUpdateEnd(HttpSession session,Model model) {
+		
+		Member re=service.selectOne((Member)session.getAttribute("loggedMember"));
+		
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("myPage/member/memberUpdate");
+		mv.addObject("member",re);
+		return mv;
+	}
+	//회원정보 수정2
+	@RequestMapping("/member/memberUpdateEnd.do")
+	public ModelAndView updateEnd(Member m, HttpSession session) {
+		String rawPw=m.getMemberPassword();
+		String enPw=bcEcoder.encode(rawPw);
+		m.setMemberPassword(enPw);
+		System.out.println(m);
+		int result=service.update(m);
+		m = service.selectOne(m);
+		String msg="";
+		String loc="/member/update.do?memberEmail="+m.getMemberEmail();
+		if(result>0) {
+			msg="수정완료";
+			session.setAttribute("loggedMember",m );
+		}else {
+			msg="수정실패";
+		}
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("common/msg");
+		mv.addObject("msg",msg);
+		return mv;
+		
+	}
+	//회원정보삭제
+	@RequestMapping("/member/memberDel.do")
+	public ModelAndView memberDel(ModelAndView model,HttpSession session) {
+		Member m=(Member)(session.getAttribute("loggedMember"));
+		m.setMemberType("deleted");
+		int result=service.delete(m);
+		String msg="";
+		String loc="/";
+		if(result>0) {
+		msg="탈퇴성공";
+		//invalidate()로 세션 없애기
+		session.invalidate();
+		}else {
+			msg="탈퇴실패";	
+		}
+		model.addObject("msg",msg);
+		model.addObject("loc",loc);
+		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
+	
+	
+	//이메일로 로그인
 	@RequestMapping("/member/memberLogin.do")
 	public String login(Member m, Model model, HttpSession session) {
 		Member result=service.selectOne(m);
@@ -142,13 +199,13 @@ public class MemberController {
 		model.addAttribute("loc",loc);
 		return "common/msg";
 	}
-	
+	//로그아웃
 	@RequestMapping("/member/logOut.do")
 	public String logOut(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+	//이메일 인증1
 	@RequestMapping("/member/checkEmail.do")
 	public void checkEmail(String memberEmail, HttpServletResponse res)throws IOException{
 		Member m=new Member();
@@ -158,12 +215,12 @@ public class MemberController {
 		res.getWriter().println(isOk);	
 	}
 	
-	//메일 인증
+	//이메일 인증1-1
 	@RequestMapping("/member/emailAuth.do")
 	public void emailAuth(String memberEmail) {
 		String key = new TempKey().getKey(20,false);
 
-		//메일 전송
+		//메일 전송1-2
         try {
         MailHandler sendMail = new MailHandler(mailSender);
         sendMail.setSubject("FAINT  서비스 이메일 인증]");
@@ -186,7 +243,7 @@ public class MemberController {
        
     }
 	
-	
+	//닉네임중복체크
 	@RequestMapping("/member/checkNickname.do")
 	public void checkNickname(String memberNickname,HttpServletResponse res)throws IOException {
 		Member m=new Member();
@@ -196,30 +253,6 @@ public class MemberController {
 		res.getWriter().println(isOk);
 	}
 
-	@RequestMapping("/member/kakaoLogin.do")
-	public ModelAndView kakaoApiLogin(String kakaoId,String kakaoNick,HttpSession session) {
-		ModelAndView mv=new ModelAndView();
-/*		String msg="";
-		String loc="/";*/
-		
-		System.out.println(kakaoId);
-		Member result=service.kakaoSelectOne(kakaoId);
-		System.out.println(result);
-		if(result!=null) {
-			//추가정보 예전에 입력했던 사용자
-			session.setAttribute("loggedMember", result);/*
-			msg="카카오 로그인 성공";
-			loc="/";*/
-			mv.setViewName("/main");
-			
-		}else {
-			//추가정보입력해야되는 사용자
-			mv.addObject("kakaoNick", kakaoNick);
-			mv.setViewName("/member/kakaoEnroll");
-		}
-		return mv;
-	}
-	
 	
 	
 	

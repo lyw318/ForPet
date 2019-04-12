@@ -1,5 +1,6 @@
 package com.forpet.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -29,6 +30,34 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	
+	
+	
+
+
+	//카카오 로그인 후 추가정보 입력
+	@Override
+	//@Transactional은 런타임ex가 발생하면 롤백, 안하면 커밋하라는 뜻
+	@Transactional(rollbackFor = RuntimeException.class)
+	public int insertAddInfo(Member m,String kakaoId) throws RuntimeException{
+		int result=dao.insertAddInfo(m);
+		if(result==0) {
+			//throw는 그냥 exception을 강제로 발생시키는 것 
+			throw new RuntimeException();	
+		}
+		
+		result=dao.insertKakaoMember(m.getMemberSeq(),kakaoId);
+		//카카오멤버테이블에 들어가다 실패하면 0
+		if(result==0) {
+			//throw는 그냥 exception을 강제로 발생시키는 것 
+			throw new RuntimeException();	
+		}
+		
+		
+		// TODO Auto-generated method stub
+		return result;
+	}
+
+
 
 	@Override
 	public int insertUserAuth(String memberEmail, String key) {
