@@ -102,8 +102,8 @@
 			      if('${loggedMember.memberNickname}' == 'admin' || '${loggedMember.memberNickname}' == n['memberNickname'])
 			      {
 			    	  content +=
-			            	'<input type="button" value="수정" onclick=fn_updateNotice('+viewNo+')>'+
-			            	'<input type="button" value="삭제" onclick=fn_deleteNotice('+viewNo+')>'
+			            	'<input type="button" value="수정" onclick="fn_updateNotice('+viewNo+')">'+
+			            	'<input type="button" value="삭제" onclick="fn_deleteNotice('+viewNo+')">'
 			      }
 			      content +='</div>';
 				

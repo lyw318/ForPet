@@ -40,8 +40,8 @@
                </div>
                 <div class="board-view-btns">
                 	<c:if test='${loggedMember!=null&&("admin" eq loggedMember.memberEmail || e.memberNickname eq loggedMember.memberNickname)}'>
-                     <input type="button" value="수정" onclick=fn_updateNotice()>
-                     <input type="button" value="삭제" onclick=fn_deleteNotice()>
+                     <input type="button" value="수정" onclick="fn_updateEvent(${e.eventSeq})">
+                     <input type="button" value="삭제" onclick="fn_deleteEvent(${e.eventSeq})">
                      </c:if>
                 </div>
                 </c:if>
@@ -129,6 +129,17 @@ function fn_cpage_str(){
 	{
 		return "";
 	}
+}
+
+function fn_deleteEvent(viewNo) {
+	 if(confirm("정말 게시글을 삭제하시겠습니까?"))
+	 {
+		 location.href='${path}/event/eventDelete.do?viewNo='+viewNo;
+	 }
+}
+
+function fn_updateEvent(viewNo) {
+	 location.href='${path}/event/eventUpdate?viewNo='+viewNo;
 }
 
 </script>

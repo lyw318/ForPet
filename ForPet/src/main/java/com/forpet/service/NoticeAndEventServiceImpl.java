@@ -1,15 +1,11 @@
 package com.forpet.service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.forpet.common.exception.BoardException;
 import com.forpet.dao.NoticeAndEventDao;
 import com.forpet.model.vo.BoardSearch;
 import com.forpet.model.vo.Event;
@@ -116,6 +112,51 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 				if(exFile[i].trim().length()>0)
 				{
 					result = dao.deleteImage(exFile[i]);
+					if(result==0)
+					{
+						throw new RuntimeException();
+					}
+				}
+			}
+		}
+		return result;
+	}
+
+	
+	@Override
+	public int updateEvent(Event e, List<Image> list, String exFileM, String[] exFile) throws RuntimeException {
+		int result = 0;
+		result=dao.updateEvent(e);
+		if(result<=0)
+		{
+			throw new RuntimeException();
+		}
+		if(list != null && list.size()>0)
+		{
+			for(Image i : list)
+			{
+				result = dao.insertEventImage(i);
+				if(result==0)
+				{
+					throw new RuntimeException();
+				}
+			}
+		}
+		if(exFileM != null && exFileM.trim().length()>0)
+		{
+			result = dao.deleteEventImage(exFileM);
+			if(result==0)
+			{
+				throw new RuntimeException();
+			}
+		}
+		if(exFile != null)
+		{
+			for(int i=0; i<exFile.length; i++)
+			{
+				if(exFile[i].trim().length()>0)
+				{
+					result = dao.deleteEventImage(exFile[i]);
 					if(result==0)
 					{
 						throw new RuntimeException();
