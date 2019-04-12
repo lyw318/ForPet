@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="admin">
+
+<!-- <select id="selectList" parameterType="member" resultType="member">
+select * from member
+</select> -->
+<select id="selectDeleteList" parameterType="member" resultType="member">
+select * from member where memberType is not null
+</select>
+
+<select id="selectCount" resultType="_int">
+select count(*) from member
+</select>
+
+<select id="selectList" resultType="member">
+select A.*,(select count(*) from attachment where A.memberSeq=memberSeq) as filecount from member A order by memberEnrolldate desc
+</select>
 </mapper>

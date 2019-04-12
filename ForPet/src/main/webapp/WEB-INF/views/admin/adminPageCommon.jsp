@@ -9,9 +9,9 @@
         <ul class="sub">
             <li>회원관리</li>
                 <ul class="sub">
-                    <li>회원 목록</li>
+                    <li onclick="javascript:location.href='${path}/admin/adminList.do'">회원 목록</li>
                     <li>회원 탈퇴 대기</li>
-                    <li>회원 탈퇴 목록</li>
+                    <li onclick="javascript:location.href='${path}/admin/adminDeleteList.do'">회원 탈퇴 목록</li>
                 </ul>
             <li>병원 관리</li>
 				<ul class="sub">

@@ -7,20 +7,41 @@
 <!-- <update id="userAuth">
 	<![CDATA[update user set userCertification = 1 where (select count(*) from userAuth where memberEmail = #{memberEmail}) > 0]]>
 </update> -->
- 
+ <!-- 로그인 -->
  <select id="selectOne" parameterType="member" resultType="member">
- SELECT * FROM MEMBER WHERE MEMBEREMAIL=#{memberEmail}
+ SELECT * FROM MEMBER WHERE MEMBEREMAIL=#{memberEmail} AND MEMBERTYPE is null
  </select>
+ 
+ <!-- 카카오로그인 -->
+<select id="selectKakao" parameterType="String" resultType="map">
+select * from kakaoMember join member using (memberSeq) where kakaoId=#{value} and memberType is null
+</select>
  
  <select id="selectByNickname" parameterType="member" resultType="member">
  select * from member where memberNickname=#{memberNickname}
  </select>
  
+ <!-- 회원가입 -->
+  <!--selectKey : 시퀀스 값 나중에 쓰기위해서 쿼리문으로 다시 가져오는 과정 (이미지를 업로드, 파일업로드 등을 할 때 1:N)--> 
  <insert id="insertMember" parameterType="member">
  INSERT INTO MEMBER VALUES(memberSeq.nextval,#{memberEmail},#{memberPassword},#{memberNickname},#{memberName},#{memberPhone},#{memberAddress},null,sysdate,null)
  <selectKey keyProperty="memberSeq" resultType="_int" order="AFTER">
  select memberSeq.currval from dual
  </selectKey>
+ </insert>
+ 
+ <!-- 카카오로그인 추가정보 입력 -->
+<insert id="insertAddInfo" parameterType="member">
+insert into member values(memberSeq.nextVal,#{memberEmail},'kakao',#{memberNickname},#{memberName},#{memberPhone},#{memberAddress},null,sysdate,null)
+<!--selectKey : 시퀀스 값 나중에 쓰기위해서 쿼리문으로 다시 가져오는 과정 (이미지를 업로드, 파일업로드 등을 할 때 1:N)--> 
+ <selectKey keyProperty="memberSeq" resultType="_int" order="AFTER">
+ select memberSeq.currval from dual
+ </selectKey>
+</insert>
+ 
+ <!-- kakaoMember 테이블에 등록 -->
+ <insert id="insertKakaoMember" parameterType="map">
+ insert into kakaoMember values(#{kakaoId},#{memberSeq})
  </insert>
  
  <!-- 메일인증 -->
@@ -36,16 +57,16 @@
  select authKey from userAuth where memberEmail=#{memberEmail}
  </select>
  
+ <!-- 회원수정 -->
  <update id="update"  parameterType="member">
  update member set memberPassword=#{memberPassword},memberNickname=#{memberNickname},memberName=#{memberName},memberPhone=#{memberPhone},memberAddress=#{memberAddress} where memberEmail=#{memberEmail}
  </update>
 
-<delete id="delete"  parameterType="member">
-delete from member where memberEmail=#{memberEmail}
-</delete>
+<!-- 회원탈퇴 -->
+<update id="delete"  parameterType="member">
+update member set memberType=#{memberType}, memberQuitdate = sysdate where memberSeq=#{memberSeq}
+</update>
 
-<select id="selectKakao" parameterType="String" resultType="map">
-select * from kakaoMember join member using (memberSeq) where kakaoId=#{value}
-</select>
+
 
 </mapper>

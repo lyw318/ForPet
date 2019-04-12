@@ -1,5 +1,6 @@
 package com.forpet.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.forpet.model.vo.Member;
@@ -23,6 +24,12 @@ public interface MemberDao {
 	int updateUserAuth(String memberEmail, String key);
 
 	String selectCountUserAuth(String memberEmail);
+
+	int insertAddInfo(Member m);
+
+	int insertKakaoMember(int memberSeq, String kakaoId);
+
+	
 
 
 }
