@@ -11,6 +11,7 @@
 			<div class="board-title">
 				<p>공지사항</p>
 			</div>
+			<span style="font-size:13px; align-self: flex-start; margin:10px;">총 ${ncount}개의 게시글</span>
 			<div class="board-table">
 				<div class="table-header">
 					<div>글번호</div>
@@ -48,11 +49,14 @@
 			<div class="board-title">
 				<p>이벤트</p>
 			</div>
+			<div style="align-self: flex-start; margin:10px;">
 					<select name="type" id="event-type" style="margin:10px;height:30px;width:200px"; onchange="fn_event_type()">
 							<option value="">진행중인 이벤트</option>
 							<option value="finish" ${param.type eq "finish" ? "selected":""}>종료된 이벤트</option>
 							<option value="all" ${param.type eq "all" ? "selected":""}>모든 이벤트</option>
 					</select>
+					<span style="font-size:13px;">총 ${ecount}개의 게시글</span>
+			</div>
 			<div class="board-preview">
 				<c:forEach items="${elist}" var="e">
 				<div class="board-preview-element" onclick="location.href='${path}/event/eventList?viewNo=${e.eventSeq}'">

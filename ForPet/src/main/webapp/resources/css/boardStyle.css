@@ -4,7 +4,6 @@
 
         .board-wrapper
         {
-         /*    font-family: 'Noto Sans KR'; */
             display: flex;
             flex-flow: column nowrap;
             width: 100%;
@@ -13,8 +12,7 @@
         
       .board-title
         {
-           font-size: 25px;
-           padding: 25px 0;
+           font-size: 27px;
         }
      
          .board-table
@@ -30,6 +28,7 @@
         {
             border-top: 2px solid rgb(139, 85, 38);
             border-bottom: 1px solid #ccc;
+            padding-top: 30px;
         	display: flex;
             flex-flow: row wrap;
             font-size: 14px;
@@ -58,7 +57,8 @@
         
         .board-preview-title
         {
-        	font-size:19px;
+        	padding-top: 20px;
+        	font-size:22px;
         }
         
         

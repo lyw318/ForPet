@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="health">
+<select id="healthCount" parameterType="boardSearch" resultType="_int">
+	<choose>
+	 	<when test='keyword!=null and keyword!=""'>
+	 		select count(*) from HealthInfo where (infoTitle like '%'||#{keyword}||'%' OR infoContent like '%'||#{keyword}||'%')
+	 	</when>
+	 	<otherwise>
+	 		select count(*) from HealthInfo where 1=1
+		</otherwise>
+ 	</choose>
+ 	<if test='type != null and type neq "all" and type neq ""'>
+ 			AND petType = #{type}
+ 	</if>
+</select>
+<select id="healthList" parameterType="boardSearch" resultType="healthInfo">
+ 	select A.*, (select filename from InfoImage where priority = 1 and A.infoSeq = infoSeq) as "filename" from HealthInfo A
+   	<choose>
+	 	<when test='keyword!=null and keyword!=""'>
+	 		where (infoTitle like '%'||#{keyword}||'%' OR infoContent like '%'||#{keyword}||'%')
+	 	</when>
+	 	<otherwise>
+	 		where 1=1
+		</otherwise>
+ 	</choose>
+ 	<if test='type != null and type neq "all" and type neq ""'>
+ 			AND petType = #{type}
+ 	</if>
+ 	<choose>
+ 		<otherwise>
+ 			order by infoSeq desc
+ 		</otherwise>
+ 	</choose>
+ </select>
+</mapper>

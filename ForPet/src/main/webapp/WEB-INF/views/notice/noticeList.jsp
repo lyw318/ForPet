@@ -12,6 +12,7 @@
 			</div>
 		    <div class="board-view-wrapper">
 		    </div>
+		    <span style="font-size:13px; align-self: flex-start; margin:10px;">총 ${ncount}개의 게시글</span>
 			<div class="board-table">
 				<div class="table-header">
 					<div>글번호</div>
@@ -88,7 +89,7 @@
 							content += '<span class="board-images">';
 							for(var i=0; i<ilist.length;i++)
 							{
-								content += '<img src="${path}/resources/upload/noticeImage/'+ilist[i]+'"/>'
+								content += '<img src="${path}/resources/upload/noticeImage/'+ilist[i]+'"/><br>'
 							}
 			                content += '</span>'
 						}

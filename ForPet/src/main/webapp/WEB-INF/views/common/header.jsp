@@ -63,6 +63,11 @@
                         커뮤니티
                     </div>
                 </div>
+                <div class="hMainMenuBox">
+                    <div class="mainMenuBtn mainMenuBtn4" onclick="javascript:location.href='${path}/health/healthInfo'">
+                        반려동물 정보
+                    </div>
+                </div>
                 <%-- 
                 <div class="hMainMenuBox">
                     <div class="mainMenuBtn mainMenuBtn4"

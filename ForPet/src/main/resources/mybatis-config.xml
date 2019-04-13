@@ -14,6 +14,7 @@
 		<typeAlias type="com.forpet.model.vo.Attachment" alias="attachment"/>
 		<typeAlias type="com.forpet.model.vo.Image" alias="image"/>
 		<typeAlias type="com.forpet.model.vo.BoardComment" alias="boardComment"/>
+		<typeAlias type="com.forpet.model.vo.HealthInfo" alias="healthInfo"/>
 		<!-- 추후 추가 
 		<typeAlias type="com.forpet.model.vo.Member" alias="member"/>
 		<typeAlias type="com.forpet.model.vo.Pet" alias="pet"/>
