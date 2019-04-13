@@ -58,28 +58,16 @@
 			${typeName} 카테고리 <span style="font-size:15px;">(${hcount})</span>
 		</div>
 		<div class="health-preview">
-			<div class="health-preview-element" onclick="fn_health_view()">
-				<img class="health-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-				<div class="health-preview-title"><span> [강아지] </span><span>강아지 건강 상식 이다 요거는</span></div>
+			<c:forEach items="${hlist}" var="h">
+			<div class="health-preview-element" onclick="fn_health_view(${h.infoSeq})">
+				<img class="health-preview-image" src="${path}/resources/upload/infoImage/${h.filename}"/>
+				<div class="health-preview-title">${h.infoTitle}</div>
 			</div>
-						<div class="health-preview-element" onclick="fn_health_view()">
-				<img class="health-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-				<div class="health-preview-title"><span> [강아지] </span><span>강아지 건강 상식 이다 요거는</span></div>
-			</div>
-						<div class="health-preview-element" onclick="fn_health_view()">
-				<img class="health-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-				<div class="health-preview-title"><span> [강아지] </span><span>강아지 건강 상식 이다 요거는</span></div>
-			</div>
-						<div class="health-preview-element" onclick="fn_health_view()">
-				<img class="health-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-				<div class="health-preview-title"><span> [강아지] </span><span>강아지 건강 상식 이다 요거는</span></div>
-			</div>
-						<div class="health-preview-element" onclick="fn_health_view()">
-				<img class="health-preview-image" src="${path}/resources/images/vet/hotel.png"/>
-				<div class="health-preview-title"><span> [강아지] </span><span>강아지 건강 상식 이다 요거는</span></div>
-			</div>
+			</c:forEach>
 		</div>
-		<button class="health-write" onclick="location.href='${path}/health/healthForm';">글쓰기</button>
+		<c:if test='${loggedMember!=null && "admin" eq loggedMember.memberEmail}'>
+			<button class="health-write" onclick="location.href='${path}/health/healthForm';">글쓰기</button>
+		</c:if>
 		${hpage}
 	</div>
 </section>
@@ -87,7 +75,7 @@
 <script>
 
 function fn_health_view(viewNo) {
-	location.href='${path}/health/healthView?viewNo='+viewNo;
+	location.href='${path}/health/healthView?viewNo='+viewNo+'&'+fn_type_str()+fn_keyword_str()+fn_cpage_str();
 }
 
 function fn_board_search(){

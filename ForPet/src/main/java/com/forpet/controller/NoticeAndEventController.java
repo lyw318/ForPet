@@ -41,7 +41,7 @@ public class NoticeAndEventController {
 	public String noticeAndEvent(HttpServletRequest request)
 	{
 		BoardSearch bs = new BoardSearch();
-		bs.parsing();
+		bs.parsing(10);
 		
 		int ncount = service.noticeCount(bs);
 		List<Notice> nlist = service.noticeList(bs);
@@ -72,7 +72,7 @@ public class NoticeAndEventController {
 	@RequestMapping("/notice/noticeList")
 	public String noticeList(BoardSearch bs, String viewNo, HttpServletRequest request)
 	{
-		bs.parsing();
+		bs.parsing(10);
 		
 		int ncount = service.noticeCount(bs);
 		List<Notice> nlist = service.noticeList(bs);
@@ -261,7 +261,14 @@ public class NoticeAndEventController {
 			}
 			
 		}
-		int result=service.insertNotice(n, list);
+		
+		int result=0;
+		try {
+			result=service.insertNotice(n, list);
+		} catch(RuntimeException e)
+		{
+			result=0;
+		}
 		
 
 		if(result>0)
@@ -360,7 +367,7 @@ public class NoticeAndEventController {
 		result= service.insertEvent(e, list);
 		} catch(RuntimeException er)
 		{
-			er.printStackTrace();
+			result=0;
 		}
 		
 		if(result>0)

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.forpet.model.vo.BoardSearch;
 import com.forpet.model.vo.HealthInfo;
+import com.forpet.model.vo.Image;
 
 @Repository
 public class HealthDaoImpl implements HealthDao {
@@ -26,6 +27,17 @@ public class HealthDaoImpl implements HealthDao {
 		RowBounds row=new RowBounds((bs.getcPageNo()-1)*bs.getNumPerPageNo(), bs.getNumPerPageNo());
 		return session.selectList("health.healthList",bs,row);
 	}
+
+	@Override
+	public int insertInfo(HealthInfo hi) {
+		return session.insert("health.insertInfo", hi);
+	}
+
+	@Override
+	public int insertInfoImage(Image i) {
+		return session.insert("health.insertInfoImage", i);
+	}
+	
 	
 	
 }

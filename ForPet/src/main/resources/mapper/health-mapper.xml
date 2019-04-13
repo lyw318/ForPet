@@ -10,7 +10,7 @@
 	 		select count(*) from HealthInfo where 1=1
 		</otherwise>
  	</choose>
- 	<if test='type != null and type neq "all" and type neq ""'>
+ 	<if test='type != null and type neq "All" and type neq ""'>
  			AND petType = #{type}
  	</if>
 </select>
@@ -24,7 +24,7 @@
 	 		where 1=1
 		</otherwise>
  	</choose>
- 	<if test='type != null and type neq "all" and type neq ""'>
+ 	<if test='type != null and type neq "All" and type neq ""'>
  			AND petType = #{type}
  	</if>
  	<choose>
@@ -33,4 +33,13 @@
  		</otherwise>
  	</choose>
  </select>
+ <insert id="insertInfo" parameterType="healthInfo">
+ 	insert into HealthInfo values(infoSeq.nextval, #{petType}, #{infoTitle}, #{infoContent})
+ 	<selectKey keyProperty="infoSeq" resultType="_int" order="AFTER">
+ 	select infoSeq.currval from dual
+ 	</selectKey>
+ </insert>
+ <insert id="insertInfoImage" parameterType="image">
+ 	insert into InfoImage values(#{filename}, #{refseq}, #{priority})
+ </insert>
 </mapper>
