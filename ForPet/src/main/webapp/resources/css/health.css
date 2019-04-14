@@ -1,3 +1,6 @@
+       
+       
+       
        .health-wrapper
         {
             display: flex;
@@ -5,12 +8,52 @@
             width: 100%;
             font-size: 14px;
         }
+        .health-view-background
+        {
+        	background-color: rgb(250,245,240);
+        }
+        
+        
+        .health-view-wrapper
+        {
+            display: flex;
+            flex-flow: column nowrap;
+            border: 1px solid rgb(200,200,200);
+            margin: 70px 100px;
+            color: black;
+            background-color: white;
+        }
         
         .health-title-wrapper
         {
         	display: flex;
             flex-flow: row nowrap;
         }
+        .health-view-title-wrapper
+        {
+        	display: flex;
+            flex-flow: row nowrap;
+            border-bottom: 1px solid rgb(200,200,200);
+            height: 80px;
+            
+        }
+        
+        .health-view-title-wrapper > div > span
+        {
+        	cursor: pointer;
+        	border-radius: 15px;
+        }
+        
+        .health-view-title-wrapper > div:nth-of-type(1){flex: 9 1 0;font-size: 20px; text-align: left; padding:30px;}
+        .health-view-title-wrapper > div:nth-of-type(2){flex: 1 1 0;display: flex; flex-flow: row nowrap; padding:16px;}
+        .health-view-content-wrapper
+        {
+        	padding:70px;
+        	min-height: 700px;
+        	display: flex;
+			flex-flow: column nowrap;
+        }
+        
         
          .health-title-wrapper > div > input[type="text"]
         {
@@ -201,3 +244,43 @@
         .health-write:hover{opacity: 0.8;}
         .health-write:focus{outline: none;}
         
+        .health-view-images
+        {
+        	margin-bottom: 100px;
+        } 
+        
+        .health-view-images > img
+        {
+        	max-width: 100%;
+        }
+        
+		.health-view-btns
+		{
+			display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+		}
+		
+		.health-view-btns input
+        {
+            font-size: 12px;
+            width: 120px;
+            height: 40px;
+            margin: 0;
+            border: none;
+            background-color: rgb(114, 71, 42);
+            color: white;
+            margin-left: 10px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .health-view-btns input:focus
+        {
+            outline: none;
+        }
+        
+       	.health-view-btns input:hover
+        {
+        	background-color: rgb(134, 91, 62);
+        }

@@ -11,5 +11,7 @@ public interface HealthService {
 	int healthCount(BoardSearch bs);
 	List<HealthInfo> healthList(BoardSearch bs);
 	int insertInfo(HealthInfo hi, List<Image> list) throws RuntimeException;
+	HealthInfo selectOne(int no);
+	List<String> infoImageList(int no);
 
 }

@@ -152,5 +152,36 @@ public class HealthController {
 		
 		return "common/msg";
 	}
+	
+	
+	@RequestMapping("/health/healthView")
+	public String healthView(String viewNo, BoardSearch bs, HttpServletRequest request)
+	{
+		int no=0;
+		try {
+			no = Integer.parseInt(viewNo);
+		} catch(NumberFormatException e)
+		{
+			
+		}
+		
+		HealthInfo hi = service.selectOne(no);
+		
+		if(hi != null)
+		{
+			List<String> ilist = service.infoImageList(no);
+			hi.createPetTypeName();
+			request.setAttribute("ilist", ilist);
+			request.setAttribute("hi", hi);
+			return "health/healthView";
+		}
+		else
+		{
+			request.setAttribute("msg", "반려동물 정보 게시글이 존재하지 않습니다.");
+			request.setAttribute("loc", PageBarFactory.createUrl(bs,"/health/healthInfo"));
+			return "common/msg";
+		}
+		
+	}
 
 }

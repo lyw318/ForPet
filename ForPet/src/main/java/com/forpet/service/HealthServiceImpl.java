@@ -50,6 +50,15 @@ public class HealthServiceImpl implements HealthService {
 		}
 		return result;
 	}
-	
+
+	@Override
+	public HealthInfo selectOne(int no) {
+		return dao.selectOne(no);
+	}
+
+	@Override
+	public List<String> infoImageList(int no) {
+		return dao.infoImageList(no);
+	}
 	
 }

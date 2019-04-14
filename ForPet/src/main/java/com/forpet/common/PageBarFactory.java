@@ -4,9 +4,8 @@ import com.forpet.model.vo.BoardSearch;
 
 public class PageBarFactory {
 
-	private PageBarFactory() {
-	} // 외부 생성 불가
-
+	private PageBarFactory() {} // 외부 생성 불가
+	
 	// 영우꺼
 	public static String getPageBar(int total, BoardSearch bs, String url) // url은 루트 경로 포함
 	{
@@ -97,6 +96,29 @@ public class PageBarFactory {
 		pageBar += "}</script>";
 		return pageBar;
 
+	}
+	
+	public static String createUrl(BoardSearch bs, String url)
+	{
+		//cPage를 포함한 쿼리스트링 생성 로직
+		String querryStr = url + "?cPage="+(bs.getcPage()==null?"1":bs.getcPage());
+		if(bs.getNumPerPage() != null && bs.getNumPerPage().length()>0)
+		{
+			querryStr += "&numPerPage="+bs.getNumPerPage();
+		}
+		if(bs.getKeyword() != null && bs.getKeyword().length()>0)
+		{
+			querryStr += "&keyword="+bs.getKeyword(); // 검색어 쿼리스트링
+
+		}
+		if (bs.getType() != null && bs.getType().length() > 0) {
+			querryStr += "&type=" + bs.getType(); // 검색타입(동적쿼리-컬럼) 쿼리스트링
+		}
+		if (bs.getOrder() != null && bs.getOrder().length() > 0) {
+			querryStr += "&order=" + bs.getOrder(); // 정렬 쿼리스트링
+		}
+		
+		return querryStr;
 	}
 
 	// 진우꺼

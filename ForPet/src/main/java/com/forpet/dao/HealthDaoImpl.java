@@ -37,7 +37,15 @@ public class HealthDaoImpl implements HealthDao {
 	public int insertInfoImage(Image i) {
 		return session.insert("health.insertInfoImage", i);
 	}
-	
-	
+
+	@Override
+	public HealthInfo selectOne(int no) {
+		return session.selectOne("health.selectOne", no);
+	}
+
+	@Override
+	public List<String> infoImageList(int no) {
+		return session.selectList("health.infoImageList", no);
+	}
 	
 }

@@ -42,4 +42,10 @@
  <insert id="insertInfoImage" parameterType="image">
  	insert into InfoImage values(#{filename}, #{refseq}, #{priority})
  </insert>
+ <select id="selectOne"  parameterType="_int" resultType="healthInfo">
+ 	select * from healthInfo where infoSeq = #{no}
+ </select>
+ <select id="infoImageList" parameterType="_int" resultType="string">
+ 	select filename from InfoImage where infoSeq = #{no} order by priority asc
+ </select>
 </mapper>

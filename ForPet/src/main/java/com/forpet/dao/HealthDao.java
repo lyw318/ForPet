@@ -12,5 +12,7 @@ public interface HealthDao {
 	List<HealthInfo> healthList(BoardSearch bs);
 	int insertInfo(HealthInfo hi);
 	int insertInfoImage(Image i);
+	HealthInfo selectOne(int no);
+	List<String> infoImageList(int no);
 
 }
