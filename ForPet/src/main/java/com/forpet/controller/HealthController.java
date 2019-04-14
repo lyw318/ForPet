@@ -183,5 +183,48 @@ public class HealthController {
 		}
 		
 	}
+	
+	@RequestMapping("/health/deleteInfo.do")
+	public String deleteInfo(String viewNo, HttpServletRequest request)
+	{
+		int infoSeq=0;
+		try {
+			infoSeq = Integer.parseInt(viewNo);
+		} catch(NumberFormatException e)
+		{
+			
+		}
+		List<String> list = service.infoImageList(infoSeq);
+		int result;
+		try {
+			result = service.deleteInfo(infoSeq, list);
+		} catch(RuntimeException e)
+		{
+			result=0;
+		}
+		
+		if(result>0)
+		{
+			request.setAttribute("msg","반려동물 정보 삭제 성공");
+			request.setAttribute("loc","/health/healthInfo");
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/infoImage/");
+			// list 파일 삭제 로직
+			for(int i=0; i<list.size();i++)
+			{
+				if(new File(saveDir+list.get(i)).delete()==false)
+				{
+					logger.error(saveDir+list.get(i)+"파일 삭제 실패");
+				}
+			}
+		}
+		else
+		{
+			request.setAttribute("msg","반려동물 정보 삭제 실패");
+			request.setAttribute("loc","/health/healthInfo");
+		}
+		return "common/msg";
+	}
+	
+	
 
 }

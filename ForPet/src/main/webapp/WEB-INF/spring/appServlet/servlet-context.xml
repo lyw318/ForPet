@@ -73,6 +73,7 @@
 			<mapping path="/event/eventDelete.do" />
 			<mapping path="/health/healthForm" />
 			<mapping path="/health/healthFormEnd.do" />
+			<mapping path="/health/deleteInfo.do" />
 			<beans:bean id="adminInterceptor" class="com.forpet.common.AdminCheckInterceptor" />
 		</interceptor>
 	</interceptors>

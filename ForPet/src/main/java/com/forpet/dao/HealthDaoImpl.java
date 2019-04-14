@@ -47,5 +47,17 @@ public class HealthDaoImpl implements HealthDao {
 	public List<String> infoImageList(int no) {
 		return session.selectList("health.infoImageList", no);
 	}
+
+	@Override
+	public int deleteInfoImage(String string) {
+		return session.delete("health.deleteInfoImage", string);
+	}
+
+	@Override
+	public int deleteInfo(int infoSeq) {
+		return session.delete("health.deleteInfo", infoSeq);
+	}
+	
+	
 	
 }

@@ -60,5 +60,28 @@ public class HealthServiceImpl implements HealthService {
 	public List<String> infoImageList(int no) {
 		return dao.infoImageList(no);
 	}
+
+	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
+	public int deleteInfo(int infoSeq, List<String> list) {
+		int result;
+		if(list != null && list.size()>0)
+		{
+			for(int i=0; i<list.size(); i++)
+			{
+				result = dao.deleteInfoImage(list.get(i));
+				if(result<1)
+				{
+					throw new RuntimeException();
+				}
+			}
+		}
+		result = dao.deleteInfo(infoSeq);
+		if(result<1)
+		{
+			throw new RuntimeException();
+		}
+		return result;
+	}
 	
 }

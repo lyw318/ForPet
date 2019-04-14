@@ -94,7 +94,10 @@ function fn_update_info()
 
 function fn_delete_info()
 {
-	location.href='${path}/health/deleteInfo?viewNo=${hi.infoSeq}';
+	 if(confirm("정말 게시글을 삭제하시겠습니까?"))
+	 {
+		location.href='${path}/health/deleteInfo.do?viewNo=${hi.infoSeq}';
+	 }
 }
 
 

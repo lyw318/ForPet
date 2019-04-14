@@ -48,4 +48,10 @@
  <select id="infoImageList" parameterType="_int" resultType="string">
  	select filename from InfoImage where infoSeq = #{no} order by priority asc
  </select>
+  <delete id="deleteInfoImage" parameterType="string">
+ 	delete from InfoImage where filename = #{string}
+ </delete>
+  <delete id="deleteInfo" parameterType="_int">
+    delete from HealthInfo where infoSeq = #{infoSeq}
+ </delete>
 </mapper>

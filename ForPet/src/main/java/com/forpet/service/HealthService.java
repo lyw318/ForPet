@@ -13,5 +13,6 @@ public interface HealthService {
 	int insertInfo(HealthInfo hi, List<Image> list) throws RuntimeException;
 	HealthInfo selectOne(int no);
 	List<String> infoImageList(int no);
+	int deleteInfo(int infoSeq, List<String> list);
 
 }
