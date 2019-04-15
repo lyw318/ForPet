@@ -57,7 +57,7 @@
                 </div>
                 <div class="hMainMenuBox">
                     <div class="mainMenuBtn mainMenuBtn2" onclick="javascript:location.href='${path}/main/noticeAndEvent'">
-                        공지사항
+                        ForPet 알리미
                     </div>
                 </div>
                 <div class="hMainMenuBox">
@@ -70,14 +70,6 @@
                         반려동물 정보
                     </div>
                 </div>
-                <%-- 
-                <div class="hMainMenuBox">
-                    <div class="mainMenuBtn mainMenuBtn4"
-                        onclick="javascript:location.href='${path}/main/defaultSection'">
-                        기본작업 형식
-                    </div>
-                </div>
-                 --%>
             </div>
 
             <div class="mainMenuLine">
@@ -101,12 +93,16 @@
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/board/boardList'">자유게시판</div>
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">소모임게시판</div>
                 </div>
-                <!-- 
                 <div class="mainMenuSubMenu mainMenuSubMenu4">
-                    <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴4-1</div>
-                    <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴4-2</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Dog&'">강아지</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Cat&'">고양이</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=GuineaPig&'">기니피그</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Rabbit&'">토끼</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Hedgehog&'">고슴도치</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Turtle&'">거북이</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Bird&'">조류</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=etc&'">기타</div>
                 </div>
-                 -->
             </div>
             <div class="mainMenuList">
                 <div class="mainMenuList_Box">
@@ -127,12 +123,18 @@
                             <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/board/boardList'">자유게시판</div>
                             <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">소모임게시판</div>
                         </div>
-                        <!-- 
+                        
                         <div class="mainMenuListCol mainMenuListCol4">
-                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">서브메뉴4-1</div>
-                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='#'">서브메뉴4-2</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Dog&'">강아지</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Cat&'">고양이</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=GuineaPig&'">기니피그</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Rabbit&'">토끼</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Hedgehog&'">고슴도치</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Turtle&'">거북이</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=Bird&'">조류</div>
+                            <div class="mainMenuListSubBtn" onclick="javascript:location.href='${path}/health/healthInfo?type=etc&'">기타</div>
                         </div>
-                         -->
+                         
                     </div>
                     <div class="mainMenuList_right">
                         <img src="${path }/resources/images/listImage.jpg" alt="listImage">
@@ -223,7 +225,7 @@
                     $('.mainMenuSubMenu div').css("display", "none");
                     $('.mainMenuSubMenu1 div').css("display", "flex");
                 }
-                else if (e.currentTarget.innerText == '공지사항') {
+                else if (e.currentTarget.innerText == 'ForPet 알리미') {
                     //메인메뉴 라인 설정
                     $('.mainMenuLineBefore').css("width", lineStrat);
                     $('.mainMenuLineAfter').css("left", lineEnd);
@@ -247,7 +249,7 @@
                     $('.mainMenuSubMenu div').css("display", "none");
                     $('.mainMenuSubMenu3 div').css("display", "flex");
                 }
-                else if (e.currentTarget.innerText == '기본작업 형식') {
+                else if (e.currentTarget.innerText == '반려동물 정보') {
                     //메인메뉴 라인 설정
                     $('.mainMenuLineBefore').css("width", lineStrat);
                     $('.mainMenuLineAfter').css("left", lineEnd);
