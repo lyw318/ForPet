@@ -65,14 +65,17 @@
     				<c:when test="${c.sbcommentLevel==1 }">
     				<tr class="level1" data-sbcomment-seq="${c.sbcommentSeq }">
     					<td>
-    						<sub class="comment=writer">${c.memberNickname }</sub>
-    						<sub class="comment-date">${c.sbcommentDate }</sub>
+    						작성자 : <sub class="comment=writer">${c.memberNickname }</sub>
+    						작성일 : <sub class="comment-date">${c.sbcommentDate }</sub>
     						<br/>
     						${c.sbcommentText }
     					</td>
     					<td>
+    						<c:if test='${loggedMember!=null }'>
+								<button class="btn-reply" value="${c.sbcommentSeq }">답글</button>
+							</c:if> 
     						<c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberNickname)}'>
-    						<button class="btn-delete" value="${c.sbcommentSeq }">삭제</button>
+    							<button class="btn-delete" value="${c.sbcommentSeq }">삭제</button>
     						</c:if>
     					</td>
     				</tr>
@@ -80,8 +83,8 @@
     				<c:otherwise>
     					<tr class='level2'>
 							<td>
-								<sub>${c.memberNickname }</sub>
-								<sub>${c.sbcommentDate }</sub>
+								작성자 : <sub>${c.memberNickname }</sub>
+								작성일 : <sub>${c.sbcommentDate }</sub>
 								<br/>
 								${c.sbcommentText }
 							</td>
@@ -112,6 +115,56 @@
   			location.href="${path}/smallboard/smallboardCommentDelete?sbcommentSeq="+sbcommentSeq+"&smallboardSeq="+${smallboard.smallboardSeq};
   		});
   		});
+	  $(function(){
+          $("textarea[name=commentText]").focus(function(){
+             if(${loggendMember==null})
+             {
+                fn_loginAlert();
+                
+             }
+          });
+          $(function(){ 
+              $(".btn-reply").on("click",function(){
+                 if(${loggedMember!=null?"true":"false"}){
+                	 
+                	var tr=$("<tr></tr>");
+                    var html="<td style='display:none;text-align:left;' colspan=2>";
+                    html+="<form action='${path}/smallboard/smallboardCommentInsert' method='post'>";
+                    html+="<input type='hidden' name='memberSeq' value='${loggedMember!=null?loggedMember.memberSeq:''}'/>";
+                    html+="<input type='hidden' name='smallboardSeq' value='${smallboard.smallboardSeq}'/>";
+                    html+="<input type='hidden' name='sbcommentLevel' value='2'/>";
+                    html+="<input type='hidden' name='sbcommentRef' value='"+$(event.target).val()+"'/>";
+                    html+="<textarea cols='60' rows='1' name='sbcommentText'></textarea>";
+                    html+="<button type='submit'>등록</button>";
+                    html+="</form></td>";
+                    tr.html(html);
+                    tr.insertAfter($(this).parent().parent()).children("td").slideDown(0);
+                    
+                    $(this).off('click');
+                    
+                    tr.find("form").submit(function(){
+                       if(${loggedMember!=null?"true":"false"})
+                       {
+                          fn_loginAlert();
+                          event.preventDefault();
+                          return;
+                       }
+                       var content=$(this).children('textarea').val().trim().length;
+                       if(content==0)
+                       {
+                          alert("내용을 입력하세요");
+                          event.preventDefault();
+                          return;
+                       }
+                    });
+                    
+				}
+                else{
+                    fn_loginAlert();
+                }
+           });
+       });
+        });
    </script>
    <style>
 			    section#board-container{width:600px; margin:0 auto; text-align:center;}
