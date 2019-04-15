@@ -1,32 +1,57 @@
-div#maintitle {
- background: #f0f0f0;
- margin : 0 auto;
- width : 623px;
- padding : 80px;
-text-align : center;
-border-radius: 5px;
-box-shadow:rgba(0,0,0,0.2) 0px 1px 3px;    
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column; 
 
+
+section.VetViewSection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div#vetContainer {
+    margin : 0 auto;
+    margin-bottom: 50px;
+    width : 950px;
+    height: 150px;
+    background: #f0f0f0;
+    box-shadow:rgba(0,0,0,0.2) 0px 1px 3px;    
+    border-radius: 5px;
+}
+
+div.vetInfoBox {
+    width : 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div#maintitle {
+    position: absolute;
+    width: 700px;
+    height: 120px;
+    top: 90px;
+    text-align : center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #50351a;
+    border-radius: 5px;
 }
 
 div#maintitle .vetNameBox {
     display: flex;
     justify-content: center;
     align-items: center;
-    width : 410px;
-    
 }
-
 
 div .vetName{
     border:0px solid gold; float:left;
     width : auto;
     text-align : center;
-    color : #308deb;
+    color : #50351a;
     font-size : 30px;
     font-weight: bold;
     
@@ -46,16 +71,18 @@ div#maintitle.vetAddress{
     font-size:15px;
     margin-top: 15px;
 }
+
 div .vetNameBox {
     display: flex;
     justify-content: center;
     align-items: center;
     width : 350px;
 }
+
 div.operTimebox {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column; 
 }
 div.operTime{
@@ -64,18 +91,18 @@ div.operTime{
 
 div.operdiv{
 margin : 5px 5px 5px 0px;
+margin-left: 20px;
 display: flex;
 justify-content: center;
 align-items: center;
 align-content: center;
-width : 45%;
 }
 
 
 div.settime{
-    border-left : 2px solid #308deb;
+    border-left : 2px solid #50351a;
     font-size : 17px;
-    width : 50%;
+    width : 300px;
     justify-content: center;
     padding-left : 10px;
 }
@@ -84,14 +111,41 @@ div.settime div{
     text-align : left;
 }
 
+div#bottomVet {
+    padding-left: 70px; 
+}
+
+.animalTypeBox {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.animalTypeBox>img {
+    margin-right: 20px;
+}
 div .infoTitle {
+    width : 700px;
+    font-size:20px;
+    margin : 10px;
+    color : #50351a;
+    text-align: left;
+}
+
+div .infoTitle1 {
+    width : 700px;
     font-size:25px;
     margin : 10px;
-    color : #308deb;
+    padding: 10px 0;
+    color : #50351a;
+    text-align: center;
+    border-bottom: 1px solid #50351a81;
 }
 
 div#setttimmeNotice, div#appendixInfo, div#phonenumber{
     width: 460px;
-    font-size:17px;
-    text-align : left;
+    margin: 10px 0;
+    padding-left: 21px;
+    color : #50351a;
+    text-align : left;   
 }

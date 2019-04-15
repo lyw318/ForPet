@@ -55,19 +55,22 @@ div#map {
 }
 
 div .vetListBox {
-	border: 1px solid gray;
+	border: 1px solid #fff;
 	height: 50px important;
 	padding: 6px 6px;
 	vertical-align: top;
 	text-align: left;
+	transition: 500ms;
 }
 
 div .vetListBox:hover {
+	border: 1px solid #9a7654;
 	color: rgba(77, 80, 89);
-	background-color: rgba(240, 240, 240);
+	background-color: rgb(255,250,245);
 	transition: 500ms;
 	border-top-right-radius: 8px;
 	border-bottom-right-radius: 8px;
+	transition: 500ms;
 }
 
 div .vetListName {
