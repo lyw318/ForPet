@@ -95,6 +95,7 @@
 }
 
 #loginPageModal .logPageBtn  {
+	outline: none;
     padding: 10px 20px;
 	margin: 0 10px;
 	color: white;
@@ -105,6 +106,7 @@
 	transition: 500ms;
 }
 #loginPageModal .logPageBtn:hover {
+	outline: none;
     padding: 10px 20px;
 	margin: 0 10px;
 	color: #c69c76;

@@ -7,7 +7,7 @@ div#enroll-container {
 }
 
 div#enroll-container input, div#enroll-container select {
-	margin-bottom: 10px;
+	margin: 5px 0;
 	
 }
 
@@ -16,8 +16,6 @@ div#enroll-container input, div#enroll-container select {
 div#userid-container {
 	position: relative;
 	padding: 0px;
-	
-	
 }
 
 div#userid-container span.guide {
@@ -69,8 +67,174 @@ div#enroll-container .userid-container select {
 	
 /* 마이페이지 내정보 */
 .myPageMain_right .form-control{
-	 min-height: 22px;
+	min-height: 22px;
     outline: none;
     border: 1px solid rgba(198, 155, 118, 0.5);
 }
-  
+
+
+
+
+
+
+
+
+div#myPageMemberInfo {
+	width: 100%;
+}
+
+
+div#myPageMemberInfo .vetMngInsert {
+    width: 100%;
+	min-height: 400px;
+	margin-top: 30px;
+    display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+}
+
+div#myPageMemberInfo .vetMngInsert>form {
+    width: 100%;
+}
+
+div#myPageMemberInfo .vetMngInsert .vetMngTitle {
+    width: 70%;
+    font-size: 16px;
+    text-align: left;
+}
+
+div#myPageMemberInfo .vetMngInsert .vetMngInfoTable {
+    width: 70%;
+    margin: 10px 0;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+	border: 1px solid #c69c76;
+    border-radius: 5px;
+}
+
+div#myPageMemberInfo .vetMngInsert .vetMngInfoAdd {
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #50351a;
+    border-radius: 5px;
+}
+
+div#myPageMemberInfo .vetMngInsert .vetMngInfoBtnBox {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+div#myPageMemberInfo .vetMngInsert .vetMngRow {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#myPageMemberInfo .vetMngInsert .vetMngColA {
+    width: 200px;
+    border-right: 1px solid  #c69c76;
+}
+
+div#myPageMemberInfo .vetMngInsert .vetMngColV {
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.memberTableRow>label {
+	display: flex;
+}
+
+.memberAddressBox {
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.memberAddressBox .memberAddressRow {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.inputAddrWidth {
+	width: 100%;
+}
+
+.memberTableCol1 {
+	width: 120px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.memberTableCol2 {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.memberTableDisplay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.memberTableBox {
+	width: 300px;
+	padding: 5px 10px;
+	border: 1px solid rgba(198, 155, 118, 0.5);
+	border-radius: 5px;
+}
+
+.memberTableTitle {
+	width: 78%;
+	margin-bottom: 5px;
+    font-size: 16px;
+    text-align: left;
+}
+
+
+.logPageBtn:hover {
+	outline: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    color: #c69c76;
+    background-color: white;
+    border: 1px solid #c69c76;
+    border-radius: 5px;
+	transition: 500ms;
+}
+
+.logPageBtn {
+	outline: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    color: white;
+    background-color: #50351a;
+    border: 1px solid #50351a;
+    border-radius: 5px;
+    cursor: pointer;
+	transition: 500ms;
+}

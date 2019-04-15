@@ -16,7 +16,6 @@ input[type='password'],[type='text'],[type='tel']{
 <section class="">
 	<div id="enroll-container">
 		<form name="memberEnrollFrm" action="${pageContext.request.contextPath}/member/memberEnrollEnd.do" method="post" onsubmit="return checkMemberEnroll(this);">
-			
 			<div id="userid-container">
 				<input type="text" class="form-control" placeholder="이메일(ID)을 적어주세요" name="memberEmail" id="memberEmail_" required>
 				<input type="button" onclick="mailChk()" value="메일인증">

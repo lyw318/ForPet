@@ -17,42 +17,41 @@
 	</div>
 </div><br />
 
-<style>
-input[type='password'],[type='text'],[type='tel']{
-	display:block;
-}
-
-.myPageMain_right .form-control{
-	 min-height: 22px;
-    outline: none;
-    border: 1px solid rgba(198, 155, 118, 0.5);
-}
-</style>
-
 <div class="myPageMain_right">
 
-	<div id="enroll-container">
-		<form name="memberUpdateFrm" action="${pageContext.request.contextPath}/member/memberMyInform" method="post"
-			onsubmit="return fn_update();">
-
-
-			<div id="userid-container">
-				<label>회원 이메일<input type="text" class="form-control" name="memberEmail" id="memberEmail_"
-					value="${loggedMember.memberEmail}" readonly></label></br>
-				<input type="hidden" class="form-control" name="checkEmail" id="checkEmail" />
+	<div id="myPageMemberInfo">
+		<div class="vetMngInsert">
+			<div class="vetMngTitle">
+				내 정보
 			</div>
-			
-			<label>회원 닉네임<input type="text" class="form-control" placeholder="닉네임" name="memberNickname" id="memberNickname"
-				value="${loggedMember.memberNickname}" readonly></label></br>
-			<label>회원 이름<input type="text" class="form-control" placeholder="이름" name="memberName" id="memberName"
-				value="${loggedMember.memberName}" readonly></label></br>
-			<label>전화번호<input type="tel" class="form-control" placeholder="전화번호 (예:01012345678)" name="memberPhone"
-				id="memberPhone" maxlength="11" value="${loggedMember.memberPhone}" readonly></label></br>
-			<label>주소<input type="text" class="form-control" placeholder="주소" name="memberAddress" id="memberAddress"
-				value="${loggedMember.memberAddress}" readonly></label>
-			
-
-		</form>
+			<div class="vetMngInfoTable">
+				<div class="vetMngRow">
+					<div class="vetMngColA">이메일</div>
+					<div class="vetMngColV">${loggedMember.memberEmail}</div>
+					<input type="hidden" name="vmEmail" value="${loggedMember.memberEmail}" />
+				</div>
+				<div class="vetMngRow">
+					<div class="vetMngColA">닉네임</div>
+					<div class="vetMngColV">${loggedMember.memberNickname}</div>
+					<input type="hidden" name="vmNickname" value="${loggedMember.memberNickname}" />
+				</div>
+				<div class="vetMngRow">
+					<div class="vetMngColA">이름</div>
+					<div class="vetMngColV">${loggedMember.memberName}</div>
+					<input type="hidden" name="vmName" value="${loggedMember.memberName}" />
+				</div>
+				<div class="vetMngRow">
+					<div class="vetMngColA">전화번호</div>
+					<div class="vetMngColV">${loggedMember.memberPhone}</div>
+					<input type="hidden" name="vmPhone" value="${loggedMember.memberPhone}" />
+				</div class="vetMngRow">
+				<div class="vetMngRow">
+					<div class="vetMngColA">주소</div>
+					<div class="vetMngColV">${loggedMember.memberAddress}</div>
+					<input type="hidden" name="vmAddress" value="${loggedMember.memberAddress}" />
+				</div>
+			</div>
+		</div>
 	</div>
 
 </div>
