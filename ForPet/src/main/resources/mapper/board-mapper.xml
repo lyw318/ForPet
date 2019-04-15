@@ -35,7 +35,7 @@
 
 	<insert id="commentInsert" parameterType="boardComment">
 		<choose>
-		<when test='commentRef!=null and commentRef=""'>
+		<when test='commentRef>0'>
 			insert into boardReply values(commentSeq.nextval,#{memberSeq},#{boardSeq},#{commentRef},sysdate,#{commentText},#{commentLevel})
 		</when>
 		<otherwise>

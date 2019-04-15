@@ -42,7 +42,7 @@
 	
 	<insert id="smallboardcommentInsert" parameterType="smallboardComment">
 			<choose>
-		<when test='sbcommentRef>0'>.
+		<when test='sbcommentRef>0'>
 			insert into smallboardReply values(sbcommentSeq.nextval,#{memberSeq},#{smallboardSeq},#{sbcommentRef},sysdate,#{sbcommentText},#{sbcommentLevel})
 		</when>
 		<otherwise>
