@@ -57,6 +57,11 @@ public class HealthDaoImpl implements HealthDao {
 	public int deleteInfo(int infoSeq) {
 		return session.delete("health.deleteInfo", infoSeq);
 	}
+
+	@Override
+	public int updateInfo(HealthInfo hi) {
+		return session.update("health.updateInfo", hi);
+	}
 	
 	
 	

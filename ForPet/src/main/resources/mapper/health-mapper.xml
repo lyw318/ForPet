@@ -54,4 +54,7 @@
   <delete id="deleteInfo" parameterType="_int">
     delete from HealthInfo where infoSeq = #{infoSeq}
  </delete>
+ <update id="updateInfo" parameterType="healthInfo">
+ 	update HealthInfo set petType = #{petType}, infoTitle = #{infoTitle}, infoContent = #{infoContent} where infoSeq = #{infoSeq}
+ </update>
 </mapper>

@@ -256,6 +256,131 @@ public class HealthController {
 	@RequestMapping("/health/updateInfoEnd.do")
 	public String updateInfoEnd(HealthInfo hi, MultipartFile[] upFile, MultipartFile upFileM, String[] exFile, String exFileM, HttpServletRequest request)
 	{
+		Member m = (Member)request.getSession().getAttribute("loggedMember");
+		
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/infoImage/");
+		File dir = new File(saveDir);
+		if(!dir.exists())
+		{
+			dir.mkdirs();
+		}
+		
+		List<Image> list = new ArrayList<Image>();
+		
+		int count=0;
+		String timeStr = new SimpleDateFormat("yyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
+		
+		if(upFileM != null && !upFileM.isEmpty())
+		{
+			String oriFileName = upFileM.getOriginalFilename();
+			String ext=oriFileName.substring(oriFileName.lastIndexOf("."));
+	
+			int uniqueNum = m.getMemberSeq();
+			String reNamedFile= timeStr+"_"+uniqueNum+"_"+count+ext;
+			count++;
+			
+			try {
+				upFileM.transferTo(new File(saveDir+reNamedFile));
+				Image i = new Image();
+				i.setFilename(reNamedFile);
+				i.setPriority(count);
+				i.setRefseq(hi.getInfoSeq());
+				list.add(i);
+				
+				} catch(IOException e)
+				{
+					e.printStackTrace();
+				}
+		}
+		else
+		{
+			//올라온 메인파일이 없으므로 기존 메인파일을 삭제하지 않고 유지한다! 빈칸일 경우 메인파일 유지
+			exFileM="";
+		}
+		
+		if(exFile!=null)
+		{
+			count = exFile.length+1;
+		}
+		else
+		{
+			exFile = new String[0];
+			count =1;
+		}
+		
+		for(MultipartFile f : upFile)
+		{
+			if(!f.isEmpty())
+			{
+				String oriFileName = f.getOriginalFilename();
+				String ext=oriFileName.substring(oriFileName.lastIndexOf("."));
+		
+				int uniqueNum = m.getMemberSeq();
+				String reNamedFile= timeStr+"_"+uniqueNum+"_"+count+ext;
+				count++;
+				
+				try {
+					f.transferTo(new File(saveDir+reNamedFile));
+					} catch(IOException e)
+					{
+						e.printStackTrace();
+						continue;
+					}
+				
+				Image i = new Image();
+				i.setFilename(reNamedFile);
+				i.setPriority(count);
+				i.setRefseq(hi.getInfoSeq());
+				list.add(i);
+			}
+		}
+		
+		int result;
+		try {
+			result = service.updateInfo(hi, list, exFileM, exFile);
+		} catch(RuntimeException e)
+		{
+			result=0;
+		}
+		
+		if(result>0)
+		{
+			request.setAttribute("msg","반려동물 정보 수정 성공");
+			request.setAttribute("loc","/health/healthView?viewNo="+hi.getInfoSeq());
+			// exFileM 파일 삭제 로직
+			if(exFileM!=null && exFileM.trim().length()>0)
+			{
+				if(new File(saveDir+exFileM.trim()).delete()==false)
+				{
+					logger.error(saveDir+exFileM.trim()+"파일 삭제 실패");
+				}
+			}
+			// exFile 파일 삭제 로직
+			for(int i=0; i<exFile.length;i++)
+			{
+				if(exFile[i].trim().length()>0)
+				{
+					if(new File(saveDir+exFile[i].trim()).delete()==false)
+					{
+						logger.error(saveDir+exFile[i].trim()+"파일 삭제 실패");
+					}
+				}
+			}
+			
+		} else
+		{
+			request.setAttribute("msg","반려동물 정보 수정 실패");
+			request.setAttribute("loc","/health/healthView?viewNo="+hi.getInfoSeq());
+			// list 파일 삭제 로직
+			for(int i=0; i<list.size();i++)
+			{
+				if(new File(saveDir+list.get(i).getFilename()).delete()==false)
+				{
+					logger.error(saveDir+list.get(i).getFilename()+"파일 삭제 실패");
+				}
+			}
+		}
+		
 		return "common/msg";
 	}
 	

@@ -147,6 +147,7 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 
 	
 	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
 	public int updateEvent(Event e, List<Image> list, String exFileM, String[] exFile) throws RuntimeException {
 		int result = 0;
 		result=dao.updateEvent(e);
