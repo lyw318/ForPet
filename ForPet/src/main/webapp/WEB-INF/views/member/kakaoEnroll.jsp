@@ -11,9 +11,9 @@ input[type='password'],[type='text'],[type='tel']{
 <section class="">
 	<div id="enroll-container">
 		<form name="memberEnrollFrm" action="${pageContext.request.contextPath}/member/kakaoEnrollEnd.do" method="post" onsubmit="return checkMemberEnroll();">
-			
+			<div>추가정보 입력</div>
 			<div id="userid-container">
-				<input type="text" class="form-control" placeholder="이메일(ID)" name="memberEmail" id="memberEmail_" required>
+				<!-- <input type="text" class="form-control" placeholder="이메일(ID)" name="memberEmail" id="memberEmail_" required> -->
 				<span class="guide ok">이메일 사용 가능합니다</span>
 				<span class="guide error">이메일 사용 불가능합니다</span>
 				<input type="hidden" name="checkEmail" id="checkEmail"/>

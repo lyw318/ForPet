@@ -47,21 +47,21 @@
 
 				<label> 종류 <select name="petType" id="petType" required>
 						<option value="">선택해주세요.</option>
-						<option value="Dog">강아지</option>
-						<option value="Cat">고양이</option>
-						<option value="Hamster">햄스터</option>
-						<option value="GuineaPig">기니피그</option>
-						<option value="Rabbit">토끼</option>
-						<option value="Hedgehog">고슴도치</option>
-						<option value="Turtle">거북이</option>
-						<option value="Bird">조류</option>
+						<option value="Dog" ${pet.petType eq "Dog"?"selected":""}>강아지</option>
+						<option value="Cat" ${pet.petType eq "Cat"?"selected":""}>고양이</option>
+						<option value="GuineaPig" ${pet.petType eq "GuineaPig"?"selected":""}>기니피그</option>
+						<option value="Rabbit" ${pet.petType eq "Rabbit"?"selected":""}>토끼</option>
+						<option value="Hedgehog" ${pet.petType eq "Hedgehog"?"selected":""}>고슴도치</option>
+						<option value="Turtle" ${pet.petType eq "Turtle"?"selected":""}>거북이</option>
+						<option value="Bird" ${pet.petType eq "Bird"?"selected":""}>조류</option>
+						<option value="etc" ${pet.petType eq "etc"?"selected":""}>기타</option>
 				</select>
 				</label><br /> <input type="hidden" name="oriFile"
 					value="${pet.petRenamedImage}" /> <input type="text"
 					class="form-control" placeholder="상세품종을 적어주세요"
 					value="${pet.petType2 }" name="petType2" id="petType2" required><br />
-				</label> <label>탄생일 <input type="date" class="form-control"
-					name="petBirth" value="${pet.petBirth }" /><br />
+				</label> <label>생일 <input type="date" class="form-control"
+					name="petBirth" value="${petBirthStr }" /><br />
 				</label>
 			</div>
 			<input type="hidden" name="memberSeq"

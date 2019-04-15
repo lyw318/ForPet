@@ -10,6 +10,7 @@ public interface AdminDao {
 	List<Member> selectDeleteList(Member m);
 	int selectCount();
 	List<Member> selectList(int cPage, int numPerPage);
+	int delete(Member m);
 	
 	
 }

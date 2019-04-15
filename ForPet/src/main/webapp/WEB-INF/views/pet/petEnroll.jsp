@@ -41,12 +41,12 @@
 						<option value="">선택해주세요.</option>
 						<option value="Dog">강아지</option>
 						<option value="Cat">고양이</option>
-						<option value="Hamster">햄스터</option>
 						<option value="GuineaPig">기니피그</option>
 						<option value="Rabbit">토끼</option>
 						<option value="Hedgehog">고슴도치</option>
 						<option value="Turtle">거북이</option>
 						<option value="Bird">조류</option>
+						<option value="etc">기타</option>
 					</select>
 				</label><br/>
 				<input type="text" class="form-control" placeholder="상세품종을 적어주세요" name="petType2" id="petType2" required><br/>

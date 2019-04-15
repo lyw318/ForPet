@@ -61,4 +61,11 @@ private AdminService service;
 			return mv;
 			
 		}
+		
+	//관리자가 회원 강제삭제
+		@RequestMapping("/admin/adminDel.do")
+		public String adminDel(Member m) {
+			int result=service.delete(m);
+			return "redirect:/";
+		}
 }

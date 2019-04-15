@@ -39,6 +39,13 @@ public class AdminDaoImpl implements AdminDao {
 		return session.selectList("admin.selectList",null,row);
 	}
 
+	@Override
+	public int delete(Member m) {
+		// TODO Auto-generated method stub
+		return session.delete("admin.delete",m);
+	}
+
+	
 	
 
 

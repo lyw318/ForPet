@@ -37,6 +37,12 @@ public class AdminServiceImpl implements AdminService {
 		return dao.selectList(cPage,numPerPage);
 	}
 
+	@Override
+	public int delete(Member m) {
+		// TODO Auto-generated method stub
+		return dao.delete(m);
+	}
+
 	
 	
 	
