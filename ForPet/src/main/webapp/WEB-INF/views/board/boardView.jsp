@@ -13,11 +13,18 @@
    </jsp:include>
    <link rel="stylesheet" href="${path }/resources/css/boardStyle.css"/>
    <section>
+   <div class="board-title">
+       				<p>게시판</p>
+       			</div>
    <div class="board-view-wrapper">
               <div class="board-view">
                   <div class="board-view-title">
                       <div>제목</div>
                       <div>${board.boardTitle }</div>
+                  </div>
+                  <div class="board-view-writer">
+                      <div>작성자</div>
+                      <div>${board.memberNickname }</div>
                   </div>
                   <div class="board-view-title">
                       <div>작성일</div>
@@ -35,7 +42,7 @@
                	 			첨부파일${vs.count} - ${a.originalFileName }
             				</button>
        		   </c:forEach>
-       		   <c:if test="${loggedMember.memberNickname=='admin'||loggedMember.memberNickname!=board.memberNickname}">
+       		   <c:if test="${loggedMember.memberNickname=='admin'||loggedMember.memberNickname==board.memberNickname}">
                 <div class="board-view-btns" style="padding-bottom:10px">
                      <input type="button" value="수정" onclick=fn_updateBoard()>
                      <input type="button" value="삭제" onclick=fn_deleteBoard()>

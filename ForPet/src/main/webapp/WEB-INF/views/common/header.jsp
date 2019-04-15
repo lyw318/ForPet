@@ -60,7 +60,8 @@
                     </div>
                 </div>
                 <div class="hMainMenuBox">
-                    <div class="mainMenuBtn mainMenuBtn3" onclick="javascript:location.href='#'">
+                    <div class="mainMenuBtn mainMenuBtn3" 
+                    onclick="javascript:location.href='${path}/board/boardList'">
                         커뮤니티
                     </div>
                 </div>
@@ -89,7 +90,7 @@
                 </div>
                 <div class="mainMenuSubMenu mainMenuSubMenu3">
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/board/boardList'">자유게시판</div>
-                    <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">소모임게시판</div>
+                    <div class="mainMenuSubBtn" onclick="javascript:location.href='${path}/smallboard/smallboardList'">소모임게시판</div>
                 </div>
                 <div class="mainMenuSubMenu mainMenuSubMenu4">
                     <div class="mainMenuSubBtn" onclick="javascript:location.href='#'">서브메뉴4-1</div>

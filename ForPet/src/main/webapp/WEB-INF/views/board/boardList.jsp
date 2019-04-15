@@ -13,9 +13,7 @@
        		<div class="board-wrpper">
        			<div class="board-title">
        				<p>게시판</p>
-       				<c:if test="${loggedMember.memberSeq!=null}">
-       				   <input class="board-write" id="btn-add" type="button" value="글쓰기" id="btn-add" onclick="fn_boardForm();"/>
-       				</c:if>
+       				
        			</div>
        			<div class="board-table">
        				<div class="table-header">
@@ -38,6 +36,11 @@
                 		</div>
        				</div>
        				</c:forEach>
+       			</div>
+       			<div style="text-align:right">
+       			<c:if test="${loggedMember.memberSeq!=null}">
+       				   <input class="board-write" id="btn-add" type="button" value="글쓰기" id="btn-add" onclick="fn_boardForm();"/>
+       			</c:if>
        			</div>
        		 ${npage}
        		</div>

@@ -174,13 +174,12 @@ public class BoardController {
 		
 		service.addreadcount(boardSeq);
 		mv.addObject("comments",service.selectCommentList(boardSeq));
-		System.out.println(service.selectCommentList(boardSeq));
 		mv.addObject("board",service.selectBoard(boardSeq));
 		mv.addObject("attachmentList",service.selectAttachment(boardSeq));
 		mv.setViewName("board/boardView");
 		return mv;
 	}
-	
+
 	@RequestMapping("/board/deleteboard.do")
 	public ModelAndView deleteBoard(int boardSeq) {
 		ModelAndView mv=new ModelAndView();
@@ -189,7 +188,7 @@ public class BoardController {
 		System.out.println("boardSeq : "+boardSeq);
 		mv.addObject("result",service.deleteBoard(boardSeq));
 		mv.setViewName("common/msg");
-		mv.addObject("msg","삭세성공");
+		mv.addObject("msg","삭제성공");
 		mv.addObject("loc","/board/boardList");
 
 
@@ -282,13 +281,12 @@ public class BoardController {
 	public ModelAndView commentDelete(int commentSeq,int boardSeq)
 	{
 		ModelAndView mv=new ModelAndView();
-		
+
 		mv.addObject("result",service.commentDelete(commentSeq));
 		mv.setViewName("common/msg");
 		mv.addObject("msg","삭세성공");
 		mv.addObject("loc","/board/boardView.do?boardSeq="+boardSeq);
 		
-
 		return mv;
 	}
 	

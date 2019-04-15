@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="smallboard">
+
+	<select id="smallboardCount" parameterType="boardSearch" resultType="_int">
+		<choose>
+			<when test='keyword!=null and keyword!=""'>
+				select count(*) from smallboard where smallboardTitle like '%'||#{keyword}||'%' OR smallboardContent like '%'||#{keyword}||'%'
+			</when>
+			<otherwise>
+				select count(*) from smallboard
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="smallboardList" parameterType="boardSearch" resultType="smallboard">
+	<choose>
+			<when test='keyword!=null and keyword!=""'>
+				select * from smallboard join Member using(memberSeq) where smallboardKategorie like '%'||#{keyword}||'%' OR smallboardContent like '%'||#{keyword}||'%'
+			</when>
+			<otherwise>
+				select B.*, A.* from smallboard B join member A on(A.memberseq=B.memberseq) order by smallboarddate desc
+			</otherwise>
+		</choose>
+	</select>
+	<insert id="insertSmallboard" parameterType="smallboard">
+		insert into smallboard values(smallboardseq.nextval,#{memberSeq},#{smallboardKategorie},#{smallboardTitle},#{smallboardContent},default,default)
+		<selectKey keyProperty="smallboardSeq" resultType="_int" order="AFTER">select smallboardseq.currval from dual</selectKey>
+	</insert>
+	
+	<select id="selectSmallboard" parameterType="_int" resultType="smallboard">
+		select B.*, A.* from smallboard B join member A on(A.memberseq=B.memberseq) where smallboardSeq=#{smallboardSeq}
+	</select>
+	
+	<delete id="deleteSmallBoard" parameterType="_int">
+		delete from smallboard where smallboardSeq=#{smallboardSeq}
+	</delete>
+	
+	<update id="updateSmallBoard" parameterType="smallboard">
+		update smallboard set smallboardTitle=#{smallboardTitle}, smallboardContent=#{smallboardContent}, smallboardKategorie=#{smallboardKategorie} where smallboardSeq=#{smallboardSeq}
+	</update>
+	
+	<insert id="smallboardcommentInsert" parameterType="smallboardComment">
+			<choose>
+		<when test='sbcommentRef>0'>.
+			insert into smallboardReply values(sbcommentSeq.nextval,#{memberSeq},#{smallboardSeq},#{sbcommentRef},sysdate,#{sbcommentText},#{sbcommentLevel})
+		</when>
+		<otherwise>
+			insert into smallboardReply values(sbcommentSeq.nextval,#{memberSeq},#{smallboardSeq},null,sysdate,#{sbcommentText},#{sbcommentLevel})
+		</otherwise>
+		</choose>
+	</insert>
+	
+	<select id="smallboardCommentList" parameterType="_int" resultType="smallboardComment">
+		SELECT A.*,B.* FROM smallboardReply A join member B on(A.memberSeq=B.memberSeq) WHERE smallboardSeq=#{smallboardSeq} start with sbcommentLevel=1 connect by prior sbcommentSeq=sbcommentRef order siblings by sbcommentDate desc
+	</select>
+	
+	<delete id="smallboardCommentDelete" parameterType="_int">
+ 		delete from smallboardReply where sbcommentSeq=#{sbcommentSeq}
+ 	</delete>
+	
+</mapper>
