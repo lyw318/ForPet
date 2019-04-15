@@ -16,5 +16,6 @@ public interface HealthDao {
 	List<String> infoImageList(int no);
 	int deleteInfoImage(String string);
 	int deleteInfo(int infoSeq);
+	int updateInfo(HealthInfo hi);
 
 }

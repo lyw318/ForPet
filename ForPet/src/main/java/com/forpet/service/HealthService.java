@@ -14,5 +14,6 @@ public interface HealthService {
 	HealthInfo selectOne(int no);
 	List<String> infoImageList(int no);
 	int deleteInfo(int infoSeq, List<String> list);
+	int updateInfo(HealthInfo hi, List<Image> list, String exFileM, String[] exFile) throws RuntimeException;
 
 }

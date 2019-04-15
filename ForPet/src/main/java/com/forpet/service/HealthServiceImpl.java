@@ -83,5 +83,52 @@ public class HealthServiceImpl implements HealthService {
 		}
 		return result;
 	}
+
+	@Override
+	@Transactional(rollbackFor = RuntimeException.class)
+	public int updateInfo(HealthInfo hi, List<Image> list, String exFileM, String[] exFile) throws RuntimeException {
+		int result = 0;
+		result=dao.updateInfo(hi);
+		if(result<=0)
+		{
+			throw new RuntimeException();
+		}
+		if(list != null && list.size()>0)
+		{
+			for(Image i : list)
+			{
+				result = dao.insertInfoImage(i);
+				if(result==0)
+				{
+					throw new RuntimeException();
+				}
+			}
+		}
+		if(exFileM != null && exFileM.trim().length()>0)
+		{
+			result = dao.deleteInfoImage(exFileM);
+			if(result==0)
+			{
+				throw new RuntimeException();
+			}
+		}
+		if(exFile != null)
+		{
+			for(int i=0; i<exFile.length; i++)
+			{
+				if(exFile[i].trim().length()>0)
+				{
+					result = dao.deleteInfoImage(exFile[i]);
+					if(result==0)
+					{
+						throw new RuntimeException();
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
+	
 	
 }
