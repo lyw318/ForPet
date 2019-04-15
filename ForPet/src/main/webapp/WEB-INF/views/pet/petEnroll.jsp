@@ -26,7 +26,7 @@
 						<div class="inputBackground" id="image_section">
 							<div>
 								<img class="fileUploadIcon" width="100px" height="100px"/><br/>
-								<input type="file" class="profileImgBox" name="petRenamedImage" id="petRenamedImage"/>
+								<input type="file"  class="defaultBtn" class="profileImgBox" name="petRenamedImage" id="petRenamedImage"/>
 							</div>
 						</div>
 						<%-- <img alt="camaraIcon" class="image_section" src="<%= request.getContextPath() %>/images/petIcon.png" onclick="up_file()"/> --%>
@@ -56,8 +56,8 @@
 				</label>
 			</div>
 			<input type="hidden" name="memberSeq" value="${loggedMember.getMemberSeq() }"/>
-			<input type="submit" class="btn btn-outline-success" value="등록">&nbsp;
-			<input type="button" class="btn btn-outline-success" value="취소">
+			<input type="submit" class="defaultBtn" class="btn btn-outline-success" value="등록">&nbsp;
+			<input type="button" class="defaultBtn" class="btn btn-outline-success" value="취소">
 			
 			
 		</form>

@@ -12,6 +12,8 @@ section.adminMain_right .memberListBox_main{
 }
 section.adminMain_right .memberListBox_main table{
 	border-collapse:collapse;
+	border-top: 2px solid rgb(139, 85, 38);
+    margin: 10px;
 }
 
 section.adminMain_right .memberListBox_main table th{

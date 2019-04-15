@@ -11,6 +11,7 @@
 input[type='password'],[type='text'],[type='tel']{
 	display:block;
 }
+
 </style>
 <section class="">
 	<div id="enroll-container">
@@ -19,6 +20,7 @@ input[type='password'],[type='text'],[type='tel']{
 			<div id="userid-container">
 				<input type="text" class="form-control" placeholder="이메일(ID)을 적어주세요" name="memberEmail" id="memberEmail_" required>
 				<input type="button" onclick="mailChk()" value="메일인증">
+				<a href="http://www.naver.com"><img src="images/naver.png" alt="naver" /></a>
 				<span class="guide ok">아이디 사용 가능합니다</span>
 				<span class="guide error">아이디 사용 불가능합니다</span>
 				<input type="hidden" name="checkEmail" id="checkEmail"/>
@@ -40,8 +42,7 @@ input[type='password'],[type='text'],[type='tel']{
 			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 			<input type="text" id="sample6_address" placeholder="주소" name="memberAddress" id="memberAddress"><br>
 			
-			
-			
+						
 			<input type="submit" class="btn btn-outline-success" value="가입">&nbsp;
 			<input type="reset" class="btn btn-outline-success" value="취소">
 			
@@ -81,7 +82,6 @@ function mailChk(){
 	});
 }
 
-var emailCheck=0;
 /* 아이디 중복체크 */
 $(function() {
 	$('#memberEmail_').keyup(function() {
@@ -108,11 +108,9 @@ $(function() {
 				}
 			}
 		})
-	
 	})
 })
 
-var nickNameCheck=0;
 /* 닉네임 중복체크 */
 $(function() {
 	$('#memberNickname').keyup(function() {
@@ -120,7 +118,6 @@ $(function() {
 			url:"${path}/member/checkNickname.do",
 			data:{"memberNickname":$("#memberNickname").val()},
 			success:function(data){
-		
 				
 				if(data.trim() == 'true') {
 					$(".guide2.ok").show();
@@ -134,9 +131,7 @@ $(function() {
 				}
 			}
 		})
-	
 	})
-	
 })
 
 	 

@@ -17,6 +17,7 @@ div#userid-container {
 	position: relative;
 	padding: 0px;
 	
+	
 }
 
 div#userid-container span.guide {
@@ -54,5 +55,22 @@ div#userid-container2 span.error {
       width:50%;
    }
 
-   
+/* 회원가입 */
+div#enroll-container .userid-container{
+		width: 400px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+div#enroll-container .userid-container input,
+div#enroll-container .userid-container select {
+		margin-bottom: 10px;
+	}   
+	
+/* 마이페이지 내정보 */
+.myPageMain_right .form-control{
+	 min-height: 22px;
+    outline: none;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+}
   
