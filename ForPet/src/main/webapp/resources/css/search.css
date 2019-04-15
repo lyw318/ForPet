@@ -11,44 +11,55 @@ form#leftselect .vettype {
 } */
 
 select#vettype.vettype {
-	width: 293px;
-	height: 31px;
+	width: 100%;
+	height: 38px;
 	padding: 1px 5px;
+	color: #50351a;
 }
 
 input#keyword.areaaddress {
-	width: 293px;
+	outline: none;
+	width: 98%;
 	height: 32px;
-	padding: 1px 8px;
+}
+
+div#mapcontainer {
+	width: 100%;
+	min-height: 487px;
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+
 }
 
 div#leftsearch {
-	width: 29%;
+	width: 300px;
 	height: 350px;
-	display: inline-block;
-	vertical-align: top;
+}
+
+div#mapcontainer .mapBox {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #50351a;
+	border-radius: 3px;
 }
 
 div#selectlist {
 	width: 300px;
-	height: 388px;
-	display: inline-block;
-	vertical-align: top;
+	min-height: 409px;
 }
 
 div#map {
-	width: 70%;
-	height: 460px;
-	display: inline-block;
-	vertical-align: top;
+	width: 100%;
+    min-height: 100%;
 }
 
 div .vetListBox {
 	border: 1px solid gray;
-	width: 293px;
 	height: 50px important;
 	padding: 6px 6px;
 	vertical-align: top;
+	text-align: left;
 }
 
 div .vetListBox:hover {
@@ -60,15 +71,39 @@ div .vetListBox:hover {
 }
 
 div .vetListName {
-	font-size: 12px;
-	color: black;
-	margin: 2px
+	font-size: 15px;
+	color: #50351a;
+	font-weight: 500;
+	margin: 2px;
 }
 
 div .vetListAddress {
-	font-size: 9px;
-	color: gray;
+	font-size: 11px;
+	color: c69c76;
 	margin: 2px;
+}
+
+div .vetListAddress>a {
+	padding: 3px;
+    margin: 0 10px;
+    color: #c69c76;
+    background-color: white;
+    border: 1px solid #c69c76;
+    border-radius: 5px;
+	transition: 500ms;
+	text-decoration: none;
+}
+
+div .vetListAddress>a:hover {
+	padding: 3px;
+    margin: 0 10px;
+    color: white;
+    background-color: #50351a;
+    border: 1px solid #50351a;
+    border-radius: 5px;
+    cursor: pointer;
+	transition: 500ms;
+	text-decoration: none;
 }
 
 ul .pagination {
@@ -88,4 +123,52 @@ li .page-item{
 li .page-item.active {
 	backgound-color :#4CAF50;
 	color : white;
+}
+
+
+
+/* 영우 pagebar css */
+#mapcontainer .pagebar img
+{
+    width: 50%;
+    height: 50%;
+}
+
+#mapcontainer .pagebar
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 7px;
+    font-size: 14px;
+    color: black;
+}
+
+
+#mapcontainer .pagebar div
+{
+    width: 33px;
+    height: 33px;
+    border: 1px solid rgb(220, 220, 220);
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#mapcontainer .pagebar div:first-of-type
+{
+    border-left: 1px solid rgb(220, 220, 220);
+}
+
+#mapcontainer .pagebar a
+{
+   display: flex;
+   width: 100%;
+   height: 100%;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   color: black;
 }

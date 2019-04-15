@@ -30,7 +30,7 @@ public class SearchController {
 	/*@ResponseBody  //ajax 꼭 붙여주기!!
 */	public ModelAndView VetsearchAjax(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage, String search, String type,HttpServletResponse res ) {
 	
-		int numPerPage=7;
+		int numPerPage=6;
 		ModelAndView mv= new ModelAndView();
 		Map<String, String> map = new HashMap();
 		//System.out.println("controller 에 값들어와?"+search+type);

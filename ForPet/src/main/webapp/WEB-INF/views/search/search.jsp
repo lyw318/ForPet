@@ -2,10 +2,6 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-	<!-- 부트스트랩관련 라이브러리 -->
- 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b07dc84ff25c3a3b3cad7f7f4c7e90d9&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript" src="${path }/resources/js/kakao.js"></script>
 <link rel="stylesheet" href="${path }/resources/css/search.css">
@@ -27,7 +23,7 @@
 							<option value='파충류'>파충류</option>
 							<option value='기타'>기타 동물</option>
 						</select><br />
-						<input type="text" id="keyword" size="15" placeholder="동이름을 검색하세요" class="areaaddress"><br/> 
+						<input type="text" id="keyword" size="15" placeholder=" 동이름을 검색하세요" class="areaaddress"><br/> 
 					</div><!-- </form> ajax 에서는 폼으로 묶을 필요는 없다. 엔터누르면 다 초기화됨, -->
 		</div>
 		<input type="hidden" id="address11"/>
@@ -110,7 +106,10 @@
 		</script>
 		
 	</div>
-<div id="map" ></div>
+	<div class="mapBox">
+		<div id="map" ></div>
+	</div>
+
 
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b07dc84ff25c3a3b3cad7f7f4c7e90d9&libraries=services"></script>
