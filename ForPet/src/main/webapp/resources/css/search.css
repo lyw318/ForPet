@@ -19,7 +19,7 @@ select#vettype.vettype {
 
 input#keyword.areaaddress {
 	outline: none;
-	width: 98%;
+	width: 96%;
 	height: 32px;
 	padding-left : 8px;
 }
