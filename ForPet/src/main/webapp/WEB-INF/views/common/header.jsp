@@ -17,6 +17,8 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <link rel="shortcut icon" href="">
+    
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
     <!-- css link 모음 -->
     <link rel="stylesheet" href="${path }/resources/css/mainStyle.css" />
     <link rel="stylesheet" href="${path }/resources/css/loginPageStyle.css" />
