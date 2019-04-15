@@ -4,6 +4,8 @@
 <%@ include file="/WEB-INF/views/myPage/myPageCommon.jsp" %>
 
 <link rel="stylesheet" href="${path }/resources/css/myVetListStyle.css"/>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b07dc84ff25c3a3b3cad7f7f4c7e90d9&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="${path }/resources/js/kakao.js"></script>
 
 <script>
 
@@ -45,7 +47,7 @@ function searchAddress(address, prefix,seq){
 			"fullAddr" : address,
 			"page" : "1",
 			"count" : "20",
-			"appKey" : "8ea84df6-f96e-4f9a-9429-44cee22ab70f",
+			"appKey" : "fdda0257-5e92-40aa-8341-f0a18a517f5c",
 			//fdda0257-5e92-40aa-8341-f0a18a517f5c 내꺼
 			//8ea84df6-f96e-4f9a-9429-44cee22ab70f 
 		}, success:function(response){
@@ -74,9 +76,83 @@ function searchAddress(address, prefix,seq){
 		}, error:function(request, status, error){
 			alert("검색이 실패했습니다.");
 		}
+				
+		
 	});
+	
 };
 
+function getTimeHTML(distance) {
+
+    // 도보의 시속은 평균 4km/h 이고 도보의 분속은 67m/min입니다
+    var walkkTime = distance / 67 | 0;
+    var walkHour = '', walkMin = '';
+
+    // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
+    if (walkkTime > 60) {
+        walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 '
+    }
+    walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
+
+    // 자전거의 평균 시속은 16km/h 이고 이것을 기준으로 자전거의 분속은 267m/min입니다
+    var bycicleTime = distance / 227 | 0;
+    var bycicleHour = '', bycicleMin = '';
+
+    // 계산한 자전거 시간이 60분 보다 크면 시간으로 표출합니다
+    if (bycicleTime > 60) {
+        bycicleHour = '<span class="number">' + Math.floor(bycicleTime / 60) + '</span>시간 '
+    }
+    bycicleMin = '<span class="number">' + bycicleTime % 60 + '</span>분'
+
+    // 거리와 도보 시간, 자전거 시간을 가지고 HTML Content를 만들어 리턴합니다
+    
+    var content = '<span class="distance">집에서 ' + distance + '(m)미터</span>';
+    content +='<p class="arrow_box">도보로 '+ walkHour + walkMin;
+    content +='<br/>자전거로 '+ bycicleHour + bycicleMin+'</p>';
+    
+    return content;
+}
+
+var no;
+function searchdistance(no)
+{
+	
+	var mlon=$('#mlon').val();
+	var mlat=$('#mlat').val();
+	var vlon=$('#vlon'+no).val();
+	var vlat=$('#vlat'+no).val();
+	
+	console.log("vlon"+vlon+"vlat"+vlat);
+	
+	var polyline=new daum.maps.Polyline({
+		/* map:map, */
+		path : [
+		new daum.maps.LatLng(mlon,mlat),
+		new daum.maps.LatLng(vlon,vlat)
+		],
+	 strokeWeight: 2,
+	 strokeColor: '#FF00FF',
+	 strokeOpacity: 0.8,
+	 strokeStyle: 'dashed'
+	});
+	
+	//return getTimeHTML(polyline.getLength());//미터단위로 길이 반환;
+	console.log("길이"+polyline.getLength());
+	return Math.round(polyline.getLength());
+}
+ 
+//메소드를 딜레이주기 
+var i = 1;          
+function myLoop (address, prefix, seq) {        
+   setTimeout(function () {   
+	  searchAddress(address, prefix, seq);          //  딜레이 주고 싶은 메소드
+      i++;                    
+      if (i < 10) {           
+         myLoop(address, prefix, seq);      
+      }                     
+   }, 3000)  //3초마다
+}
+ 
 </script>
 
     <div class="myPageMain_top">
@@ -108,7 +184,7 @@ function searchAddress(address, prefix,seq){
 			<div class="vet-item">
 				<div class="vet-title">${l.vetName }</div>
 				<div class="vet-sub-title">${l.vetAddress}</div>
-				<div class="vet-time">가는거리</div>
+				<div class="vet-time${l.vetSeq }" id="vet-time">주소가없습니다.</div>
 				<div class="vet-btn">
 					<button onclick="unscrapAjax('${l.vetSeq }')">스크랩취소</button>
 				</div>
@@ -117,6 +193,8 @@ function searchAddress(address, prefix,seq){
 			<input type="hidden" id="vlat${l.vetSeq}"/>
 			<script>
 				searchAddress('${l.vetAddress}',"v",'${l.vetSeq }');
+				//myLoop('${l.vetAddress}',"v",'${l.vetSeq }');
+				$(".vet-time${l.vetSeq }").html(getTimeHTML(searchdistance('${l.vetSeq }')));
 			</script>
 			
 			</c:forEach>
@@ -125,6 +203,7 @@ function searchAddress(address, prefix,seq){
 		</div>
 		
 	</div>
+	<div id="map"></div>
 	</section>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
