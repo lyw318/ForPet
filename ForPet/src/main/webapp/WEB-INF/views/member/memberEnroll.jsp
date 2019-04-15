@@ -14,39 +14,43 @@ input[type='password'],[type='text'],[type='tel']{
 
 </style>
 <section class="">
+<div class="myPageMain_right"> 
 	<div id="enroll-container">
 		<form name="memberEnrollFrm" action="${pageContext.request.contextPath}/member/memberEnrollEnd.do" method="post" onsubmit="return checkMemberEnroll(this);">
 			
 			<div id="userid-container">
 				<input type="text" class="form-control" placeholder="이메일(ID)을 적어주세요" name="memberEmail" id="memberEmail_" required>
 				<input type="button" onclick="mailChk()" value="메일인증">
-				<a href="http://www.naver.com"><img src="images/naver.png" alt="naver" /></a>
+				<a href="http://www.naver.com" target="_blank"><img src="${path }/resources/images/naver.png" style="width:40px;" alt="naver" /></a>
+				<a href="https://mail.google.com" target="_blank"><img src="${path }/resources/images/gmail.png" style="width:40px;" alt="gmail" /></a>
+				<a href="http://www.daum.com" target="_blank"><img src="${path }/resources/images/daum.jpg" style="width:80px;" alt="daum" /></a>
 				<span class="guide ok">아이디 사용 가능합니다</span>
 				<span class="guide error">아이디 사용 불가능합니다</span>
 				<input type="hidden" name="checkEmail" id="checkEmail"/>
 				<input type="text" class="form-control" name="authKey" placeholder="메일 인증번호 입력하세요" required>
 			</div>		
-			<input type="password" class="form-container" placeholder="비밀번호" name="memberPassword" id="memberPassword_" required>
-			<input type="password" class="form-container" placeholder="비밀번호 확인" id="memberPassword2" required>					
+			<input type="password" class="form-control" placeholder="비밀번호" name="memberPassword" id="memberPassword_" required>
+			<input type="password" class="form-control" placeholder="비밀번호 확인" id="memberPassword2" required>					
 			<div id="userid-container2">
-				<input type="text" class="form-container" placeholder="닉네임" name="memberNickname" id="memberNickname" required>
+				<input type="text" class="form-control" placeholder="닉네임" name="memberNickname" id="memberNickname" required>
 				<span class="guide2 ok">닉네임 사용 가능합니다</span>
 				<span class="guide2 error">닉네임 사용 불가능합니다</span>
 				<input type="hidden" name="checkNickname" id="checkNickname"/>
 			</div>
-			<input type="text" class="form-container" placeholder="이름" name="memberName" id="memberName" required>
+			<label>이름<input type="text" class="form-control" placeholder="이름" name="memberName" id="memberName" required></label>
 			<input type="tel" class="form-control" placeholder="전화번호 (예:01012345678)" name="memberPhone" id="memberPhone" maxlength="11" required>
 			<!-- <input type="text" class="form-control" placeholder="주소" name="memberAddress" id="memberAddress"> -->
 			
-			<input type="text" id="sample6_postcode" placeholder="우편번호">
-			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-			<input type="text" id="sample6_address" placeholder="주소" name="memberAddress" id="memberAddress"><br>
+			<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
+			<input type="button" class="defaultBtn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+			<input type="text" class="form-control" id="sample6_address" placeholder="주소" name="memberAddress" id="memberAddress"><br>
 			
 						
-			<input type="submit" class="btn btn-outline-success" value="가입">&nbsp;
-			<input type="reset" class="btn btn-outline-success" value="취소">
+			<input type="submit" class="defaultBtn" class="btn btn-outline-success" value="가입">&nbsp;
+			<input type="reset" class="defaultBtn" class="btn btn-outline-success" value="취소">
 			
 		</form>
+	</div>
 	</div>
 	<input type="hidden" id="emailChk" value="0"/>
 	<input type="hidden" id="nickChk" value="0"/>

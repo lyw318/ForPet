@@ -44,7 +44,8 @@
 				<td><%=m.getMemberNickname()%></td>
 				<td><%=m.getMemberPhone()%></td>
 				<td><%=m.getMemberAddress()%></td>
-				<td><%=m.getMemberEnrolldate()%></td>			
+				<%-- <td><%=m.getMemberEnrolldate()%></td> --%>	
+				<td><fmt:formatDate value="<%=m.getMemberEnrolldate()%>" pattern="yyyy년 MM월 dd일" /></td>	
 			</tr>
 			<%} }else{%>
 			<tr>

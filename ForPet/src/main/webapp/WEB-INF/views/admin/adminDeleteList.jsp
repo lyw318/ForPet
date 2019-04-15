@@ -33,6 +33,7 @@
 		<th style="width:200px;">회원주소</th>
 		<th style="width:250px;">회원가입일</th>
 		<th style="width:250px;">회원탈퇴일</th>
+		<th style="width:50px;">회원삭제</th>
 		</tr>
 		
 			<%
@@ -45,8 +46,11 @@
 				<td><%=m.getMemberNickname()%></td>
 				<td><%=m.getMemberPhone()%></td>
 				<td><%=m.getMemberAddress()%></td>
-				<td><%=m.getMemberEnrolldate()%></td>			
-				<td><%=m.getMemberQuitdate()%></td>			
+				<%-- <td><%=m.getMemberEnrolldate()%></td>	 --%>		
+				<%-- <td><%=m.getMemberQuitdate()%></td> --%>
+				<td><fmt:formatDate value="<%=m.getMemberEnrolldate()%>" pattern="yyyy년 MM월 dd일" /></td>	
+				<td><fmt:formatDate value="<%=m.getMemberQuitdate()%>" pattern="yyyy년 MM월 dd일" /></td>			
+				<td><input type="button" class="defaultBtn" value="X" onclick="fn_del(<%=m.getMemberSeq()%>)"/></td>	
 			</tr>
 			<%} }else{%>
 			<tr>
@@ -60,5 +64,11 @@
 		</div>
 	</div>
 </section>
-
+<script>
+function fn_del(memberSeq){	
+	if(confirm("회원을 탈퇴시키겠습니까?")){
+	location.href='<%=request.getContextPath()%>/admin/adminDel.do?MemberSeq='+memberSeq;
+	}
+}
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

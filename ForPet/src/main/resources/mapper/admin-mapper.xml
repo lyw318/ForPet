@@ -16,4 +16,8 @@ select count(*) from member
 <select id="selectList" resultType="member">
 select A.*,(select count(*) from attachment where A.memberSeq=memberSeq) as filecount from member A order by memberEnrolldate desc
 </select>
+
+<delete id="delete" parameterType="member">
+delete from member where memberSeq=#{memberSeq}
+</delete>
 </mapper>

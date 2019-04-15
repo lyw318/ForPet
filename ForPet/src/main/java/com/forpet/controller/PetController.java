@@ -38,10 +38,15 @@ public class PetController {
 	@RequestMapping("/pet/petUpdate.do")
 	public ModelAndView petUpdateEnd(int id, HttpSession session,Model model) {
 		Pet re=service.selectOne(id);
-	
+		
+		//date변환하는 곳
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		String petBirthStr=sdf.format(re.getPetBirth());
+		
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("pet/petUpdate");
 		mv.addObject("pet",re);
+		mv.addObject("petBirthStr",petBirthStr);
 		return mv;
 	}
 

@@ -77,6 +77,7 @@ public class MemberController {
 	//카카오 로그인 후 추가정보 입력후 가입
 	@RequestMapping("/member/kakaoEnrollEnd.do")
 	public ModelAndView kakaoEnrollEnd(Member m,String kakaoId,ModelAndView model) {
+		m.setMemberEmail(kakaoId);
 		int result= service.insertAddInfo(m,kakaoId);
 		String msg="";
 		String loc="/";
