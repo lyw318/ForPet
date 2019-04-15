@@ -24,14 +24,15 @@
 			<%for(Pet p:list) {%>
 				<div class="petListOne">
 					<div><img src="${path }/resources/upload/petProfile/<%=p.getPetRenamedImage() %>"></div>
-					<div><label>이름 :  <%=p.getPetName() %></label></div>
-					<div><label>종류 :  <%=p.getPetType()%></label></div>
-					<div><label>품종 : <%=p.getPetType2() %></label></div>
-					<div><label>생일 : <%=p.getPetBirth() %></label></div>
+					<div><label>이름 :  <%=p.getPetName() %></label></div>&nbsp&nbsp&nbsp&nbsp
+					<div><label>종류 :  <%=p.getPetType()%></label></div>&nbsp&nbsp&nbsp&nbsp
+					<div><label>품종 : <%=p.getPetType2() %></label></div>&nbsp&nbsp&nbsp&nbsp
+					<div><label>생일 : <fmt:formatDate value="<%=p.getPetBirth() %>" pattern="yyyy년 MM월 dd일" /></label></div>
+
 					<%-- <%if(loggedMember!=null && loggedMember.getMemberEmail().equals("admin")) {%> --%>
 					<div class="petListOneBtnBox">
-						<div><input type="button" value="수정" onclick="location.href='<%=request.getContextPath()%>/pet/petUpdate.do?id=<%=p.getPetSeq() %>'"/></div>
-						<div><input type="button" value="삭제" onclick="location.href='<%=request.getContextPath()%>/pet/petDel.do?petSeq=<%=p.getPetSeq()%>'"/></div>
+						<div><input type="button" class="defaultBtn" value="수정" onclick="location.href='<%=request.getContextPath()%>/pet/petUpdate.do?id=<%=p.getPetSeq() %>'"/></div>
+						<div><input type="button" class="defaultBtn" value="삭제" onclick="location.href='<%=request.getContextPath()%>/pet/petDel.do?petSeq=<%=p.getPetSeq()%>'"/></div>
 					</div>
 					<%--<%} %> --%>
 				</div>

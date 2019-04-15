@@ -250,6 +250,7 @@ public class MemberController {
 		m.setMemberNickname(memberNickname);
 		Member result=service.selectByNickname(m);
 		boolean isOk=(result!=null)?false:true;
+		System.out.println("닉네임 중복 체크 : "+result);
 		res.getWriter().println(isOk);
 	}
 

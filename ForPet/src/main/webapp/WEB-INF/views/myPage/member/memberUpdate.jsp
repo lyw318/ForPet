@@ -29,31 +29,30 @@ input[type='password'],[type='text'],[type='tel']{
 		<form name="memberUpdateFrm" action="${pageContext.request.contextPath}/member/memberUpdateEnd.do" method="post"
 			onsubmit="return fn_update();">
 
-
 			<div id="userid-container">
-				<input type="text" class="form-control" name="memberEmail" id="memberEmail_"
-					value="${member.memberEmail}" readonly>
+				<label>회원 이메일<input type="text" class="form-control" name="memberEmail" id="memberEmail_"
+					value="${member.memberEmail}" readonly></label>
 				<input type="hidden" name="checkEmail" id="checkEmail" />
 			</div>
-			<input type="password" class="form-container" placeholder="비밀번호" name="memberPassword" id="memberPassword_"
-				required>
-			<input type="password" class="form-container" placeholder="비밀번호 확인" id="memberPassword2" required>
-			<input type="text" class="form-container" placeholder="닉네임" name="memberNickname" id="memberNickname"
-				value="${member.memberNickname}" required>
-			<input type="text" class="form-container" placeholder="이름" name="memberName" id="memberName"
-				value="${member.memberName}" required>
-			<input type="tel" class="form-control" placeholder="전화번호 (예:01012345678)" name="memberPhone"
-				id="memberPhone" maxlength="11" value="${member.memberPhone}" required>
+			<label>새로운 비밀번호<input type="password" class="form-control" placeholder="비밀번호" name="memberPassword" id="memberPassword_"
+				required></label>
+			<label>비밀번호 확인<input type="password" class="form-control" placeholder="비밀번호 확인" id="memberPassword2" required></label>
+			<label>닉네임<input type="text" class="form-control" placeholder="닉네임" name="memberNickname" id="memberNickname"
+				value="${member.memberNickname}" required></label>
+			<label>이름<input type="text" class="form-control" placeholder="이름" name="memberName" id="memberName"
+				value="${member.memberName}" required></label>
+			<label>전화번호<input type="tel" class="form-control" placeholder="전화번호 (예:01012345678)" name="memberPhone"
+				id="memberPhone" maxlength="11" value="${member.memberPhone}" required></label>
 			
-			<input type="text" id="sample4_postcode" placeholder="우편번호">
-			<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-			<input type="text" id="sample4_roadAddress" placeholder="주소" name="memberAddress" id="memberAddress" value="${member.memberAddress}">
+			<input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
+			<input type="button" class="defaultBtn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+			<input type="text" class="form-control" id="sample4_roadAddress" placeholder="주소" name="memberAddress" id="memberAddress" value="${member.memberAddress}">
 			
 			<span id="guide" style="color:#999;display:none"></span>
 			
 			
-			<input type="submit" class="btn btn-outline-success" value="수정">&nbsp;
-			<input type="button" onclick="fn_del();" class="btn btn-outline-success" value="탈퇴">
+			<input type="submit" class="defaultBtn" class="btn btn-outline-success" value="수정">&nbsp;
+			<input type="button" class="defaultBtn"  onclick="fn_del();" class="btn btn-outline-success" value="탈퇴">
 
 		</form>
 	</div>
