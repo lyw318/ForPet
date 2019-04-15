@@ -225,6 +225,40 @@ public class HealthController {
 		return "common/msg";
 	}
 	
+	@RequestMapping("/health/updateInfo")
+	public String updateInfo(String viewNo, HttpServletRequest request)
+	{
+		int no=0;
+		try {
+			no = Integer.parseInt(viewNo);
+		} catch(NumberFormatException e)
+		{
+			
+		}
+		HealthInfo hi = service.selectOne(no);
+		
+		if(hi != null)
+		{
+			List<String> ilist = service.infoImageList(no);
+/*			hi.createPetTypeName();*/
+			request.setAttribute("ilist", ilist);
+			request.setAttribute("hi", hi);
+			return "health/updateInfo";
+		}
+		else
+		{
+			request.setAttribute("msg", "반려동물 정보 게시글이 존재하지 않습니다.");
+			request.setAttribute("loc", "/health/healthInfo");
+			return "common/msg";
+		}
+	}
+	
+	@RequestMapping("/health/updateInfoEnd.do")
+	public String updateInfoEnd(HealthInfo hi, MultipartFile[] upFile, MultipartFile upFileM, String[] exFile, String exFileM, HttpServletRequest request)
+	{
+		return "common/msg";
+	}
+	
 	
 
 }
