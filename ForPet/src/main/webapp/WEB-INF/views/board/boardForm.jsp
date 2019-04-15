@@ -11,7 +11,7 @@
 	</jsp:include>
 
    <section>
-   <div class="board-form-wrapper">
+   <div class="board-form-wrapper"> 
         <div class="board-form-header">
    			게시판 작성
    		</div>

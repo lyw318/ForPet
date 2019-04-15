@@ -9,7 +9,7 @@
 	<select id="selectCount" parameterType="boardSearch" resultType="_int">
 		<choose>
 			<when test='keyword!=null and keyword!=""'>
-				select count(*) from board where boardTitle like '%'||#{keyword}||'%' OR noticeContent like '%'||#{keyword}||'%'
+				select count(*) from board where boardTitle like '%'||#{keyword}||'%' OR boardContent like '%'||#{keyword}||'%'
 			</when>
 			<otherwise>
 				select count(*) from board
@@ -49,7 +49,7 @@
 	</insert>
 
 	<select id="selectBoard" parameterType="_int" resultType="board">
-		select * from board where boardseq=#{boardSeq}
+		select B.*, A.* from board B join member A on(A.memberseq=B.memberseq) where boardSeq=#{boardSeq}
 	</select>
 
 	<select id="selectAttachment" parameterType="_int" resultType="attachment">

@@ -4,7 +4,7 @@
    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
    <c:set var="path" value="${pageContext.request.contextPath}"/>
-   
+
    <jsp:include page="/WEB-INF/views/common/header.jsp">
       <jsp:param value="Dev 등록결과" name="pageTitle"/>
    </jsp:include>
@@ -23,10 +23,15 @@
                 </div>
             </div>
             <div class="board-form-writer">
+                <div>작성자</div>
+                <div>
+                    <input type="text" value="${b.memberNickname}" readonly style="width:100%">
+                </div>
+            </div>
+            <div class="board-form-writer">
                 <div>작성일</div>
                 <div>
                     <input type="text" value="${b.boardDate}" readonly style="width:100%">
-
                 </div>
             </div>
    			<div class="board-form-content">
@@ -50,11 +55,11 @@
 	    </form>
 
       </div>
-   		
+
     <script>
-    	
+
     	function addEvent(indexNum){
-    		
+
     		$('#upFile'+indexNum).change(function(){
     		    // 파일 업로드 확장자 체크
     		  var fileName = $('#upFile'+indexNum).val();
