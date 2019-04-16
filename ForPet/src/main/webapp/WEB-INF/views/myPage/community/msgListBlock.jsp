@@ -27,7 +27,7 @@
                         <span style="color: #c60700; font-weight: 900;">X</span>
                         &nbsp;삭제
                     </button>
-                    <button type="button" class="msgListBtn" onclick="fn_msgListBlock()">수신(친구)차단</button>
+                    <button type="button" class="msgListBtn" onclick="fn_msgListUnbl()">차단 해제</button>
                 </div>
                 <!-- 
                 <div class="msgListSearch">
@@ -79,7 +79,7 @@
 	    })
         setTimeout(function() {
             $.ajax({
-                url: "${path}/community/msgList.do",
+                url: "${path}/community/msgListBlock.do",
                 dataType: "html",
                 success: function (data) {
                     $(".msgListContentBox").empty();
@@ -90,13 +90,13 @@
                             $(".msgListContent").get(i).style.color = "#c69c7680";
                         }
                     }
-                        userBox();
+                    userBox();
                 }
             })
         },100)
     }
 
-    function fn_msgListBlock() {
+    function fn_msgListUnbl() {
         var msgBlockNo = new Array();
         var arrCount = 0;
         for(var i=0;i<$('.mlCheckBoxOne').length;i++) {
@@ -106,7 +106,7 @@
             }
         }
         $.ajax({
-	        url: "${path}/community/msgBlock.do",
+	        url: "${path}/community/msgUnBl.do",
 	        traditional: true,
 	        data: { "msgBlockNo": msgBlockNo },
 	        dataType: "html",
@@ -119,7 +119,7 @@
 	    })
         setTimeout(function() {
             $.ajax({
-                url: "${path}/community/msgList.do",
+                url: "${path}/community/msgListBlock.do",
                 dataType: "html",
                 success: function (data) {
                     $(".msgListContentBox").empty();
@@ -138,7 +138,7 @@
     
     $(function() {
         $.ajax({
-	        url: "${path}/community/msgList.do",
+	        url: "${path}/community/msgListBlock.do",
 	        dataType: "html",
 	        success: function (data) {
                 $(".msgListContentBox").empty();
@@ -190,7 +190,7 @@
     //pageBar ajax 처리
     function fn_paging(cPage) {
         $.ajax({
-	        url: "${path}/community/msgList.do",
+	        url: "${path}/community/msgListBlock.do",
 	        type: "POST",
 	        data: {"cPage":cPage},
 	        dataType: "html",

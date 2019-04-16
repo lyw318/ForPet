@@ -61,7 +61,8 @@
  	<tx:annotation-driven transaction-manager="transactionManager"/>
  	
  	
-	<bean id="msgAlert" class="com.forpet.common.socket.msgAlertSocketHandler"></bean>
+	<bean id="msgAlert" class="com.forpet.common.socket.msgAlertSocketHandler">
+	</bean>
 	
 	<websocket:handlers>
 		<websocket:mapping handler="msgAlert" path="/msgAlert"/>

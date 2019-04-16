@@ -14,17 +14,21 @@
 	    var msgBox = JSON.parse(e.data);
 	    
 	    //쪽지 보내기 로직
-	    if("${loggedMember != null}") {
-	        if("${loggedMember.memberNickname}" == msgBox["memberNickname"]) {
-	        	var msg = msgBox["mMsgRcvNickname"] + " 님에게 쪽지를 보냈습니다.";
-	            $('.msgAlert').get(0).innerHTML = msg;
-	            msgAlertEvent();
-	        }
-	        if("${loggedMember.memberNickname}" == msgBox["mMsgRcvNickname"]) {
-	        	var msg = msgBox["memberNickname"] + " 님에게 쪽지를 받았습니다.";
-	            $('.msgAlert').get(0).innerHTML = msg;
-	            msgAlertEvent();
-	        }
+	    if(msgBox["locFlag"] == "msgSend") {
+		    if("${loggedMember != null}") {
+		        if("${loggedMember.memberNickname}" == msgBox["memberNickname"]) {
+		        	var msg = msgBox["mMsgRcvNickname"] + " 님에게 쪽지를 보냈습니다.";
+		            $('.msgAlert').get(0).innerHTML = msg;
+		            msgAlertEvent();
+		        }
+		        if("${loggedMember.memberNickname}" == msgBox["mMsgRcvNickname"]) {
+		        	if(msgBox["friendType"] != "차단") {
+		        		var msg = msgBox["memberNickname"] + " 님에게 쪽지를 받았습니다.";
+			            $('.msgAlert').get(0).innerHTML = msg;
+			            msgAlertEvent();	
+		        	}
+		        }
+		    }
 	    }
 	    
 	    

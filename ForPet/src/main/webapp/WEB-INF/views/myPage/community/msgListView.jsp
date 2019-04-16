@@ -34,10 +34,6 @@
 				<div class="msContent">
 					${mmOne.mMsgContent}
 				</div>
-				<div class="sendSaveBox">
-					보낸쪽지함에 저장
-					<input type="checkbox" name=""/>
-				</div>
 				<div class="msBtnBox">
 					<input type="button" value="답장하기" class="defaultBtn" onclick="fn_msgSendWindow('${mmOne.memberNickname}','msgListView')"/>
 					<input type="button" value="목록보기" class="defaultBtn" onclick="javascript:location.href='${path }/community/msgList'"/>

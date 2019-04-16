@@ -89,14 +89,18 @@
 	        dataType: "html",
 	        success: function (data) {
 	        	userBox1();
+	    	    if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
+	    	    	location.href="${path}/community/friendList";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/friendList') {
+	    	    	location.href="${path}/community/friendList";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.8:9090/forpet/community/friendList') {
+	    	    	location.href="${path}/community/friendList";
+	    	    }
 	        }
 	    })
-	    if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
-	    	location.href="${path}/community/friendList";
-	    }
-	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/friendList') {
-	    	location.href="${path}/community/friendList";
-	    }
+
 	}
 	
 	function fnA_friendBlock(memberNickname) {
@@ -106,14 +110,18 @@
 	        dataType: "html",
 	        success: function (data) {
 	        	userBox1();
+	    		if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
+	    	    	location.href="${path}/community/friendList";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/friendList') {
+	    	    	location.href="${path}/community/friendList";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.8:9090/forpet/community/friendList') {
+	    	    	location.href="${path}/community/friendList";
+	    	    }
 	        }
 	    })
-		if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/friendList') {
-	    	location.href="${path}/community/friendList";
-	    }
-	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/friendList') {
-	    	location.href="${path}/community/friendList";
-	    }
+
 	}
 	
 </script>

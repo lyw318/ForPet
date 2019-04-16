@@ -201,10 +201,11 @@
 #msgListView .msContent {
     margin-bottom: 10px;
     padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     word-break: break-all;
+    min-height: 200px;
 }
 
 #msgListView .msContent textarea {

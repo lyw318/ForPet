@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -16,7 +17,9 @@ import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.forpet.model.vo.Member;
+import com.forpet.model.vo.MemberFriend;
 
+@Controller
 public class msgAlertSocketHandler extends BinaryWebSocketHandler {
 	
 	private Logger logger = LoggerFactory.getLogger(msgAlertSocketHandler.class);
@@ -54,7 +57,7 @@ public class msgAlertSocketHandler extends BinaryWebSocketHandler {
 		
 		//쪽지 알림 메세지 보내기
 		if(locFlag.equals("msgSend")) {
-			
+
 		}
 		
 		

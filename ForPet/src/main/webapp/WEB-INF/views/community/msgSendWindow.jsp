@@ -34,10 +34,6 @@
 					<div class="msContent">
 						<textarea name="mMsgContent" id="mMsgContent"></textarea>
 					</div>
-					<div class="sendSaveBox">
-						보낸쪽지함에 저장
-						<input type="checkbox" name=""/>
-					</div>
 					<div class="msBtnBox">
 						<input type="submit" value="보내기" class="defaultBtn"/>
 						<input type="button" value="취소" class="defaultBtn" onclick="sendPopupClose()"/>
@@ -62,9 +58,24 @@
 		function sendPopupSubmit() {
 			var memberNickname = "${loggedMember.memberNickname}";
 			var mMsgRcvNickname = "${sendUserInfo.memberNickname}";
-			var locFlag = "msgSend";
-			var msg = {"memberNickname":memberNickname, "mMsgRcvNickname":mMsgRcvNickname, "locFlag":locFlag};
-			opener.parent.sendPopupMsg(msg);
+			var friendType = "";
+
+			// textarea 줄바꿈 적용
+			var mMsgContent = $('#mMsgContent').val();
+			mMsgContent = mMsgContent.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+			$('#mMsgContent').val(mMsgContent);
+
+		    $.ajax({
+		        url: "${path}/community/msgfriendSearch",
+		        data: {"memberNickname":memberNickname, "mMsgRcvNickname":mMsgRcvNickname},
+		        dataType: "html",
+		        success: function (data) {
+		        	friendType = data;
+		        	var locFlag = "msgSend";
+					var msg = {"memberNickname":memberNickname, "mMsgRcvNickname":mMsgRcvNickname, "locFlag":locFlag, "friendType":friendType};
+					opener.parent.sendPopupMsg(msg);
+		        }
+		    })
 			return true;
 		}
 		

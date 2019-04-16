@@ -285,7 +285,7 @@ public class CommunityController {
 		mv.setViewName("myPage/community/msgListAjax/msgListAjax");
 		return mv;
 	}
-	
+
 	@RequestMapping("/community/msgListView")
 	private ModelAndView msgListView(MemberMsg mm) {
 		
@@ -301,8 +301,25 @@ public class CommunityController {
 	}
 	
 	@RequestMapping("/community/insertMsg")
-	private ModelAndView insertMsg(MemberMsg mm) {
+	private ModelAndView insertMsg(MemberMsg mm, HttpSession session) {
+		
+		//받는 사람이 친구 차단되었는지 확인하는 로직
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		Member m = new Member();
+		m.setMemberNickname(mm.getmMsgRcvNickname());
+		Member friendInfo = service.mSelectOne(m);
+		MemberFriend mf = new MemberFriend();
+		mf.setMemberSeq(friendInfo.getMemberSeq());
+		mf.setmFriendNickname(oneself.getMemberNickname());
+		MemberFriend mfR = service.selectOne(mf);
 
+		if(mfR.getmFriendType().equals("차단")) {
+			mm.setmMsgType("차단");
+		}
+		else {
+			mm.setmMsgType("일반");
+		}
+		
 		int result = service.insertMsg(mm);
 		
 		String msg="";
@@ -381,5 +398,113 @@ public class CommunityController {
 		msg = result + " 님을 차단했습니다.";
 		return msg;
 	}
+	
+	
+	@RequestMapping(value="/community/msgfriendSearch", produces="application/text; charset=utf8")
+	@ResponseBody
+	private String msgfriendSearch(MemberMsg mm, HttpSession session) {
+		
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		String friendType = "";
+		
+		System.out.println("mm : " + mm);
+		Member m = new Member();
+		m.setMemberNickname(mm.getmMsgRcvNickname());
+		Member friendInfo = service.mSelectOne(m);
+		MemberFriend mf = new MemberFriend();
+		mf.setMemberSeq(friendInfo.getMemberSeq());
+		mf.setmFriendNickname(oneself.getMemberNickname());
+		MemberFriend mfR = service.selectOne(mf);
+		if(mfR.getmFriendType().equals("차단")) {
+			friendType = "차단";
+		}
+		
+		return friendType;
+	}
+	
+	
+	@RequestMapping("/community/msgListBlock")
+	private ModelAndView msgListBlock(HttpSession session) {
+
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		
+		MemberMsg mm = new MemberMsg();
+		mm.setMemberNickname(oneself.getMemberNickname());
+		//List<MemberMsg> mmResult = service.mmSelectList(mm);
+		
+		ModelAndView mv = new ModelAndView();
+		//mv.addObject("mmList",mmResult);
+		mv.setViewName("myPage/community/msgListBlock");
+		return mv;
+	}
+
+	@RequestMapping("/community/msgListBlock.do")
+	private ModelAndView msgListBlockAjax(HttpSession session, BoardSearch bs, String viewNo, HttpServletRequest request) {
+		
+		bs.parsing(5);
+		
+		
+		//본인한테 온 메세지 출력을 위한 로직
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		MemberMsg mm = new MemberMsg();
+		mm.setMemberNickname(oneself.getMemberNickname());
+		mm.setmMsgType("차단");
+		
+		int mmCount = service.mmCount(mm);//총 메세지 갯수
+		List<MemberMsg> mmResult = service.mmSelectList(mm,bs);//메세지 데이터
+		
+		//페이징 처리
+		String mmPage = PageBarFactoryHYS.getPageBarAjax(mmCount, bs, request.getContextPath()+"/community/msgList.do");
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("mmPage",mmPage);
+		mv.addObject("mmCount",mmCount);
+		mv.addObject("mmList",mmResult);
+		mv.setViewName("myPage/community/msgListAjax/msgListAjax");
+		return mv;
+	}
+	
+
+	@RequestMapping(value="/community/msgUnBl.do", produces="application/text; charset=utf8")
+	@ResponseBody
+	private String msgUnBl(int[] msgBlockNo, HttpSession session) {
+		
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		Member m = new Member();
+		
+		String result = "";
+		String msg = "";
+		if(msgBlockNo != null) {
+			MemberMsg mm = new MemberMsg();
+			MemberMsg mmOne = new MemberMsg();
+			MemberFriend mf = new MemberFriend();
+			int ufresult = 0;
+			int resultCo = 0;
+			for(int i=0;i<msgBlockNo.length;i++) {
+				mm.setmMsgSeq(msgBlockNo[i]);
+				mmOne = service.mmSelectOne(mm);
+				mmOne.setmMsgType("일반");
+				service.mmUpdateType(mmOne);
+				
+				m.setMemberNickname(mmOne.getMemberNickname());
+				Member friendInfo = service.mSelectOne(m);
+				
+				mf.setMemberSeq(oneself.getMemberSeq());
+				mf.setmFriendMateNo(friendInfo.getMemberSeq());
+				mf.setmFriendNickname(friendInfo.getMemberNickname());
+				mf.setmFriendType("일반");
+				
+				ufresult = service.updateTypeFriend(mf);
+				if(!(ufresult>0)) {
+					service.insertFriend(mf);
+				}
+				resultCo++;
+			}
+			result = mmOne.getMemberNickname();
+		}
+		msg = result + " 님의 차단을 해제 했습니다.";
+		return msg;
+	}
+	
 	
 }

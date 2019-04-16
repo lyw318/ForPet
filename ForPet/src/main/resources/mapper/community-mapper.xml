@@ -47,7 +47,7 @@
 	</select>
 	
 	<insert id="insertMsg" parameterType="memberMsg">
-		INSERT INTO MEMBERMSG VALUES(mMsgSeq.nextval,#{memberNickname},default,#{mMsgRcvNickname},#{mMsgContent},default,default,default)
+		INSERT INTO MEMBERMSG VALUES(mMsgSeq.nextval,#{memberNickname},default,#{mMsgRcvNickname},#{mMsgContent},default,default,#{mMsgType})
 	</insert>
 	
 	<delete id="delMsg" parameterType="memberMsg">
