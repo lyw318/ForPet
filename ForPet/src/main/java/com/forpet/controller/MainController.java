@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.forpet.model.vo.Member;
 import com.forpet.model.vo.MemberFriend;
+import com.forpet.model.vo.MemberMsg;
 import com.forpet.model.vo.Vet;
 import com.forpet.service.CommunityService;
 import com.forpet.service.VetService;
@@ -66,20 +67,11 @@ public class MainController {
 	@RequestMapping("/main/myPageMain")
 	public ModelAndView myPageMain(HttpSession session) {
 		
-		ModelAndView mv = new ModelAndView();
-		String msg = "";
-		String loc = "";
-		if(session.getAttribute("loggedMember") == null) {
-			msg = "로그인을 부탁드립니다.";
-			loc = "";
-			mv.addObject("msg", msg);
-			mv.addObject("loc", loc);
-			mv.setViewName("common/msg");
-		}
-		else {
-			mv.setViewName("myPage/myPageMain");
-		}
+		Member oneself = (Member) session.getAttribute("loggedMember");
 		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("myPage/myPageMain");
 		return mv;
 	}
 	

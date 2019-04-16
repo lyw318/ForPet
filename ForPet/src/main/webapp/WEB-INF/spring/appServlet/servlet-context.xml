@@ -56,6 +56,7 @@
 			<mapping path="/community/msgList" />
 			<mapping path="/pet/petList.do" />
 			<mapping path="/vet/addScrap.do" />
+			<mapping path="/main/myPageMain" />
 			<beans:bean id="loggerInterceptor" class="com.forpet.common.LoginCheckInterceptor" />
 		</interceptor>
 		

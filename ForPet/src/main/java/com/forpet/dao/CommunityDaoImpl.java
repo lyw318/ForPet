@@ -93,5 +93,10 @@ public class CommunityDaoImpl implements CommunityDao {
 	public int mmUpdateType(MemberMsg mm) {
 		return session.update("community.mmUpdateType", mm);
 	}
+
+	@Override
+	public int mmReadCount(MemberMsg mm) {
+		return session.selectOne("community.mmReadCount", mm);
+	}
 	
 }

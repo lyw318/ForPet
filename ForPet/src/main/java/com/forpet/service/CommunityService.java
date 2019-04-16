@@ -24,4 +24,5 @@ public interface CommunityService {
 	int delMsg(MemberMsg mm);
 	int mmUpdateRead(MemberMsg mm);
 	int mmUpdateType(MemberMsg mm);
+	int mmReadCount(MemberMsg mm);
 }
