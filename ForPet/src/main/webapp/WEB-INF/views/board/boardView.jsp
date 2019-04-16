@@ -42,8 +42,7 @@
 				onclick="fileDownload('${a.originalFileName}','${a.renamedFileName }');">
 				첨부파일${vs.count} - ${a.originalFileName }</button>
 		</c:forEach>
-		<c:if
-			test="${loggedMember.memberEmail=='admin'||loggedMember.memberNickname==board.memberNickname}">
+		<c:if test="${loggedMember.memberEmail=='admin'||loggedMember.memberNickname==board.memberNickname}">
 			<div class="board-view-btns" style="padding-bottom: 10px">
 				<input type="button" value="수정" onclick="fn_updateBoard()"> 
 				<input type="button" value="삭제" onclick="fn_deleteBoard()">
@@ -58,27 +57,37 @@
 							value="${loggedMember!=null?loggedMember.memberSeq:''}" /> <input
 							type="hidden" name="boardSeq" value="${board.boardSeq}" /> <input
 							type="hidden" name="commentLevel" value="1" />
-						<textarea name="commentText" cols="60" rows="3"></textarea>
-						<button type="submit" id="btn-insert">등록</button>
+						<textarea name="commentText" cols="60" rows="3" style="width:70%"></textarea>
+						<button type="submit" id="btn-insert" style="height: 35px;
+				                                                    width: 50px;
+				                                                    align-self: flex-end;
+				                                                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+				                                                    background-color: transparent;
+				                                                    border: none;
+				                                                    font-weight: bolder;
+				                                                    opacity: 0.5;
+				                                                    font-size: 15px;
+				                                                    cursor: pointer;">등록</button>
 					</form>
 				</div>
 			</div>
 		</c:if>
 
-		<table id="tbl-comment">
+		<table id="tbl-comment" style="width: 75%;">
 			<c:if test="${comments!=null}">
 				<c:forEach items="${comments}" var="c">
 					<c:choose>
 						<c:when test="${c.commentLevel==1 }">
 							<tr class="level1" data-comment-seq="${c.commentSeq }">
-								<td>작성자 : <sub class="comment=writer">${c.memberNickname }</sub>
-									작성일 : <sub class="comment-date">${c.commentDate }</sub> <br />
+								<td style="color:black;">
+									작성자 : <sub class="comment=writer">${c.memberNickname }</sub>
+									작성일 : <sub class="comment-date" style="color:black; font-size:14px">${c.commentDate }</sub> <br />
 									${c.commentText }</td>
 								<td><c:if test='${loggedMember!=null }'>
-										<button class="btn-reply" value="${c.commentSeq }">답글</button>
+										<button class="btn-reply" value="${c.commentSeq }" style="cursor: pointer; cursor: pointer; background-color: white; border: none;">답글</button>
 									</c:if> 
 									<c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberEmail)}'>
-										<button class="btn-delete" value="${c.commentSeq }">삭제</button>
+										<button class="btn-delete" value="${c.commentSeq }" style="cursor: pointer; cursor: pointer; background-color: white; border: none;">삭제</button>
 									</c:if></td>
 							</tr>
 						</c:when>
@@ -86,7 +95,14 @@
 							<tr class='level2'>
 								<td>작성자 : <sub>${c.memberNickname }</sub> 작성일 : <sub>${c.commentDate }</sub>
 									<br/> ${c.commentText }</td>
-								<td></td>
+								<td>
+								 <c:if test='${loggedMember!=null }'>
+		                        <button class="btn-reply" value="${c.commentSeq }" style="cursor: pointer; cursor: pointer; background-color: white; border: none;">답글</button>
+		                        </c:if>
+		                         <c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberEmail)}'>
+		                         <button class="btn-delete" value="${c.commentSeq }" style="cursor: pointer; cursor: pointer; background-color: white; border: none;">삭제</button>
+		                         </c:if>
+								</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>

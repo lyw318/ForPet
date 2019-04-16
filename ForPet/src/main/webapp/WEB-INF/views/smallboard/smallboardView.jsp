@@ -46,50 +46,65 @@
                 </c:if>
                 <c:if test="${loggedMember.memberNickname!=null}">
 	         <div id="comment-container" style="text-align: center;">
-	         	<div class="comment-editor">
-	            	<form name="commentFrm" action="${path}/smallboard/smallboardCommentInsert" method="post">
-		               <input type="hidden" name="memberSeq" value="${loggedMember!=null?loggedMember.memberSeq:''}"/>
-		               <input type="hidden" name="smallboardSeq" value="${smallboard.smallboardSeq}"/>
-		               <input type="hidden" name="sbcommentLevel" value="1"/>
-		               <textarea name="sbcommentText" cols="60" rows="3"></textarea>
-		               <button type="submit" id="btn-insert">등록</button>
-	            	</form>
-	            </div>
-	         </div> 
-	         </c:if>
+               <div class="comment-editor">
+                  <form name="commentFrm" action="${path}/smallboard/smallboardCommentInsert" method="post">
+                     <input type="hidden" name="memberSeq" value="${loggedMember!=null?loggedMember.memberSeq:''}"/>
+                     <input type="hidden" name="smallboardSeq" value="${smallboard.smallboardSeq}"/>
+                     <input type="hidden" name="sbcommentLevel" value="1"/>
+                     <textarea name="sbcommentText" cols="60" rows="3" style="width:70%"></textarea>
+                     <button type="submit" id="btn-insert" style="height: 35px;
+                                                    width: 50px;
+                                                    align-self: flex-end;
+                                                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+                                                    background-color: transparent;
+                                                    border: none;
+                                                    font-weight: bolder;
+                                                    opacity: 0.5;
+                                                    font-size: 15px;
+                                                    cursor: pointer;">등록</button>
+                  </form>
+               </div>
+            </div> 
+            </c:if>
          
-    		<table id="tbl-comment">
-    		<c:if test="${comments!=null}">
-    			<c:forEach items="${comments}" var="c">
-    				<c:choose >
-    				<c:when test="${c.sbcommentLevel==1 }">
-    				<tr class="level1" data-sbcomment-seq="${c.sbcommentSeq }">
-    					<td>
-    						작성자 : <sub class="comment=writer">${c.memberNickname }</sub>
-    						작성일 : <sub class="comment-date">${c.sbcommentDate }</sub>
-    						<br/>
-    						${c.sbcommentText }
-    					</td>
-    					<td>
-    						<c:if test='${loggedMember!=null }'>
-								<button class="btn-reply" value="${c.sbcommentSeq }">답글</button>
-							</c:if> 
-    						<c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberEmail)}'>
-    							<button class="btn-delete" value="${c.sbcommentSeq }">삭제</button>
-    						</c:if>
-    					</td>
-    				</tr>
-    				</c:when>
-    				<c:otherwise>
-    					<tr class='level2'>
-							<td>
-								작성자 : <sub>${c.memberNickname }</sub>
-								작성일 : <sub>${c.sbcommentDate }</sub>
-								<br/>
-								${c.sbcommentText }
-							</td>
-							<td>
-							</td>
+          <table id="tbl-comment" style="width: 75%;">
+          <c:if test="${comments!=null}">
+             <c:forEach items="${comments}" var="c">
+                <c:choose >
+                <c:when test="${c.sbcommentLevel==1 }">
+                <tr class="level1" data-sbcomment-seq="${c.sbcommentSeq }">
+                   <td style="color:black;">
+                      작성자 : <sub class="comment=writer">${c.memberNickname }</sub>
+                      작성일 : <sub class="comment-date" style="color:black; font-size:14px">${c.sbcommentDate }</sub>
+                      <br/>
+                      내용 : ${c.sbcommentText }
+                   </td>
+                   <td >
+                      <c:if test='${loggedMember!=null }'>
+                        <button class="btn-reply" value="${c.sbcommentSeq }" style="cursor: pointer; cursor: pointer; background-color: white; border: none;">답글</button>
+                     </c:if>
+                      <c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberEmail)}'>
+                         <button class="btn-delete" value="${c.sbcommentSeq }" style="cursor: pointer; cursor: pointer; background-color: white; border: none;">삭제</button>
+                      </c:if>
+                   </td>
+                </tr>
+                </c:when>
+                <c:otherwise>
+                   <tr class='level2' >
+                     <td>
+                        작성자 : <sub>${c.memberNickname }</sub>
+                        작성일 : <sub>${c.sbcommentDate }</sub>
+                        <br/>
+                        내용 : ${c.sbcommentText }
+                     </td>
+                     <td>
+                        <c:if test='${loggedMember!=null }'>
+                        <button class="btn-reply" value="${c.sbcommentSeq }" style="cursor: pointer; cursor: pointer; background-color: white; border: none;">답글</button>
+                        </c:if>
+                         <c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberEmail)}'>
+                         <button class="btn-delete" value="${c.sbcommentSeq }" style="cursor: pointer; cursor: pointer; background-color: white; border: none;">삭제</button>
+                         </c:if>
+                     </td>
 						</tr>
     				</c:otherwise>
     				</c:choose>
@@ -97,7 +112,7 @@
     		</c:if>
 		</table>
    </div>
-   
+
    </section>
    
    <script>
