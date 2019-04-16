@@ -12,8 +12,8 @@
                     <li onclick="location.href='${path}/main/myPageMain'">
                         <img src="${path}/resources/images/back.png" width="18px">
                     </li>
-                    <li>Member</li>
-                    <li>마이페이지 > 내 커뮤니티 > 쪽지관리  > 상세보기</li>
+                    <li>MyPage</li>
+                    <li>마이페이지 > 내 쪽지함 > 상세보기</li>
                 </ul>
             </div>
         </div>

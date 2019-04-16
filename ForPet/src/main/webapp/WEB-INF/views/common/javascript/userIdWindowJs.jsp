@@ -11,7 +11,7 @@
 		        url: "${path}/community/msgReadCount",
 		        dataType: "html",
 		        success: function (data) {
-		            $("#msgReadCountIdHeader").html(data+"&nbsp;개");
+		            $("#msgReadCountIdHeader").html(data+"&nbsp;개");	
 		        }
 		    })
 		}
@@ -25,8 +25,10 @@
 		        dataType: "html",
 		        success: function (data) {
 		            $("#msgReadCountIdHeader").html(data+"&nbsp;개");
+		            $(".msgReadCountBox").html(data);
 		        }
 		    })
+		    
 		}
 	}
 	
@@ -67,6 +69,7 @@
 	        dataType: "html",
 	        success: function (data) {
 	            $('.userBox').get(i).innerHTML = data;
+	            fn_msgReadCount();
 	        }
 	    })
 	}
@@ -125,6 +128,20 @@
 	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.8:9090/forpet/community/friendList') {
 	    	    	location.href="${path}/community/friendList";
 	    	    }
+	    	    
+	    	    if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/msgList') {
+	    	    	location.href="${path}/community/msgList";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/msgListBlock') {
+	    	    	location.href="${path}/community/msgListBlock";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/msgList') {
+	    	    	location.href="${path}/community/msgList";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/msgListBlock') {
+	    	    	location.href="${path}/community/msgListBlock";
+	    	    }
+
 	        }
 	    })
 
@@ -146,6 +163,20 @@
 	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.8:9090/forpet/community/friendList') {
 	    	    	location.href="${path}/community/friendList";
 	    	    }
+	    	    
+	    	    if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/msgList') {
+	    	    	location.href="${path}/community/msgList";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://localhost:9090/forpet/community/msgListBlock') {
+	    	    	location.href="${path}/community/msgListBlock";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/msgList') {
+	    	    	location.href="${path}/community/msgList";
+	    	    }
+	    	    if(idWindowTarget.get(0).baseURI == 'http://192.168.20.229:9090/forpet/community/msgListBlock') {
+	    	    	location.href="${path}/community/msgListBlock";
+	    	    }
+
 	        }
 	    })
 

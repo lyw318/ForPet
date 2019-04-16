@@ -31,7 +31,7 @@
 }
 
 #friendList .friendBox_top {
-    width: 731px;
+    width: 752px;
     margin-bottom: 10px;
     display: flex;
     justify-content: flex-end;
@@ -52,7 +52,7 @@
 }
 
 #friendList .friendBox_mid {
-    width: 688px;
+    width: 728px;
     min-height: 100px;
     display: flex;
     flex-wrap: wrap;
@@ -61,7 +61,7 @@
 }
 
 #friendList .friendName {
-    width: 150px;
+    width: 160px;
     height: 35px;
     margin: 10px;
     display: flex;

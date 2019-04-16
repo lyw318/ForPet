@@ -521,7 +521,7 @@ public class CommunityController {
 	
 	@RequestMapping("/community/msgReadCount")
 	@ResponseBody
-	private int msgReadCount(HttpSession session) {
+	private String msgReadCount(HttpSession session) {
 		
 		Member oneself = (Member) session.getAttribute("loggedMember");
 
@@ -529,8 +529,9 @@ public class CommunityController {
 		MemberMsg mm = new MemberMsg();
 		mm.setMemberNickname(oneself.getMemberNickname());
 		mm.setmMsgRead("N");
-		int msgC = service.mmReadCount(mm);
-		
+		mm.setmMsgType("일반");
+		int msgCi = service.mmReadCount(mm);
+		String msgC = String.valueOf(msgCi);
 		return msgC;
 	}
 }

@@ -131,6 +131,7 @@
                         }
                     }
                     userBox();
+                    location.href="${path}/community/msgList";
                 }
             })
         },100)

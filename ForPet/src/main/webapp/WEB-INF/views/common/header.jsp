@@ -199,10 +199,14 @@
         //서브메뉴 기능
         $(".mainMenuBtn").hover(function (e) {
             if (listMenuFlag == false) {
+
+            if (e.currentTarget.innerText != '병원찾기') {
                 //서브메뉴열기
-                $('.headerBottomBox').css("background-color", "rgb(255, 245, 235)");
+                $('.headerBottomBox').css("background-color", "#fff");
                 $('.mainMenuSubBox').css("height", "50px");
                 $('.mainMenuSubMenu').css("display", "flex");
+            }
+
 
                 //메인메뉴 라인 좌표값
                 var lineStrat = e.currentTarget.offsetLeft - 10;
@@ -266,7 +270,7 @@
         })
 
         //메인메뉴에 마우스가 벗어날때 기능
-        $(".mainHeader").mouseleave(function () {
+        $(".headerBottomBox").mouseleave(function () {
             $('.mainMenuLineBefore').css("width", "0");
             $('.mainMenuLineAfter').css("left", "0");
             $('.headerBottomBox').css("background-color", "white");

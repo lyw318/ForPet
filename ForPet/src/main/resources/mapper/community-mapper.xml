@@ -63,7 +63,7 @@
 	</update>
 	
 	<select id="mmReadCount" parameterType="memberMsg" resultType="_int">
-		SELECT COUNT(*) FROM MEMBERMSG WHERE MMSGRCVNICKNAME = #{memberNickname} AND MMSGREAD = #{mMsgRead}
+		SELECT COUNT(*) FROM MEMBERMSG WHERE MMSGRCVNICKNAME = #{memberNickname} AND MMSGREAD = #{mMsgRead} AND MMSGTYPE = #{mMsgType}
 	</select>
 	
 </mapper>

@@ -99,6 +99,12 @@ section#myPageMain .memberSimpleProfileTal {
     height: 24px;
     display: table;
     font-size: 11px;
+    transition: 500ms;
+}
+
+section#myPageMain .memberSimpleProfileTal:hover .memberSimpleProfileTalContent {
+    color: rgba(198, 156, 118, 0.5);
+    transition: 500ms;
 }
 
 section#myPageMain .memberSimpleProfileTalTitle {
