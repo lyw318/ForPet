@@ -10,30 +10,70 @@ input[type='password'],[type='text'],[type='tel']{
 </style>
 <section class="">
 	<div id="enroll-container">
-		<form name="memberEnrollFrm" action="${pageContext.request.contextPath}/member/kakaoEnrollEnd.do" method="post" onsubmit="return checkMemberEnroll();">
-			<div>추가정보 입력</div>
-			<div id="userid-container">
+		<form name="memberEnrollFrm" class="enrollTable" action="${pageContext.request.contextPath}/member/kakaoEnrollEnd.do" method="post" onsubmit="return checkMemberEnroll();">
+			<div class="enrollTitle">추가정보 입력</div>
+			<div class="userid-containerBox">
+			 <div id="userid-container">
+			<div class="userid-containerRow">
 				<!-- <input type="text" class="form-control" placeholder="이메일(ID)" name="memberEmail" id="memberEmail_" required> -->
 				<span class="guide ok">이메일 사용 가능합니다</span>
 				<span class="guide error">이메일 사용 불가능합니다</span>
 				<input type="hidden" name="checkEmail" id="checkEmail"/>
 				<input type="hidden" name="kakaoId" value="${kakaoId}"/>
-			</div>		
-			<div id="userid-container2">
-				<input type="text" class="form-container" placeholder="닉네임" name="memberNickname" id="memberNickname" value="${kakaoNick}" required>
-				<span class="guide2 ok">닉네임 사용 가능합니다</span>
-				<span class="guide2 error">닉네임 사용 불가능합니다</span>
-				<input type="hidden" name="checkNickname" id="checkNickname"/>
 			</div>
-			<input type="text" class="form-container" placeholder="이름" name="memberName" id="memberName" required>
-			<input type="tel" class="form-control" placeholder="전화번호 (예:01012345678)" name="memberPhone" id="memberPhone" maxlength="11" required>
-			<input type="text" id="sample6_postcode" placeholder="우편번호">
-			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-			<input type="text" id="sample6_address" placeholder="주소" name="memberAddress" id="memberAddress"><br>
+			</div>
 			
-			<input type="submit" class="btn btn-outline-success" value="가입">&nbsp;
-			<input type="reset" class="btn btn-outline-success" value="취소">
+			<div id="userid-container2">
+					<div class="userid-containerRow">
+						<div class="userid-containerCol1">
+							닉네임
+						</div>
+						<div class="userid-containerCol2">
+							<input type="text" class="form-control" placeholder="닉네임" name="memberNickname" id="memberNickname" required>
+							<span class="guide2 ok">닉네임 사용 가능합니다</span>
+							<span class="guide2 error">닉네임 사용 불가능합니다</span>
+							<input type="hidden" name="checkNickname" id="checkNickname" />
+						</div>
+					</div>
+				</div>
 			
+			<div class="userid-containerRow">
+					<div class="userid-containerCol1">
+						이름
+					</div>
+					<div class="userid-containerCol2">
+						<input type="text" class="form-control" placeholder="이름" name="memberName" id="memberName" required>
+					</div>
+				</div>
+			<div class="userid-containerRow">
+					<div class="userid-containerCol1">
+						전화번호
+					</div>
+					<div class="userid-containerCol2">
+						<input type="tel" class="form-control" placeholder="전화번호 (예:01012345678)" name="memberPhone" id="memberPhone" maxlength="11" required>
+					</div>
+				</div>
+			<div class="userid-containerRow">
+					<div class="userid-containerCol1">
+						주소
+					</div>
+					<div class="userid-containerCol2">
+						<div class="userid-containerAddrBox">
+							<div class="userid-containerColAddress">
+								<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
+								<input type="button" class="defaultBtn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+							</div>
+							<div class="userid-containerColAddress">
+								<input type="text" class="form-control" id="sample6_address" placeholder="주소" name="memberAddress" id="memberAddress">
+							</div>
+						</div>
+					</div>
+				</div>
+			<div class="userid-containerRow">
+			<input type="submit" class="logPageBtn" class="btn btn-outline-success" value="가입">&nbsp;
+			<input type="reset" class="logPageBtn" class="btn btn-outline-success" value="취소">
+			</div>
+			</div>
 		</form>
 	</div>
 	<input type="hidden" id="emailChk" value="0"/>
