@@ -31,7 +31,7 @@
        				<c:forEach items="${sblist }" var="sb">
        				<div class="table-row">
        					<div>${sb.smallboardSeq}</div>
-       					<div><a href="${path}/smallboard/smallboardView.do?smallboardSeq=${sb.smallboardSeq}" style="text-decoration:none;">${sb.smallboardTitle }</a></div>
+       					<div><a href="${path}/smallboard/smallboardView.do?smallboardSeq=${sb.smallboardSeq}" style="text-decoration:none;color:rgb(144, 101, 72);">${sb.smallboardTitle }</a></div>
        					<div class="userBox">${sb.memberNickname }</div>
        					<div>${sb.smallboardDate }</div>
        					<div>${sb.smallboardKategorie}</div>

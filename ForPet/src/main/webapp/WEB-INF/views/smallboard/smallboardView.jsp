@@ -90,7 +90,7 @@
                 </tr>
                 </c:when>
                 <c:otherwise>
-                   <tr class='level2' >
+                   <tr class='level2' data-sbcomment-seq="${c.sbcommentSeq }">
                      <td>
                         작성자 : <sub>${c.memberNickname }</sub>
                         작성일 : <sub>${c.sbcommentDate }</sub>

@@ -92,7 +92,7 @@
 							</tr>
 						</c:when>
 						<c:otherwise>
-							<tr class='level2'>
+							<tr class='level2' data-comment-seq="${c.commentSeq }">
 								<td>작성자 : <sub>${c.memberNickname }</sub> 작성일 : <sub>${c.commentDate }</sub>
 									<br/> ${c.commentText }</td>
 								<td>
