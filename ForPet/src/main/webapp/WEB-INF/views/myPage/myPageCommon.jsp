@@ -261,18 +261,18 @@ function vetList()
 		  {
 			  //alert(data);
 			  for(i=0;i<data.length;i++){
-			  	delay(data[i]);
+			  	delay(data[i],i);
 			  }
 		  }
 
 	});
 }
-function delay(data)
+function delay(data,i)
 {
 	setTimeout(function(){
 		myLoop(data);
 	}
-	,3000)
+	,200*i)
 }
 function myLoop (data) {    
 	   var html="";			 
