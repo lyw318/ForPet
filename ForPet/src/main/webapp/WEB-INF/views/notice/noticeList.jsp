@@ -65,7 +65,7 @@
 				var ilist= data['ilist'];
 				var n = data['n'];
 				var d = new Date(n['noticeDate']);
-				var time = d.getFullYear()+'년 '+d.getMonth()+'월 '+d.getDate()+"일";
+				var time = d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+"일";
 				
 				 var content =
 					 '<div class="board-view">' +

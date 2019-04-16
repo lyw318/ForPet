@@ -68,7 +68,7 @@ public class NoticeAndEventServiceImpl implements NoticeAndEventService {
 			throw new RuntimeException();
 		}
 		int result2 = dao.deleteNotice(noticeSeq);
-		if(result<1)
+		if(result2<1)
 		{
 			throw new RuntimeException();
 		}
