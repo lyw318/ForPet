@@ -18,10 +18,19 @@
 				</div>
 			</div>
 			<div class="msgListColCont" onclick="fn_msgListOne('${mm.mMsgSeq}')">
-				${fn:substring(mm.mMsgContent,0,30) }
-				<c:if test="${fn:length(mm.mMsgContent) > 30 }">
-					...
+				
+				<c:set var="mMsgIndex" value="${fn:indexOf(mm.mMsgContent,'<')}"/>
+				<c:if test="${fn:indexOf(mm.mMsgContent,'<') == -1}">
+					${fn:substring(mm.mMsgContent,0,30) }
+					<c:if test="${fn:length(mm.mMsgContent) > 30 }">
+						...
+					</c:if>
 				</c:if>
+				<c:if test="${fn:indexOf(mm.mMsgContent,'<') != -1}">
+					${fn:substring(mm.mMsgContent,0,mMsgIndex) }
+					...				
+				</c:if>
+				
 			</div>
 			<div class="msgListColDate" onclick="fn_msgListOne('${mm.mMsgSeq}')">
 				<fmt:formatDate value='${mm.mMsgDate }' pattern="yy.MM.dd"/>

@@ -62,7 +62,6 @@
             <li>내 쪽지함</li>
 				<ul class="sub">
                     <li onclick="javascript:location.href='${path }/community/msgList'">받은 쪽지</li>
-                    <li onclick="javascript:location.href='${path }/community/msgListSend'">보낸 쪽지</li>
                     <li onclick="javascript:location.href='${path }/community/msgListBlock'">차단된 쪽지</li>
                 </ul>
         </ul>
