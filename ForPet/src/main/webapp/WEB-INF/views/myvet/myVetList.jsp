@@ -217,11 +217,7 @@ function myLoop (data) {
 			</script>
 
 		<div class="vet-itembox">	
-		
-<!-- 			<script>
-				//searchAddress('${l.vetAddress}',"v",'${l.vetSeq }');
-				myLoop('${l.vetAddress}',"v",'${l.vetSeq }');
-			</script> -->
+	
 			
 		</div>
 		</div>
