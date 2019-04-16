@@ -26,7 +26,16 @@ div.adminMain_right .memberListBox_main table tr{
 	height:40px;
 	border-bottom:1px solid #eee;
 }
-div	.adminMain_right .memberListBox_main table tr:hover{
+div.adminMain_right .memberListBox_main table tr:hover{
 	transition:500ms;
 	background-color:#f9efe6;
+}
+
+/*페이지바 왜안되냐?  */
+div.adminMain_right .memberListBox_main table tr .pageBar{
+    display: flex;
+    align-self: center;
+    margin: 40px;
+    font-size: 14px;
+    color: black;
 }

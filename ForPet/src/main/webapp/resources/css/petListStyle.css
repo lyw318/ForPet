@@ -1,17 +1,24 @@
 /* petlist */
 
+#petList{
+	 width: 100%;
+    height: 542px;
+    margin: 10px 20px;
+}
+
 .petListBox {
 	width: 100%;
-	height: 542px;;
+	height: 542px;	 
 	display: flex;
 	justify-content: flex-start;
-	align-content: flex-start;
 	flex-wrap: wrap;
+	flex-direction: column;
 	}
 
 .petListOne {
-	 width: 688px;
+	 width: 350px;
     min-height: 100px;
+    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     border: 1px solid rgba(198, 155, 118, 0.5);
@@ -49,3 +56,28 @@
 	margin-bottom: 20px;
 }
 
+
+.petListRow {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.petListColV {
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.petListColA {
+    width: 200px;
+    border-right: 1px solid #c69c76;
+    display: flex; 
+    padding-left: 100px;
+    justify-content: flex-end;
+}

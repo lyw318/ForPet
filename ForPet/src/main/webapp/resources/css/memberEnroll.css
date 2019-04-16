@@ -1,6 +1,6 @@
 /* 회원가입 */
 div#enroll-container {
-	width: 400px;
+	width: 700px;
 	margin: 0 auto;
 	/* text-align: center; */
 	
@@ -8,6 +8,7 @@ div#enroll-container {
 
 div#enroll-container input, div#enroll-container select {
 	margin: 5px 0;
+	border: 1px solid rgba(198, 155, 118, 0.5);
 	
 }
 
@@ -15,7 +16,8 @@ div#enroll-container input, div#enroll-container select {
 
 div#userid-container {
 	position: relative;
-	padding: 0px;
+    padding: 0px;
+
 }
 
 div#userid-container span.guide {
@@ -55,15 +57,37 @@ div#userid-container2 span.error {
 
 /* 회원가입 */
 div#enroll-container .userid-container{
-		width: 400px;
+		width: 400x;
 		margin: 0 auto;
 		text-align: center;
+		   
+		
 	}
+
+
+div#enroll-container .enrollTitle{
+	width: 70%;
+    font-size: 16px;
+    text-align: left;
+    border-bottom: 1px solid #c69c76;
+}
+
+div#enroll-container .enrollTable{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ 
+}
 
 div#enroll-container .userid-container input,
 div#enroll-container .userid-container select {
 		margin-bottom: 10px;
+		
 	}   
+	
+	
 	
 /* 마이페이지 내정보 */
 .myPageMain_right .form-control{
@@ -237,4 +261,49 @@ div#myPageMemberInfo .vetMngInsert .vetMngColV {
     border-radius: 5px;
     cursor: pointer;
 	transition: 500ms;
+}
+
+
+
+.userid-containerBox {
+    width: 70%;
+}
+
+.userid-containerRow {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userid-containerCol1 {
+    width: 150px;
+    text-align: left;
+}
+
+.userid-containerCol2 {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.userid-containerCol2>a {
+    margin: 0 10px;
+}
+
+.userid-containerAddrBox {
+    padding: 5px;
+    width: 100%;
+}
+
+.userid-containerColAddress {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userid-containerColAddress #sample6_address {
+    width: 100%;
 }

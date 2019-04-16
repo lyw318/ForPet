@@ -19,15 +19,29 @@
     </div><br/>
 
 	<div class="myPageMain_right">
-	
+	<div id="petList">
 		<div class="petListBox">
 			<%for(Pet p:list) {%>
 				<div class="petListOne">
-					<div><img src="${path }/resources/upload/petProfile/<%=p.getPetRenamedImage() %>"></div>
-					<div><label>이름 :  <%=p.getPetName() %></label></div>&nbsp&nbsp&nbsp&nbsp
-					<div><label>종류 :  <%=p.getPetType()%></label></div>&nbsp&nbsp&nbsp&nbsp
-					<div><label>품종 : <%=p.getPetType2() %></label></div>&nbsp&nbsp&nbsp&nbsp
-					<div><label>생일 : <fmt:formatDate value="<%=p.getPetBirth() %>" pattern="yyyy년 MM월 dd일" /></label></div>
+					<div class="petListRow">
+						<div class="petListColV"><img src="${path }/resources/upload/petProfile/<%=p.getPetRenamedImage() %>"></div>
+					</div>
+					<div class="petListRow">
+						<div class="petListColA">이름 </div>
+						<div class="petListColV"><%=p.getPetName() %></div>
+					</div>
+					<div class="petListRow">
+						<div class="petListColA">종류 </div>  
+						<div class="petListColV"><%=p.getPetType()%></div>
+					</div>
+					<div class="petListRow">
+						<div class="petListColA">품종 </div> 
+						<div class="petListColV"><%=p.getPetType2() %></div>
+					</div>
+					<div class="petListRow">
+						<div class="petListColA">생일 </div> 
+						<div class="petListColV"><fmt:formatDate value="<%=p.getPetBirth() %>" pattern="yyyy년 MM월 dd일" /></div>
+					</div>
 
 					<%-- <%if(loggedMember!=null && loggedMember.getMemberEmail().equals("admin")) {%> --%>
 					<div class="petListOneBtnBox">
@@ -39,6 +53,7 @@
 				
 			<%} %>	
 		</div>
+	</div>
 	</div>
 	
 	<script>
