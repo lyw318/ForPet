@@ -23,8 +23,12 @@
 			action="${pageContext.request.contextPath}/pet/petUpdateEnd.do"
 			method="post" onsubmit="return validate();"
 			enctype="multipart/form-data">
-
+		<div class="memberTableDisplay">
+		<div class="memberTableTitle">
+					반려동물 정보
+				</div>
 			<div class="memberImageBox">
+			<div class="memberTableRow">
 				<div class="memberImage">
 					<div class="inputBackground" id="image_section">
 						<div>
@@ -36,16 +40,17 @@
 
 						</div>
 					</div>
-					<img alt="camaraIcon" class="image_section"
-						src="<%=request.getContextPath()%>/images/petIcon.png"
-						onclick="up_file()" />
+				</div>
 				</div>
 			</div>
+			
 			<div class="petForm">
-				<label>반려동물명<input type="text" class="form-control"
-					value="${pet.petName}" name="petName" id="petName" required></label><br />
-
-				<label> 종류 <select name="petType" id="petType" required>
+			<div class="memberTableRow">
+				반려동물명<input type="text" class="form-control"
+					value="${pet.petName}" name="petName" id="petName" required><br />
+			</div>
+			<div class="memberTableRow">
+				종류 <select name="petType" id="petType" required>
 						<option value="">선택해주세요.</option>
 						<option value="Dog" ${pet.petType eq "Dog"?"selected":""}>강아지</option>
 						<option value="Cat" ${pet.petType eq "Cat"?"selected":""}>고양이</option>
@@ -56,13 +61,17 @@
 						<option value="Bird" ${pet.petType eq "Bird"?"selected":""}>조류</option>
 						<option value="etc" ${pet.petType eq "etc"?"selected":""}>기타</option>
 				</select>
-				</label><br /> <input type="hidden" name="oriFile"
+			</div>
+			<div class="memberTableRow">
+				<input type="hidden" name="oriFile"
 					value="${pet.petRenamedImage}" /> <input type="text"
 					class="form-control" placeholder="상세품종을 적어주세요"
 					value="${pet.petType2 }" name="petType2" id="petType2" required><br />
-				</label> <label>생일 <input type="date" class="form-control"
+			</div>
+			<div class="memberTableRow">
+				생일 <input type="date" class="form-control"
 					name="petBirth" value="${petBirthStr }" /><br />
-				</label>
+			</div>	
 			</div>
 			<input type="hidden" name="memberSeq"
 				value="${loggedMember.getMemberSeq() }" /> <input type="hidden"
@@ -71,7 +80,7 @@
 				type="button" class="btn btn-outline-success" onclick="fn_del();"
 				value="삭제">
 
-
+</div>
 		</form>
 	</div>
 </div>
