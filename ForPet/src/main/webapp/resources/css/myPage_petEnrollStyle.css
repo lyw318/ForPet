@@ -1,0 +1,52 @@
+
+
+#petEnroll-container {
+    width: 100%;
+    height: 410px;
+    padding-top: 20px;
+}
+
+#petEnroll-container>form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#petEnroll-container .petEnroll-containerBox {
+    width: 40%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(198, 155, 118, 0.5);
+    border-radius: 5px;
+}
+
+#petEnroll-container .petEnroll-containerRow {
+    width: 290px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#petEnroll-container .petEnroll-containerCol1 {
+    width: 150px;
+    text-align: left;
+}
+
+#petEnroll-container .petEnroll-containerCol2 {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#petEnroll-container .memberImageBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

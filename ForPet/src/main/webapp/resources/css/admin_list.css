@@ -2,40 +2,88 @@ div.adminMain_right{
     float: right;
     width: 820px;
     text-align: center;
-    padding-bottom: 60px;
 }
 
 div.adminMain_right .memberListBox_main{
 	display:inline-block;
-	width:810px;
+    width:810px;
+    min-height: 430px;
+    margin-top: 10px;
 }
+
+div.adminMain_right .memberListBox_mainTop {
+    font-size: 20px;
+    text-align: left;
+    text-indent: 10px;
+}
+
 div.adminMain_right .memberListBox_main table{
 	border-collapse:collapse;
-	border-top: 2px solid rgb(139, 85, 38);
+    border-top: 2px solid rgb(139, 85, 38);
+    border-bottom: 1px solid black;
     margin: 10px;
 }
 
-div.adminMain_right .memberListBox_main table th{
+div.adminMain_right .memberListBox_main table .memberListBox_mainTit {
 	font-size: 14px;
-	font-weight: normal;
 	color: #252525;
     height: 40px;
-    border-top: 2px solid #252525;
+    border-bottom: 1px solid #ccc;
 }
-div.adminMain_right .memberListBox_main table tr{
+
+div.adminMain_right .memberListBox_main table .memberListBox_mainCon {
 	height:40px;
-	border-bottom:1px solid #eee;
+    border-bottom: 1px solid #ccc;
 }
-div.adminMain_right .memberListBox_main table tr:hover{
+
+div.adminMain_right .memberListBox_main table .memberListBox_mainCon:hover {
 	transition:500ms;
 	background-color:#f9efe6;
 }
 
-/*페이지바 왜안되냐?  */
-div.adminMain_right .memberListBox_main table tr .pageBar{
+
+/* 영우 pagebar css */
+.memberListBox_main .pagebar img
+{
+    width: 50%;
+    height: 50%;
+}
+
+.memberListBox_main .pagebar
+{
     display: flex;
-    align-self: center;
-    margin: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 7px;
     font-size: 14px;
     color: black;
+}
+
+
+.memberListBox_main .pagebar div
+{
+    width: 33px;
+    height: 33px;
+    border: 1px solid rgb(220, 220, 220);
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.memberListBox_main .pagebar div:first-of-type
+{
+    border-left: 1px solid rgb(220, 220, 220);
+}
+
+.memberListBox_main .pagebar a
+{
+   display: flex;
+   width: 100%;
+   height: 100%;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   color: black;
 }
