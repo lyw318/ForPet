@@ -3,6 +3,7 @@
 
 <script>
 	
+	// 쪽지 갯수 관련 로직
 	$(function() {
 		var loggedMember = "${loggedMember}";
 		if(loggedMember != "" ) {
@@ -15,6 +16,19 @@
 		    })
 		}
 	})
+	
+	function fn_msgReadCount() {
+		var loggedMember = "${loggedMember}";
+		if(loggedMember != "" ) {
+			$.ajax({
+		        url: "${path}/community/msgReadCount",
+		        dataType: "html",
+		        success: function (data) {
+		            $("#msgReadCountIdHeader").html(data+"&nbsp;개");
+		        }
+		    })
+		}
+	}
 	
 	function fn_msgSendWindow(memberNickname,loc) {
 		var url="${path}/community/msgSendWindow";

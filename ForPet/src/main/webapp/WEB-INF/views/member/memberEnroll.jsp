@@ -12,7 +12,7 @@
 
 	<div id="enroll-container">
 		<form name="memberEnrollFrm" class="enrollTable"
-			action="${pageContext.request.contextPath}/member/memberEnrollEnd.do" method="post"
+			action="${path}/member/memberEnrollEnd.do" method="post"
 			onsubmit="return checkMemberEnroll(this);">
 			<div class="enrollTitle">회원가입</div>
 			<div class="userid-containerBox">
@@ -22,8 +22,7 @@
 							Email
 						</div>
 						<div class="userid-containerCol2">
-							<input type="text" class="form-control" placeholder="민첩한송곳니@iei.or.kr" name="memberEmail"
-								id="memberEmail_" required>
+							<input type="text" class="form-control" placeholder="민첩한송곳니@iei.or.kr" name="memberEmail" id="memberEmail_" required>
 							<span class="guide ok">아이디 사용 가능합니다</span>
 							<span class="guide error">아이디 사용 불가능합니다</span>
 						</div>
@@ -43,7 +42,7 @@
 							<a href="https://www.daum.net" target="_blank">
 								<img src="${path }/resources/images/daum.png" style="width: 40px;" alt="daum" />
 							</a>
-							<input type="hidden" name="checkEmail" id="checkEmail" />
+							<!-- <input type="hidden" name="checkEmail" id="checkEmail" /> -->
 						</div>
 					</div>
 					<div class="userid-containerRow">
@@ -60,7 +59,7 @@
 						비밀번호
 					</div>
 					<div class="userid-containerCol2">
-						<input type="password" class="form-control" placeholder="비밀번호" name="memberPassword"id="memberPassword_" required>
+						<input type="password" class="form-control" placeholder="비밀번호" name="memberPassword" id="memberPassword_" required>
 					</div>
 				</div>
 				<div class="userid-containerRow">
@@ -80,7 +79,7 @@
 							<input type="text" class="form-control" placeholder="닉네임" name="memberNickname" id="memberNickname" required>
 							<span class="guide2 ok">닉네임 사용 가능합니다</span>
 							<span class="guide2 error">닉네임 사용 불가능합니다</span>
-							<input type="hidden" name="checkNickname" id="checkNickname" />
+							<!-- <input type="hidden" name="checkNickname" id="checkNickname" /> -->
 						</div>
 					</div>
 				</div>
