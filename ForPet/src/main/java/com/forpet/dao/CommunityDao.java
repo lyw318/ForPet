@@ -23,4 +23,5 @@ public interface CommunityDao {
 	int insertMsg(MemberMsg mm);
 	int delMsg(MemberMsg mm);
 	int mmUpdateRead(MemberMsg mm);
+	int mmUpdateType(MemberMsg mm);
 }

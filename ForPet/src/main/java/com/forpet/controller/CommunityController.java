@@ -118,10 +118,26 @@ public class CommunityController {
 				}
 				else if(mfR != null && mfR.getmFriendType().equals("차단")) {
 					int result = service.updateTypeFriend(mf);
+
+					//쪽지 수신차단 풀기 로직
+					MemberMsg mm = new MemberMsg();
+					mm.setMemberNickname(friendInfo.getMemberNickname());
+					mm.setmMsgRcvNickname(oneself.getMemberNickname());
+					mm.setmMsgType("일반");
+					service.mmUpdateType(mm);
+					
 					mv.setViewName("redirect:/community/friendList");
 				}
 				else {
 					int result = service.insertFriend(mf);
+					
+					//쪽지 수신차단 풀기 로직
+					MemberMsg mm = new MemberMsg();
+					mm.setMemberNickname(friendInfo.getMemberNickname());
+					mm.setmMsgRcvNickname(oneself.getMemberNickname());
+					mm.setmMsgType("일반");
+					service.mmUpdateType(mm);
+					
 					mv.setViewName("redirect:/community/friendList");
 				}
 			}
@@ -182,10 +198,26 @@ public class CommunityController {
 				}
 				else if(mfR != null && mfR.getmFriendType().equals("일반")) {
 					int result = service.updateTypeFriend(mf);
+
+					//쪽지 수신차단 하기 로직
+					MemberMsg mm = new MemberMsg();
+					mm.setMemberNickname(friendInfo.getMemberNickname());
+					mm.setmMsgRcvNickname(oneself.getMemberNickname());
+					mm.setmMsgType("차단");
+					service.mmUpdateType(mm);
+					
 					mv.setViewName("redirect:/community/friendList");
 				}
 				else {
 					int result = service.insertFriend(mf);
+					
+					//쪽지 수신차단 하기 로직
+					MemberMsg mm = new MemberMsg();
+					mm.setMemberNickname(friendInfo.getMemberNickname());
+					mm.setmMsgRcvNickname(oneself.getMemberNickname());
+					mm.setmMsgType("차단");
+					service.mmUpdateType(mm);
+					
 					mv.setViewName("redirect:/community/friendList");
 				}
 			}
@@ -238,6 +270,7 @@ public class CommunityController {
 		Member oneself = (Member) session.getAttribute("loggedMember");
 		MemberMsg mm = new MemberMsg();
 		mm.setMemberNickname(oneself.getMemberNickname());
+		mm.setmMsgType("일반");
 		
 		int mmCount = service.mmCount(mm);//총 메세지 갯수
 		List<MemberMsg> mmResult = service.mmSelectList(mm,bs);//메세지 데이터
@@ -289,20 +322,64 @@ public class CommunityController {
 		return mv;
 	}
 	
-	@RequestMapping("/community/delMsg.do")
+	@RequestMapping(value="/community/delMsg.do", produces="application/text; charset=utf8")
 	@ResponseBody
 	private String delMsg(int[] msgDelListNo) {
+		String msg = "";
+		int result = 0;
+		int resultCo = 0;
 		if(msgDelListNo != null) {
 			MemberMsg mm = new MemberMsg();
-			int result = msgDelListNo.length;
-			int resultCo = 0;
+			result = msgDelListNo.length;
 			for(int i=0;i<msgDelListNo.length;i++) {
 				mm.setmMsgSeq(msgDelListNo[i]);
 				service.delMsg(mm);
 				resultCo++;
 			}
 		}
-		return "";
+		msg = result + " 개 쪽지 중 " + resultCo + " 개 쪽지가 삭제 되었습니다."; 
+		return msg;
+	}
+	
+	@RequestMapping(value="/community/msgBlock.do", produces="application/text; charset=utf8")
+	@ResponseBody
+	private String msgBlock(int[] msgBlockNo, HttpSession session) {
+		
+		Member oneself = (Member) session.getAttribute("loggedMember");
+		Member m = new Member();
+		
+		String result = "";
+		String msg = "";
+		if(msgBlockNo != null) {
+			MemberMsg mm = new MemberMsg();
+			MemberMsg mmOne = new MemberMsg();
+			MemberFriend mf = new MemberFriend();
+			int ufresult = 0;
+			int resultCo = 0;
+			for(int i=0;i<msgBlockNo.length;i++) {
+				mm.setmMsgSeq(msgBlockNo[i]);
+				mmOne = service.mmSelectOne(mm);
+				mmOne.setmMsgType("차단");
+				service.mmUpdateType(mmOne);
+				
+				m.setMemberNickname(mmOne.getMemberNickname());
+				Member friendInfo = service.mSelectOne(m);
+				
+				mf.setMemberSeq(oneself.getMemberSeq());
+				mf.setmFriendMateNo(friendInfo.getMemberSeq());
+				mf.setmFriendNickname(friendInfo.getMemberNickname());
+				mf.setmFriendType("차단");
+				
+				ufresult = service.updateTypeFriend(mf);
+				if(!(ufresult>0)) {
+					service.insertFriend(mf);
+				}
+				resultCo++;
+			}
+			result = mmOne.getMemberNickname();
+		}
+		msg = result + " 님을 차단했습니다.";
+		return msg;
 	}
 	
 }

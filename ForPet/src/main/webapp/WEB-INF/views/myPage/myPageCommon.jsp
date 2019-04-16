@@ -58,12 +58,13 @@
                     <li onclick="javascript:location.href='${path }/pet/petEnroll.do'">반려동물 등록</li>
                 </ul>
             <li onclick="javascript:location.href='${path}/myvet/vetScrapList.do'">내가 찜한 병원</li>
-            <li>내 커뮤니티</li>
+            <li onclick="javascript:location.href='${path }/community/friendList'">내 친구</li>
+            <li>내 쪽지함</li>
 				<ul class="sub">
-					<li onclick="javascript:location.href='${path }/community/friendList'">친구 관리</li>
-                    <li onclick="javascript:location.href='${path }/community/msgList'">쪽지 관리</li>
+                    <li onclick="javascript:location.href='${path }/community/msgList'">받은 쪽지</li>
+                    <li onclick="javascript:location.href='${path }/community/msgListSend'">보낸 쪽지</li>
+                    <li onclick="javascript:location.href='${path }/community/msgListBlock'">차단된 쪽지</li>
                 </ul>
-            <li>고객센터</li>
         </ul>
     </div>
 

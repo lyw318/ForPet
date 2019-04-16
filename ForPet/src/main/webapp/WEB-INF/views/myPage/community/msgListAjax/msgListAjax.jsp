@@ -24,9 +24,8 @@
 				</c:if>
 			</div>
 			<div class="msgListColDate" onclick="fn_msgListOne('${mm.mMsgSeq}')">
-				${mm.mMsgDate }
+				<fmt:formatDate value='${mm.mMsgDate }' pattern="yy.MM.dd"/>
 			</div>
-			<div class="msgListColBlock">${mm.mMsgType }</div>
 		</div>
 		<input type="hidden" name="mMsgRead" value="${mm.mMsgRead }">
 	</c:forEach>

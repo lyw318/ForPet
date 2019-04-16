@@ -27,13 +27,15 @@
                         <span style="color: #c60700; font-weight: 900;">X</span>
                         &nbsp;삭제
                     </button>
-                    <button type="button" class="msgListBtn">보관</button>
-                    <button type="button" class="msgListBtn">스팸신고</button>
+                    <button type="button" class="msgListBtn" onclick="fn_msgListSendsave()">보관</button>
+                    <button type="button" class="msgListBtn" onclick="fn_msgListBlock()">수신(친구)차단</button>
                 </div>
+                <!-- 
                 <div class="msgListSearch">
                     <input type="text" class="mlSearchText">
                     <button type="button" class="mlSearchBtn">검색</button>
                 </div>
+                 -->
             </div>
             <div class="msgListTable">
                 <div class="msgListTitle">
@@ -43,7 +45,7 @@
                     <div class="msgListColRecUser">보낸사람</div>
                     <div class="msgListColCont">내용</div>
                     <div class="msgListColDate">날짜</div>
-                    <div class="msgListColBlock">수신(친구)차단</div>
+                    
                 </div>
                 <div class="msgListContentBox"></div>
             </div>
@@ -54,6 +56,87 @@
 	</form>
 </section>
 <script>
+    
+    function fn_msgListDel() {
+        var msgDelListNo = new Array();
+        var arrCount = 0;
+        for(var i=0;i<$('.mlCheckBoxOne').length;i++) {
+            if($('.mlCheckBoxOne').get(i).checked) {
+                msgDelListNo[arrCount] = $('.mlCheckBoxOne').get(i).value;
+                arrCount++;
+            }
+        }
+        $.ajax({
+	        url: "${path}/community/delMsg.do",
+	        traditional: true,
+	        data: { "msgDelListNo": msgDelListNo },
+	        dataType: "html",
+	        success: function (data) {
+                console.log(data);
+	        	$(".msgListContentBox").empty();
+                $('.mlCheckBoxAll').get(0).checked = false;
+                //location.href="${path }/community/msgList";
+	        }
+	    })
+        setTimeout(function() {
+            $.ajax({
+                url: "${path}/community/msgList.do",
+                dataType: "html",
+                success: function (data) {
+                    $(".msgListContentBox").empty();
+                    $(".msgListContentBox").html(data);
+                    var readLoc = $("input[name='mMsgRead'");
+                    for(var i=0;i<readLoc.length;i++) {
+                        if(readLoc.get(i).value == 'Y') {
+                            $(".msgListContent").get(i).style.color = "#c69c7680";
+                        }
+                    }
+                        userBox();
+                }
+            })
+        },100)
+    }
+
+    function fn_msgListBlock() {
+        var msgBlockNo = new Array();
+        var arrCount = 0;
+        for(var i=0;i<$('.mlCheckBoxOne').length;i++) {
+            if($('.mlCheckBoxOne').get(i).checked) {
+                msgBlockNo[arrCount] = $('.mlCheckBoxOne').get(i).value;
+                arrCount++;
+            }
+        }
+        $.ajax({
+	        url: "${path}/community/msgBlock.do",
+	        traditional: true,
+	        data: { "msgBlockNo": msgBlockNo },
+	        dataType: "html",
+	        success: function (data) {
+                console.log(data);
+	        	$(".msgListContentBox").empty();
+                $('.mlCheckBoxAll').get(0).checked = false;
+                //location.href="${path }/community/msgList";
+	        }
+	    })
+        setTimeout(function() {
+            $.ajax({
+                url: "${path}/community/msgList.do",
+                dataType: "html",
+                success: function (data) {
+                    $(".msgListContentBox").empty();
+                    $(".msgListContentBox").html(data);
+                    var readLoc = $("input[name='mMsgRead'");
+                    for(var i=0;i<readLoc.length;i++) {
+                        if(readLoc.get(i).value == 'Y') {
+                            $(".msgListContent").get(i).style.color = "#c69c7680";
+                        }
+                    }
+                    userBox();
+                }
+            })
+        },100)
+    }
+    
     $(function() {
         $.ajax({
 	        url: "${path}/community/msgList.do",
@@ -63,7 +146,6 @@
 	        	$(".msgListContentBox").html(data);
 	        	var readLoc = $("input[name='mMsgRead'");
 	        	for(var i=0;i<readLoc.length;i++) {
-	        		console.log(readLoc.get(i).value);
 	        		if(readLoc.get(i).value == 'Y') {
 	        			$(".msgListContent").get(i).style.color = "#c69c7680";
 	        		}
@@ -106,28 +188,6 @@
         
     }
 
-    function fn_msgListDel() {
-        var msgDelListNo = new Array();
-        var arrCount = 0;
-        for(var i=0;i<$('.mlCheckBoxOne').length;i++) {
-            if($('.mlCheckBoxOne').get(i).checked) {
-                msgDelListNo[arrCount] = $('.mlCheckBoxOne').get(i).value;
-                arrCount++;
-            }
-        }
-        $.ajax({
-	        url: "${path}/community/delMsg.do",
-	        traditional: true,
-	        data: { "msgDelListNo": msgDelListNo },
-	        dataType: "html",
-	        success: function (data) {
-	        	$(".msgListContentBox").empty();
-                $('.mlCheckBoxAll').get(0).checked = false;
-                location.href="${path }/community/msgList";
-	        }
-	    })
-    }
-    
     //pageBar ajax 처리
     function fn_paging(cPage) {
         $.ajax({
@@ -140,7 +200,6 @@
 	        	$(".msgListContentBox").html(data);
                 var readLoc = $("input[name='mMsgRead'");
                 for(var i=0;i<readLoc.length;i++) {
-                    console.log(readLoc.get(i).value);
                     if(readLoc.get(i).value == 'Y') {
                         $(".msgListContent").get(i).style.color = "#c69c7680";
                     }
