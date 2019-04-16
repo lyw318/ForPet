@@ -33,7 +33,7 @@
                      		<img src="${path}/resources/upload/eventImage/${img}"><br>
                      	</c:forEach>
                      </span>
-                      <div>
+                      <div style="flex:none; text-align:left;">
                              ${e.eventContent}
                       </div>
                   </div>

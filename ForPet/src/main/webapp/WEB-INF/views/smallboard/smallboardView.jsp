@@ -38,7 +38,7 @@
                   </div>
                </div>
                <br/>
-       		   <c:if test="${loggedMember.memberNickname=='admin'||loggedMember.memberNickname==smallboard.memberNickname}">
+       		   <c:if test="${loggedMember.memberEmail=='admin'||loggedMember.memberNickname==smallboard.memberNickname}">
                 <div class="board-view-btns" style="padding-bottom:10px">
                      <input type="button" value="수정" onclick=fn_updateSmallBoard()>
                      <input type="button" value="삭제" onclick=fn_deletSmalleBoard()>
@@ -74,7 +74,7 @@
     						<c:if test='${loggedMember!=null }'>
 								<button class="btn-reply" value="${c.sbcommentSeq }">답글</button>
 							</c:if> 
-    						<c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberNickname)}'>
+    						<c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberEmail)}'>
     							<button class="btn-delete" value="${c.sbcommentSeq }">삭제</button>
     						</c:if>
     					</td>

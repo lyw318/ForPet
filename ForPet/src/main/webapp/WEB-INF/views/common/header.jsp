@@ -158,7 +158,7 @@
                         <div class="logMenuBtn" onclick="location.href='${path }/member/logOut.do'">로그아웃</div>
 
                         <c:if test="${loggedMember.memberEmail == 'admin'}">
-                            <div class="logMenuBtn" onclick="location.href='${path }/main/adminPageMain'">관리자 페이지</div>
+                            <div class="logMenuBtn" onclick="location.href='${path }/admin/adminList.do'">관리자 페이지</div>
                         </c:if>
                     </div>
                 </div>

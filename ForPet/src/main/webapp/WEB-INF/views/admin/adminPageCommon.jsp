@@ -10,20 +10,20 @@
             <li>회원관리</li>
                 <ul class="sub">
                     <li onclick="javascript:location.href='${path}/admin/adminList.do'">회원 목록</li>
-                    <li>회원 탈퇴 대기</li>
+<!--                     <li>회원 탈퇴 대기</li> -->
                     <li onclick="javascript:location.href='${path}/admin/adminDeleteList.do'">회원 탈퇴 목록</li>
                 </ul>
-            <li>병원 관리</li>
+<!--             <li>병원 관리</li>
 				<ul class="sub">
                     <li>병원 목록</li>
                     <li>병원 예약 관리</li>
-				</ul>
+				</ul> -->
             <li>커뮤니티 관리</li>
             <ul class="sub">
                     <li onclick="javascript:location.href='${path}/board/boardList.do'">자유게시판 관리</li>
                     <li onclick="javascript:location.href='${path}/smallboard/smallboardList.do'">소모임게시판 관리</li>
 				</ul>
-            <li>사이트 통계</li>
+ <!--            <li>사이트 통계</li> -->
         </ul>
     </div>
 

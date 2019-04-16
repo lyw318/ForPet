@@ -43,7 +43,7 @@
 				첨부파일${vs.count} - ${a.originalFileName }</button>
 		</c:forEach>
 		<c:if
-			test="${loggedMember.memberNickname=='admin'||loggedMember.memberNickname==board.memberNickname}">
+			test="${loggedMember.memberEmail=='admin'||loggedMember.memberNickname==board.memberNickname}">
 			<div class="board-view-btns" style="padding-bottom: 10px">
 				<input type="button" value="수정" onclick="fn_updateBoard()"> 
 				<input type="button" value="삭제" onclick="fn_deleteBoard()">
@@ -77,7 +77,7 @@
 								<td><c:if test='${loggedMember!=null }'>
 										<button class="btn-reply" value="${c.commentSeq }">답글</button>
 									</c:if> 
-									<c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberNickname)}'>
+									<c:if test='${loggedMember!=null&&(c.memberNickname eq loggedMember.memberNickname||"admin" eq loggedMember.memberEmail)}'>
 										<button class="btn-delete" value="${c.commentSeq }">삭제</button>
 									</c:if></td>
 							</tr>
