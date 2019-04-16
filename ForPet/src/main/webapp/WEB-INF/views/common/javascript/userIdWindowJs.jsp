@@ -3,6 +3,19 @@
 
 <script>
 	
+	$(function() {
+		var loggedMember = "${loggedMember}";
+		if(loggedMember != "" ) {
+			$.ajax({
+		        url: "${path}/community/msgReadCount",
+		        dataType: "html",
+		        success: function (data) {
+		            $("#msgReadCountIdHeader").html(data+"&nbsp;개");
+		        }
+		    })
+		}
+	})
+	
 	function fn_msgSendWindow(memberNickname,loc) {
 		var url="${path}/community/msgSendWindow";
 		window.open("","messageSend","width=510, height=410, top=100");

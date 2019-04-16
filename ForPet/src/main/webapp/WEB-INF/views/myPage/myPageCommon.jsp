@@ -23,7 +23,7 @@
                 </div>
                 <div class="memberSimpleProfileLine1Text">
                     <div>
-                        <div class="memberSimpleProfileNickname">${loggedMember.memberEmail}</div>
+                        <div class="memberSimpleProfileNickname">${loggedMember.memberNickname}</div>
                         <div class="memberSimpleProfile">
 							가입일<br>
                             <%= userDate %>
@@ -32,17 +32,9 @@
                 </div>
             </div>
             <div class="memberSimpleProfileLine2">
-                <div class="memberSimpleProfileTal">
+                <div class="memberSimpleProfileTal" onclick="javascript:location.href='${path }/community/msgList'" style="cursor:pointer;">
                     <div class="memberSimpleProfileTalTitle">안 읽은 쪽지</div>
-                    <div class="memberSimpleProfileTalContent">10</div>
-                </div>
-                <div class="memberSimpleProfileTal">
-                    <div class="memberSimpleProfileTalTitle">내가 쓴 글 보기</div>
-                    <div class="memberSimpleProfileTalContent" id="bCount">10</div>
-                </div>
-                <div class="memberSimpleProfileTal">
-                    <div class="memberSimpleProfileTalTitle">내가 쓴 댓글 보기</div>
-                    <div class="memberSimpleProfileTalContent" id="bcCount">100</div>
+                    <div class="memberSimpleProfileTalContent" id="msgReadCountIdHeader"></div>
                 </div>
             </div>
         </div>
@@ -82,6 +74,7 @@
                     $(this).next("ul").slideToggle(500);
                 }
             })
+            
         })
 
         
@@ -96,7 +89,7 @@
     </script>
 <script>
 
-searchAddress('${loggedMember.memberAddress}',"m","");
+//searchAddress('${loggedMember.memberAddress}',"m","");
 
 function unscrapAjax(vetSeq){
 console.log(vetSeq);

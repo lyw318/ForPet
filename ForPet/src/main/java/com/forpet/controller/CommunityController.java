@@ -312,9 +312,13 @@ public class CommunityController {
 		mf.setMemberSeq(friendInfo.getMemberSeq());
 		mf.setmFriendNickname(oneself.getMemberNickname());
 		MemberFriend mfR = service.selectOne(mf);
-
-		if(mfR.getmFriendType().equals("차단")) {
-			mm.setmMsgType("차단");
+		if(mfR != null) {
+			if(mfR.getmFriendType().equals("차단")) {
+				mm.setmMsgType("차단");
+			}
+			else {
+				mm.setmMsgType("일반");
+			}
 		}
 		else {
 			mm.setmMsgType("일반");
@@ -415,8 +419,17 @@ public class CommunityController {
 		mf.setMemberSeq(friendInfo.getMemberSeq());
 		mf.setmFriendNickname(oneself.getMemberNickname());
 		MemberFriend mfR = service.selectOne(mf);
-		if(mfR.getmFriendType().equals("차단")) {
-			friendType = "차단";
+		
+		if(mfR != null) {
+			if(mfR.getmFriendType().equals("차단")) {
+				friendType = "차단";
+			}
+			else {
+				friendType = "일반";
+			}
+		}
+		else {
+			friendType = "일반";
 		}
 		
 		return friendType;
@@ -506,5 +519,18 @@ public class CommunityController {
 		return msg;
 	}
 	
-	
+	@RequestMapping("/community/msgReadCount")
+	@ResponseBody
+	private int msgReadCount(HttpSession session) {
+		
+		Member oneself = (Member) session.getAttribute("loggedMember");
+
+		//안 읽은 쪽지 갯수 파악
+		MemberMsg mm = new MemberMsg();
+		mm.setMemberNickname(oneself.getMemberNickname());
+		mm.setmMsgRead("N");
+		int msgC = service.mmReadCount(mm);
+		
+		return msgC;
+	}
 }

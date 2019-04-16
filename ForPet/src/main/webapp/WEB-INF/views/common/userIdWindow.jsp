@@ -15,9 +15,10 @@
 <div class="btnLineLogin"></div>
 <div class="userId_oneself">
 	<div class="userTable">
-		<div class="userTableBtn" onclick="javascript:location.href='${path }/member/memberMyInform.do'">마이페이지</div>
-		<div class="userTableBtn" onclick="javascript:location.href='${path}/pet/petList.do'">반려동물</div>
-		<div class="userTableBtn">고객센터</div>
+		<div class="userTableBtn" onclick="javascript:location.href='${path }/member/memberMyInform.do'">내 정보</div>
+		<div class="userTableBtn" onclick="javascript:location.href='${path}/pet/petList.do'">내 반려동물</div>
+		<div class="userTableBtn" onclick="javascript:location.href='${path}/community/friendList'">내 친구</div>
+		<div class="userTableBtn" onclick="javascript:location.href='${path}/community/msgList'">내 쪽지함</div>
 	</div>
 </div>
 
