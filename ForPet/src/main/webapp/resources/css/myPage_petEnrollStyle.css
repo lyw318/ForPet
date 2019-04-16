@@ -70,6 +70,10 @@
 	position: relative;
 }
 
+#petEnroll-container .petImageBox{
+	
+}
+
 #petEnroll-container .image_section {
 	position: absolute;
 	width: 30px;
@@ -115,4 +119,33 @@
 
 #petEnroll-container #petType {
 	height: 26px;
+	
+}
+
+.defaultBtn2:hover {
+	outline: none;
+    padding: 5px;
+    margin: 0 5px;
+    margin-bottom:15px;
+    margin-left:20px;
+    color: #9a7654;
+    background-color: white;
+    border: 1px solid #9a7654;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.defaultBtn2 {
+	outline: none;
+    padding: 5px;
+    margin: 0 5px;
+    margin-bottom:15px;
+    margin-left:20px;
+    color: white;
+    background-color: #50351a;
+    border: 1px solid #50351a;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 500ms;
 }

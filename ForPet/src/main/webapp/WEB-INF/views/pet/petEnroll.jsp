@@ -53,11 +53,7 @@
 						품종
 					</div>
 					<div class="petEnroll-containerCol2">
-						<div>
-							종류
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</div>
-						<div>
+						
 							<select name="petType" id="petType" onchange="petTypeChange()" required>
 								<option value="">선택해주세요.</option>
 								<option value="Dog">강아지</option>
@@ -69,11 +65,12 @@
 								<option value="Bird">조류</option>
 								<option value="etc">기타</option>
 							</select>
-						</div>
+						
 					</div>
 				</div>
 				<div class="petEnroll-containerRow">
 					<div class="petEnroll-containerCol1">
+					종류
 					</div>
 					<div class="petEnroll-containerCol2">
 						<input type="text" class="form-control" placeholder="상세품종을 적어주세요" name="petType2" id="petType2" required>
