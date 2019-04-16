@@ -7,13 +7,7 @@
 --%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <link rel="stylesheet" href="${path }/resources/css/memberEnroll.css" />
-<style>
-	input[type='password'],
-	[type='text'],
-	[type='tel'] {
-		display: block;
-	}
-</style>
+
 <section class="">
 
 	<div id="enroll-container">
@@ -40,11 +34,15 @@
 						</div>
 						<div class="userid-containerCol2">
 							<input type="button" class="defaultBtn" onclick="mailChk()" value="메일인증">
-							<a href="http://www.naver.com" target="_blank"><img src="${path }/resources/images/naver.png"
-									style="width: 40px;" alt="naver" /></a>
-							<a href="https://mail.google.com" target="_blank"><img src="${path }/resources/images/gmail.png"
-									style="width: 40px;" alt="gmail" /></a>
-							<a href="http://www.daum.com" target="_blank"><imgsrc="${path }/resources/images/daum.jpg" style="width: 80px;" alt="daum" /></a>
+							<a href="http://www.naver.com" target="_blank">
+								<img src="${path }/resources/images/naver.png" style="width: 30px;" alt="naver" />
+							</a>
+							<a href="https://mail.google.com" target="_blank">
+								<img src="${path }/resources/images/gmail.png" style="width: 30px;" alt="gmail" />
+							</a>
+							<a href="https://www.daum.net" target="_blank">
+								<img src="${path }/resources/images/daum.png" style="width: 40px;" alt="daum" />
+							</a>
 							<input type="hidden" name="checkEmail" id="checkEmail" />
 						</div>
 					</div>
