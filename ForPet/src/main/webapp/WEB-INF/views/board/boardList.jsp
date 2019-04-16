@@ -12,7 +12,7 @@
        <section>
        		<div class="board-wrpper">
        			<div class="board-title">
-       				<p>게시판</p>
+       				<p>자유게시판</p>
        				
        			</div>
        			<div class="board-table">

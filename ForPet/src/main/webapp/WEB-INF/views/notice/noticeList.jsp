@@ -94,7 +94,7 @@
 			                content += '</span>'
 						}
 			          content += 
-			        	  '<div>' +
+			        	  '<div style="flex:none; text-align:left;">' +
 			             	n['noticeContent'] + 
 			             '</div>' +
 			         '</div>' +
@@ -109,6 +109,13 @@
 			      content +='</div>';
 				
 				$(".board-view-wrapper").html(content);
+				
+				//pre 태그 첨부할때 스타일 변경 로직 - css로 적용 완료
+/* 				var preLoc = $(".board-view-content").children('div').children('pre');
+				if(preLoc[0].localName == "pre") {
+					preLoc.css("white-space","pre-line");
+				} */
+
 			}
 		 });
 		  

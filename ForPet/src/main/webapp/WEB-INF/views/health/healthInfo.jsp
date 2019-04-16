@@ -61,7 +61,7 @@
 			<c:forEach items="${hlist}" var="h">
 			<div class="health-preview-element" onclick="fn_health_view(${h.infoSeq})">
 				<img class="health-preview-image" src="${path}/resources/upload/infoImage/${h.filename}"/>
-				<div class="health-preview-title">${h.infoTitle}</div>
+				<div class="health-preview-title"><div>${h.infoTitle}</div></div>
 			</div>
 			</c:forEach>
 		</div>

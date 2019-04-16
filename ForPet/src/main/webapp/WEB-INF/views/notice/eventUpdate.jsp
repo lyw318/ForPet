@@ -81,7 +81,7 @@
 		     if( fileName != "" ){
 		    	  
 		          var ext = fileName.substring(fileName.lastIndexOf(".")+1).toLowerCase();
-   		  	  if($.inArray(ext, ['gif','png','jpg','jpeg','bmp']) == -1) {
+   		  	  if($.inArray(ext, ['gif','png','jpg','jpeg','bmp','webp']) == -1) {
    		  	     alert('이미지 파일만 등록 가능합니다.');
    		  	 	fileName = ""; // input file 파일명을 다시 지워준다.
    		  	     return;
@@ -107,7 +107,7 @@
 	   		     if( fileName != "" ){
 	   		    	  
 	   		          var ext = fileName.substring(fileName.lastIndexOf(".")+1).toLowerCase();
-	      		  	  if($.inArray(ext, ['gif','png','jpg','jpeg','bmp']) == -1) {
+	      		  	  if($.inArray(ext, ['gif','png','jpg','jpeg','bmp','webp']) == -1) {
 	      		  	     alert('이미지 파일만 등록 가능합니다.');
 	      		  	 	fileName = ""; // input file 파일명을 다시 지워준다.
 	      		  	     return;

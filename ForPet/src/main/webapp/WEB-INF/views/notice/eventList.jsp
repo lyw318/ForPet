@@ -58,8 +58,10 @@
 				<c:forEach items="${elist}" var="e">
 				<div class="board-preview-element" onclick="fn_event_view(${e.eventSeq})">
 					<img class="board-preview-image" src="${path}/resources/upload/eventImage/${e.filename}"/>
-					<div class="board-preview-title">${e.eventTitle}</div>
-					<div class="board-preview-date">${e.eventStart}부터 ${e.eventFinish}까지</div>
+					<div>
+						<div class="board-preview-title">${e.eventTitle}</div>
+						<div class="board-preview-date">기간: ~ ${e.eventFinish}</div>
+					</div>
 				</div>
 				</c:forEach>
 			</div>

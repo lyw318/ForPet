@@ -43,6 +43,17 @@
             height: 380px;
             cursor: pointer;
         }
+        .board-preview-element>div
+        {
+       		display: flex;
+       		flex-flow: column nowrap;
+        	align-items: center;
+  			justify-content: center;
+  			text-align: left;
+  			padding : 5px;
+  			height: 80px;
+        }
+        
         .board-preview-element:hover
         {
         	background-color: rgb(255,250,245);
@@ -57,7 +68,6 @@
         
         .board-preview-title
         {
-        	padding-top: 20px;
         	font-size:22px;
         }
         
@@ -102,8 +112,8 @@
         
 
         .table-row > div:nth-of-type(1){flex: 2 1 0;}
-        .table-row > div:nth-of-type(2){flex: 15 1 0;}
-        .table-row > div:nth-of-type(3){flex: 3 1 0;}
+        .table-row > div:nth-of-type(2){flex: 15 1 0; text-align: left; justify-content: flex-start;}
+        .table-row > div:nth-of-type(3){flex: 3 1 0; text-align: left; justify-content: flex-start;}
         .table-row > div:nth-of-type(4){flex: 2 1 0;}
         .table-row > div:nth-of-type(5){flex: 3 1 0; color: gray; font-size: 11px;padding-top: 2px;}
         .table-row:last-of-type{border-bottom: 1px solid black;}
@@ -435,6 +445,10 @@
             background-color: white !important;
             min-height: 200px;
             
+        }
+        .board-view-content > div > pre
+        {
+        	white-space: pre-line;
         }
         
         .board-images

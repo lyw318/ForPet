@@ -51,7 +51,18 @@
         	padding:70px;
         	min-height: 700px;
         	display: flex;
+        	
 			flex-flow: column nowrap;
+        }
+        .health-view-content-wrapper > div
+        {
+        	font-size: 15px;
+			text-align: left;
+        }
+        
+        .health-view-content-wrapper > div > pre
+        {
+        	white-space: pre-line;
         }
         
         
@@ -169,8 +180,13 @@
         .health-preview-title
         {
         
-        	padding-top: 30px;
         	font-size:17px;
+        	display: flex;
+        	align-items: center;
+  			justify-content: center;
+        	padding : 10px;
+        	height: 100%;
+        	text-align: left;
         }
         
         

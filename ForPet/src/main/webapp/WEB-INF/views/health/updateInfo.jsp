@@ -41,7 +41,7 @@
                 <div class="added-main-image-container">
                 	<input type="hidden" name="exFileM" value="${ilist[0]}" id="exFileM" />
                     <div class="image-upload-container">
-                        <span><img src="${path}/resources/upload/infoImage/${ilist[0]}" style="width : 80px; height :80px;"/></span><input type="file" name="upFileM" id="upFileM" onchange="uploadMain();" required>
+                        <span><img src="${path}/resources/upload/infoImage/${ilist[0]}" style="width : 80px; height :80px;"/></span><input type="file" name="upFileM" id="upFileM" onchange="uploadMain();">
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
 		     if( fileName != "" ){
 		    	  
 		          var ext = fileName.substring(fileName.lastIndexOf(".")+1).toLowerCase();
-			  	  if($.inArray(ext, ['gif','png','jpg','jpeg','bmp']) == -1) {
+			  	  if($.inArray(ext, ['gif','png','jpg','jpeg','bmp','webp']) == -1) {
 			  	     alert('이미지 파일만 등록 가능합니다.');
 			  	 	fileName = ""; // input file 파일명을 다시 지워준다.
 			  	     return;
@@ -108,7 +108,7 @@
  		     if( fileName != "" ){
  		    	  
  		          var ext = fileName.substring(fileName.lastIndexOf(".")+1).toLowerCase();
-    		  	  if($.inArray(ext, ['gif','png','jpg','jpeg','bmp']) == -1) {
+    		  	  if($.inArray(ext, ['gif','png','jpg','jpeg','bmp','webp']) == -1) {
     		  	     alert('이미지 파일만 등록 가능합니다.');
     		  	 	fileName = ""; // input file 파일명을 다시 지워준다.
     		  	     return;
