@@ -7,7 +7,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b07dc84ff25c3a3b3cad7f7f4c7e90d9&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript" src="${path }/resources/js/kakao.js"></script>
 
-<script>
+<!-- <script>
 
 function unscrapAjax(vetSeq){
 console.log(vetSeq);
@@ -142,18 +142,56 @@ function searchdistance(no)
 }
  
 //메소드를 딜레이주기 
-var i = 1;          
-function myLoop (address, prefix, seq) {        
-   setTimeout(function () {   
-	  searchAddress(address, prefix, seq);          //  딜레이 주고 싶은 메소드
-      i++;                    
-      if (i < 10) {           
-         myLoop(address, prefix, seq);      
-      }                     
-   }, 3000)  //3초마다
+var i = 1;
+
+function vetList()
+{
+	alert("asdf");
+	$.ajax({
+		  url:"${path}/myvet/vetScrapList.do",
+		  dataType:"json",
+		  success:function(data)
+		  {
+			  alert(data);
+			  for(i=0;i<data.length;i++){
+			  	delay(data[i]);
+			  }
+		  },
+		  error:function(msg,e)
+		 {
+			console.log(msg);
+			console.log(e);
+		 }
+	});
 }
- 
-</script>
+function delay(data)
+{
+	setTimeout(function(){
+		myLoop(data);
+	}
+	,3000)
+}
+function myLoop (data) {       
+	  searchAddress(data.vetAddress, 'v', data.vetSeq);
+	   var html="";			 
+			  
+		  html+='<div class="vet-item">';
+		  html+='<div class="vet-title">'+data.vetName+'</div>';
+		  html+='<div class="vet-sub-title">'+data.vetAddress+'</div>';
+		  html+='<div class="vet-btn">';
+		  html+='<button onclick="unscrapAjax('+data.vetSeq+')">스크랩취소</button>';
+		  html+='</div>';
+		  html+='</div>';
+		  html+='<input type="hidden" id="vlon'+data.vetSeq+'"/>';
+		  html+='<input type="hidden" id="vlat'+data.vetSeq+'"/>';
+		  
+	 	  $('#vet-itembox').append(html);
+	
+	  $(".vet-time"+seq).html(getTimeHTML(sarchdistance(data.vetSeq)));
+	  
+ //3초마다
+}
+</script> -->
 
     <div class="myPageMain_top">
         <div class="myPageMain_topBox">
@@ -180,24 +218,10 @@ function myLoop (address, prefix, seq) {
 
 		<div class="vet-itembox">	
 		
-			<c:forEach var="l" items="${list }" varStatus="status">
-			<div class="vet-item">
-				<div class="vet-title">${l.vetName }</div>
-				<div class="vet-sub-title">${l.vetAddress}</div>
-				<div class="vet-time${l.vetSeq }" id="vet-time">주소가없습니다.</div>
-				<div class="vet-btn">
-					<button onclick="unscrapAjax('${l.vetSeq }')">스크랩취소</button>
-				</div>
-			</div>
-			<input type="hidden" id="vlon${l.vetSeq}"/>
-			<input type="hidden" id="vlat${l.vetSeq}"/>
-			<script>
-				searchAddress('${l.vetAddress}',"v",'${l.vetSeq }');
-				//myLoop('${l.vetAddress}',"v",'${l.vetSeq }');
-				$(".vet-time${l.vetSeq }").html(getTimeHTML(searchdistance('${l.vetSeq }')));
-			</script>
-			
-			</c:forEach>
+<!-- 			<script>
+				//searchAddress('${l.vetAddress}',"v",'${l.vetSeq }');
+				myLoop('${l.vetAddress}',"v",'${l.vetSeq }');
+			</script> -->
 			
 		</div>
 		</div>
