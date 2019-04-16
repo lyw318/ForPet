@@ -3,6 +3,7 @@
 
 <%@ include file="/WEB-INF/views/myPage/myPageCommon.jsp" %>
 <link rel="stylesheet" href="${path }/resources/css/petListStyle.css" />
+<link rel="stylesheet" href="${path }/resources/css/myPage_petEnrollStyle.css" />
 <% List<Pet> list=(List)request.getAttribute("list");%>
     <div class="myPageMain_top">
         <div class="myPageMain_topBox">
@@ -24,7 +25,7 @@
 			<%for(Pet p:list) {%>
 				<div class="petListOne">
 					<div class="petListRow">
-						<div class="petListColV"><img src="${path }/resources/upload/petProfile/<%=p.getPetRenamedImage() %>"></div>
+						<img src="${path }/resources/upload/petProfile/<%=p.getPetRenamedImage() %>">
 					</div>
 					<div class="petListRow">
 						<div class="petListColA">이름 </div>
@@ -45,8 +46,8 @@
 
 					<%-- <%if(loggedMember!=null && loggedMember.getMemberEmail().equals("admin")) {%> --%>
 					<div class="petListOneBtnBox">
-						<div><input type="button" class="defaultBtn" value="수정" onclick="location.href='<%=request.getContextPath()%>/pet/petUpdate.do?id=<%=p.getPetSeq() %>'"/></div>
-						<div><input type="button" class="defaultBtn" value="삭제" onclick="location.href='<%=request.getContextPath()%>/pet/petDel.do?petSeq=<%=p.getPetSeq()%>'"/></div>
+						<div><input type="button" class="defaultBtn2" value="수정" onclick="location.href='<%=request.getContextPath()%>/pet/petUpdate.do?id=<%=p.getPetSeq() %>'"/></div>
+						<div><input type="button" class="defaultBtn2" value="삭제" onclick="location.href='<%=request.getContextPath()%>/pet/petDel.do?petSeq=<%=p.getPetSeq()%>'"/></div>
 					</div>
 					<%--<%} %> --%>
 				</div>
