@@ -25,16 +25,19 @@
 			onsubmit="return validate();" enctype="multipart/form-data">
 			<div class="petEnroll-containerBox">
 				<div class="petEnroll-containerRow">
+
 					<div class="memberImageBox">
 						<div class="memberImage">
 							<div class="inputBackground" id="image_section">
 								<div>
-									<img class="fileUploadIcon" width="100px" height="100px" /><br />
-									<input type="file" class="defaultBtn" class="profileImgBox" name="petRenamedImage" id="petRenamedImage" />
+									<img class="fileUploadIcon" width="100px" height="100px" src="${path}/resources/images/petIcon100.png"/>
+									<input type="file" class="profileImgBox" name="petRenamedImage" id="petRenamedImage" />
 								</div>
 							</div>
+							<img alt="camaraIcon" class="image_section" src="${path}/resources/images/camaraIcon30.png"/>
 						</div>
 					</div>
+					
 				</div>
 				<div class="petEnroll-containerRow">
 					<div class="petEnroll-containerCol1">

@@ -50,3 +50,69 @@
     justify-content: center;
     align-items: center;
 }
+
+
+
+
+
+#petEnroll-container .memberImageBox {
+	width: 100%;
+	height: 100px;
+	margin: 10px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#petEnroll-container .memberImage {
+	width: 100px;
+	height: 100px;
+	position: relative;
+}
+
+#petEnroll-container .image_section {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	border-radius: 50px;
+	top:0px;
+	left: 0px;
+}
+
+#petEnroll-container .inputBackground {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50px;
+	border: 1px solid #9fa3b1;
+}
+
+#petEnroll-container .memberImage .inputBackground>div {
+	position: relative;
+	width: 100%;
+    height: 100%;
+}
+
+#petEnroll-container .memberImage .fileUploadIcon {
+	position: absolute;
+	top: 0px;
+    left: 0px;
+    background-color: rgba(198, 155, 118, 0.5);
+	border-radius: 50px;
+}
+
+#petEnroll-container .profileImgBox {
+	position: absolute;
+	cursor: pointer;
+	opacity: 0;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+
+#petEnroll-container #petType {
+	height: 26px;
+}
