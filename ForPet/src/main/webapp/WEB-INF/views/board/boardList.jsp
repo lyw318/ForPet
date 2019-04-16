@@ -26,7 +26,7 @@
        				<c:forEach items="${list }" var="b">
        				<div class="table-row">
        					<div>${b.boardSeq}</div>
-       					<div><a href="${path}/board/boardView.do?boardSeq=${b.boardSeq}">${b.boardTitle }</a></div>
+       					<div><a href="${path}/board/boardView.do?boardSeq=${b.boardSeq}" style="text-decoration:none;">${b.boardTitle }</a></div>
        					<div class="userBox">${b.memberNickname }</div>
        					<div>${b.boardDate }</div>
        					<div align="center">
