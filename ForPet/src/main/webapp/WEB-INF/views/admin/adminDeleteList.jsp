@@ -23,7 +23,7 @@
 		
 		<table>
 		<tr>
-			<td colspan="6"><h3>탈퇴회원 목록</h3></td>
+			<td colspan="8"><h3>탈퇴회원 목록</h3></td>
 		</tr>
 		<tr>
 		<th style="width:250px;">회원이메일</th>

@@ -52,9 +52,12 @@
 				<td colspan="6" align="center">검색결과가 없습니다</td>
 			</tr>
 			<%} %>
+			
+			<div class="pageBar">
 			<tr>
 				<td colspan="6" class="pageBar">${pageBar }</td>
 			</tr>
+			</div>
 		</table>
 		</div>
 	</div>
