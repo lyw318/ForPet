@@ -43,7 +43,7 @@ private AdminService service;
 		List<Member> list=service.selectList(cPage,numPerPage);
 		mv.addObject("list",list);
 		mv.addObject("totalList",totalList);
-		mv.addObject("pageBar",PageBarFactory.getPageBar2(totalList, cPage, numPerPage,"/spring/admin/adminList.do"));		
+		mv.addObject("pageBar",PageBarFactory.getPageBar3(totalList, cPage, numPerPage,"/forpet/admin/adminList.do"));		
 		mv.setViewName("admin/adminList");
 		return mv;
 	}
