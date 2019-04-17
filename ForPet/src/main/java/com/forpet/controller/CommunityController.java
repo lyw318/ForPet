@@ -375,7 +375,7 @@ public class CommunityController {
 			MemberMsg mm = new MemberMsg();
 			MemberMsg mmOne = new MemberMsg();
 			MemberFriend mf = new MemberFriend();
-			int ufresult = 0;
+			MemberFriend ufresult = new MemberFriend();
 			int resultCo = 0;
 			for(int i=0;i<msgBlockNo.length;i++) {
 				mm.setmMsgSeq(msgBlockNo[i]);
@@ -391,9 +391,12 @@ public class CommunityController {
 				mf.setmFriendNickname(friendInfo.getMemberNickname());
 				mf.setmFriendType("차단");
 				
-				ufresult = service.updateTypeFriend(mf);
-				if(!(ufresult>0)) {
+				ufresult = service.selectOne(mf);
+				if(ufresult == null) {
 					service.insertFriend(mf);
+				}
+				else {
+					service.updateTypeFriend(mf);
 				}
 				resultCo++;
 			}
@@ -491,7 +494,7 @@ public class CommunityController {
 			MemberMsg mm = new MemberMsg();
 			MemberMsg mmOne = new MemberMsg();
 			MemberFriend mf = new MemberFriend();
-			int ufresult = 0;
+			MemberFriend ufresult = new MemberFriend();
 			int resultCo = 0;
 			for(int i=0;i<msgBlockNo.length;i++) {
 				mm.setmMsgSeq(msgBlockNo[i]);
@@ -507,9 +510,13 @@ public class CommunityController {
 				mf.setmFriendNickname(friendInfo.getMemberNickname());
 				mf.setmFriendType("일반");
 				
-				ufresult = service.updateTypeFriend(mf);
-				if(!(ufresult>0)) {
+				
+				ufresult = service.selectOne(mf);
+				if(ufresult == null) {
 					service.insertFriend(mf);
+				}
+				else {
+					service.updateTypeFriend(mf);
 				}
 				resultCo++;
 			}
