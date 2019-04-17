@@ -225,7 +225,7 @@ public class MemberController {
         try {
         MailHandler sendMail = new MailHandler(mailSender);
         sendMail.setSubject("FAINT  서비스 이메일 인증]");
-        sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>"+key).append("<a href='http://localhost:9090/forpet/member/memberEnroll").append("' target='_blank'>인증한 번호로 가입하기</a>").toString());
+        sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>"+key).append("<a href='http://192.168.20.229:9090/forpet/member/memberEnroll").append("' target='_blank'>인증한 번호로 가입하기</a>").toString());
         sendMail.setFrom("forpetAdmin@gmail.com", "포펫서비스센터 ");       
         	sendMail.setTo(memberEmail);
         	 sendMail.send();

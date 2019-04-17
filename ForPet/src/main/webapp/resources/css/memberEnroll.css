@@ -24,14 +24,13 @@ div#userid-container span.guide {
 	display: none;
 	font-size: 12px;
 	position: absolute;
- 	top: 12px;
 	right: 10px; 
 }
 
 div#userid-container2 span.guide2 {
 	display: none;
 	font-size: 12px;
- 	top: 12px;
+	position: absolute;
 	right: 10px; 
 }
 
@@ -292,6 +291,7 @@ div#myPageMemberInfo .vetMngInsert .vetMngColV {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: relative;
 }
 
 .userid-containerCol2>a {

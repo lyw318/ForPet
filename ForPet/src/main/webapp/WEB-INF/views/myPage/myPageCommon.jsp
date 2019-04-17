@@ -51,7 +51,7 @@
                  	<li onclick="javascript:location.href='${path}/pet/petList.do'">반려동물 목록</li>
                     <li onclick="javascript:location.href='${path }/pet/petEnroll.do'">반려동물 등록</li>
                 </ul>
-            <li onclick="javascript:vetList()">내가 찜한 병원</li>
+            <li onclick="javascript:vetList()" id="my-fav-hospital" data-flag="0">내가 찜한 병원</li>
             <li onclick="javascript:location.href='${path }/community/friendList'">내 친구</li>
             <li>내 쪽지함</li>
 				<ul class="sub">
@@ -89,7 +89,7 @@
     </script>
 <script>
 
-//searchAddress('${loggedMember.memberAddress}',"m","");
+searchAddress('${loggedMember.memberAddress}',"m","");
 
 function unscrapAjax(vetSeq){
 console.log(vetSeq);
@@ -156,7 +156,7 @@ function searchAddress(address, prefix,seq){
 			
 			
 		}, error:function(request, status, error){
-			alert("검색이 실패했습니다.");
+			console.log("검색이 실패했습니다.");
 		}
 				
 		
@@ -228,6 +228,12 @@ var i = 1;
 
 function vetList()
 {
+	if($("#my-fav-hospital").data("flag")>0)
+	{
+		return;
+	}
+	$("#my-fav-hospital").data("flag","1");
+	
 	var header='<div class="vetlist">';
 	header+='<div class="vetList-title">나의 병원 목록</div>';
 	header+='<input type="hidden" id="mlon" />';
@@ -268,8 +274,10 @@ function delay(data,i)
 	,200*i)
 }
 function myLoop (data) {    
+	   var link="location.href='${path}/vetDetail.do?vetSeq="+data.vetSeq+"'";
 	   var html="";			 
 		  html+='<div class="vet-item">';
+		  //html+='<div class="vet-title"><span onclick="'+link+'>'+data.vetName+'</span></div>';
 		  html+='<div class="vet-title">'+data.vetName+'</div>';
 		  html+='<div class="vet-sub-title">'+data.vetAddress+'</div>';
 		  html+='<div class="vet-time'+data.vetSeq+'" id="vet-time">주소가 없습니다.</div>';
@@ -279,9 +287,7 @@ function myLoop (data) {
 		  html+='</div>';
 		  html+='<input type="hidden" id="vlon'+data.vetSeq+'"/>';
 		  html+='<input type="hidden" id="vlat'+data.vetSeq+'"/>';
-		  
 	 	  $('.vet-itembox').append(html);
-	
 	  searchAddress(data.vetAddress, 'v', data.vetSeq);
 	  $(".vet-time"+data.vetSeq).html(getTimeHTML(searchdistance(data.vetSeq)));
 	  

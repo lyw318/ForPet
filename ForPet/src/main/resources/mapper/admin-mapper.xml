@@ -20,4 +20,8 @@ select A.*,(select count(*) from attachment where A.memberSeq=memberSeq) as file
 <delete id="delete" parameterType="member">
 delete from member where memberSeq=#{memberSeq}
 </delete>
+
+<delete id="deletekakao" parameterType="member">
+delete from kakaomember where memberSeq=#{memberSeq}
+</delete>
 </mapper>

@@ -34,14 +34,15 @@
 						<div class="userid-containerCol2">
 							<input type="button" class="defaultBtn" onclick="mailChk()" value="메일인증">
 							<a href="http://www.naver.com" target="_blank">
-								<img src="${path }/resources/images/naver.png" style="width: 30px;" alt="naver" />
-							</a>
-							<a href="https://mail.google.com" target="_blank">
-								<img src="${path }/resources/images/gmail.png" style="width: 30px;" alt="gmail" />
+								<img src="${path }/resources/images/naver.png" style="width: 20px;" alt="naver" title="네이버"/>
 							</a>
 							<a href="https://www.daum.net" target="_blank">
-								<img src="${path }/resources/images/daum.png" style="width: 40px;" alt="daum" />
+								<img src="${path }/resources/images/daum.png" style="width: 20px;" alt="daum" title="다음"/>
 							</a>
+							<a href="https://mail.google.com" target="_blank">
+								<img src="${path }/resources/images/gmail.png" style="width: 20px;" alt="gmail" title="구글"/>
+							</a>
+							
 							<!-- <input type="hidden" name="checkEmail" id="checkEmail" /> -->
 						</div>
 					</div>

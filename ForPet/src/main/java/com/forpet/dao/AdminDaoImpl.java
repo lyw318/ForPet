@@ -42,6 +42,7 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public int delete(Member m) {
 		// TODO Auto-generated method stub
+		session.delete("admin.deletekakao",m);
 		return session.delete("admin.delete",m);
 	}
 

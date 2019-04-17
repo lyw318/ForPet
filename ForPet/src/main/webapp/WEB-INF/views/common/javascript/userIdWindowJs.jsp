@@ -79,20 +79,24 @@
 	var idWindowTarget;
 	$(function () {
 	    $(document).on("click", ".userBox", function (e) {
-	        $(".userBox").children('.userId_oneself').css("display", "none");
-	        $(".userBox").children('.userId_other').css("display", "none");
-	        idWindowTarget = $(e.currentTarget);
-	        var clickUserId = idWindowTarget.children('.userIdBox').get(0).innerText;
-	        if (clickUserId == '${loggedMember.memberNickname }') {
-	            idWindowTarget.children('.userId_oneself').css("display", "block");
-	            idWindowTarget.children('.userId_other').css("display", "none");
+	    	var loggedMember = "${loggedMember}"; 
+	    	if(loggedMember != "") {
+	            $(".userBox").children('.userId_oneself').css("display", "none");
+		        $(".userBox").children('.userId_other').css("display", "none");
+		        idWindowTarget = $(e.currentTarget);
+		        var clickUserId = idWindowTarget.children('.userIdBox').get(0).innerText;
+		        if (clickUserId == '${loggedMember.memberNickname }') {
+		            idWindowTarget.children('.userId_oneself').css("display", "block");
+		            idWindowTarget.children('.userId_other').css("display", "none");
+		
+		        }
+		        else {
+		            idWindowTarget.children('.userId_oneself').css("display", "none");
+		            idWindowTarget.children('.userId_other').css("display", "block");
+		            idWindowTarget.children('.userId_other').children('.userTable').children('.userIdWindow_Id').text(clickUserId + " 님 정보보기");
+		        }    		
+	    	}
 	
-	        }
-	        else {
-	            idWindowTarget.children('.userId_oneself').css("display", "none");
-	            idWindowTarget.children('.userId_other').css("display", "block");
-	            idWindowTarget.children('.userId_other').children('.userTable').children('.userIdWindow_Id').text(clickUserId + " 님 정보보기");
-	        }
 	    })
 	});
 	
