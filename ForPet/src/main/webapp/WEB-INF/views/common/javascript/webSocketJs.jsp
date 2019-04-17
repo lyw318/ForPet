@@ -4,7 +4,7 @@
 <script>
 
 	//Msg Alert websocket
-	socket = new WebSocket("ws:localhost:9090/forpet/msgAlert")
+	socket = new WebSocket("ws:192.168.20.229:9090/forpet/msgAlert")
 	
 	socket.onopen = function(e) {
 	
