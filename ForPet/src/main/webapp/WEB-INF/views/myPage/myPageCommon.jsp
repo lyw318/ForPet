@@ -274,11 +274,13 @@ function delay(data,i)
 	,200*i)
 }
 function myLoop (data) {    
-	   var link="location.href='${path}/vetDetail.do?vetSeq="+data.vetSeq+"'";
+	   var link="location.href='${path}/vetDetail.do?vetSeq="+data.vetSeq;
 	   var html="";			 
 		  html+='<div class="vet-item">';
-		  //html+='<div class="vet-title"><span onclick="'+link+'>'+data.vetName+'</span></div>';
-		  html+='<div class="vet-title">'+data.vetName+'</div>';
+		  html+='<div class="vet-title"><span onclick="';
+		  html+=link+"'\">";
+		  html+=data.vetName+'</span></div>';
+		  //html+='<div class="vet-title">'+data.vetName+'</div>';
 		  html+='<div class="vet-sub-title">'+data.vetAddress+'</div>';
 		  html+='<div class="vet-time'+data.vetSeq+'" id="vet-time">주소가 없습니다.</div>';
 		  html+='<div class="vet-btn">';
